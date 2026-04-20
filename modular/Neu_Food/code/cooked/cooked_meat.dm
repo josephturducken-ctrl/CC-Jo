@@ -167,6 +167,34 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
+/* .............   Fried Rous   ................ */
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
+	eat_effect = null
+	slices_num = 0
+	name = "fried rous"
+	desc = "A small, chewy chunk of rous meat. Certain races loves this, others... Not so much."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_meat.dmi'
+	icon_state = "rat"
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = MEATSLAB_NUTRITION)
+	faretype = FARE_POOR
+	rotprocess = SHELFLIFE_DECENT
+	fried_type = null
+	cooked_type = null
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
+				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick(loc)
+				qdel(I)
+				qdel(src)
+	else
+		return ..()
+
 /* .............   Fried Bear   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear/fried
 	eat_effect = null

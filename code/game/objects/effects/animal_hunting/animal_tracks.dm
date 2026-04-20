@@ -157,6 +157,9 @@
 	// Interaction time
 	if(!do_after(user, get_hunting_do_time(user, 4 SECONDS), target = src))
 		return
+	// Do this check again to prevent duplicating tracks with multiple hunters...
+	if(track_revealed)
+		return
 
 	if(uncover_trail(user))
 		to_chat(user, span_nicegreen("The trail continues further ahead!"))
