@@ -259,3 +259,10 @@
 	droning_sound = 'sound/music/area/dwarf.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+
+/area/rogue/indoors/town/zhurch
+	fog_protected = TRUE
+	droning_sound = 'sound/music/area/zhurch.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	detail_text = null
