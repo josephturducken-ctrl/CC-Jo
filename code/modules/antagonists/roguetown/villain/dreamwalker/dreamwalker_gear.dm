@@ -428,6 +428,7 @@
 
 	health -= I.force
 	user.visible_message(span_danger("[user] smashes the [src]!"))
+	playsound(get_turf(src), 'sound/foley/breaksound.ogg', 80, TRUE)
 	if(health <= 0)
 		qdel(src)
 	return ..()

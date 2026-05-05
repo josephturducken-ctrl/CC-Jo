@@ -352,7 +352,7 @@
 //Dream meditation
 /obj/effect/proc_holder/spell/invoked/dream_trance
 	name = "Dream Trance"
-	desc = "Draw dream energy into your being to banish any fatigue."
+	desc = "Draw dream energy into your being to banish any fatigue. Spawns shards that can be picked up with a weapon or by walking over them to repair your armor."
 	chargedrain = 0
 	chargetime = 0
 	recharge_time = 10 SECONDS
