@@ -445,6 +445,8 @@
 	var/datum/component/dreamwalker_repair/DR = H.GetComponent(/datum/component/dreamwalker_repair)
 	if(DR)
 		DR.repair_from_shard(repair_value)
+		var/obj/effect/temp_visual/heal/E = new /obj/effect/temp_visual/heal_rogue/campfire(get_turf(H))
+		E.color = "#005180"
 		playsound(H, 'sound/magic/magic_nulled.ogg', 70, TRUE)
 		qdel(src)
 
