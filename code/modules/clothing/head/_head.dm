@@ -176,6 +176,8 @@
 		var/datum/component/storage/concrete/roguetown/our_component = GetComponent(attachment_component)
 		if(our_component && length(our_component.item_to_grid_coordinates))
 			for(var/obj/item/thing as anything in our_component.item_to_grid_coordinates)
+				if(thing.item_flags & NOT_SHOW_IN_STORAGE)
+					continue
 				var/mutable_appearance/thing_appearance = thing.build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, clip_mask)
 				thing_appearance.appearance_flags = RESET_COLOR
 				thing_appearance.pixel_x = -standing.pixel_x

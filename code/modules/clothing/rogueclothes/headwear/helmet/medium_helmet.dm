@@ -54,6 +54,9 @@
 	. = ..()
 	. += span_info("Visored helmets can be articulated by right-clicking them. Lifted visors offer a wider field of view, but expose your face to precise strikes.")
 	. += span_info("Certain helmets can be further decorated by left-clicking them with a feather, cloth, or both.")
+	. += span_info("MMB will reveal my character's hair from underneath \the [src].")
+	. += span_info("Shift + RMB will open aesthetic storage, allowing the user to layer extra decorations over \the [src].")
+	. += span_info("Alt + RMB allows the user to toggle aesthetic storage (Shift + RMB) items on or off.")
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
