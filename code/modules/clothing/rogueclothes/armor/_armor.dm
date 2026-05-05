@@ -97,7 +97,8 @@
 /obj/item/clothing/suit/roguetown/armor/get_mechanics_examine(mob/user)
 	. = ..()
 	if(attachment_component)
-		. += span_info("Shift-right-click to open the armors's storage. This can be used to wear cosmetics over it")
+		. += span_info("Shift + RMB will open aesthetic storage, allowing the user to layer extra decorations over \the [src].")
+		. += span_info("Alt + RMB allows the user to toggle aesthetic storage (Shift + RMB) items on or off.")
 
 /obj/item/clothing/suit/roguetown/armor/ShiftRightClick(mob/user)
 	if(attachment_component)
@@ -142,6 +143,8 @@
 		var/datum/component/storage/concrete/roguetown/our_component = GetComponent(attachment_component)
 		if(our_component && length(our_component.item_to_grid_coordinates))
 			for(var/obj/item/thing as anything in our_component.item_to_grid_coordinates)
+				if(thing.item_flags & NOT_SHOW_IN_STORAGE)
+					continue
 				var/mutable_appearance/thing_appearance = thing.build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, clip_mask)
 				thing_appearance.appearance_flags = RESET_COLOR
 				thing_appearance.pixel_x += standing.pixel_x
