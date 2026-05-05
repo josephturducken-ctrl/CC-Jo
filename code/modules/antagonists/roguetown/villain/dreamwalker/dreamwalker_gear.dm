@@ -163,6 +163,8 @@
 	for(var/I in items)
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/dreamwalker
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/dreamwalker
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/dreamwalker
 	pants = /obj/item/clothing/under/roguetown/platelegs/dreamwalker
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/dreamwalker
@@ -224,6 +226,28 @@
 	item_flags = DREAM_ITEM
 
 /obj/item/clothing/neck/roguetown/bevor/dreamwalker/Initialize()
+	. = ..()
+	AddComponent(/datum/component/dream_weapon, null, 20 SECONDS)
+
+// Uses hauberk's int value as I don't want to make them TOO armored either!!
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/dreamwalker
+	name = "otherworldly hauberk"
+	desc = "Strange iridescent hauberk. It reflects light as if covered in shiny oil."
+	icon_state = "dhauberk"
+	item_flags = DREAM_ITEM
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/dreamwalker/Initialize()
+	. = ..()
+	AddComponent(/datum/component/dream_weapon, null, 20 SECONDS)
+
+// Ditto!! I don't want them TOO armored!!!
+/obj/item/clothing/wrists/roguetown/bracers/dreamwalker
+	name = "otherworldly bracers"
+	desc = "Strange iridescent bracers. It reflects light as if covered in shiny oil."
+	item_flags = DREAM_ITEM
+	color = "#2ba6b2"
+
+/obj/item/clothing/wrists/roguetown/bracers/dreamwalker/dreamwalker/Initialize()
 	. = ..()
 	AddComponent(/datum/component/dream_weapon, null, 20 SECONDS)
 
