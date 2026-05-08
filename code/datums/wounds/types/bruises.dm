@@ -9,6 +9,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	passive_healing = 0.5
+	severity_type = SEVERITY_TYPE_WHP
 
 	werewolf_infection_probability = 0
 
