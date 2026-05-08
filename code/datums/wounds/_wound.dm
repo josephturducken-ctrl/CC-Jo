@@ -479,11 +479,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 					is_armor_maxed = TRUE
 
 
-/datum/wound/dynamic/proc/update_severity()
-	if(bleed_rate)
-		switch(bleed_rate)
-
-
 #define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
 #define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.
 #define CLOT_RATE_ARTERY 0	//Artery exceptions. Essentially overrides the clotting threshold.
