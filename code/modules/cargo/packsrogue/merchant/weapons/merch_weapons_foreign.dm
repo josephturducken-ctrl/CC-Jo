@@ -78,7 +78,10 @@
 	name = "Ssangsudo and Scabbard"
 	no_name_quantity = TRUE
 	cost = 250
-	contains = list(/obj/item/rogueweapon/scabbard/sword/kazengun)
+	contains = list(
+		/obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo,
+		/obj/item/rogueweapon/scabbard/sword/kazengun/noparry
+	)
 
 /datum/supply_pack/rogue/merc_weapons/kodachi
 	name = "Kodachi and Scabbard"
