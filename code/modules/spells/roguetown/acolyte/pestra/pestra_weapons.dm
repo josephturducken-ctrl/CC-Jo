@@ -101,11 +101,13 @@
 		if(!I.canparry || !I.candodge)
 			rot_to_apply = 0
 
-	if(rot_to_apply)
-	apply_black_rot(target, rot_to_apply)
+		if(I.blade_class == BCLASS_BLUNT)
+			rot_to_apply = 0
 
-	charges -= rot_to_apply
-	to_chat(user, span_warning("you apply black ichor to [target]!"))
+	if(rot_to_apply)
+		apply_black_rot(target, rot_to_apply)
+		charges -= rot_to_apply
+		to_chat(user, span_warning("you apply black ichor to [target]!"))
 
 	if(charges <= 0)
 		remove_visuals(user)
