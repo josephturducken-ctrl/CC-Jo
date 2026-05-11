@@ -51,9 +51,9 @@
 				var/intent_can_parry = initial(I_path:canparry)
 				var/predicted_rot = 5
 				if(intent_cd > CLICK_CD_QUICK)
-					predicted_rot += 3
+					predicted_rot += 2
 				if(intent_delay > 5)
-					predicted_rot += 3
+					predicted_rot += 4
 				if(!intent_can_dodge || !intent_can_parry)
 					predicted_rot = 0
 				examine_list += span_info(" - <b>[uppertext(intent_name)]</b>: [predicted_rot] stacks")
@@ -92,14 +92,11 @@
 	if(I)
 		// If the intent is slower/heavier than the standard quick stab
 		if(I.clickcd > CLICK_CD_QUICK)
-			rot_to_apply += 3
+			rot_to_apply += 2
 
 		// If the swing delay is significant (0.5s or 5 deciseconds)
 		if(I.swingdelay > 5) 
 			rot_to_apply += 4
-
-		if(!I.canparry || !I.candodge)
-			rot_to_apply = 0
 
 		if(!I.canparry || !I.candodge)
 			rot_to_apply = 0
