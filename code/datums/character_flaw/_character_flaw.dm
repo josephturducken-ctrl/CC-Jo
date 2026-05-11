@@ -63,7 +63,8 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/ephemeral = FALSE // This flaw is currently disabled and will not process
 	/// For voyeur vice examines only. Format is "[name] is " + this + "...", leave blank to use the flaw's name.
 	/// Intended for addiction types only.
-	var/voyeur_descriptor	
+	var/voyeur_descriptor
+	var/list/restricted_species = list()
 
 /datum/charflaw/proc/on_mob_creation(mob/user)
 	return
