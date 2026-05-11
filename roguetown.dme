@@ -1215,6 +1215,7 @@
 #include "code\game\objects\effects\animal_hunting\animal_categories.dm"
 #include "code\game\objects\effects\animal_hunting\animal_hunt_blocker.dm"
 #include "code\game\objects\effects\animal_hunting\animal_maps.dm"
+#include "code\game\objects\effects\animal_hunting\animal_phantom.dm"
 #include "code\game\objects\effects\animal_hunting\animal_spawners.dm"
 #include "code\game\objects\effects\animal_hunting\animal_tracks.dm"
 #include "code\game\objects\effects\decals\cleanable.dm"

@@ -101,7 +101,7 @@
 			var/obj/item/bodypart/chest = C.get_bodypart(BODY_ZONE_CHEST)
 			if(chest)
 				chest.add_wound(/datum/wound/slash/boar_gore)
-		victim.Stun(5 SECONDS)
+		victim.Stun(2 SECONDS)
 		victim.apply_status_effect(/datum/status_effect/debuff/exposed, 10 SECONDS)
 		boar.Stun(3 SECONDS)
 		victim.adjustBruteLoss(50)

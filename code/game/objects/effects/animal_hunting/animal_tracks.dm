@@ -413,8 +413,8 @@
 	else
 		locked_track_icon = pick(track_types)
 
-/obj/effect/hunting_track/proc/spawn_group_bonus_animals(turf/T, mob/living/primary_target)
-	if(!hunt_category || !primary_target)
+/obj/effect/hunting_track/proc/spawn_group_bonus_animals(turf/T, target_path)
+	if(!hunt_category || !target_path)
 		return
 
 	var/mob/living/leader = hunter_ref?.resolve()
@@ -435,6 +435,10 @@
 		if(validate_turf(neighbor))
 			nearby_turfs += neighbor
 
+	// I hate doing this, but it's the only way to get the factions it seems.
+	var/mob/living/dummy = new target_path(T)
+	var/list/real_factions = islist(dummy.faction) ? dummy.faction.Copy() : null
+	qdel(dummy)
 	for(var/mob/living/hunter in valid_hunters)
 		if(spawned_count >= hunt_category.bonus_animal_amount)
 			break
