@@ -435,10 +435,6 @@
 		if(validate_turf(neighbor))
 			nearby_turfs += neighbor
 
-	// I hate doing this, but it's the only way to get the factions it seems.
-	var/mob/living/dummy = new target_path(T)
-	var/list/real_factions = islist(dummy.faction) ? dummy.faction.Copy() : null
-	qdel(dummy)
 	for(var/mob/living/hunter in valid_hunters)
 		if(spawned_count >= hunt_category.bonus_animal_amount)
 			break
@@ -447,9 +443,9 @@
 		if(prob(success_chance))
 			var/turf/spawn_turf = (nearby_turfs.len) ? pick(nearby_turfs) : T
 			var/bonus_type = pickweight(hunt_category.animals)
-			var/mob/living/bonus_mob = new bonus_type(spawn_turf)
-			if(primary_target.faction?.len)
-				bonus_mob.faction = primary_target.faction.Copy()
+			var/mob/living/example_mob = bonus_type
+			var/chosen_rot = initial(example_mob.rot_type) ? /datum/component/rot/simple/hunt : null
+			var/obj/effect/temp_visual/hunting_phantom/P = new(spawn_turf, bonus_type, chosen_rot)
 			spawned_count++
 
 	if(spawned_count)
