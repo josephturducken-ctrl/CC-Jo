@@ -450,13 +450,13 @@ GLOBAL_LIST(teleport_runes)
 
 /obj/effect/decal/cleanable/roguerune/arcyne/binding/attack_hand(mob/living/user)
 	try
-		summon_mob(user)
+		if(summon_mob(user))
+			. = ..()
 	catch(var/exception/e)
 		to_chat(user, "Exception: [e] on [e.file], line [e.line]. This is a code error!")
-	. = ..()
 
 /obj/effect/decal/cleanable/roguerune/arcyne/binding/proc/summon_mob(mob/living/user)
-	if(summoned_mob && isarcyne(user))
+	if(summoned_mob && ishuman(user))
 		if(busy)
 			to_chat(user, span_warning("I am already attempting to bind this familiar! I must have patience..."))
 			return
@@ -542,6 +542,11 @@ GLOBAL_LIST(teleport_runes)
 					fam.gender=NEUTER
 				else
 					fam.gender=NEUTER
+			// needs 2 be done here because we trans the gender mid-ritual
+			if(fam.gender == MALE)
+				fam.voice_pack = new /datum/voicepack/male
+			else
+				fam.voice_pack = new /datum/voicepack/female
 			src.visible_message(span_notice("[fam.summoning_emote]"))
 
 			if(isnewplayer(chosen))
@@ -608,6 +613,7 @@ GLOBAL_LIST(teleport_runes)
 		if(!S || QDELETED(S))
 			summoned_mob = null
 			return
+	return TRUE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/binding/attack_right(mob/user)
 	. = ..()
