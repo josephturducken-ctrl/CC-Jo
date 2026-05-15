@@ -30,7 +30,7 @@
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/structure/flora/roguegrass/maneater/real=3,
 							/obj/effect/hunting_track = 3,
-							/obj/structure/zizo_bane = 2)
+							/obj/structure/zizo_bane = 1)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=2,
 						/turf/open/water/swamp=1)
 	allowed_areas = list(/area/rogue/outdoors/woods)
@@ -68,7 +68,7 @@
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/flora/roguetree/stump/log = 3,
 							/obj/effect/hunting_track = 2,
-							/obj/structure/zizo_bane = 2)
+							/obj/structure/zizo_bane = 1)
 
 //Caustic Edit - Add unique generators for the Coast and Vamp Manor
 /datum/mapGeneratorModule/forest_wretch
@@ -113,5 +113,5 @@
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/flora/roguetree/stump/log = 3,
 							/obj/effect/hunting_track = 2,
-							/obj/structure/zizo_bane = 2)
+							/obj/structure/zizo_bane = 1)
 //Caustic Edit End
