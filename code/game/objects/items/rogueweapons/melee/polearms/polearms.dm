@@ -230,7 +230,7 @@
 	attack_verb = list("sweeps", "disarms")
 	blade_class = BCLASS_DISARM
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	swingdelay = 2	//Small delay to hook
 	damfactor = 0
 	clickcd = 22	//Can't spam this; long delay.
