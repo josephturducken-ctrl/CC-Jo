@@ -35,7 +35,7 @@
 /datum/alch_cauldron_recipe/sleeping_poison
 	name = "Sleep Poison"
 	smells_like = "numbing mint"
-	skill_required = SKILL_LEVEL_EXPERT // Fairly potent, let's lock it behind expert alchemy
+	skill_required = SKILL_LEVEL_MASTER // Fairly potent, let's lock it behind high alchemy skill.
 	output_reagents = list(/datum/reagent/sleep_powder = 90)
 
 //Healing potions
