@@ -6,6 +6,14 @@
 	density = FALSE
 	anchored= TRUE
 	var/time_delay = 0
+	light_system = MOVABLE_LIGHT
+	max_integrity = 30
+	blade_dulling = DULLING_CUT
+	resistance_flags = FLAMMABLE
+	light_outer_range = 2
+	light_inner_range = 1
+	light_power = 1.5
+	light_color = "#BF40BF"
 
 /obj/structure/zizo_bane/Initialize(mapload)
 	. = ..()
@@ -45,6 +53,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/sleep_powder = 5)
 	tastes = list("numbing mintiness" = 1,"purpliness" = 1)
 	eat_effect = /datum/status_effect/debuff/knockout
-	mill_result = /obj/item/reagent_containers/powder/sleep_powder
-	grind_results = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/sleep_powder = 5)
+	mill_result = /obj/item/alch/sleep_powder
+	grind_results = list(/datum/reagent/consumable/nutriment = 5)
 	rotprocess = 30 MINUTES
