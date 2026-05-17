@@ -21,49 +21,6 @@
 	diet_change_amount = 2
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/fried/attackby(obj/item/I, mob/living/user, params)
-	var/obj/item/reagent_containers/peppermill/mill = I
-	if(!locate(/obj/structure/table) in src.loc)
-		to_chat(user, span_warning("I need to use a table."))
-		return FALSE
-	update_cooktime(user)
-	if(istype(mill))
-		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-			to_chat(user, "There's not enough black pepper to make anything with.")
-			return TRUE
-		mill.icon_state = "peppermill_grind"
-		to_chat(user, "You start rubbing the steak with black pepper.")
-		playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 100, TRUE, -1)
-		if(do_after(user,long_cooktime, target = src))
-			if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-				to_chat(user, "There's not enough black pepper to make anything with.")
-				return TRUE
-			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			new /obj/item/reagent_containers/food/snacks/rogue/peppersteak(loc)
-			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			qdel(src)
-
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-		to_chat(user, span_notice("Adding onions..."))
-		if(do_after(user,short_cooktime, target = src))
-			new /obj/item/reagent_containers/food/snacks/rogue/onionsteak(loc)
-			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			qdel(I)
-			qdel(src)
-
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-		to_chat(user, "<span class='notice'>Adding carrots...</span>")
-		if(do_after(user,short_cooktime, target = src))
-			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/carrotsteak(loc)
-			qdel(I)
-			qdel(src)
-
-	else
-		to_chat(user, span_warning("You need to put [src] on a table to knead in the spice."))
-
 /* .............   Roast Pork   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/fatty/roast
 	eat_effect = null
@@ -99,28 +56,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon(loc)
-				qdel(I)
-				qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/friedegg/fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/friedegg/bacon(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.............   Fryspider   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/spider/fried
@@ -158,56 +93,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/peppermill/mill = I
-	if(istype(mill))
-		if (!isturf(src.loc) || \
-			!(locate(/obj/structure/table) in src.loc) && \
-			!(locate(/obj/structure/table/optable) in src.loc) && \
-			!(locate(/obj/item/storage/bag/tray) in src.loc))
-			to_chat(user, span_warning("I need to use a table."))
-			return FALSE
-
-		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-			to_chat(user, "There's not enough black pepper to make anything with.")
-			return FALSE
-
-		mill.icon_state = "peppermill_grind"
-		to_chat(user, "You start rubbing the bird roast with black pepper.")
-		playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 100, TRUE, -1)
-		if(do_after(user,3 SECONDS, target = src))
-			mill.icon_state = "peppermill"
-			if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-				to_chat(user, "There's not enough black pepper to make anything with.")
-				return FALSE
-
-			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced(loc)
-			qdel(src)
-		else
-			mill.icon_state = "peppermill"
-	else
-		var/found_table = locate(/obj/structure/table) in (loc)
-		update_cooktime(user)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/butter))
-			if(isturf(loc)&& (found_table))
-				playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-				to_chat(user, "You start shoving butter into the roasted bird.")
-				if(do_after(user,short_cooktime, target = src))
-					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/butter(loc)
-					qdel(I)
-					qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked))
-			if(isturf(loc)&& (found_table))
-				playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-				to_chat(user, "You start shoving another bird into the roasted bird - are you sure you want to do this?")
-				if(do_after(user,short_cooktime, target = src))
-					new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/doublestacked(loc)
-					qdel(I)
-					qdel(src)
-		return ..()
-
 /*	.............   Frybird   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried
 	eat_effect = null
@@ -225,28 +110,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_BAD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/fried/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/frybirdtato(loc)
-				qdel(I)
-				qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/frybirdtato(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /* ............. Fried Crab ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab/fried
@@ -285,20 +148,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /* .............   Fried Volf   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
@@ -348,20 +197,6 @@
 	fried_type = null
 	cooked_type = null
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 /* .............   Seared Gnoll   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/gnoll/seared
 	eat_effect = null
@@ -400,31 +235,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/fish/fried/attackby(obj/item/I, mob/living/user, params)
-	var/obj/item/reagent_containers/peppermill/mill = I
-	if(!locate(/obj/structure/table) in src.loc)
-		to_chat(user, span_warning("I need to use a table."))
-		return FALSE
-	update_cooktime(user)
-	if(istype(mill))
-		if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-			to_chat(user, "There's not enough black pepper to make anything with.")
-			return TRUE
-		mill.icon_state = "peppermill_grind"
-		to_chat(user, "You start rubbing the fish with black pepper.")
-		playsound(get_turf(user), 'modular/Neu_Food/sound/peppermill.ogg', 100, TRUE, -1)
-		if(do_after(user,long_cooktime, target = src))
-			if(!mill.reagents.has_reagent(/datum/reagent/consumable/blackpepper, 1))
-				to_chat(user, "There's not enough black pepper to make anything with.")
-				return TRUE
-			mill.reagents.remove_reagent(/datum/reagent/consumable/blackpepper, 1)
-			new /obj/item/reagent_containers/food/snacks/rogue/pepperfish(loc)
-			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			qdel(src)
-
-	else
-		to_chat(user, span_warning("You need to put [src] on a table to knead in the spice."))
-
 /* .............   Fried Shellfish    ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/shellfish/fried
 	eat_effect = null
@@ -458,20 +268,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/cooked/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/friedegg/fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.............   Cooked Ham   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/ham/steamed

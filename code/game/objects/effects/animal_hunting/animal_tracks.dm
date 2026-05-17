@@ -25,8 +25,10 @@
 	var/target_animal_type
 	/// The category this hunt belongs to
 	var/datum/hunting_category/hunt_category
-	/// Total tracks to find before the animal spawns
-	var/max_trail_depth = 8
+	/// Total tracks to find before the animal spawns (this is always 1 higher than the number)
+	var/max_trail_depth = 6
+	/// Min trail depth as set by skill bonus.
+	var/min_trail_depth = 4
 	/// Category boosted by user.
 	var/datum/hunting_category/preferred_hunt
 	/// Hunting map influences
@@ -369,7 +371,7 @@
 	src.linked_areas = SShunting.get_linked_areas(A.type)
 
 	// Calculate total tracks needed: 10 base, minus 1 for each level above 3
-	max_trail_depth = clamp(max_trail_depth - (max(0, skill - 3)), 5, max_trail_depth)
+	max_trail_depth = clamp(max_trail_depth - (max(0, skill - 3)), min_trail_depth, max_trail_depth)
 	var/list/cat_weights = list()
 
 	if(secret_map_influence)
@@ -382,7 +384,7 @@
 			// Exact type matching for area bonus to avoid using subtypes
 			var/area_bonus = C.preferred_areas[A.type]
 			if(area_bonus)
-				weight *= (1 + (area_bonus / 100))
+				weight = max(0, weight * (1 + (area_bonus / 100)))
 
 			// Right-click preference boost
 			if(preferred_hunt && C.type == preferred_hunt.type)
@@ -446,6 +448,8 @@
 				bonus_mob.faction = primary_target.faction.Copy()
 			spawned_count++
 
+	if(spawned_count)
+		distribute_party_exp(10 * spawned_count)
 	return spawned_count
 
 /obj/effect/hunting_track/proc/clear_party_images()

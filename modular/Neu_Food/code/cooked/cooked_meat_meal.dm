@@ -20,21 +20,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/peppersteak/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/garlick/rogue))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 /*	..................   Ducal steak   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal
 	tastes = list("steak" = 1, "pepper" = 1, "garlick" = 1)
@@ -68,22 +53,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-
-/obj/item/reagent_containers/food/snacks/rogue/onionsteak/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/carrot_baked))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/steakcarrotonion(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 /*	..................   Carrot Steak   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/carrotsteak
 	name = "carrot steak"
@@ -102,21 +71,6 @@
 	diet_types = list("Meats", "Vegetables")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/carrotsteak/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-				new /obj/item/reagent_containers/food/snacks/rogue/steakcarrotonion(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.................   Steak & carrot & onion   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/steakcarrotonion
@@ -175,22 +129,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-
-/obj/item/reagent_containers/food/snacks/rogue/wienerpotato/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/onion_fried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 /*	.................   Wiener & Fried onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wieneronions
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_MEAL_AND_QUARTER)
@@ -209,22 +147,6 @@
 	diet_types = list("Meats", "Vegetables")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-
-/obj/item/reagent_containers/food/snacks/rogue/wieneronions/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.................   Wiener & potato & onions   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/wienerpotatonions
@@ -258,21 +180,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(!experimental_inhand)
-		return
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/garlick/rogue))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,3 SECONDS, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /*	.................  Ducal Spiced Baked Poultry  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry/baked/spiced/ducal
@@ -364,20 +271,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick/cucumber(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
-
 /* .............   Fried Cabbit w/ Garlick & Cucumber ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit/fried/garlick/cucumber
 	name = "elven cabbit roast"
@@ -401,20 +294,6 @@
 	diet_types = list("Meats", "Vegetables")
 	diet_change_amount = FOOD_DIETARY_VALUE_GOOD
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/veg/cucumber_sliced))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-			if(do_after(user,short_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT * 0.5)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick/cucumber(loc)
-				qdel(I)
-				qdel(src)
-	else
-		return ..()
 
 /* .............  Garlicked Fried Volf w/ Cucumber  ................ */
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick/cucumber

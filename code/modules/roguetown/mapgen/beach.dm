@@ -22,7 +22,7 @@
 							/obj/item/grown/log/tree/stick = 3,
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/structure/flora/roguetree/burnt = 3,
-							/obj/effect/hunting_track = 3)
+							/obj/effect/hunting_track = 4)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
 	allowed_areas = list(/area/rogue/outdoors/beach/forest)
 
@@ -35,7 +35,7 @@
 							/obj/item/natural/stone = 8,
 							/obj/item/natural/rock = 2,
 							/obj/item/grown/log/tree/stick = 10,
-							/obj/effect/hunting_track = 2)
+							/obj/effect/hunting_track = 4)
 	spawnableTurfs = list(/turf/open/floor/rogue/dirt/road=5)
 	allowed_areas = list(/area/rogue/outdoors/beach/forest)
 
