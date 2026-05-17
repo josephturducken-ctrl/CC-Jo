@@ -42,8 +42,6 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/remove_bounty,
 	/client/proc/agevet_player,
 	/client/proc/bunker_bypass,
-	/client/proc/stewardry_stress_test,
-	/client/proc/stewardry_stress_cleanup,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
