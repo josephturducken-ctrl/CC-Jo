@@ -20,6 +20,11 @@ SUBSYSTEM_DEF(economy)
 
 /datum/controller/subsystem/economy/Initialize()
 	populate_standing_order_templates()
+	for(var/region_id in GLOB.economic_regions)
+		var/datum/economic_region/region = GLOB.economic_regions[region_id]
+		for(var/good_id in region.produces)
+			if(region.produces[good_id])
+				goods_with_producers[good_id] = TRUE
 	daily_report_diff = list(
 		"day" = GLOB.dayspassed,
 		"events_fired" = list(),

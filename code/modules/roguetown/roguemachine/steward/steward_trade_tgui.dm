@@ -225,11 +225,12 @@
 
 	var/list/market_rows = list()
 	var/total_arbitrage_potential = 0
-	for(var/good_id in GLOB.trade_goods)
+	var/list/market_stockpile_entries = SStreasury.stockpile_by_trade_good
+	for(var/good_id in market_stockpile_entries)
 		var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 		if(!tg)
 			continue
-		var/datum/roguestock/entry = SSeconomy.find_stockpile_by_trade_good(good_id)
+		var/datum/roguestock/entry = market_stockpile_entries[good_id]
 		if(!entry)
 			continue
 		entry.refresh_auto_price()
@@ -308,10 +309,48 @@
 	petition_state["is_steward_role"] = (user.job in list("Steward", "Clerk", "Grand Duke")) ? TRUE : FALSE
 	petition_state["is_alderman_acting"] = SScity_assembly?.is_alderman(user) ? TRUE : FALSE
 	var/list/eligibility = list()
+	var/petitions_remaining = SSeconomy.petitions_remaining_today()
+	var/pool_full = (GLOB.standing_order_pool.len >= STANDING_ORDERS_POOL_CAP)
+	var/pledge_balance = SStreasury.burgher_pledge_fund?.balance || 0
+	var/pledge_missing = !SStreasury.burgher_pledge_fund
+	var/list/orders_by_region = list()
+	for(var/datum/standing_order/O as anything in GLOB.standing_order_pool)
+		orders_by_region[O.region_id] = (orders_by_region[O.region_id] || 0) + 1
 	for(var/cat_id in GLOB.petition_categories)
-		eligibility[cat_id] = list()
+		var/list/cat = GLOB.petition_categories[cat_id]
+		var/cost = cat["cost"]
+		var/list/templates = cat["templates"]
+		var/list/per_region = list()
+		eligibility[cat_id] = per_region
 		for(var/region_id in GLOB.economic_regions)
-			eligibility[cat_id][region_id] = SSeconomy.petition_blocker(region_id, cat_id) || ""
+			var/datum/economic_region/region = GLOB.economic_regions[region_id]
+			var/blocker = ""
+			if(petitions_remaining <= 0)
+				blocker = "the trade hall has already heard a petition today"
+			else if(!region)
+				blocker = "unknown region"
+			else if(region.is_region_blockaded)
+				blocker = "[region.name] is blockaded - the road is closed to envoys"
+			else if(region.day_last_cleared >= 0 && (GLOB.dayspassed - region.day_last_cleared) < PETITION_BLOCKADE_RECOVERY_DAYS)
+				var/wait_days = PETITION_BLOCKADE_RECOVERY_DAYS - (GLOB.dayspassed - region.day_last_cleared)
+				blocker = "[region.name]'s contacts are still scattered - wait [wait_days]d more"
+			else if(pool_full)
+				blocker = "the warehouse manifest is full - fulfill orders first"
+			else if((orders_by_region[region_id] || 0) >= STANDING_ORDERS_MAX_PER_REGION)
+				blocker = "[region.name] already has [orders_by_region[region_id]] active orders"
+			else if(pledge_missing)
+				blocker = "the Burgher Pledge is not yet established"
+			else if(pledge_balance < cost)
+				blocker = "the Burgher Pledge cannot cover [cost]m"
+			else
+				var/has_template = FALSE
+				for(var/template_path in templates)
+					if(template_path in region.possible_standing_order_types)
+						has_template = TRUE
+						break
+				if(!has_template)
+					blocker = "[region.name]'s trade hall does not deal in [cat["label"]]"
+			per_region[region_id] = blocker
 	petition_state["eligibility"] = eligibility
 	data["petition"] = petition_state
 
@@ -408,26 +447,19 @@
 			"stock" = entry ? entry.stockpile_amount : 0,
 		))
 
-	// "Other goods" shown in the tab: importable trade goods the Crown can actually deposit
-	// (has a stockpile entry that accepts them) and that have at least one producing region.
-	// Essentials are filtered out because they appear in the top panel.
 	var/list/others = list()
-	for(var/good_id in GLOB.trade_goods)
+	var/list/stockpile_entries = SStreasury.stockpile_by_trade_good
+	var/list/producers = SSeconomy.goods_with_producers
+	for(var/good_id in stockpile_entries)
 		if(good_id in AUTO_IMPORT_ESSENTIALS)
+			continue
+		if(!producers[good_id])
 			continue
 		var/datum/trade_good/tg = GLOB.trade_goods[good_id]
 		if(!tg || !tg.importable)
 			continue
-		var/datum/roguestock/entry = SSeconomy.find_stockpile_by_trade_good(good_id)
+		var/datum/roguestock/entry = stockpile_entries[good_id]
 		if(!entry || !entry.accept_toggle_enabled)
-			continue
-		var/has_producer = FALSE
-		for(var/region_id in GLOB.economic_regions)
-			var/datum/economic_region/region = GLOB.economic_regions[region_id]
-			if(region.produces[good_id])
-				has_producer = TRUE
-				break
-		if(!has_producer)
 			continue
 		others += list(list(
 			"good_id" = good_id,

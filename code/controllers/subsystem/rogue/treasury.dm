@@ -262,12 +262,19 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_expected_wage_outlay()
 	if(!steward_machine || !steward_machine.daily_payments)
 		return 0
+	var/list/payments = steward_machine.daily_payments
 	var/total = 0
-	for(var/job_name in steward_machine.daily_payments)
-		var/payment_amount = steward_machine.daily_payments[job_name]
-		for(var/mob/living/carbon/human/H in GLOB.human_list)
-			if(H.job == job_name && !HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
-				total += payment_amount
+	for(var/key in bank_accounts)
+		var/datum/fund/account = bank_accounts[key]
+		if(!account || account.wages_suspended)
+			continue
+		var/mob/living/owner = account.get_owner()
+		if(!owner)
+			continue
+		var/payment_amount = payments[owner.job]
+		if(!payment_amount)
+			continue
+		total += payment_amount
 	return total
 
 /datum/controller/subsystem/treasury/proc/get_account(target)
@@ -510,14 +517,19 @@ SUBSYSTEM_DEF(treasury)
 				SSeconomy.daily_tick()
 			return
 
-	for(var/job_name in steward_machine.daily_payments)
-		var/payment_amount = steward_machine.daily_payments[job_name]
-		for(var/mob/living/carbon/human/H in GLOB.human_list)
-			if(H.job == job_name)
-				if(HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
-					continue
-				if(give_money_account(payment_amount, H, "Daily Wage"))
-					record_round_statistic(STATS_WAGES_PAID, payment_amount)
+	var/list/payments = steward_machine.daily_payments
+	for(var/key in bank_accounts)
+		var/datum/fund/account = bank_accounts[key]
+		if(!account || account.wages_suspended)
+			continue
+		var/mob/living/owner = account.get_owner()
+		if(!owner)
+			continue
+		var/payment_amount = payments[owner.job]
+		if(!payment_amount)
+			continue
+		if(give_money_account(payment_amount, owner, "Daily Wage"))
+			record_round_statistic(STATS_WAGES_PAID, payment_amount)
 
 	if(SSeconomy)
 		SSeconomy.daily_tick()
