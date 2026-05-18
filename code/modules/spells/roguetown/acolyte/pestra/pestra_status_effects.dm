@@ -208,7 +208,7 @@
 /datum/status_effect/black_rot_debility
 	id = "black_rot_debility"
 	alert_type = /atom/movable/screen/alert/status_effect/black_rot_debility
-	duration = 50 SECONDS
+	duration = 15 SECONDS
 	effectedstats = list(
 		STATKEY_CON = -1,
 		STATKEY_STR = -1
