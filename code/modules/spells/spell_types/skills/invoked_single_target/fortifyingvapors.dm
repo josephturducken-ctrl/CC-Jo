@@ -62,8 +62,6 @@
 	return TRUE
 
 /datum/status_effect/buff/fortifyingvapors/tick()
-	if(owner.construct)
-		return
 	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/fortifyingvapors(get_turf(owner))
 	H.color = "#9ebb5b"
 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
