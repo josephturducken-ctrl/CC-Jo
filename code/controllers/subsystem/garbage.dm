@@ -39,6 +39,7 @@ SUBSYSTEM_DEF(garbage)
 
 	var/highest_del_time = 0
 	var/highest_del_tickusage = 0
+	var/highest_del_type_string = ""
 
 	var/list/pass_counts
 	var/list/fail_counts
@@ -201,6 +202,9 @@ SUBSYSTEM_DEF(garbage)
 				#endif
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
+				var/detail = D.dump_harddel_info()
+				if(detail)
+					LAZYADD(I.extra_details, detail)
 				#ifdef TESTING
 				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using here would fill the logs with ADMIN_VV garbage
@@ -251,19 +255,23 @@ SUBSYSTEM_DEF(garbage)
 	++totaldels
 	var/type = D.type
 	var/refID = "\ref[D]"
+	var/datum/qdel_item/I = items[type]
+	var/detail = D.dump_harddel_info()
+	if(detail)
+		LAZYADD(I.extra_details, detail)
 
 	del(D)
 
 	tick = (TICK_USAGE-tick+((world.time-ticktime)/world.tick_lag*100))
 
-	var/datum/qdel_item/I = items[type]
-
 	I.hard_deletes++
 	I.hard_delete_time += TICK_DELTA_TO_MS(tick)
-
-
+	if(TICK_DELTA_TO_MS(tick) > I.hard_delete_max)
+		I.hard_delete_max = TICK_DELTA_TO_MS(tick)
 	if (tick > highest_del_tickusage)
 		highest_del_tickusage = tick
+		highest_del_type_string = "[type]"
+	
 	time = world.timeofday - time
 	if (!time && TICK_DELTA_TO_MS(tick) > 1)
 		time = TICK_DELTA_TO_MS(tick)/100
@@ -287,9 +295,11 @@ SUBSYSTEM_DEF(garbage)
 	var/failures = 0		//Times it was queued for soft deletion but failed to soft delete.
 	var/hard_deletes = 0 	//Different from failures because it also includes QDEL_HINT_HARDDEL deletions
 	var/hard_delete_time = 0//Total amount of milliseconds spent hard deleting this type.
+	var/hard_delete_max = 0	//Highest time spent hard_deleting this in ms.
 	var/no_respect_force = 0//Number of times it's not respected force=TRUE
 	var/no_hint = 0			//Number of times it's not even bother to give a qdel hint
 	var/slept_destroy = 0	//Number of times it's slept in its destroy
+	var/list/extra_details	//Lazylist of string metadata about the deleted objects
 
 /datum/qdel_item/New(mytype)
 	name = "[mytype]"

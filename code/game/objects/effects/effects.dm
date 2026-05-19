@@ -45,3 +45,9 @@
 	opacity = 0
 	invisibility = INVISIBILITY_MAXIMUM
 	icon_state = "nothing"
+
+/obj/effect/dump_harddel_info()
+	if(harddel_deets_dumped)
+		return
+	harddel_deets_dumped = TRUE
+	return "Effect type: [type] - icon_state: [icon_state] - name: \"[name]\" [loc ? "loc.type: [loc.type] ([loc.x],[loc.y],[loc.z])" : ""]"
