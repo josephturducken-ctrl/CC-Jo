@@ -600,6 +600,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 			return FALSE
 		if(2 to INFINITY)
 			var/obj/effect/dummy = new(start)
+			dummy.name = "reach_check_dummy"
 			dummy.pass_flags |= PASSTABLE
 			dummy.movement_type = FLYING
 			dummy.invisibility = INVISIBILITY_ABSTRACT
