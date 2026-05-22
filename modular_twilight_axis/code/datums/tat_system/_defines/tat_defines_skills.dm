@@ -109,6 +109,8 @@
 #define TAT_VIRTUE_CHOICE_COMBAT_MACES "Mace Skill (JMAN)"
 #define TAT_VIRTUE_CHOICE_COMBAT_POLEARMS "Polearm Skill (JMAN)"
 #define TAT_VIRTUE_CHOICE_COMBAT_STAVES "Staves Skill (JMAN)"
+#define TAT_VIRTUE_CHOICE_COMBAT_BOWS "Bows Skill (JMAN)"
+#define TAT_VIRTUE_CHOICE_COMBAT_CROSSBOWS "Crossbows Skill (JMAN)"
 
 #define TAT_VIRTUE_CHOICE_APPRENTICE_MINING "Mining Skill (+3, Up to Legendary)"
 #define TAT_VIRTUE_CHOICE_APPRENTICE_LUMBERJACKING "Lumberjacking Skill (+3, Up to Legendary)"
@@ -117,8 +119,6 @@
 #define TAT_VIRTUE_CHOICE_PROWLER_LOCKPICKING "Lockpick Skill (+3, Up to Legendary)"
 
 #define TAT_VIRTUE_SKILL_BONUS_RULES list( \
-	/datum/virtue/combat/bowman = list(/datum/skill/combat/bows = 1), \
-	/datum/virtue/combat/crossbowman = list(/datum/skill/combat/crossbows = 1), \
 	/datum/virtue/combat/magical_potential = list(/datum/skill/magic/arcane = 1), \
 	/datum/virtue/combat/devotee = list(/datum/skill/magic/holy = 1), \
 	/datum/virtue/utility/skilled = list(/datum/skill/craft/crafting = 2), \
@@ -135,8 +135,6 @@
 )
 
 #define TAT_VIRTUE_SKILL_CAP_BONUS_RULES list( \
-	/datum/virtue/combat/bowman = list(/datum/skill/combat/bows = 3), \
-	/datum/virtue/combat/crossbowman = list(/datum/skill/combat/crossbows = 3), \
 	/datum/virtue/combat/magical_potential = list(/datum/skill/magic/arcane = 1), \
 	/datum/virtue/combat/devotee = list(/datum/skill/magic/holy = 1), \
 	/datum/virtue/utility/performer = list(/datum/skill/misc/music = 6) \
@@ -162,6 +160,8 @@
 		TAT_VIRTUE_CHOICE_COMBAT_MACES = list(/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN), \
 		TAT_VIRTUE_CHOICE_COMBAT_POLEARMS = list(/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN), \
 		TAT_VIRTUE_CHOICE_COMBAT_STAVES = list(/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN) \
+		TAT_VIRTUE_CHOICE_COMBAT_BOWS = list(/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN) \
+		TAT_VIRTUE_CHOICE_COMBAT_CROSSBOWS = list(/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN) \
 	), \
 	/datum/virtue/utility/apprentice = list( \
 		TAT_VIRTUE_CHOICE_APPRENTICE_MINING = list(/datum/skill/labor/mining = SKILL_LEVEL_JOURNEYMAN), \
