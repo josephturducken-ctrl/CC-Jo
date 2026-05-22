@@ -228,7 +228,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	///Caustic edit end
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
+	//CC + TA edit
+	var/list/L
+	S["tat_build"] >> L
 
+	if(!tat_build)
+		tat_build = new(src)
+	//CC + TA edit end
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_preferences(needs_update, S)		//needs_update = savefile_version if we need an update (positive integer)
@@ -272,6 +278,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_color		= sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings 	= sanitize_islist(key_bindings, list())
 	masked_examine  = sanitize_integer(masked_examine, 0, 1, initial(masked_examine))
+	tat_build.load_from_list(sanitize_islist(L, list())) //CC + TA edit
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
 
@@ -379,6 +386,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["belch_noises"], belch_noises)
 	WRITE_FILE(S["audio_preload"], audio_preload)
 	///Caustic edit end
+
+	WRITE_FILE(S["tat_build"], tat_build.export_to_list()) //CC + TA edit
 	
 	return TRUE
 
