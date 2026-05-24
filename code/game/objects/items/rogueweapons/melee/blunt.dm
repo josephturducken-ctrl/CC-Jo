@@ -756,7 +756,7 @@
 	smelt_bar_num = 2
 	sellprice = 500 //Boss item. VERY valuable.
 
-/obj/item/rogueweapon/mace/goden/kanabo
+/obj/item/rogueweapon/mace/goden/steel/kanabo
 	name = "kanabo"
 	desc = "A steel-banded wooden club, made to break the enemy in spirit as much as in flesh. One of the outliers among the many more elegant weapons of Kazengun."
 	icon_state = "kanabo"
