@@ -139,7 +139,7 @@
 		to_chat(user, span_warning("I don't want to harm other living beings!"), MESSAGE_TYPE_INFO)
 		return
 	
-	if(force && has_status_effect(/datum/status_effect/debuff/deadite_grace) && M.mind)
+	if(force && user.has_status_effect(/datum/status_effect/debuff/deadite_grace) && M.mind)
 		to_chat(user, span_warning("Ah, Lux... I calm down considerably, but my hunger only increases."))
 		user.remove_status_effect(/datum/status_effect/debuff/deadite_grace)
 
