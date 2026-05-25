@@ -2320,6 +2320,35 @@
 	. = ..()
 	icon_state = GLOB.tod
 
+/atom/movable/screen/calendar_date
+	name = "Calendar"
+	icon = null
+	icon_state = ""
+	screen_loc = rogueui_clock
+	layer = HUD_LAYER+0.02
+	plane = HUD_PLANE
+	mouse_opacity = MOUSE_OPACITY_ICON
+	maptext_width = 160
+	maptext_height = 28
+	maptext_x = 0
+	maptext_y = 0
+
+/atom/movable/screen/calendar_date/Initialize(mapload)
+	. = ..()
+	refresh_text()
+
+/atom/movable/screen/calendar_date/proc/refresh_text()
+	var/list/parts = resolve_ic_date_parts(GLOB.dayspassed)
+	var/short = "[parts[1]] [get_month_number_to_text(parts[2])] [parts[3]]"
+	maptext = {"<span style='color: #7c5b10; font-size: 90%;
+		text-shadow: 1px 1px 2px black, 0 0 1em black;
+		font-family: "Nosfer", "Pterra";'>[short]</span>"}
+
+/atom/movable/screen/calendar_date/Click(location, control, params)
+	if(!usr?.client)
+		return
+	usr.client.open_calendar_ui()
+
 /atom/movable/screen/bloodpool
 	appearance_flags = KEEP_TOGETHER
 	icon_state = "empty"

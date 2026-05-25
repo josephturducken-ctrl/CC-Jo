@@ -16,6 +16,7 @@ const rowStyle: CSSProperties = {
 
 const cellStyle: CSSProperties = {
   textAlign: 'center',
+  fontVariant: 'small-caps',
   letterSpacing: '1px',
   fontSize: FONT_BODY,
   color: INK_SOFT,

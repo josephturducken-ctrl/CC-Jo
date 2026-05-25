@@ -123,6 +123,27 @@
 			return "Late"
 	return ""
 
+/proc/get_calendar_events_for_month(month_number)
+	var/list/matches = list()
+	for(var/datum/calendar_event/event in GLOB.calendar_events)
+		if(event.recur_month == month_number)
+			matches += event
+	return matches
+
+/proc/get_calendar_events_for_day(month_number, day_of_month)
+	var/list/matches = list()
+	for(var/datum/calendar_event/event in GLOB.calendar_events)
+		if(event.covers_day(month_number, day_of_month))
+			matches += event
+	return matches
+
+/proc/get_active_calendar_event_titles()
+	var/list/parts = resolve_ic_date_parts(GLOB.dayspassed)
+	var/list/titles = list()
+	for(var/datum/calendar_event/event in get_calendar_events_for_day(parts[2], parts[1]))
+		titles += event.title
+	return titles
+
 /proc/get_current_day_of_week()
 	return GLOB.dayspassed
 

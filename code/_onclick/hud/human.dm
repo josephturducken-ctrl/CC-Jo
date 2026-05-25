@@ -104,10 +104,9 @@
 	action_intent.screen_loc = rogueui_intents
 	static_inventory += action_intent
 
-//	clock = new /atom/movable/screen/time
-//	clock.hud = src
-//	clock.screen_loc = rogueui_clock
-//	static_inventory += clock
+	var/atom/movable/screen/calendar_date/date_hud = new
+	date_hud.hud = src
+	static_inventory += date_hud
 
 	stressies = new /atom/movable/screen/stress
 	stressies.hud = src
