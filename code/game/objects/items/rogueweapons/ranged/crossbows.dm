@@ -394,7 +394,6 @@
 	draw-strength. It loads heavier, full-length bolts; purpose-made to pulverize. </br>'Rudmarsch's walls broke \
 	beneath the volley, and Her sickness petered through the cracks..'"
 	item_state = "ancientheavybow"
-	max_integrity = 130
 
 //
 
