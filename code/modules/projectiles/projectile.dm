@@ -749,7 +749,7 @@
 	trajectory_ignore_forcemove = FALSE
 	starting = start_loc
 	original = target
-	if(targloc || !params)
+	if(targloc && !params)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
 		setAngle(Get_Angle(src, targloc) + spread)
