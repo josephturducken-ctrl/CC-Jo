@@ -69,20 +69,38 @@
 	cost = 150
 	contains = list(/obj/item/rogueweapon/sword/sabre/hook)
 
-/datum/supply_pack/rogue/merc_weapons/kazengunkodachi
-	name = "Kazengun Kodachi"
-	cost = 120
-	contains = list(/obj/item/rogueweapon/sword/short/kazengun)
+/datum/supply_pack/rogue/merc_weapons/hwando
+	name = "Hwando and Scabbard"
+	no_name_quantity = TRUE
+	cost = 250
+	contains = list(
+		/obj/item/rogueweapon/sword/sabre/mulyeog,
+		/obj/item/rogueweapon/scabbard/sword/kazengun
+	)
 
-/datum/supply_pack/rogue/merc_weapons/kazenguntanto
-	name = "Kazengun Tanto"
-	cost = 80
-	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
-
-/datum/supply_pack/rogue/merc_weapons/kazengunscabbard
-	name = "Kazengun Scabbard"
+/datum/supply_pack/rogue/merc_weapons/ssangsudo
+	name = "Ssangsudo and Scabbard"
+	no_name_quantity = TRUE
 	cost = 250
 	contains = list(/obj/item/rogueweapon/scabbard/sword/kazengun)
+
+/datum/supply_pack/rogue/merc_weapons/kodachi
+	name = "Kodachi and Scabbard"
+	no_name_quantity = TRUE
+	cost = 150
+	contains = list(
+		/obj/item/rogueweapon/sword/short/kazengun,
+		/obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
+	)
+
+/datum/supply_pack/rogue/merc_weapons/tanto
+	name = "Tanto and Sheathe"
+	no_name_quantity = TRUE
+	cost = 120 // This is just a reskinned sail dagger, but this one comes with a sheathe.
+	contains = list(
+		/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun,
+		/obj/item/rogueweapon/scabbard/sheath/kazengun
+	)
 
 /datum/supply_pack/rogue/merc_weapons/beardedaxe
 	name = "Bearded Axe"

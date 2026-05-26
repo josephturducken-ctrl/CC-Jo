@@ -1,117 +1,11 @@
-/datum/book_entry/treasury
-	abstract_type = /datum/book_entry/treasury
-	category = "The Crown's Treasury"
+/datum/book_entry/treasury_realm
+	abstract_type = /datum/book_entry/treasury_realm
+	category = "Steward"
 
-/datum/book_entry/treasury/charters
-	name = "01. Charters of the Realm"
+/datum/book_entry/treasury_realm/budgets
+	name = "01. Budgets, Warrants & Authority"
 
-/datum/book_entry/treasury/charters/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Charters protect classes of subject from the Crown's taxation and levies.
-		The Ruler and Regent may suspend or restore a Charter, at the throne, by speaking <b>revise charter</b>. State is shown on the Charters sections of the Notice Board. Note that tax exemption only applies to direct taxation like Contract Levy and Headeater Levy, not indirect taxation like Import or Export tariffs.</p>
-		</div>
-
-		<ul>
-			<li><b>The Great Writ of Azuria</b> - Nobility pays no tax and levy, and cannot be fined.</li>
-			<li><b>The Zenitstadt Concordat</b> - The Church, and any declared benefactors of the Church (Whom the Bishop can grant the status to up to [PATRONAGE_CAP_PER_ROUND] of), pays no taxation and levy.</li>
-			<li><b>The Otavan Accords</b> - The Inquisition pays no tax and no levy.</li>
-			<li><b>The Golden Bull of Kingsfield</b> - burghers are capped at [GOLDEN_BULL_BURGHER_CAP * 100]% of balance per levy or fine, with a [GOLDEN_BULL_DAILY_FINE_CAP]-mammon ceiling on each fine.</li>
-			<li><b>The Covenant of Noc and Pestra</b> - University members, Apothecary and Head Physician are limited to the lightest poll tax of [NOC_PESTRA_POLL_CAP]m, and a minimum wage from the Crown's payroll.</li>
-			<li><b>The Guild Charter of Arms</b> - Guild mercenaries are capped at [GUILD_CHARTER_OF_ARMS_POLL_CAP]m of poll tax per day, and remit [GUILD_CHARTER_OF_ARMS_PLEDGE_BONUS]m daily to the Burgher's Pledge while in force.</li>
-			<li><b>The Indenture of War</b> - The Retinue and Garrison members are subject to a minimum salary floor while this is in effect.</li>
-		</ul>
-
-		<p>Each Charter has a [DECREE_COOLDOWN / 600]-minute cooldown after revision. No more than one suspension and one restoration may be proclaimed per day.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/levies
-	name = "02. Taxation and Levies"
-
-/datum/book_entry/treasury/levies/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Rates on Taxation and Levies are set by the Steward using the "Adjust Taxes" verb. This can be done even with a ruler / regent in place; any conflict from both parties trying to set rates is an IC issue to resolve. The ruler or regent may also adjust tax rates at the throne by saying "Set Taxes". Poll taxes / subsidies and Levies have an independent one-day cooldown - whoever sets first locks the other out until the next day.</p>
-		</div>
-
-		<h3>Transaction Levies</h3>
-		<ul>
-			<li><b>Contract Levy</b> - on Grand Contract Ledger payouts.</li>
-			<li><b>Headeater Levy</b> - on bounty heads fed directly to the HEADEATER.</li>
-			<li><b>Import Tariff</b> - on goods bought from merchant vendors including SILVERFACE, GOLDFACE.</li>
-			<li><b>Export Duty</b> - on goods dispatched by the Merchant via the Navigator's balloon.</li>
-		</ul>
-
-		<h3>Poll Tax</h3>
-		<p>Poll tax is the one of the most powerful - and most hated tools in the Crown's arsenal to raise revenue. It is a daily tax levied on each subject with a bank account, draining from their balance automatically every day. Rates are set by the Steward or the Throne. Charters may exempt or cap certain categories of subject while they are in force. Poll taxes are hardcapped at [POLL_TAX_MAX_RATE]m/day, but can be set as low as a subsidy of -[POLL_TAX_MAX_SUBSIDY]m/day.</p>
-
-		<p>Unpaid poll tax accumulates arrears. After [POLL_TAX_DEBT_DAYS_TO_DEBTOR] day(s) of arrears, the subject is marked <b>destitute</b>. Poll tax arrears do not authorise kill-on-sight or attack-on-sight, and they do not override ERP protection rules - poll tax is unilaterally imposed by the Crown, so the subject has not consented to being attacked or killed over it. Treat arrears as a roleplay opportunity to recover or forgive the debt.</p>
-
-		<h3>Subsidy</h3>
-		<p>A category's rate may be set as far as <b>-[POLL_TAX_MAX_SUBSIDY]m/day</b>. A negative rate is a <b>Crown subsidy</b>: each tick, the Crown's Purse pays that mammon to every subject of the category, reaching even charter-protected classes.</p>
-
-		<p>The tax setter shows a projected per tick income or subsidy cost, and net flow based on current heads, so the Steward can see the budget impact before committing. The projection ignores balance and advance state - it is the gross rate × eligible head count. It also ignores that some people will not in fact, pay or be able to pay.</p>
-
-		<p>Meister deposits are not taxed.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/fines
-	name = "03. Fines and Loans"
-
-/datum/book_entry/treasury/fines/inner_book_html(mob/user)
-	return {"
-		<div>
-		<h3>Fines</h3>
-		<ul>
-			<li>Charter-protected subjects cannot be fined.</li>
-			<li>Golden Bull subjects: maximum [GOLDEN_BULL_BURGHER_CAP * 100]% of balance per stroke, with a [GOLDEN_BULL_DAILY_FINE_CAP]-mammon ceiling.</li>
-			<li>All others: maximum [GENERIC_RATE_CAP * 100]% of balance per stroke.</li>
-			<li><b>One fine per subject per day.</b></li>
-		</ul>
-
-		<h3>Loans</h3>
-		<p>Crown loans carry fixed simple interest and a stated term. Default marks the subject <b>Debtor</b> until the loan is repaid or forgiven.</p>
-		<p>Loans are voluntarily entered into, so default is valid grounds for arrest or legal action - though it does not authorise round-removal. Do not abuse ERP protection if you intend to default on a loan.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/outlaws
-	name = "04. Outlawry"
-
-/datum/book_entry/treasury/outlaws/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>A subject declared Outlaw by the ruler at the Throne loses all Charter and patronage protection. Their account may be drained in its entirety by fine.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/patronage
-	name = "05. Patronages"
-
-/datum/book_entry/treasury/patronage/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Patronages let certain roles extend their Charter's protection to other individuals.</p>
-		<ul>
-			<li><b>Bishop</b> - The Bishop may declare up to [PATRONAGE_CAP_PER_ROUND] persons as benefactors of the Church, granting them the same tax and levy exemption as the Church while the Concordat is in force. The Bishop may revoke at will.</li>
-			<li><b>Steward</b> - The Steward may print Letters of Citizenry at the Nerve Master. The bearer gains Golden Bull protections while the Charter is in force. One can be printed every minute.</li>
-		</ul>
-
-		<p>Protection lapses if the backing Charter is suspended, but the status persists and resumes if the Charter is restored.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/budgets
-	name = "06. The Crown's Budgets & Authorisation"
-
-/datum/book_entry/treasury/budgets/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/budgets/inner_book_html(mob/user)
 	return {"
 		<div>
 		<h3>Crown's Purse</h3>
@@ -127,14 +21,21 @@
 			<li><b>Defense Warrant</b> - a daily Pledge ceiling. Defense commissions issued by the Alderman burn Pledge authority up to this cap, just as the Steward's do. The Alderman may not draw the Crown's Purse for defense, and may not issue Requests.</li>
 		</ul>
 		<p>Both ceilings refresh at each session's resolution. Unspent authorisation does not carry over.</p>
+
+		<h3>Crown Authority</h3>
+		<p>The following titles share full Crown authority - they may petition the trade hall, draw emergency loans, commission defense and blockade writs, and stamp contracts levy-exempt with the signet:</p>
+		<ul>
+			<li>Steward, Clerk, Grand Duke, Hand, Marshal, Councillor, Prince/Princess.</li>
+		</ul>
+		<p>The Steward is the primary officer; the rest substitute when the Steward is absent, dead, or otherwise occupied. A Regent crowned at the Throne inherits the same authority for the duration of their regency.</p>
 		</div>
 	"}
 
 
-/datum/book_entry/treasury/defense
-	name = "07. Defense and Blockades"
+/datum/book_entry/treasury_realm/defense
+	name = "02. Defense and Blockades"
 
-/datum/book_entry/treasury/defense/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/defense/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>Commissioned from the Grand Contract Ledger:</p>
@@ -146,10 +47,10 @@
 		</ul>
 
 		<h3>Issue Authority</h3>
-		<p>In addition to the Steward, the Hand, Councillor, Grand Duke / Regent, Marshal and Clerk may also put out commissions and contracts.</p>
+		<p>See <i>Budgets, Warrants & Authority</i> for the full list of titles that may issue commissions.</p>
 
 		<h3>Direct Commission vs Board:</h3>
-		<p>A commission can be posted to the Grand Contract Ledger, or given directly to a bearer. Posting to the board allows anyone to take it, and follow the Fellowship limit for any party taking it. Handing it directly to a bearer is faster and more certain, but risks it being ignored or wasted on someone who can't complete it. The Steward may not take and claim a scroll they have issued themselves.</p>
+		<p>A commission can be posted to the Grand Contract Ledger, or given directly to a bearer. Handing it directly to a bearer is faster and more certain, but risks it being ignored or wasted on someone who can't complete it. The Steward may not take and claim a scroll they have issued themselves. See <i>The Grand Contract Ledger</i> for shared mechanics including expiry windows, the take cooldown, and abandonment forfeit.</p>
 
 		<h3>Bonus Pay</h3>
 		<p>Either a Defense Commission or a Blockade Writ may be issued with <b>Bonus Pay</b> at one of three levels: <b>None</b> (x1.0), <b>Light</b> (x[COMMISSION_BONUS_PAY_LIGHT_MULT]), or <b>Full</b> (x[COMMISSION_BONUS_PAY_MULT]). The chosen multiplier applies to both the draft cost and the bearer's reward. Not available on Requests.</p>
@@ -157,7 +58,7 @@
 		<h3>Levy Exemption</h3>
 		<p>When the Steward issues a contract, they may mark it Levy Exempt - the bearer pays no Contract Levy on the reward. This costs the Crown only the foregone levy and is useful for sweetening offers to mercenaries or adventurers.</p>
 
-		<p>The Steward also starts with an infinite-use signet ring. The Steward, Grand Duke, Clerk, and Regent can stamp a contract (click it) to make it Levy Exempt after the fact - useful for retroactive bribes.</p>
+		<p>The Steward also starts with an infinite-use signet ring. Any holder of Crown authority (see <i>Budgets, Warrants & Authority</i>) can stamp a contract (click it) to make it Levy Exempt after the fact - useful for retroactive bribes.</p>
 
 		<h3>Region and Reward</h3>
 		<p>Defense commissions pay out in proportion to the threat they spawn. Each threat region carries a <b>reward multiplier</b> (surfaced in the commission UI beside the region name): Azure Basin at x0.75, Azure Grove at x1.0, Azurean Coast at x1.2, Terrorbog / Mount Decapitation / Underdark at x1.5. A Bounty in Terrorbog costs the same draft as a Bounty in Azure Basin - but the Terrorbog commission pays the bearer roughly twice as much. The Steward can use this to steer adventurers toward regions the realm most needs cleared.</p>
@@ -171,10 +72,10 @@
 	"}
 
 
-/datum/book_entry/treasury/trade
-	name = "08. Regional Trade"
+/datum/book_entry/treasury_realm/trade
+	name = "03. Regional Trade"
 
-/datum/book_entry/treasury/trade/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/trade/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>The Crown trades with ten regions: Kingsfield, Rosawood, Rockhill, Daftsmarch, Blackholt, Saltwick, Hagenwald, Bleakcoast, Northfort, Heartfelt. Trade and Stockpile interface are accessed through the Nerve Master's "Trade and Stockpile" interface.
@@ -222,10 +123,10 @@
 	"}
 
 
-/datum/book_entry/treasury/auto_import
-	name = "09. Standing (Auto) Imports"
+/datum/book_entry/treasury_realm/auto_import
+	name = "04. Standing (Auto) Imports"
 
-/datum/book_entry/treasury/auto_import/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/auto_import/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>The Crown may auto-import essential goods each dawn, sparing the Steward from manually re-importing the same basics every day. Goods stay on the list until removed.</p>
@@ -246,7 +147,7 @@
 		</ul>
 
 		<h3>Visibility</h3>
-		<p>Successful imports announce on the Nerve Master with an <i>(auto)</i> tag. Skipped days (stockpile full, price spike, purse floor breach) leave a note in the Recent Activity readout. The panel retains the last [AUTO_IMPORT_HISTORY_DAYS] days of activity.</p>
+		<p>Successful imports announce on the Nerve Master with an <i>(auto)</i> tag. Skipped days (stockpile full, price spike, purse floor breach) leave a note in the Tally readout. The panel retains the last [AUTO_IMPORT_HISTORY_DAYS] days of activity.</p>
 
 		<h3>Kill Switch</h3>
 		<p><b>Strike All</b> in the tab disables every standing import at once, essentials included. Goods can be re-enabled individually.</p>
@@ -256,29 +157,10 @@
 	"}
 
 
-/datum/book_entry/treasury/supply
-	name = "10. Supply and Demand"
+/datum/book_entry/treasury_realm/standing_orders
+	name = "05. Of Standing Orders"
 
-/datum/book_entry/treasury/supply/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Economic events last [ECON_EVENT_DURATION] day(s) and are posted on the noticeboard under <b>Economic Events</b>.</p>
-
-		<ul>
-			<li><b>Shortage</b> - affected goods spike in price. One urgent standing order is posted against the afflicted region, <b>provided fewer than [STANDING_ORDERS_MAX_URGENT] urgent orders are already standing</b>. Past that cap, the shortage's price spike still happen, but no urgent order is spawned - regular standing orders keep their pool slots.</li>
-			<li><b>Oversupply</b> - affected goods drop in price.</li>
-		</ul>
-
-		<p>The <b>Market Scroll</b> at the Nerve Master shows live buy/sell prices for every good in every region.</p>
-		</div>
-	"}
-
-
-
-/datum/book_entry/treasury/standing_orders
-	name = "11. Of Standing Orders"
-
-/datum/book_entry/treasury/standing_orders/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/standing_orders/inner_book_html(mob/user)
 	return {"
 <div>
 		<h3>Types</h3>
@@ -303,10 +185,10 @@
 	"}
 
 
-/datum/book_entry/treasury/warehouse
-	name = "12. Warehouse"
+/datum/book_entry/treasury_realm/warehouse
+	name = "06. Warehouse"
 
-/datum/book_entry/treasury/warehouse/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/warehouse/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>The Steward's Export Machine and the surrounding tiles accept finished goods that fulfill warehouse-tagged standing orders.</p>
@@ -320,60 +202,11 @@
 	"}
 
 
-/datum/book_entry/treasury/assembly
-	name = "13. Alderman & City Assembly"
 
-/datum/book_entry/treasury/assembly/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Town members (excluding the keep and garrison) can elect an Alderman to replace or augment the Steward's authority.</p>
+/datum/book_entry/treasury_realm/insolvent
+	name = "07. Insolvency, Sequestration and Loans"
 
-		<h3>Sessions</h3>
-		<p>The first session opens [ASSEMBLY_FIRST_SESSION_MINUTES] minutes after the round begins; thereafter sessions resolve each dawn. Votes are cast at the Assembly noticeboard and may be changed freely until the session resolves.</p>
-
-		<h3>Who Sits, Who Votes</h3>
-		<p>All jobs but members of the Keep, the Inquisition, and the unjobbed may vote. Outlaws cannot vote. Voting weight is set by station:</p>
-		<ul>
-			<li><b>Transients</b> (Adventurer, Mercenary) - weight 1.</li>
-			<li><b>Peasantry and sidefolk</b> - weight 1.5.</li>
-			<li><b>Burghers and clergy</b> - weight 2.</li>
-			<li><b>Notables</b> (Merchant, Guildmasters, Bishop, and the like) - weight 4.</li>
-		</ul>
-		<p>A Letter of Citizenry or Residency raises sub-Burgher weights to 2.</p>
-
-		<h3>Motions</h3>
-		<p>Six motions stand before every session. All are optional; a silent voter is not counted toward that motion's weight.</p>
-		<ul>
-			<li><b>Election</b> - any subject who can hold office may stand. The highest-weighted eligible candidate takes the seat.</li>
-			<li><b>Trade Authority</b> - a bracket vote setting the Alderman's daily trade warrant. Brackets: [jointext(ASSEMBLY_TRADE_BRACKETS, "m, ")]m.</li>
-			<li><b>Defense Authority</b> - a bracket vote setting the Alderman's daily defense warrant, denominated in Pledge. Brackets: [jointext(ASSEMBLY_DEFENSE_BRACKETS, "p, ")]p.</li>
-			<li><b>Recall</b> - removes a sitting Alderman. Passes on [ASSEMBLY_RECALL_THRESHOLD_PCT]% YAE of cast weight.</li>
-			<li><b>Censure</b> - bars a subject from holding office or wielding warrants for the rest of the round. Passes on [ASSEMBLY_CENSURE_THRESHOLD_PCT]% YAE of cast weight.</li>
-			<li><b>Poll Tax</b> - suspended pending reform.</li>
-		</ul>
-		<p>Recall and censure require at least [ASSEMBLY_REMOVAL_MOB_FLOOR] distinct YAE voters casting a combined [ASSEMBLY_REMOVAL_WEIGHT_FLOOR / 2] weight. Bracket motions are vetoed if NAE reaches [ASSEMBLY_NAE_VETO_PCT]% of cast weight - the authorization falls to zero for that session.</p>
-
-		<h3>Quorum</h3>
-		<p>A session is valid only if at least [ASSEMBLY_QUORUM_VOTERS] distinct voters have cast a ballot across any of its motions. Below that, the session dissolves and all caps and officers hold as they were.</p>
-
-		<h3>The Alderman</h3>
-		<p>The Alderman holds two daily authorisation ceilings:</p>
-		<ul>
-			<li><b>Trade</b> - imports and exports spend the Crown's Purse, capped each day by the trade warrant. The Alderman accesses the Trade Scroll through the Assembly noticeboard's <i>Alderman - Trade</i> button without standing at the Nerve Master.</li>
-			<li><b>Defense</b> - commissions and blockade writs use the Burgher Pledge at the Grand Contract Ledger, capped each day by the defense warrant. The Alderman may not draw the Crown's Purse for defense, and may not issue Requests.</li>
-		</ul>
-		<p>Both ceilings refresh at each session's resolution. Unspent authorisation does not carry over.</p>
-
-		<h3>Censure</h3>
-		<p>A censured subject cannot stand for Alderman, cannot wield a warrant they hold, and cannot be granted one. The mark lasts the round.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/insolvent
-	name = "14. Insolvency, Sequestration and Loans"
-
-/datum/book_entry/treasury/insolvent/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/insolvent/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>The Crown becomes insolvent if it fails to meet payroll from the Crown's Purse at dawn. Suspending payrolls by revoking Charters is possible but angers the garrison and retinue (the largest mandatory outlays).</p>
@@ -428,10 +261,10 @@
 	"}
 
 
-/datum/book_entry/treasury/banditry
-	name = "15. Banditry"
+/datum/book_entry/treasury_realm/banditry
+	name = "08. Banditry"
 
-/datum/book_entry/treasury/banditry/inner_book_html(mob/user)
+/datum/book_entry/treasury_realm/banditry/inner_book_html(mob/user)
 	return {"
 		<div>
 		<p>Regions classified as <b>Dangerous</b> or <b>Bleak</b> drain the Crown's Purse each dawn.</p>
@@ -452,58 +285,5 @@
 		<p>Issue Commissions and Blockade Writs against Dangerous and Bleak regions. Use levy exemption as bait. The retinue and garrison can also clear regions directly. As regional threat falls, so does the dawn drain. Banditry debt only shrinks as new income is earned and skimmed.</p>
 
 		<p>This system is a placeholder until raid and siege content ships.</p>
-		</div>
-	"}
-
-/datum/book_entry/treasury/tax_evasion
-	name = "16. Jolly Tax Evasion"	
-
-/datum/book_entry/treasury/tax_evasion/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>Both legal and illegal ways to dodge taxes exist.</p>
-
-		<p><b>Legal Evasion</b>: Subjects without a bank account are inherently immune to poll taxes. Avoiding Contract Levy requires membership in a tax-exempt class - nobles, church members, or holders of Church Benefactor status (granted by the Bishop). Note that the Church itself is not expected to adventure without IC reason, so Benefactor status is the practical channel. Tax immunity does not apply to indirect taxes like import tariffs or export duties.</p>
-
-		<p><b>Illegal Evasion</b>: The Merchant can stop paying taxes by toggling the navigator's tax setting and refusing to pay on Goldface sales. The risk of being caught and penalised by the Crown falls on the Merchant. The machines tally dodged amounts, but only the Shophand and the Merchant themselves can view the exact tally - the Crown can only guess and accuse, with or without proof.</p>
-		</div>
-	"}
-
-
-/datum/book_entry/treasury/innkeeper
-	name = "17. The Innkeeper and the Guild"
-
-/datum/book_entry/treasury/innkeeper/inner_book_html(mob/user)
-	return {"
-		<div>
-		<p>On the Grand Contract Ledger, the Innkeeper has unique access to <b>Rumor</b> contracts - framed IC as rumors of lucrative opportunities the Innkeeper has heard. Treat them ICly, not as raw mechanics.</p>
-
-		<h3>Rumor Points</h3>
-		<p><b>Rumor Points</b> are the currency the Innkeeper uses to generate contracts. The pool starts at [RUMOR_POINTS_START] and refills each dawn by [RUMOR_POINTS_BASE_REFILL] base + [RUMOR_POINTS_PER_PLAYER] per active player, capped at [RUMOR_POINTS_CLAWBACK_MULTIPLIER]x the daily refill. Unspent points above the cap are clawed back.</p>
-
-		<p>Each rumor type has a fixed point cost:</p>
-		<ul>
-			<li><b>Retrieval, Courier, Easy Kill</b> - [GLOB.rumor_point_costs[QUEST_RETRIEVAL]] points each.</li>
-			<li><b>Clear-Out, Recovery</b> - [GLOB.rumor_point_costs[QUEST_CLEAR_OUT]] points each.</li>
-			<li><b>Raid, Bounty</b> - [GLOB.rumor_point_costs[QUEST_RAID]] points each.</li>
-		</ul>
-
-		<h3>Composing a Rumor</h3>
-		<p>At the Grand Contract Ledger, the Innkeeper opens the Rumor tab, picks a quest type, picks a region from those the type allows, and (for Recovery rumors) picks a shipment destination. The rumor may be:</p>
-		<ul>
-			<li><b>Posted to the board</b> - any qualifying party may take it, like any other contract.</li>
-			<li><b>Placed in hands</b> - a physical scroll the Innkeeper hands to a chosen bearer directly.</li>
-			<li><b>Lucrative</b> - a [round((RUMOR_LUCRATIVE_MULT - 1) * 100)]% premium on both point cost and bearer payout. Costs [RUMOR_LUCRATIVE_MULT]x the base points but pays [RUMOR_LUCRATIVE_MULT]x the base reward. Use it to sweeten the pot for a job that needs takers or earn more profit when there is a lack of takers.</li>
-		</ul>
-
-		<p>One rumor of a given type, region, and destination may be composed per day, to prevent farming the most optimal route. Combat rumors require the target region to carry at least [round(RUMOR_THREAT_GATE_MIN * 100)]% of its threat ceiling.</p>
-
-		<h3>Recovery Rumors</h3>
-		<p>Recovery rumors are <b>unique</b> to the Innkeeper and roll only rarely on the contract board. The bearer slays a group of bandits and retrieves a package containing more goods than a normal courier contract carries. The Innkeeper can use this to redirect adventurers toward shortages or specific town needs.</p>
-
-		<h3>The Guild Cut</h3>
-		<p>Whenever an adventurer turns in any contract from the Grand Contract Ledger, the Guild takes <b>[round(GUILD_REFERRAL_FEE_PCT * 100)]% of the gross reward</b> and remits it to the active Innkeeper's account. If no Innkeeper sits the role, the fee is taken anyway and discarded - this avoids creating IC/OOC tension where the Innkeeper appears to be skimming from adventurers.</p>
-
-		<p>On top of the referral fee, a <b>Rumor</b> contract pays the Innkeeper an additional <b>[round(RUMOR_CONTACT_FEE_PCT * 100)]% Contact Referral Fee</b> on completion. The bearer's coin is untouched - this represents fees paid by the contractor. Rumors are therefore the Innkeeper's most profitable product: every completed rumor pays the Innkeeper twice.</p>
 		</div>
 	"}

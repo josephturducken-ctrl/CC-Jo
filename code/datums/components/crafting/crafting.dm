@@ -314,6 +314,11 @@
 							var/atom/movable/I = new IT(T)
 							I.CheckParts(parts, R)
 							I.OnCrafted(user.dir, user)
+							if(isitem(I))
+								var/obj/item/CI = I
+								CI.was_crafted = TRUE
+								if(CI.has_item_quality)
+									CI.apply_quality(user, R.skillcraft)
 							I.add_fingerprint(user)
 							//Remove for now but can be brought back in a later time if people want.
 							//handle_modifiers(I, user, numberoftries, R) //This handles the modifiers for crafted items! Does not work for turfs.
@@ -332,6 +337,11 @@
 								I.OnCrafted(I.SelectDiagDirection(), user)
 							else
 								I.OnCrafted(user.dir, user)
+							if(isitem(I))
+								var/obj/item/CI = I
+								CI.was_crafted = TRUE
+								if(CI.has_item_quality)
+									CI.apply_quality(user, R.skillcraft)
 							I.add_fingerprint(user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
 										span_notice("I [R.verbage_simple] \a [R.name]!"))

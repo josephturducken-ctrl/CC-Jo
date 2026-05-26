@@ -380,8 +380,8 @@
 	civilization. Such makes it a favorite amongst the nobility of both Naledi and Ranenshen."
 	max_integrity = 300
 	smeltresult = /obj/item/ingot/gold
-	sellprice = 100
 	wdefense = 5
+	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/paaxe
 	name = "ancient alloy axe"

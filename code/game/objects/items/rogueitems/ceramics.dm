@@ -26,8 +26,8 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claybottlecook"
 	volume = 75 // Larger than glass bottle
-	sellprice = 6
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 	glazeable = TRUE  // Caustic edit
 
 /obj/item/reagent_containers/glass/bottle/claybottleclassic
@@ -36,8 +36,8 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claybottlecook_baked" // Caustic Edit
 	volume = 75 // Larger than glass bottle
-	sellprice = 6
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/bottle/claybottle/get_mechanics_examine(mob/user)
 	. = ..()
@@ -66,8 +66,8 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "clayvasecook"
 	volume = 65 // Larger than glass bottle
-	sellprice = 9
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/bottle/clayvaseclassic
 	name = "ceramic vase"
@@ -75,8 +75,8 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "clayvasecook_baked" // Caustic Edit
 	volume = 65 // Larger than glass bottle
-	sellprice = 9
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/bottle/clayvase/get_mechanics_examine(mob/user)
 	. = ..()
@@ -102,8 +102,8 @@
 	desc = "A large sized fancy ceramic vase."
 	icon_state = "clayfancyvasecook"
 	volume = 65 // Larger than glass bottle
-	sellprice = 20
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/bottle/clayfancyvaseclassic
 	name = "fancy ceramic vase"
@@ -111,8 +111,8 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "clayfancyvasecook_baked" // Caustic Edit
 	volume = 65 // Larger than glass bottle
-	sellprice = 20
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/bottle/clayfancyvase/get_mechanics_examine(mob/user)
 	. = ..()
@@ -138,8 +138,8 @@
 	desc = "A small ceramic flask."
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claycupcook"
-	sellprice = 3
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 	glazeable = TRUE  // Caustic edit
 
 /obj/item/reagent_containers/glass/cup/claycupclassic
@@ -149,6 +149,7 @@
 	icon_state = "claycupcook_baked" // Caustic Edit
 	sellprice = 3
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/reagent_containers/glass/cup/claycup/get_mechanics_examine(mob/user)
 	. = ..()
@@ -192,15 +193,11 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claystatuecooked1"
 	smeltresult = null	//No resource return
-	sellprice = 35 //Expert-tier Clay recipe. Skillgated to Towners, or those that take the 'Homesteader Expert' virtue. Let 'em cook.
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/roguestatue/clay/Initialize()
 	. = ..()
 	icon_state = "claystatuecooked[pick(1,2,3,4,5)]"
-
-/obj/item/roguestatue/clay/get_mechanics_examine(mob/user)
-	. = ..()
-	. += span_info("Clay pottery, unlike its alloyed counterparts, can be stained in a dyebin.")
 
 /obj/item/roguestatue/glass
 	name = "glass statue"
@@ -208,7 +205,7 @@
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "statueglass1"
 	smeltresult = null	//No resource return
-	sellprice = 70		//Silver is roughly 90 mammon, steel is 40. This sits roughly between. It's high skill to make and a bit of a grind so - worth it since resources to make aren't rare..
+	glaze_bonus_pct = GLAZE_BONUS_PCT
 
 /obj/item/roguestatue/glass/Initialize()
 	. = ..()

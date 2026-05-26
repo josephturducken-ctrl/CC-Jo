@@ -245,6 +245,7 @@
 	smelt_bar_num = 1
 	sellprice = 150
 	is_silver = TRUE
+	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/mace/steel/silver/decorated/ComponentInitialize()
 	AddComponent(\
@@ -266,9 +267,9 @@
 	max_integrity = 50
 	anvilrepair = null //Ceremonial. This should break comedically easily, but still have just enough toughness to work with a few strikes.
 	minstr = 11
-	sellprice = 300
 	smeltresult = /obj/item/ingot/gold
 	unenchantable = TRUE
+	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/mace/woodclub
 	force = 15
@@ -437,7 +438,6 @@
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "rungu_shell"
 	max_integrity = 75
-	sellprice = 35
 
 /obj/item/rogueweapon/mace/cudgel/psy
 	name = "psydonic flanged mace"
@@ -794,9 +794,9 @@
 	desc = "Flowers, silk, and gold caress this carved-and-spiked log; a honored totem who's roots trace back to the daes before Syon's impact. Myths speak of ancient elve-and-humen alike, wielding such bronzen bludgeons against the Archdevil's rampaging hordes."
 	icon_state = "bronzeclubdec"
 	smeltresult = /obj/item/ingot/gold
-	sellprice = 100
 	wdefense = 5
 	max_integrity = 250
+	no_loot_taint = TRUE
 
 /obj/item/rogueweapon/mace/warhammer/alloy
 	name = "decrepit warhammer"
