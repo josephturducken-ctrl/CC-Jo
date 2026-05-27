@@ -3532,6 +3532,7 @@
 #include "modular_causticcove\code\modules\mob\living\carbon\hobgoblin\hobgoblin.dm"
 #include "modular_causticcove\code\modules\mob\living\carbon\hobgoblin\npc\hobgoblin_npc.dm"
 #include "modular_causticcove\code\modules\mob\living\carbon\hobgoblin\species\hobgoblin_species.dm"
+#include "modular_causticcove\code\modules\mob\living\carbon\human\emote_noises.dm"
 #include "modular_causticcove\code\modules\mob\living\carbon\human\species_types\witchshape\bat.dm"
 #include "modular_causticcove\code\modules\mob\living\carbon\human\species_types\witchshape\cabbit.dm"
 #include "modular_causticcove\code\modules\mob\living\carbon\human\species_types\witchshape\cat.dm"
