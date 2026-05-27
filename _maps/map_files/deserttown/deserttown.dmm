@@ -51097,10 +51097,6 @@
 	},
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/tavern/desert)
-"tEf" = (
-/turf/open/floor/rogue/naturalstone/sandstone,
-/turf/closed/mineral/rogue/sandstone,
-/area/rogue/under/cavewet/bogcaves/desert)
 "tED" = (
 /obj/structure/roguewindow/harem3,
 /turf/open/floor/rogue/concrete{
@@ -274015,7 +274011,7 @@ xJw
 xwm
 xJw
 pVD
-tEf
+und
 und
 und
 kVm
