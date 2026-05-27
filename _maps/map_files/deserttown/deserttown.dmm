@@ -56621,14 +56621,6 @@
 /obj/item/book/rogue/arcyne,
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/indoors/town/academy/desert)
-"vGp" = (
-/obj/structure/table/wood/poor,
-/obj/structure/table/wood/poor,
-/obj/effect/spawner/lootdrop/roguetown/dungeon/materials,
-/turf/open/floor/rogue/metal{
-	icon_state = "plating2"
-	},
-/area/rogue/under/cavewet/bogcaves/desert)
 "vGI" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/effect/spawner/lootdrop/ancient_equipment_spawner,
@@ -273087,7 +273079,7 @@ xJw
 xwm
 xJw
 pVD
-tEf
+und
 und
 und
 und
@@ -283753,7 +283745,7 @@ yag
 rwS
 rwS
 rwS
-vGp
+ekl
 mdU
 qyZ
 rwS
