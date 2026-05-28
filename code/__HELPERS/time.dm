@@ -130,6 +130,7 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 	if(GLOB.tod != oldtod)
 		if(GLOB.tod == "dawn")
 			GLOB.dayspassed++
+			scom_announce_new_dawn()
 			if(SStreasury?.initialized)
 				SStreasury.tick_rural_tax()
 				SStreasury.distribute_estate_incomes()

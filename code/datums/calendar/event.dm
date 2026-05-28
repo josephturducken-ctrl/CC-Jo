@@ -8,6 +8,8 @@ GLOBAL_LIST_EMPTY(calendar_events)
 	var/duration_days = 1
 	var/title
 	var/desc
+	var/reminder
+	var/list/reminders
 	var/color_tag = "#7c5b10"
 
 /datum/calendar_event/proc/load_from_list(list/entry)
@@ -22,6 +24,10 @@ GLOBAL_LIST_EMPTY(calendar_events)
 		duration_days = max(1, text2num("[entry["duration_days"]]"))
 	title = entry["title"]
 	desc = entry["desc"]
+	if(entry["reminder"])
+		reminder = entry["reminder"]
+	if(islist(entry["reminders"]))
+		reminders = entry["reminders"]
 	if(entry["color_tag"])
 		color_tag = entry["color_tag"]
 	return is_valid()
@@ -41,6 +47,21 @@ GLOBAL_LIST_EMPTY(calendar_events)
 	if(month != recur_month)
 		return FALSE
 	return day >= recur_day && day < (recur_day + duration_days)
+
+/datum/calendar_event/proc/day_index(month, day)
+	if(!covers_day(month, day))
+		return 0
+	return (day - recur_day) + 1
+
+/datum/calendar_event/proc/get_reminder_for_day(month, day)
+	var/idx = day_index(month, day)
+	if(!idx)
+		return null
+	if(islist(reminders) && length(reminders) >= idx)
+		var/line = reminders[idx]
+		if(line)
+			return line
+	return reminder
 
 /datum/calendar_event/proc/to_ui_list()
 	return list(

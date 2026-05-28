@@ -82,7 +82,15 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	if(SSeconomy)
 		SSeconomy.event_path_cooldowns[type] = GLOB.dayspassed + ECON_EVENT_REROLL_COOLDOWN_DAYS
 	record_round_statistic(STATS_SHORTAGES_ENDED, 1)
-	scom_announce("<font color='#5cb85c'>RELIEF: [name] eased by relief efforts. Prices return to normal.</font>")
+	var/list/diff = SSeconomy?.daily_report_diff
+	if(diff)
+		var/list/relieved = diff["events_relieved"]
+		if(!relieved)
+			relieved = list()
+			diff["events_relieved"] = relieved
+		relieved += name
+	else
+		scom_announce("<font color='#5cb85c'>RELIEF: [name] eased by relief efforts. Prices return to normal.</font>")
 
 /proc/credit_economic_event_saturation(good_id, units)
 	if(!good_id || units <= 0)
@@ -106,7 +114,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 // ============================================================================
 
 /datum/economic_event/black_oak_rebellion
-	name = "BLACK OAK REBELLION"
+	name = "Black Oak Rebellion"
 	description = "The Black Oaks have risen in Rosawood again - loggers found nailed to trees, woodcutters refuse to enter the deep groves without Crown escort."
 	announcement = "<font color='#c44'>BLACK OAK REBELLION: Rosawood's logging camps lie abandoned. Wood prices surge.</font>"
 	affected_goods = list(TRADE_GOOD_WOOD)
@@ -114,7 +122,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/ironmongers_strike
-	name = "IRONMONGERS' STRIKE"
+	name = "Ironmongers' Strike"
 	description = "The ironmongers' guild has walked out over unpaid commissions - smelters sit cold."
 	announcement = "<font color='#c44'>IRONMONGERS' STRIKE: Iron ore supply chokes. Smelted stock commands a premium.</font>"
 	affected_goods = list(TRADE_GOOD_IRON_ORE, TRADE_GOOD_IRON_INGOT, TRADE_GOOD_STEEL_INGOT)
@@ -122,7 +130,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/daftsmarch_cavein
-	name = "DAFTSMARCH CAVE-IN"
+	name = "Daftsmarch Cave-In"
 	description = "A deep shaft collapse in Daftsmarch has shut mining operations across three veins."
 	announcement = "<font color='#c44'>DAFTSMARCH CAVE-IN: Mines shuttered. Iron, coal, stone, and smelted stock all grow scarce.</font>"
 	affected_goods = list(TRADE_GOOD_IRON_ORE, TRADE_GOOD_COAL, TRADE_GOOD_STONE, TRADE_GOOD_IRON_INGOT, TRADE_GOOD_STEEL_INGOT)
@@ -130,7 +138,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/wheat_blight
-	name = "WHEAT BLIGHT"
+	name = "Wheat Blight"
 	description = "A black rot has crept through the grain stores of the Kingsfield farmsteads."
 	announcement = "<font color='#c44'>WHEAT BLIGHT: Grain and oats rot in the silos. Bread prices soar.</font>"
 	affected_goods = list(TRADE_GOOD_GRAIN, TRADE_GOOD_OATS)
@@ -138,7 +146,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/saltwick_storm
-	name = "SALTWICK STORM"
+	name = "Saltwick Storm"
 	description = "A vicious gale has battered the Saltwick wharves - fishing fleets are grounded for days."
 	announcement = "<font color='#c44'>SALTWICK STORM: Fishing fleets grounded. Fresh and cured fish alike grow dear.</font>"
 	affected_goods = list(TRADE_GOOD_FISH_FILET, TRADE_GOOD_DRIED_FISH, TRADE_GOOD_FISH_MINCE)
@@ -146,7 +154,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/fur_trapping_frost
-	name = "TRAPPERS' FROST"
+	name = "Trappers' Frost"
 	description = "An unseasonal freeze has driven the game deep into the wilds - trappers return empty-handed."
 	announcement = "<font color='#c44'>TRAPPERS' FROST: Fur, hide, and worked leather supply dries up. Tanners panic.</font>"
 	affected_goods = list(TRADE_GOOD_FUR, TRADE_GOOD_HIDE, TRADE_GOOD_CURED_LEATHER)
@@ -154,7 +162,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/cloth_smuggler_purge
-	name = "CLOTH SMUGGLER PURGE"
+	name = "Cloth Smuggler Purge"
 	description = "A crown crackdown on black-market cloth has choked the legitimate supply as well."
 	announcement = "<font color='#c44'>CLOTH SMUGGLER PURGE: Cloth and fibers seized from wagons. Tailors despair.</font>"
 	affected_goods = list(TRADE_GOOD_CLOTH, TRADE_GOOD_FIBERS)
@@ -162,7 +170,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/essence_scarcity
-	name = "ESSENCE SCARCITY"
+	name = "Essence Scarcity"
 	description = "The essence harvests in the Terrorbog have faltered - arcane reagents grow dear."
 	announcement = "<font color='#c44'>ESSENCE SCARCITY: Dendor's essence and viscera run short. Wizards fume.</font>"
 	affected_goods = list(TRADE_GOOD_DENDOR_ESSENCE, TRADE_GOOD_VISCERA)
@@ -175,7 +183,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 // ============================================================================
 
 /datum/economic_event/bumper_harvest
-	name = "BUMPER HARVEST"
+	name = "Bumper Harvest"
 	description = "Kingsfield reports its finest grain harvest - granaries overflow."
 	announcement = "<font color='#5cb85c'>BUMPER HARVEST: Grain and oats flood the markets. Prices collapse.</font>"
 	affected_goods = list(TRADE_GOOD_GRAIN, TRADE_GOOD_OATS)
@@ -183,7 +191,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/rosawood_overcut
-	name = "ROSAWOOD OVERCUT"
+	name = "Rosawood Overcut"
 	description = "Rosawood's lumber camps have exceeded their quotas - barges choke the river with timber."
 	announcement = "<font color='#5cb85c'>ROSAWOOD OVERCUT: Timber glut on the river. Wood prices slump.</font>"
 	affected_goods = list(TRADE_GOOD_WOOD)
@@ -191,7 +199,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/herring_swarm
-	name = "HERRING SWARM"
+	name = "Herring Swarm"
 	description = "A titanic shoal of fish has wandered into Saltwick waters - the nets come up full."
 	announcement = "<font color='#5cb85c'>HERRING SWARM: Saltwick nets bursting. Fresh and cured fish both sell for pennies.</font>"
 	affected_goods = list(TRADE_GOOD_FISH_FILET, TRADE_GOOD_DRIED_FISH, TRADE_GOOD_FISH_MINCE)
@@ -199,7 +207,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/unseasonal_fur
-	name = "UNSEASONAL FUR"
+	name = "Unseasonal Fur"
 	description = "Trappers report massive herds migrating through the borderlands - pelts pile in the warehouses."
 	announcement = "<font color='#5cb85c'>UNSEASONAL FUR: Pelts pile up in the warehouses. Furrier prices tumble.</font>"
 	affected_goods = list(TRADE_GOOD_FUR)
@@ -207,7 +215,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/quarry_windfall
-	name = "QUARRY WINDFALL"
+	name = "Quarry Windfall"
 	description = "A rich new seam has been struck at the Mount Decapitation quarries - carts roll in from dawn to dusk."
 	announcement = "<font color='#5cb85c'>QUARRY WINDFALL: Stone and coal flood the yards. Builders rejoice, quarrymen grumble.</font>"
 	affected_goods = list(TRADE_GOOD_STONE, TRADE_GOOD_COAL)
@@ -228,7 +236,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/saltmine_flooding
-	name = "SALT-MINE FLOODING"
+	name = "Salt-Mine Flooding"
 	description = "Groundwater has broken through the Daftsmarch salt workings, drowning the lower galleries."
 	announcement = "<font color='#c44'>SALT-MINE FLOODING: The Daftsmarch galleries drown. Salt grows precious.</font>"
 	affected_goods = list(TRADE_GOOD_SALT)
@@ -236,7 +244,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/copper_tin_embargo
-	name = "COPPER AND TIN EMBARGO"
+	name = "Copper and Tin Embargo"
 	description = "A foreign crown has barred the export of its copper and tin. Bronze-smiths scramble."
 	announcement = "<font color='#c44'>COPPER AND TIN EMBARGO: Foreign shipments halted. Ore and smelted ingots alike grow scarce.</font>"
 	affected_goods = list(TRADE_GOOD_COPPER_ORE, TRADE_GOOD_TIN_ORE, TRADE_GOOD_COPPER_INGOT, TRADE_GOOD_TIN_INGOT)
@@ -244,7 +252,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/tanners_plague
-	name = "TANNERS' PLAGUE"
+	name = "Tanners' Plague"
 	description = "A skin-rotting sickness has forced the tanneries to dump half-cured hides for burning."
 	announcement = "<font color='#c44'>TANNERS' PLAGUE: Hides burned by the wagonload. Leather grows dear.</font>"
 	affected_goods = list(TRADE_GOOD_CURED_LEATHER, TRADE_GOOD_HIDE)
@@ -252,7 +260,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/glass_furnace_failure
-	name = "GLASS FURNACE FAILURE"
+	name = "Glass Furnace Failure"
 	description = "The great furnace at the glassworks has cracked. The craft has halted until it is rebuilt."
 	announcement = "<font color='#c44'>GLASS FURNACE FAILURE: The great glassworks go dark. Glass batch grows rare.</font>"
 	affected_goods = list(TRADE_GOOD_GLASS_BATCH)
@@ -260,7 +268,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/orchard_locusts
-	name = "ORCHARD LOCUSTS"
+	name = "Orchard Locusts"
 	description = "A swarm has stripped the Rockhill orchards bare. What little remains is sold at ransom."
 	announcement = "<font color='#c44'>ORCHARD LOCUSTS: The orchards stripped bare. Apples, pears, and berries grow costly.</font>"
 	affected_goods = list(TRADE_GOOD_APPLE, TRADE_GOOD_PEAR, TRADE_GOOD_JACKSBERRY)
@@ -276,7 +284,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_SHORTAGE
 
 /datum/economic_event/silk_moth_collapse
-	name = "SILK MOTH COLLAPSE"
+	name = "Silk Moth Collapse"
 	description = "Blackholt's spider-silk harvest has collapsed. Arachnological misfortune, the conclave says."
 	announcement = "<font color='#c44'>SILK MOTH COLLAPSE: Blackholt's silk harvest fails. Tailors grind their teeth.</font>"
 	affected_goods = list(TRADE_GOOD_SILK)
@@ -297,7 +305,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 // ============================================================================
 
 /datum/economic_event/dairy_surplus
-	name = "DAIRY SURPLUS"
+	name = "Dairy Surplus"
 	description = "A mild season has flooded the Kingsfield dairies with butter and cheese."
 	announcement = "<font color='#5cb85c'>DAIRY SURPLUS: Butter and cheese overflow the churns. Prices slump.</font>"
 	affected_goods = list(TRADE_GOOD_BUTTER, TRADE_GOOD_CHEESE)
@@ -313,7 +321,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/salt_caravan
-	name = "SALT CARAVAN ARRIVES"
+	name = "Salt Caravan Arrives"
 	description = "A distant caravan has rolled in with wagons of salt - prices fall until the reserves clear."
 	announcement = "<font color='#5cb85c'>SALT CARAVAN ARRIVES: Wagons of salt reach the markets. Preservers cheer.</font>"
 	affected_goods = list(TRADE_GOOD_SALT)
@@ -329,7 +337,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/fat_hog_season
-	name = "FAT HOG SEASON"
+	name = "Fat Hog Season"
 	description = "The pig farmers have slaughtered early - pork and fat are cheap this week."
 	announcement = "<font color='#5cb85c'>FAT HOG SEASON: Pork, fat, and cured swine-meats all go cheap. Butchers work through the night.</font>"
 	affected_goods = list(TRADE_GOOD_PORK, TRADE_GOOD_FAT, TRADE_GOOD_TALLOW, TRADE_GOOD_SAUSAGE, TRADE_GOOD_SALUMOI)
@@ -337,7 +345,7 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	event_type = ECON_EVENT_OVERSUPPLY
 
 /datum/economic_event/cidering_season
-	name = "CIDERING SEASON"
+	name = "Cidering Season"
 	description = "The Rockhill presses groan under a glut of fruit. Vendors dump the excess at any price."
 	announcement = "<font color='#5cb85c'>CIDERING SEASON: Fruit piles outside the presses. Orchard goods go cheap.</font>"
 	affected_goods = list(TRADE_GOOD_APPLE, TRADE_GOOD_PEAR, TRADE_GOOD_JACKSBERRY)

@@ -144,6 +144,36 @@
 		titles += event.title
 	return titles
 
+GLOBAL_LIST_INIT(event_day_ordinals, list(
+	"first", "second", "third", "fourth", "fifth",
+	"sixth", "seventh", "eighth", "ninth", "tenth",
+))
+
+/proc/get_event_day_ordinal(index)
+	if(index >= 1 && index <= length(GLOB.event_day_ordinals))
+		return GLOB.event_day_ordinals[index]
+	var/suffix = "th"
+	var/last_two = MODULUS(index, 100)
+	if(last_two < 11 || last_two > 13)
+		switch(MODULUS(index, 10))
+			if(1)
+				suffix = "st"
+			if(2)
+				suffix = "nd"
+			if(3)
+				suffix = "rd"
+	return "[index][suffix]"
+
+/proc/scom_announce_new_dawn()
+	var/list/parts = resolve_ic_date_parts(GLOB.dayspassed)
+	for(var/datum/calendar_event/event in get_calendar_events_for_day(parts[2], parts[1]))
+		var/ordinal = get_event_day_ordinal(event.day_index(parts[2], parts[1]))
+		var/line = "The [ordinal] dae of [event.title]."
+		var/reminder_line = event.get_reminder_for_day(parts[2], parts[1])
+		if(reminder_line)
+			line = "[line] [reminder_line]"
+		scom_announce(line)
+
 /proc/get_current_day_of_week()
 	return GLOB.dayspassed
 
