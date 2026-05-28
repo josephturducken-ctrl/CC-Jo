@@ -366,3 +366,15 @@
 /datum/mob_descriptor/trait/bugeyed
 	name = "Bug-Eyed"
 	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/scarlet
+	name = "Scarlet"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/sweatsoaked
+	name = "Sweat-Soaked"
+	prefix = "%ARE% very"
+
+/datum/mob_descriptor/trait/sweaty
+	name = "Sweaty"
+	prefix = "%ARE% very"
