@@ -469,10 +469,14 @@
 /area/rogue/underworld/desert
 	first_time_text = "wayfarer's dream"
 
-// Undercity Segments - All of these use underdarker from roguetownareas.dm for now since they share the same level with it
+// Undercity And Pyramid Segments - All of these use underdarker from roguetownareas.dm for now since they share the same level with it
 /area/rogue/under/underdarker/undercity
 	name = "City Beneath The Sands"
 	first_time_text = "City Beneath The Sands"
 	deathsight_message = "dark roads under the sands"
 
-	
+/area/rogue/under/underdarker/pyramid
+	name = "The Condemned Pyramid"	
+	first_time_text = "The Condemned Pyramid"
+	deathsight_message = "a sunken pyramid"
+
