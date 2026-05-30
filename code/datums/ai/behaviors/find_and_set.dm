@@ -529,6 +529,11 @@ GLOBAL_LIST_INIT(find_and_set_interested_atoms, typecacheof(list(/obj/item, /mob
 	controller.set_blackboard_key(BB_FIND_TARGETS_FIELD(type), detection_field)
 
 /datum/ai_behavior/find_and_set/proc/new_turf_found(turf/found, datum/ai_controller/controller)
+	//Caustic Edit - This was sometimes null apparently? Probably an ambush mob being deleted?
+	if(!controller)
+		return
+	//Caustic Edit End
+
 	var/valid_found = FALSE
 	var/atom/pawn = controller.pawn
 	for(var/maybe_item as anything in found)
