@@ -553,6 +553,11 @@ GLOBAL_LIST_INIT(find_and_set_interested_atoms, typecacheof(list(/obj/item, /mob
 	controller.modify_cooldown(src, world.time)
 
 /datum/ai_behavior/find_and_set/proc/new_atoms_found(list/atom/movable/found, datum/ai_controller/controller)
+	//Caustic Edit - This was sometimes null apparently?
+	if(!controller)
+		return FALSE
+	//Caustic Edit End
+
 	var/atom/pawn = controller.pawn
 	var/list/accepted_items = list()
 

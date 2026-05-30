@@ -223,7 +223,7 @@ All foods are distributed among various categories. Use common sense.
 					package.contained_items += NU
 					NU.forceMove(package)
 				else
-					NU.forceMove(get_turf(NU.loc))
+					NU.forceMove(get_turf(src))
 				//Caustic Edit End
 			record_round_statistic(STATS_FOOD_ROTTED)
 			return TRUE
