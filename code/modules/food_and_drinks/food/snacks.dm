@@ -199,7 +199,7 @@ All foods are distributed among various categories. Use common sense.
 	if(QDELETED(src) || !loc)
 		return FALSE
 
-	/var/turf/fallback_turf = get_turf(src)
+	var/turf/fallback_turf = get_turf(src)
 	if(isturf(loc) && istype(get_area(src),/area/rogue/under/town/sewer))
 		if(!istype(src,/obj/item/reagent_containers/food/snacks/smallrat))
 			new /obj/item/reagent_containers/food/snacks/smallrat(loc)
