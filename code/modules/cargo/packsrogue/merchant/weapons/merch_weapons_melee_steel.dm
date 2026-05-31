@@ -33,6 +33,21 @@
 					/obj/item/rogueweapon/huntingknife/idagger/steel/rondel,
 				)
 
+/datum/supply_pack/rogue/steel_weapons/parrying
+	name = "Parrying Dagger, Steel"
+	cost = 70 // 2 Steel Ingots
+	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
+
+/datum/supply_pack/rogue/steel_weapons/combatknife
+	name = "Seax, Steel"
+	cost = 35 // 1 steel ingot
+	contains = list(/obj/item/rogueweapon/huntingknife/combat)
+
+/datum/supply_pack/rogue/steel_weapons/combatknife_messer
+	name = "Kampfmesser, Steel"
+	cost = 70 // 2 steel ingot
+	contains = list(/obj/item/rogueweapon/huntingknife/combat/messser)
+
 /datum/supply_pack/rogue/steel_weapons/katar
 	name = "Katar"
 	cost = 40 // 1 Steel Ingot
@@ -62,14 +77,14 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/sword
-	name = "Arming Sword"
+	name = "Arming Sword, Steel"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/shortsword
-	name = "Shortsword"
+	name = "Shortsword, Steel"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short,
@@ -83,14 +98,14 @@
 				)
 
 /datum/supply_pack/rogue/steel_weapons/messer
-	name = "Messer"
+	name = "Messer, Steel"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/messer,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/messeralt
-	name = "Hunting Sword"
+	name = "Hunting Sword, Steel"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/messer/alt,

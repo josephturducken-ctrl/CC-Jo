@@ -7,13 +7,13 @@
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/light_armor/rough_headband
-	name = "Headband, Roughspun"
-	cost = 25 // 2 cloth + 5 fiber, added 7 for SF pricing
+	name = "Roughspun Headband"
+	cost = 28 // 2 cloth + 5 fiber, added 10 for SF pricing
 	contains = list(/obj/item/clothing/head/roguetown/headband/monk/barbarian)
 
 /datum/supply_pack/rogue/light_armor/padded_headband
-	name = "Headband, Padded"
-	cost = 35 // 4 cloth + 4 fiber, added 10 for SF pricing
+	name = "Padded Headband"
+	cost = 34 // 4 cloth + 4 fiber, ditto
 	contains = list(/obj/item/clothing/head/roguetown/headband/monk)
 
 /datum/supply_pack/rogue/light_armor/arming_cap
@@ -22,7 +22,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/armingcap)
 
 /datum/supply_pack/rogue/light_armor/padded_arming_cap
-	name = "Arming Cap, Padded"
+	name = "Padded Arming Cap"
 	cost = 28 // 2 cloth + 5 fiber, ditto
 	contains = list(/obj/item/clothing/head/roguetown/armingcap/padded)
 
@@ -47,19 +47,24 @@
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/elflock)
 
 /datum/supply_pack/rogue/light_armor/leatherkini
-	name = "Corslet, Leather"
+	name = "Leather Corslet"
 	cost = 21 // you're vuln to gutspill with this
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini)
 
 /datum/supply_pack/rogue/light_armor/hidekini
-	name = "Corslet, Hide"
+	name = "Hide Corslet"
 	cost = 32 // ditto
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/hide/bikini)
 
 /datum/supply_pack/rogue/light_armor/studded_leatherkini
-	name = "Corslet, Studded Leather"
+	name = "Studded Leather Corslet"
 	cost = 43 // ditto
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded/bikini)
+
+/datum/supply_pack/rogue/light_armor/padded_gambeson
+	name = "Padded Gambeson"
+	cost = 60 // Base sellprice of 25
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/light_armor/leather_gorget
 	name = "Hardened Leather Gorget"

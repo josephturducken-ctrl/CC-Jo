@@ -184,6 +184,7 @@
 	icon_state = "chainkini"
 	item_state = "chainkini"
 	body_parts_covered = CHEST|GROIN
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	armor_class = ARMOR_CLASS_LIGHT //placed in the medium category to keep it with its parent obj
 	sellprice = 18 //Uhhh? Yeah go for it?...
 
