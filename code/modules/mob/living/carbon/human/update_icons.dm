@@ -1967,11 +1967,9 @@ generate/load female uniform sprites matching all previously decided variables
 		else
 			new_limbs += BP.get_limb_icon()
 	
-	//OV Edit - Oozes
 	if(isooze(src))
 		for(var/image/limb_alpha in new_limbs)
 			limb_alpha.alpha = 180
-	//OV Edit End
 
 	if(length(new_limbs))
 		overlays_standing[BODYPARTS_LAYER] = new_limbs

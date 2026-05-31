@@ -66,10 +66,10 @@
 			return FALSE
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
-	if(affecting && dismember_wound && !isooze(C)) //OV EDIT - Oozes don't get wounds left behind when bits fall off
+	if(affecting && dismember_wound && !isooze(C))
 		affecting.add_wound(dismember_wound)
-	else if(affecting && dismember_wound && isooze(C)) //OV Edit
-		C.visible_message(span_danger("[C]'s wound closes rapidly to stem the flow of plasm.")) //OV Edit
+	else if(affecting && dismember_wound && isooze(C))
+		C.visible_message(span_danger("[C]'s wound closes rapidly to stem the flow of plasm."))
 	playsound(C, pick(dismemsound), 50, FALSE, -1)
 
 	var/stress2give = /datum/stressevent/viewdismember
@@ -294,10 +294,8 @@
 /obj/item/bodypart/r_arm/drop_limb(special)
 	var/mob/living/carbon/C = owner
 	. = ..()
-	//OV edit
 	if(isooze(C))
 		qdel(src)
-	//OV edit end
 	if(C && !special)
 		if(C.handcuffed)
 			C.handcuffed.forceMove(drop_location())
@@ -317,10 +315,8 @@
 /obj/item/bodypart/l_arm/drop_limb(special)
 	var/mob/living/carbon/C = owner
 	. = ..()
-	//OV edit
 	if(isooze(C))
 		qdel(src)
-	//OV edit end
 	if(C && !special)
 		if(C.handcuffed)
 			C.handcuffed.forceMove(drop_location())
@@ -339,10 +335,8 @@
 /obj/item/bodypart/r_leg/drop_limb(special)
 	var/mob/living/carbon/C = owner
 	. = ..()
-	//OV edit
 	if(isooze(C))
 		qdel(src)
-	//OV edit end
 	if(C && !special)
 		if(C.legcuffed)
 			C.legcuffed.forceMove(C.drop_location()) //At this point bodypart is still in nullspace
@@ -357,10 +351,8 @@
 /obj/item/bodypart/l_leg/drop_limb(special) //copypasta
 	var/mob/living/carbon/C = owner
 	. = ..()
-	//OV edit
 	if(isooze(C))
 		qdel(src)
-	//OV edit end
 	if(C && !special)
 		if(C.legcuffed)
 			C.legcuffed.forceMove(C.drop_location())
