@@ -319,8 +319,11 @@ SUBSYSTEM_DEF(migrants)
 		character.forceMove(assignment.spawn_location)
 
 	to_chat(character, span_alertsyndie("I am a [role.name]!"), MESSAGE_TYPE_INFO)
-	to_chat(character, span_notice(isnull(greet_text) ? wave.greet_text : greet_text), MESSAGE_TYPE_INFO)
-	to_chat(character, span_notice(role.greet_text), MESSAGE_TYPE_INFO)
+	var/wave_greet = isnull(greet_text) ? wave.greet_text : greet_text
+	if(wave_greet)
+		to_chat(character, span_notice("[wave_greet]"), MESSAGE_TYPE_INFO)
+	if(role.greet_text)
+		to_chat(character, span_notice("[role.greet_text]"), MESSAGE_TYPE_INFO)
 
 	if(role.outfit)
 		var/datum/outfit/outfit = new role.outfit()
