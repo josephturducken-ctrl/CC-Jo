@@ -4,18 +4,17 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
   cardStyle,
-  FONT_BODY,
   INK,
   INK_FAINT,
   INK_SOFT,
   inkButtonStyle,
-  PARCHMENT_SHADOW,
   pageStyle,
+  PARCHMENT_SHADOW,
   rulerStyle,
   SEAL_AMBER,
   SEAL_GREEN,
-  SERIF,
   sectionHeaderStyle,
+  SERIF,
   subtitleStyle,
   titleStyle,
 } from './common/parchment';
@@ -63,10 +62,12 @@ const SUBSECTION_LABELS: Record<string, string> = {
 
 const SUBSECTION_HINT: Record<string, string> = {
   bulk: 'Bulk demand for the ship to carry back home.',
-  [TAG_VICTUALLING_FRESH]: 'Fresh provisions for the crew.',
-  [TAG_VICTUALLING_PRESERVED]: 'Preserved foods for the voyage.',
+  [TAG_VICTUALLING_FRESH]:
+    'Fresh provisions for the crew.',
+  [TAG_VICTUALLING_PRESERVED]:
+    'Preserved foods for the voyage.',
   [TAG_VICTUALLING_DRINKS]:
-    'Drinks for the crews and to resell back home. Sealed brewer bottles only. Uncorked stock is refused.',
+    'Drinks for the crews and to resell back home. Sold by the keg - drag a finished, untapped fermentation keg onto the crate. Loose bottles are refused.',
 };
 
 const SUBSECTION_ORDER = [
@@ -103,8 +104,9 @@ const GroupDivider = (props: { label: string }) => (
       style={{
         color: SEAL_AMBER,
         fontFamily: SERIF,
+        fontVariant: 'small-caps',
         fontWeight: 'bold',
-        fontSize: FONT_BODY,
+        fontSize: '12px',
         letterSpacing: '2px',
       }}
     >
@@ -134,7 +136,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
         padding: '4px 8px',
         borderBottom: `1px dashed ${PARCHMENT_SHADOW}`,
         fontFamily: SERIF,
-        fontSize: FONT_BODY,
+        fontSize: '12px',
         opacity: done ? 0.55 : 1,
       }}
       title={
@@ -168,9 +170,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
             {line.offered_price}m
           </span>
         )}
-        <span
-          style={{ color: done ? INK_FAINT : hasKin ? SEAL_GREEN : SEAL_AMBER }}
-        >
+        <span style={{ color: done ? INK_FAINT : hasKin ? SEAL_GREEN : SEAL_AMBER }}>
           {effectivePrice}m each
         </span>
       </span>
@@ -179,6 +179,7 @@ const LineRow = (props: { line: DemandLine; cutPercent: number }) => {
           flex: '0 0 130px',
           textAlign: 'right',
           color: done ? INK_FAINT : SEAL_GREEN,
+          fontStyle: 'italic',
         }}
       >
         you get {producerPayout}m
@@ -199,8 +200,10 @@ const Subsection = (props: {
       <div
         style={{
           fontFamily: SERIF,
+          fontVariant: 'small-caps',
           color: SEAL_AMBER,
-          fontSize: FONT_BODY,
+          fontStyle: 'italic',
+          fontSize: '11px',
           marginBottom: '2px',
         }}
       >
@@ -209,7 +212,7 @@ const Subsection = (props: {
       <div
         style={{
           fontFamily: SERIF,
-          fontSize: FONT_BODY,
+          fontSize: '10px',
           fontStyle: 'italic',
           color: INK_FAINT,
           marginBottom: '4px',
@@ -218,17 +221,16 @@ const Subsection = (props: {
         {SUBSECTION_HINT[tag] || ''}
       </div>
       {lines.map((line) => (
-        <LineRow
-          key={`${tag}|${line.good}`}
-          line={line}
-          cutPercent={cutPercent}
-        />
+        <LineRow key={`${tag}|${line.good}`} line={line} cutPercent={cutPercent} />
       ))}
     </div>
   );
 };
 
-const ManifestSection = (props: { manifest: Manifest; cutPercent: number }) => {
+const ManifestSection = (props: {
+  manifest: Manifest;
+  cutPercent: number;
+}) => {
   const { manifest, cutPercent } = props;
   const grouped: Record<string, DemandLine[]> = {};
   for (const line of manifest.lines) {
@@ -243,7 +245,8 @@ const ManifestSection = (props: { manifest: Manifest; cutPercent: number }) => {
         <span
           style={{
             color: SEAL_AMBER,
-            fontSize: FONT_BODY,
+            fontVariant: 'small-caps',
+            fontSize: '11px',
             marginLeft: '8px',
           }}
         >
@@ -258,7 +261,7 @@ const ManifestSection = (props: { manifest: Manifest; cutPercent: number }) => {
               border: `1px solid ${SEAL_GREEN}`,
               borderRadius: '8px',
               color: SEAL_GREEN,
-              fontSize: FONT_BODY,
+              fontSize: '10px',
               fontWeight: 'bold',
               letterSpacing: '0.5px',
               verticalAlign: 'middle',
@@ -272,7 +275,8 @@ const ManifestSection = (props: { manifest: Manifest; cutPercent: number }) => {
         <div
           style={{
             fontFamily: SERIF,
-            fontSize: FONT_BODY,
+            fontSize: '11px',
+            fontStyle: 'italic',
             color: INK_SOFT,
             marginTop: '2px',
             marginBottom: '6px',
@@ -318,9 +322,7 @@ const Underledger = () => {
   } = data;
   return (
     <div style={{ ...cardStyle, marginTop: '14px', borderColor: SEAL_AMBER }}>
-      <div style={{ ...sectionHeaderStyle, color: SEAL_AMBER }}>
-        Underledger
-      </div>
+      <div style={{ ...sectionHeaderStyle, color: SEAL_AMBER }}>Underledger</div>
       <div
         style={{
           fontFamily: SERIF,
@@ -330,13 +332,12 @@ const Underledger = () => {
           marginBottom: '6px',
         }}
       >
-        Export duty runs {duty_rate_pct}%. Dodging keeps it off the goods sold
-        here. The shortfall is only known to the Merchant or Shophand. The Crown
-        must guess.
+        Export duty runs {duty_rate_pct}%. Dodging keeps it off the goods
+        sold here. The shortfall is only known to the Merchant or Shophand. The Crown must guess.
       </div>
       <button
         type="button"
-        style={inkButtonStyle({ color: duty_suspended ? '#a00' : undefined })}
+        style={inkButtonStyle({ danger: !!duty_suspended })}
         onClick={() => act('toggle_duty')}
       >
         Crown Duty: {duty_suspended ? 'DODGING' : 'PAYING'}
@@ -357,7 +358,7 @@ const Underledger = () => {
 
 export const ShipFulfillment = () => {
   const { data, act } = useBackend<Data>();
-  const { manifests, middleman_cut_percent } = data;
+  const { manifests, middleman_cut_percent, can_manage } = data;
 
   return (
     <Window width={620} height={680} theme="parchment">
@@ -366,12 +367,7 @@ export const ShipFulfillment = () => {
           <button
             type="button"
             title="Open the economy guidebook"
-            style={{
-              ...inkButtonStyle({}),
-              position: 'absolute',
-              top: 8,
-              right: 8,
-            }}
+            style={{ ...inkButtonStyle({}), position: 'absolute', top: 8, right: 8 }}
             onClick={() => act('help')}
           >
             ?
