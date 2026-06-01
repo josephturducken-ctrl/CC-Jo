@@ -362,14 +362,7 @@
 	if(patron_dagger)
 		backpack_contents += patron_dagger
 
-	gloves = /obj/item/clothing/gloves/roguetown/chain
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	pants = /obj/item/clothing/under/roguetown/chainlegs
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	belt = /obj/item/storage/belt/rogue/leather/black
-	beltl = /obj/item/rogueweapon/scabbard/sword
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/knight]
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2)	//Capped to T2 miracles.
 	if(H.mind)

@@ -43,7 +43,7 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 	l_hand = /obj/item/rogueweapon/scabbard/gwstrap
-	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/wizard]
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/recipe_book/survival = 1,
@@ -146,7 +146,7 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff
-	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/wizard]
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/recipe_book/survival = 1,
@@ -301,7 +301,7 @@
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 
-	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/wizard]
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/recipe_book/survival = 1,

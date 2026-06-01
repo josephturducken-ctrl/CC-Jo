@@ -166,7 +166,7 @@
 		// This is probably a bad idea, but let's live a little.
 		H.mind.AddSpell(new /datum/action/cooldown/spell/summon_terrorhog)
 	H.ambushable = FALSE
-	H.dna.species.soundpack_m = new /datum/voicepack/other/lich()
+	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/other/lich]
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
 
