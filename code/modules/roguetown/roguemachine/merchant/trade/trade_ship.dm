@@ -237,7 +237,6 @@ GLOBAL_LIST_EMPTY(brewing_recipe_by_reagent)
 	if(!ship || ship.dock_state != TRADE_SHIP_STATE_DOCKED)
 		return
 	if(SSmerchant_trade)
-		var/datum/foreign_realm/realm = SSmerchant_trade.realms[ship.realm_id]
-		SSmerchant_trade.remove_ship_demand_for_realm(realm)
-		SSmerchant_trade.all_ships -= ship
-	qdel(ship)
+		SSmerchant_trade.auto_dismiss_ship(ship)
+	else
+		qdel(ship)
