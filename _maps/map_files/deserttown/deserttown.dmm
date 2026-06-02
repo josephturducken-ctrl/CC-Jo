@@ -2880,6 +2880,10 @@
 /obj/machinery/light/roguestreet/orange/walllamp{
 	dir = 4
 	},
+/obj/structure/roguemachine/headeater{
+	pixel_y = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/rogue/darkpath,
 /area/rogue/outdoors/town/desert)
 "bcZ" = (
@@ -39325,7 +39329,8 @@
 /area/rogue/under/cave/licharena)
 "oTC" = (
 /obj/structure/well/fountain{
-	layer = 4.4
+	layer = 4.4;
+	pixel_x = -16
 	},
 /turf/open/floor/rogue/concrete{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -399196,7 +399201,7 @@ fBV
 icQ
 nrO
 tOR
-jgN
+nrO
 tOR
 nPF
 rJC
@@ -399506,7 +399511,7 @@ iZc
 icQ
 icQ
 icQ
-nrO
+jgN
 tOR
 oTC
 tOR
