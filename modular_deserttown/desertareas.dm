@@ -26,7 +26,7 @@
 	threat_region = THREAT_REGION_INNER_DUNES
 	
 /area/rogue/outdoors/desert/river
-	name = "river"
+	name = "River"
 	icon_state = "river"
 	ambientsounds = AMB_RIVERDAY
 	ambientnight = AMB_RIVERNIGHT
@@ -74,7 +74,7 @@
 	ambush_mobs = null
 
 /area/rogue/outdoors/desertdeep/above
-	name = "deep desert above"
+	name = "Deep Desert Above"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
 	soundenv = 17
@@ -83,7 +83,7 @@
 	ambush_mobs = null
 
 /area/rogue/outdoors/desert/above
-	name = "desert above"
+	name = "Desert Above"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
 	soundenv = 17
@@ -94,7 +94,7 @@
 //
 
 /area/rogue/outdoors/town/desert
-	name = "desert town outdoors"
+	name = "Desert Town Outdoors"
 	icon_state = "town"
 	soundenv = 16
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
@@ -104,7 +104,7 @@
 	town_area = TRUE
 
 /area/rogue/outdoors/town/roofs/desert
-	name = "desert roofs"
+	name = "Desert Roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
@@ -129,7 +129,7 @@
 	keep_area = TRUE
 
 /area/rogue/outdoors/town/manor/roofs/desert
-	name = "Palace roofs"
+	name = "Palace Roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
@@ -140,7 +140,7 @@
 ///
 
 /area/rogue/indoors/town/desert
-	name = "desert town indoors"
+	name = "Desert Town Indoors"
 	icon_state = "town"
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
 	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
@@ -212,7 +212,7 @@
 	keep_area = TRUE
 	
 /area/rogue/indoors/town/desert/garrison/cell
-	name = "dungeon cell"
+	name = "Dungeon Cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
 	spookynight = SPOOKY_DUNGEON
@@ -223,7 +223,7 @@
 	cell_area = TRUE
 
 /area/rogue/indoors/town/desert/garrison/cell/outdoor
-	name = "dungeon cell"
+	name = "Dungeon Cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
 	spookynight = SPOOKY_DUNGEON
@@ -235,7 +235,7 @@
 
 
 /area/rogue/indoors/town/desert/tavern
-	name = "tavern"
+	name = "Tavern"
 	icon_state = "tavern"
 	ambientsounds = AMB_INGEN
 	ambientnight = AMB_INGEN
@@ -264,7 +264,7 @@
 	deathsight_message = "hidden among thieves, in the hoard of a dragon"
 
 /area/rogue/outdoors/town/desert
-	name = "desert town outdoors"
+	name = "Desert Town Outdoors"
 	icon_state = "town"
 	soundenv = 16
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
@@ -274,7 +274,7 @@
 	town_area = TRUE
 
 /area/rogue/outdoors/town/roofs/desert
-	name = "desert roofs"
+	name = "Desert Roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
@@ -299,7 +299,7 @@
 	keep_area = TRUE
 
 /area/rogue/outdoors/town/manor/desert/roofs
-	name = "Palace roofs"
+	name = "Palace Roofs"
 	icon_state = "roofs"
 	ambientsounds = AMB_MOUNTAIN
 	ambientnight = AMB_MOUNTAIN
@@ -310,7 +310,7 @@
 ///
 
 /area/rogue/indoors/town/desert
-	name = "desert town indoors"
+	name = "Desert Town Indoors"
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
 	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
 	droning_sound_night = 'sound/music/area/desert/Moonrise.ogg'
@@ -374,7 +374,7 @@
 	droning_sound_night = null
 	
 /area/rogue/indoors/town/garrison/desert/cell
-	name = "dungeon cell"
+	name = "Dungeon Cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
 	spookynight = SPOOKY_DUNGEON
@@ -383,7 +383,7 @@
 	droning_sound_night = null
 
 /area/rogue/indoors/town/garrison/desert/cell/outdoor
-	name = "dungeon cell"
+	name = "Dungeon Cell"
 	icon_state = "cell"
 	spookysounds = SPOOKY_DUNGEON
 	spookynight = SPOOKY_DUNGEON
@@ -409,7 +409,7 @@
 	warden_area = TRUE
 
 /area/rogue/under/town/basement/desert
-	name = "basement"
+	name = "Basement"
 	town_area = FALSE
 	ceiling_protected = TRUE
 
@@ -417,7 +417,7 @@
 	town_area = TRUE
 
 /area/rogue/under/town/basement/desert/keep
-	name = "palace basement"
+	name = "Palace Basement"
 	keep_area = TRUE
 	town_area = TRUE
 
@@ -448,7 +448,7 @@
 
 //Unqiue quest area for the indoor quest locations.
 /area/rogue/indoors/town/desert/quest
-	name = "desert town indoors"
+	name = "Desert Town Indoors"
 	icon_state = "town"
 	droning_sound = 'sound/music/area/desert/TheRoad.ogg'
 	droning_sound_dusk = 'sound/music/area/desert/NightPrayer.ogg'
@@ -468,3 +468,30 @@
 
 /area/rogue/underworld/desert
 	first_time_text = "wayfarer's dream"
+
+// Undercity And Pyramid Segments - All of these use underdarker from roguetownareas.dm for now since they share the same level with it
+/area/rogue/under/underdarker/undercity
+	name = "City Beneath The Sands"
+	first_time_text = "City Beneath The Sands"
+	deathsight_message = "dark roads under the sands"
+
+/area/rogue/under/underdarker/pyramid
+	name = "The Condemned Pyramid"	
+	first_time_text = "The Condemned Pyramid"
+	deathsight_message = "a sunken pyramid"
+
+// desert_wretch_oasis Special Areas. Bandit zone uses areas earlier in code
+/area/rogue/indoors/vampire_manor/desert 
+	name = "Vampire Hideaway"
+	first_time_text = "Vampire Hideaway"
+	deathsight_message = "a sunless hideaway"
+
+/area/rogue/indoors/vampire_manor/desert/passage
+	name = "Depths of the Passage"
+	deathsight_message = "at the entrance to a sunless escape"
+
+/area/rogue/outdoors/desertdeep/wretch_lair
+	name = "Wretched Oasis"
+	ambush_times = null 
+	ambush_mobs = null 
+	deathsight_message = "a paradise under a wretched presence"

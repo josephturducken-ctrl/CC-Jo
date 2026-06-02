@@ -221,13 +221,6 @@
 	},
 /turf/open/floor/rogue/underworld/road,
 /area/rogue/underworld/adventurespawn)
-"zm" = (
-/obj/effect/landmark/start/wretch,
-/obj/effect/landmark/start/wretchlate,
-/obj/effect/landmark/start/wildsoul,
-/obj/effect/landmark/start/wildsoullate,
-/turf/open/floor/rogue/churchrough,
-/area/rogue/underworld/adventurespawn)
 "Aa" = (
 /obj/structure/flora/roguetree/underworld,
 /obj/structure/underworld/barrier,
@@ -400,6 +393,23 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld/adventurespawn)
+"UY" = (
+/obj/effect/landmark/start/adventurerlate{
+	dir = 1
+	},
+/obj/effect/landmark/start/courtagent,
+/obj/effect/landmark/start/adventurerlate{
+	dir = 1
+	},
+/obj/effect/landmark/start/adventurerlate{
+	dir = 1
+	},
+/obj/effect/landmark/start/wildsoul,
+/obj/effect/landmark/start/wildsoullate,
+/obj/effect/landmark/start/wildsoullate,
+/obj/effect/landmark/start/wildsoul,
+/turf/open/floor/rogue/churchrough,
+/area/rogue/underworld/desert)
 "VA" = (
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue/underworld/adventurespawn)
@@ -897,7 +907,7 @@ MR
 MR
 MR
 MR
-Pk
+UY
 dA
 dA
 MR
@@ -926,7 +936,7 @@ MR
 VD
 MR
 MR
-zm
+Ta
 Ta
 Ta
 MR
