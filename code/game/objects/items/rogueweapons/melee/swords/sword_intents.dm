@@ -292,9 +292,9 @@
 	demolition_mod = 0.05
 
 /datum/intent/sword/chop/cleave
-	name = "cleave"
-	icon_state = "intear"
-	attack_verb = list("cleaves", "tears through")
+	name = "staggering cleave"
+	icon_state = "incarve"
+	attack_verb = list("cleaves", "tears through", "carves through")
 	chargedrain = 1.8
 	chargetime = 12
 	swingdelay = 0

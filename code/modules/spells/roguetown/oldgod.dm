@@ -402,7 +402,124 @@
 
 //
 
-/obj/effect/proc_holder/spell/self/psydonprayer
+/datum/action/cooldown/spell/psydon/endure
+	name = "ENDURE"
+	desc = "Invoke an envigoring prayer for those who're faltering in willpower. </br>‎  </br>Provides minor wound regeneration, staunches the target's bleeding, and helps to alleviate those who're struggling to breathe. The more valuable a caster's psycross is, the more health that is restored unto the target - this is further increased if they have been mortally wounded."
+	button_icon_state = "ENDURE"
+	sound = 'sound/magic/ENDVRE.ogg'
+
+	click_to_activate = TRUE
+	cast_range = SPELL_RANGE_ADJACENT + 1
+	self_cast_possible = TRUE
+
+	primary_resource_cost = SPELLCOST_MIRACLE + 10
+
+	secondary_resource_cost = SPELLCOST_MIRACLE_MINOR
+
+	charge_required = FALSE
+	cooldown_time = 30 SECONDS
+
+/datum/action/cooldown/spell/psydon/endure/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	if(isliving(cast_on))
+		var/mob/living/target = cast_on
+		var/brute = target.getBruteLoss()
+		var/burn = target.getFireLoss()
+		var/list/wAmount = target.get_wounds()
+		var/conditional_buff = FALSE
+		var/situational_bonus = 0
+		var/psicross_bonus = 0
+		var/pp = 0
+		var/damtotal = brute + burn
+		var/zcross_trigger = FALSE
+
+		if(H.cmode)
+			if(H != target)
+				H.visible_message(span_blue("[H] fervently recites an orison, invoking the warmth of a dying light."))
+				H.say(pick("ENDURE!!","ENDURE!!","ENDURE!!","ENDURE!!","ENDURE!!","COME ON!!","COME ON!!","HANG ON!!","GRIT!!","STAND TALL!!")) // because I miss this! :(
+			else
+				H.visible_message(span_blue("[H] grits their teeth and recites an orison, invoking the warmth of a dying light."))
+		else
+			H.visible_message(span_blue("[H] quietly recites an orison, invoking the warmth of a dying light."))
+
+		if(H.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) // YOU ARE NO LONGER MORTAL. NO LONGER OF HIM. PSYDON WEEPS.
+			// We do nothing to avoid meta checking for undead
+			target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_info("Sentimental thoughts drive away my pain..."))		
+			return TRUE
+
+		// Bonuses! Flavour! SOVL!
+		for(var/obj/item/clothing/neck/current_item in target.get_equipped_items(TRUE))
+			if(current_item.type in list(/obj/item/clothing/neck/roguetown/psicross/inhumen/aalloy, /obj/item/clothing/neck/roguetown/psicross, /obj/item/clothing/neck/roguetown/psicross/wood, /obj/item/clothing/neck/roguetown/psicross/aalloy, /obj/item/clothing/neck/roguetown/psicross/silver,	/obj/item/clothing/neck/roguetown/psicross/g))
+				pp += 1
+				if(pp >= 12 & target == owner) // A harmless easter-egg. Only applies on self-cast. You'd have to be pretty deliberate to wear 12 of them.
+					target.visible_message(span_danger("[target]'s many psycrosses reverberate with a strange, ephemeral sound..."), span_userdanger("HE must be waking up! I can hear it! I'm ENDURING so much!"))
+					playsound(owner, 'sound/magic/PSYDONE.ogg', 100, FALSE)
+					sleep(60)
+					owner.psydo_nyte()
+					owner.playsound_local(owner, 'sound/misc/psydong.ogg', 100, FALSE)
+					sleep(20)
+					owner.psydo_nyte()
+					owner.playsound_local(owner, 'sound/misc/psydong.ogg', 100, FALSE)
+					sleep(15)
+					owner.psydo_nyte()
+					owner.playsound_local(owner, 'sound/misc/psydong.ogg', 100, FALSE)
+					sleep(10)
+					owner.gib()
+					return FALSE
+				
+				switch(current_item.type) // Target-based worn Psicross Piety bonus. For fun.
+					if(/obj/item/clothing/neck/roguetown/psicross/wood)
+						psicross_bonus = 0.1				
+					if(/obj/item/clothing/neck/roguetown/psicross/aalloy)
+						psicross_bonus = 0.2	
+					if(/obj/item/clothing/neck/roguetown/psicross)
+						psicross_bonus = 0.3
+					if(/obj/item/clothing/neck/roguetown/psicross/silver)
+						psicross_bonus = 0.4	
+					if(/obj/item/clothing/neck/roguetown/psicross/g) // PURITY AFLOAT.
+						psicross_bonus = 0.5
+					if(/obj/item/clothing/neck/roguetown/psicross/weeping)
+						psicross_bonus = 0.7
+					if(/obj/item/clothing/neck/roguetown/psicross/inhumen/aalloy)
+						zcross_trigger = TRUE	
+
+		if(damtotal >= 300) // ARE THEY ENDURING MUCH, IN ONE WAY OR ANOTHER?
+			situational_bonus += 0.3
+
+		if(wAmount.len > 5)	
+			situational_bonus += 0.3		
+	
+		if (situational_bonus > 0)
+			conditional_buff = TRUE
+
+		target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_info("Sentimental thoughts drive away my pain..."))
+		var/psyhealing = 3
+		psyhealing += psicross_bonus
+		if (conditional_buff & !zcross_trigger)
+			to_chat(owner, "In <b>ENDURING</b> so much, become <b>EMBOLDENED</b>!")
+			psyhealing += situational_bonus
+	
+		if (zcross_trigger)
+			owner.visible_message(span_warning("[owner] shuddered. Something's very wrong."), span_userdanger("Cold shoots through my spine. Something laughs at me for trying."))
+			owner.playsound_local(owner, 'sound/misc/zizo.ogg', 25, FALSE)
+			H.adjustBruteLoss(25)		
+			return FALSE
+
+		target.apply_status_effect(/datum/status_effect/buff/psyhealing, psyhealing)
+		for(var/datum/wound/W as anything in wAmount)
+			if(W?.bleed_rate > 0)
+				W.set_bleed_rate(0)
+
+		return TRUE
+
+	return FALSE
+
+/////////////////
+// T1 - PRAYER //
+/////////////////
+
+/datum/action/cooldown/spell/psydon/prayer
 	name = "PRAYER"
 	desc = "Recite a psalm betwixt huffs, so that your wits do not succumb to more worldly ailments. </br>‎  </br>Provides minor health regeneration while standing still. The more damage that a caster has sustained - and the more valuable that their worn psycross is, the more health that they'll regenerate with each cycle."
 	overlay_state = "limb_attach"
@@ -785,6 +902,255 @@
 	return FALSE
 
 //
+
+/obj/effect/proc_holder/spell/invoked/psydonabsolve	
+	name = "ABSOLVE"
+	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
+	overlay_state = "ABSOLVE" //Absolver-exclusive. Classified as 'lux-magicka', rather than a traditional miracle. Same line of thought as the Naledians.
+	desc = "Greater lux-magicka. Exchange your vitality for the sake of another. </br>‎  </br>Siphons away all injuries - be it physical damage, blood loss, or dismemberment - from the target, completely healing them. In exchange, all siphoned injuries are subsequently inflicted unto you. Using this on a target who's dead will fully resurrect them, albeit at the cost of your own lyfe."
+	releasedrain = 50
+	chargedrain = 0
+	chargetime = 0
+	range = 3
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	sound = 'sound/magic/psyabsolution.ogg'
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = FALSE
+	recharge_time = 30 SECONDS // 60 seconds cooldown
+	miracle = TRUE
+	devotion_cost = 100
+
+/obj/effect/proc_holder/spell/invoked/psydonabsolve/cast(list/targets, mob/living/user)
+
+	if(!ishuman(targets[1]))
+		to_chat(user, span_warning("ABSOLUTION is for those who walk in HIS image!"))
+		revert_cast()
+		return FALSE
+
+	if(!ishuman(user))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/carbon/human/H = targets[1]
+	var/mob/living/carbon/human/C = user
+
+	// CONSEQUENCE WARNING CHECKS
+
+	var/will_die = FALSE
+	var/will_lose_limbs = FALSE
+
+	// Resurrection costs your life.
+	if(H.stat >= DEAD)
+		will_die = TRUE
+
+	// Limb restoration costs your limbs.
+	var/list/warning_zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+
+	for(var/zone in warning_zones)
+		if(!H.get_bodypart(zone))
+			if(C.get_bodypart(zone))
+				will_lose_limbs = TRUE
+				break
+
+	if(will_die || will_lose_limbs)
+
+		var/list/messages = list()
+
+		if(will_die)
+			messages += span_userdanger("THIS TARGET IS DEAD. ABSOLUTION WILL CLAIM YOUR LIFE.")
+
+		if(will_lose_limbs)
+			messages += span_userdanger("THIS TARGET IS MISSING LIMBS. YOU WILL SACRIFICE YOUR OWN LIMBS.")
+
+		messages += ""
+		messages += "Continue?"
+
+		if(alert(C, messages.Join("\n"), "ABSOLUTION WARNING", "YES", "NO") != "YES")
+			revert_cast()
+			return FALSE
+
+	if(H == C)
+		to_chat(C, span_warning("You cannot ABSOLVE yourself!"))
+		revert_cast()
+		return FALSE
+
+	H.visible_message(span_red("[user] <i>dangerously</i> connects their Lux with [H]'s own."))
+
+	// REVIVE PATH
+	if(H.stat >= DEAD)
+		if(!H.key && !H.get_ghost(FALSE, TRUE))
+			to_chat(user, span_warning("[H] is irreversibly gone... there's nothing we can do to bring them back anymore!"))
+			user.emote("cry")
+			revert_cast()
+			return FALSE
+		if(!H.check_revive(C))
+			revert_cast()
+			return FALSE
+		if(alert(C,"REACH OUT AND PULL?","THERE'S NO LUX IN THERE","YES","NO") != "YES")
+			revert_cast()
+			return FALSE
+		C.visible_message(span_danger("[C] grabs [H] by the wrists, attempting to ABSOLVE them!"))
+		C.emote("whimper")
+		if(alert(H,"They want to ABSOLVE you. Will you let them?","ABSOLUTION","I accept!","I refuse..") != "I accept!")
+			return FALSE
+		H.apply_status_effect(/datum/status_effect/buff/psyvived)
+		C.say("MY LYFE FOR YOURS! LYVE, AS DOES HE!", forced=TRUE, language=/datum/language/common)
+		C.visible_message(span_danger("[C] suddenly collapses, as the last of their lux is siphoned into [H]'s chest!")) //Originally "[C] suddenly falls down on the ground... DEAD and PSY-DONE!".
+		C.death()
+		H.revive(full_heal=TRUE, admin_revive=FALSE)
+		H.adjustOxyLoss(-H.getOxyLoss())
+		H.grab_ghost(force=TRUE)
+		H.emote("breathgasp")
+		H.Jitter(100)
+		H.update_body()
+		record_round_statistic(STATS_LUX_REVIVALS)
+		ADD_TRAIT(H, TRAIT_IWASREVIVED, "[type]")
+		H.apply_status_effect(/datum/status_effect/buff/psyvived)
+		C.apply_status_effect(/datum/status_effect/buff/psyvived)
+		H.visible_message(span_notice("[H] is ABSOLVED!"))
+		H.mind.remove_antag_datum(/datum/antagonist/zombie)
+		H.remove_status_effect(/datum/status_effect/debuff/rotted_zombie)
+		H.apply_status_effect(/datum/status_effect/debuff/revived)
+		return TRUE
+
+	if(user.cmode)
+		user.say(pick("BE ABSOLVED!","I'LL BLEED IN YOUR STEAD!","YOUR TIME IS NOT NOW!","I SHALL WEEP IN YOUR STEAD!","ENDURE, AS HE DOES!","PERSIST, AS HE DOES!"))
+		if(HAS_TRAIT(user, TRAIT_IRONMAN))
+			user.electrocute_act(10, user)
+	else
+		user.say(pick("Live, as he does!","Be healed in His name!","May your injuries be mine to bear!","I absolve you of your wounds!","Be absolved!"))
+		if(HAS_TRAIT(user, TRAIT_IRONMAN))
+			user.adjustFireLoss(25)
+
+	// LIMB TRANSFER
+	var/list/zones = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+
+	for(var/zone in zones)
+		var/obj/item/bodypart/tBP = H.get_bodypart(zone)
+
+		if(!tBP)
+			H.regenerate_limb(zone)
+			var/obj/item/bodypart/cBP = C.get_bodypart(zone)
+			if(cBP)
+				cBP.dismember()
+				if(HAS_TRAIT(H, TRAIT_IRONMAN)) // im just assuming constructs can't use any other limbs than their own, so instead of delimbing, eat an integrity
+					var/obj/item/bodypart/daChest = H.get_bodypart(BODY_ZONE_CHEST)
+					daChest.add_wound(/datum/wound/integrity/chest)
+				else
+					qdel(cBP)
+
+	// WOUND TRANSFER
+	var/list/wounds = H.get_wounds()
+
+	for(var/datum/wound/W in wounds)
+		if(!W.bodypart_owner)
+			continue
+
+		var/obj/item/bodypart/cBP = C.get_bodypart(W.bodypart_owner.body_zone)
+		if(!cBP)
+			continue
+
+		var/new_type = translate_wound_for_target(W, C)
+
+		if(!new_type)
+			continue
+
+		var/datum/wound/newW = new new_type()
+
+		W.copy_to(newW)
+
+		if(W.is_clotted() || W.is_sewn())
+			newW.set_bleed_rate(0)
+
+		newW = cBP.add_wound(newW)
+
+		if(!newW)
+			cBP.receive_damage(W.whp)
+
+		var/obj/item/bodypart/tBP = H.get_bodypart(W.bodypart_owner.body_zone)
+
+		if(tBP)
+			tBP.remove_wound(W.type)
+
+	// DAMAGE TRANSFER
+	var/brute_transfer = H.getBruteLoss()
+	var/burn_transfer = H.getFireLoss()
+	var/tox_transfer = H.getToxLoss()
+	var/oxy_transfer = H.getOxyLoss()
+	var/clone_transfer = H.getCloneLoss()
+
+	H.adjustBruteLoss(-brute_transfer)
+	H.adjustFireLoss(-burn_transfer)
+	H.adjustToxLoss(-tox_transfer)
+	H.adjustOxyLoss(-oxy_transfer)
+	H.adjustCloneLoss(-clone_transfer)
+
+	C.adjustBruteLoss(brute_transfer)
+	C.adjustFireLoss(burn_transfer)
+	C.adjustToxLoss(tox_transfer)
+	C.adjustOxyLoss(oxy_transfer)
+	C.adjustCloneLoss(clone_transfer)
+
+	// BLOOD TRANSFER
+	var/blood_needed = max(0, BLOOD_VOLUME_NORMAL - H.blood_volume)
+
+	if(blood_needed)
+		if(NOBLOOD in C.dna?.species?.species_traits)
+			H.blood_volume = BLOOD_VOLUME_NORMAL
+			C.adjustFireLoss(round(blood_needed / 4))
+		else
+			var/transferred = min(blood_needed, C.blood_volume)
+
+			if(transferred > 0)
+				H.blood_volume += transferred
+				C.blood_volume -= transferred
+
+			if(H.blood_volume < BLOOD_VOLUME_NORMAL)
+				var/remaining = BLOOD_VOLUME_NORMAL - H.blood_volume
+
+				H.blood_volume += remaining
+				C.blood_volume -= remaining
+
+			if(C.blood_volume <= 0)
+				C.blood_volume = BLOOD_VOLUME_SURVIVE
+
+	// VISUALS
+	C.visible_message(span_danger("[C] absolves [H]'s suffering!"))
+
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
+
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(C), "#aa1717")
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(C), "#aa1717")
+	new /obj/effect/temp_visual/psyheal_rogue(get_turf(C), "#aa1717")
+
+	to_chat(C, span_warning("You take [H]'s suffering upon yourself!"))
+	to_chat(H, span_notice("[C] absolves you of your injuries!"))
+
+	return TRUE
+
+/proc/translate_wound_for_target(datum/wound/W, mob/living/carbon/human/recipient)
+	if(!W || !recipient)
+		return null
+	var/is_construct = HAS_TRAIT(recipient, TRAIT_IRONMAN)
+	switch(W.type)
+		if(/datum/wound/artery)
+			return is_construct ? /datum/wound/integrity : W.type
+		if(/datum/wound/artery/chest)
+			return is_construct ? /datum/wound/integrity/chest : W.type
+		if(/datum/wound/artery/neck)
+			return is_construct ? /datum/wound/integrity/neck : W.type
+		if(/datum/wound/integrity)
+			return is_construct ? W.type : /datum/wound/artery
+		if(/datum/wound/integrity/chest)
+			return is_construct ? W.type : /datum/wound/artery/chest
+		if(/datum/wound/integrity/neck)
+			return is_construct ? W.type : /datum/wound/artery/neck
+
+	return W.type
 
 // UNUSED DIALOGUE: PRAYER, RESPITE, PERSIST
 // ("#..our father above, hallowed be thy name..","#..thy kingdom come, thy will be done..","#..I fear no evil, for thou art with me..")

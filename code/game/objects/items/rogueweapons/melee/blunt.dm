@@ -436,7 +436,6 @@
 	desc = "A ceremonial rungu carved out of clam shell. Not intended for combat. Its used in various Sea and Coastal Elven rituals and ceremonies."
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
 	icon_state = "rungu_shell"
-
 	max_integrity = 75
 	sellprice = 35
 
@@ -549,6 +548,7 @@
 	force_wielded = 25
 	wbalance = WBALANCE_NORMAL
 	icon_state = "opsyflangedmacelegacy"
+	is_silver = FALSE
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 100 //Old, little less pricy
 
@@ -737,6 +737,17 @@
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 1,\
+	)
+
+/obj/item/rogueweapon/mace/goden/psymace/preblessed/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_PSYDONIAN,\
 		silver_type = SILVER_PSYDONIAN,\
 		added_force = 0,\
 		added_blade_int = 0,\
@@ -978,6 +989,89 @@
 	smelt_bar_num = 3 //Please don't...
 	max_integrity = 370
 	sellprice = 80 //Mauls... Big and beefy.
+
+//Psydonite maul. Intended for FUCKING SHIT UP.
+/obj/item/rogueweapon/mace/maul/grand/psy
+	name = "psydonic maul"
+	gripped_intents = list(/datum/intent/mace/strike/reach, /datum/intent/mace/sweep, /datum/intent/mace/demolish, /datum/intent/effect/hobble)
+	desc = "A rune-forged maul inspired by dwarven rock-hammers. Created as the faithful's answer to heretics hiding behind walls, it provides the impure with a sermon of exceptional concussive clarity. A good hit with this is guaranteed to give even the most peppy of heretics some deserved 'respite', and in best scenarios, send them to confess directly to HIM."
+	icon_state = "psyhammer"
+	smeltresult = /obj/item/ingot/silverblessed
+	minstr = 8
+	wdefense_wbonus = 8
+	is_silver = TRUE
+	max_integrity = 600 // need a lil more cause destroying walls takes a bit of this
+
+/obj/item/rogueweapon/mace/maul/grand/psy/pickup(mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_PSYDONITE))
+		src.minstr = 8//-10, if you have the ability to use this.
+	else
+		src.minstr = 18
+	..()
+
+/obj/item/rogueweapon/mace/maul/grand/psy/ComponentInitialize()
+	AddComponent(\
+	/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 100,\
+		added_int = 50,\
+		added_def = 2,\
+	)
+
+/obj/item/rogueweapon/mace/maul/grand/psy/preblessed/ComponentInitialize()
+		AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_PSYDONIAN,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 100,\
+		added_int = 50,\
+		added_def = 2,\
+	)
+
+/obj/item/rogueweapon/mace/maul/grand/psy/attack_obj(obj/O, mob/living/user)
+	. = ..()
+	if(!.)
+		return
+	if(!istype(user?.used_intent, /datum/intent/mace/demolish))
+		return
+	if(QDELETED(O))
+		return
+	if(isnull(O.obj_integrity))
+		return
+	if(O.obj_integrity > 900)
+		to_chat(user, span_warning("Too hard!"))
+		return
+	var/bonus_damage = round(O.obj_integrity * 0.15)
+	if(prob(50))
+		bonus_damage += rand(1,10)
+	else
+		bonus_damage -= rand(1,10)
+	O.take_damage(bonus_damage, BRUTE, src.d_type, FALSE)
+	to_chat(user, span_warning("Your blow expertly crushes [O]! (+[bonus_damage])"))
+
+/obj/item/rogueweapon/mace/maul/grand/psy/attack_turf(turf/T, mob/living/user, multiplier)
+	. = ..()
+	if(!.)
+		return
+	if(!istype(user?.used_intent, /datum/intent/mace/demolish))
+		return
+	if(QDELETED(T))
+		return
+	if(isnull(T.max_integrity))
+		return
+	if(T.max_integrity > 3000)
+		to_chat(user, span_warning("Too hard!"))
+		return
+	var/bonus_damage = round(T.max_integrity * 0.15)
+	if(prob(50))
+		bonus_damage += rand(1,20)
+	else
+		bonus_damage -= rand(1,20)
+	T.take_damage(bonus_damage, BRUTE, src.d_type, 1)
+	to_chat(user, span_warning("Your blow expertly caves into [T]! (+[bonus_damage])"))
 
 /datum/intent/mace/sweep
 	name = "sweeping strike"

@@ -411,6 +411,148 @@
 	desc = "A set of bracelets carved out of opal."
 	icon_state = "br_opal"
 	sellprice = 95
+
+//
+
+/obj/item/clothing/wrists/roguetown/bracers/aalloy/chain
+	name = "decrepit chain sleeves"
+	desc = "Coverings of frayed bronze maille, fashioned from hundreds of interlinked rings. An aura of decaying harlotry eminates from these sleeves. \
+	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	icon_state = "ancientchainsleevesalt"
+	item_state = "ancientchainsleevesalt"
+	blocksound = CHAINHIT
+	armor = ARMOR_MAILLE
+	material_category = ARMOR_MAT_CHAINMAIL
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	var/wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/aalloy/chain/attack_right(mob/user)
+	. = ..()
+	if(!wrapped)
+		icon_state = "ancientchainsleeves"
+		item_state = "ancientchainsleeves"
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = TRUE
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/paalloy/chain
+	name = "ancient chain sleeves"
+	desc = "Coverings of polished gilbranze-maille, fashioned from hundreds of interlinked rings. An aura of undying harlotry eminates from these sleeves. \
+	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	icon_state = "ancientchainsleevesalt"
+	item_state = "ancientchainsleevesalt"
+	blocksound = CHAINHIT
+	armor = ARMOR_MAILLE
+	material_category = ARMOR_MAT_CHAINMAIL
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	var/wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/paalloy/chain/attack_right(mob/user)
+	. = ..()
+	if(!wrapped)
+		icon_state = "ancientchainsleeves"
+		item_state = "ancientchainsleeves"
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = TRUE
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/iron/chain
+	name = "iron chain sleeves"
+	desc = "Coverings of iron maille, fashioned from hundreds of interlinked rings. An aura of traditional harlotry eminates from these sleeves."
+	icon_state = "ichainsleevesalt"
+	item_state = "ichainsleevesalt"
+	blocksound = CHAINHIT
+	armor = ARMOR_MAILLE
+	material_category = ARMOR_MAT_CHAINMAIL
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	var/wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/iron/chain/attack_right(mob/user)
+	. = ..()
+	if(!wrapped)
+		icon_state = "ichainsleeves"
+		item_state = "ichainsleeves"
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = TRUE
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/chain
+	name = "chain sleeves"
+	desc = "Coverings of steel maille, fashioned from hundreds of interlinked rings. An aura of inexplicable harlotry eminates from these sleeves. \
+	</br>I can adjust these sleeves to hang further down, rather than simply hugging my wrists."
+	icon_state = "chainsleevesalt"
+	item_state = "chainsleevesalt"
+	blocksound = CHAINHIT
+	armor = ARMOR_MAILLE
+	material_category = ARMOR_MAT_CHAINMAIL
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
+	var/wrapped = FALSE
+
+/obj/item/clothing/wrists/roguetown/bracers/chain/attack_right(mob/user)
+	. = ..()
+	if(!wrapped)
+		icon_state = "chainsleeves"
+		item_state = "chainsleeves"
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = TRUE
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+		user.update_inv_wrists()
+		user.update_inv_gloves()
+		user.update_inv_armor()
+		user.update_inv_shirt()
+		playsound(user, 'sound/foley/equip/chain_equip.ogg', 50, TRUE)
+		wrapped = FALSE
+
 //
 
 /obj/item/clothing/wrists/roguetown/bracers/matthios

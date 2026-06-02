@@ -405,6 +405,17 @@
 		added_def = 2,\
 	)
 
+/obj/item/rogueweapon/katar/psydon/preblessed/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_PSYDONIAN,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 2,\
+	)
+
 /obj/item/rogueweapon/katar/silver
 	name = "silver katar"
 	desc = "An exotic weapon that was born from frugality and scarcity, strongly associated with Saint Abenjunne of Astrata. As the folktale goes, this humble preacher belonged to an old village, whose \
@@ -1064,6 +1075,17 @@
 /obj/item/rogueweapon/knuckledusters/silver/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 0,\
+	)
+
+/obj/item/rogueweapon/knuckledusters/silver/preblessed/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
 		pre_blessed = BLESSING_TENNITE,\
 		silver_type = SILVER_TENNITE,\
 		added_force = 0,\
@@ -1086,6 +1108,20 @@
 		user.visible_message(span_warning("[user] stops adjusting their grip on [src]."))
 		return
 
+/obj/item/rogueweapon/knuckledusters/silver/preblessed/attack_self(mob/living/user)
+	. = ..()
+	user.visible_message(span_warning("[user] starts adjusting their grip on [src]."))
+	if(do_after(user, 3 SECONDS))
+		var/obj/item/rogueweapon/knuckledusters/silver/preblessed/P = new /obj/item/clothing/gloves/roguetown/knuckles/silver/preblessed(get_turf(src.loc))
+		if(user.is_holding(src))
+			user.dropItemToGround(src)
+			user.put_in_hands(P)
+		P.obj_integrity = src.obj_integrity
+		qdel(src)
+	else
+		user.visible_message(span_warning("[user] stops adjusting their grip on [src]."))
+		return
+
 /obj/item/rogueweapon/knuckledusters/psy
 	name = "psydonic knuckledusters"
 	desc = "A simple piece of harm molded in a holy mixture of steel and silver, finished with three stumps - Psydon's crown - to crush the heretics' garments and armor into smithereens."
@@ -1094,6 +1130,17 @@
 	smeltresult = /obj/item/ingot/silverblessed
 
 /obj/item/rogueweapon/knuckledusters/psy/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 0,\
+	)
+
+/obj/item/rogueweapon/knuckledusters/psy/preblessed/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_PSYDONIAN,\
@@ -1109,6 +1156,20 @@
 	user.visible_message(span_warning("[user] starts adjusting their grip on [src]."))
 	if(do_after(user, 3 SECONDS))
 		var/obj/item/rogueweapon/knuckledusters/psy/P = new /obj/item/clothing/gloves/roguetown/knuckles/psydon(get_turf(src.loc))
+		if(user.is_holding(src))
+			user.dropItemToGround(src)
+			user.put_in_hands(P)
+		P.obj_integrity = src.obj_integrity
+		qdel(src)
+	else
+		user.visible_message(span_warning("[user] stops adjusting their grip on [src]."))
+		return
+
+/obj/item/rogueweapon/knuckledusters/psy/preblessed/attack_self(mob/living/user)
+	. = ..()
+	user.visible_message(span_warning("[user] starts adjusting their grip on [src]."))
+	if(do_after(user, 3 SECONDS))
+		var/obj/item/rogueweapon/knuckledusters/psy/preblessed/P = new /obj/item/clothing/gloves/roguetown/knuckles/psydon/preblessed(get_turf(src.loc))
 		if(user.is_holding(src))
 			user.dropItemToGround(src)
 			user.put_in_hands(P)
