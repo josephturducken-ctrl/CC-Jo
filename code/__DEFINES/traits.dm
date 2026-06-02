@@ -313,6 +313,10 @@
 #define TRAIT_MASTER_MASON "Master Masonry"
 #define TRAIT_FOOD_STIPEND "Vomitorium-known"
 
+//duds for TAT system
+#define TRAIT_OUTLANDER "Outlander"
+#define TRAIT_PARRYEXPERT "Parry Expert"// CC + TA TAT system perk, maybe port related ronin class if needed
+
 // If you want description to show up you gotta have the trait name defined BEFORE this lol
 
 GLOBAL_LIST_INIT(roguetraits, list(
@@ -572,6 +576,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ROOT_WALKER = span_info("After offering lux, I can now travel along heartroot trees."),
 	TRAIT_WHITE_STAG = span_info("The power of the white stag lives on inside of me!"),
 	TRAIT_EDIT_DESCRIPTORS = span_info("I can change my appearance at a magic mirror in a thorough manner."),
+	TRAIT_OUTLANDER = span_info("The locals see me as not of their land."),
+	TRAIT_PARRYEXPERT = span_info("I am much better at parrying incoming strikes, having a more high probability of deflecting a blow with my weapon."),
 ))
 
 // trait accessor defines
