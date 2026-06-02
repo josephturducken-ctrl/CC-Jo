@@ -43,7 +43,7 @@ const GOD_TOOLTIPS: Record<string, string> = {
   'pestra': '',
   'psydon': 'Every Sundae your peasants worship Psydon. Inspired by His example they put all their effort to work.',
   'ravox': 'An outpost will be built in order to uphold His order and to dispatch troops to fight banditry.',
-  'undivided': '',
+  'undivided': 'By following teaching of each of the Ten your workers excel at every task but only slightly.',
   'xylix': 'Traders often visit your manor and bring great fortune with them. Maybe it is the blessing of Xylix.',
   'zizo': 'Thanks to Her patronage your workers are never tired, working relentlessly and deliver fruits of their labor twice per dae: at dawn and dusk. Trading with living requires disguise which significantly lowers the efficency.',
 };

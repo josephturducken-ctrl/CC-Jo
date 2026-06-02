@@ -400,8 +400,11 @@
 				units = units - unsold_units
 				if(unsold_units > 0)
 					total_profit_money += process_goods_sold_to_market(stockpile_entry, unsold_units)
-			else if(patron == /datum/patron/inhumen/baotha)
+			if(patron == /datum/patron/inhumen/baotha)
 				var/resources_multiplier = pick(0.5, 1.0, 1.5)
+				units = ceil(units * resources_multiplier)
+			if(patron == /datum/patron/divine/undivided)
+				var/resources_multiplier = 1.2
 				units = ceil(units * resources_multiplier)
 			if(!is_foreign)
 				stockpile_entry.stockpile_amount += units
