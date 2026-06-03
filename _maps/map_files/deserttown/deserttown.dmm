@@ -2631,6 +2631,10 @@
 "aYk" = (
 /turf/open/floor/rogue/dirt/road/desert,
 /area/rogue/under/cave)
+"aYm" = (
+/obj/structure/flora/roguegrass/herb/manabloom,
+/turf/open/floor/rogue/dirt/desert,
+/area/rogue/outdoors/desert)
 "aYr" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 1;
@@ -10623,12 +10627,6 @@
 /obj/machinery/light/rogue/candle/red,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/bath/desert)
-"dRo" = (
-/obj/effect/particle_effect/smoke{
-	lifetime = 14400
-	},
-/turf/open/transparent/openspace,
-/area/rogue/outdoors/town/manor/desert/roofs)
 "dRr" = (
 /obj/structure/curtain/drab,
 /turf/open/floor/rogue/herringbone{
@@ -12532,6 +12530,12 @@
 	},
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/outdoors/desert)
+"eBa" = (
+/obj/effect/particle_effect/smoke{
+	lifetime = 14400
+	},
+/turf/open/water/pond,
+/area/rogue/outdoors/town/desert)
 "eBg" = (
 /obj/machinery/light/rogue/hearth,
 /turf/open/floor/rogue/sandbrick,
@@ -13114,7 +13118,7 @@
 	lifetime = 14400
 	},
 /turf/open/water/pond,
-/area/rogue/outdoors/town/desert)
+/area/rogue/outdoors/town/manor/desert)
 "eMm" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -23872,6 +23876,14 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/reagent_containers/glass/cup/ceramic/fancy{
+	pixel_x = -11;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/glass/cup/ceramic/fancy{
+	pixel_x = -4;
+	pixel_y = -1
+	},
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician/desert)
 "jee" = (
@@ -30857,17 +30869,6 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/lightpath,
 /area/rogue/outdoors/desertdeep)
-"lMG" = (
-/obj/structure/table/wood,
-/obj/structure/bars{
-	icon_state = "barsbent";
-	layer = 2.81;
-	name = "Manor Desk and Deliveries"
-	},
-/turf/open/floor/rogue/concrete{
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	},
-/area/rogue/indoors/town/desert/manor)
 "lMP" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -39182,6 +39183,9 @@
 /area/rogue/indoors/town/academy/desert)
 "oRm" = (
 /obj/structure/table/wood,
+/obj/structure/roguemachine/atm{
+	pixel_y = -32
+	},
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tilegreeny"
 	},
@@ -52057,8 +52061,8 @@
 /obj/effect/particle_effect/smoke{
 	lifetime = 14400
 	},
-/turf/open/water/pond,
-/area/rogue/outdoors/town/manor/desert)
+/turf/open/transparent/openspace,
+/area/rogue/outdoors/town/manor/desert/roofs)
 "tLN" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 8
@@ -60168,6 +60172,17 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors/town/desert/quest)
+"wKp" = (
+/obj/structure/table/wood,
+/obj/structure/bars{
+	icon_state = "barsbent";
+	layer = 2.81;
+	name = "Manor Desk and Deliveries"
+	},
+/turf/open/floor/rogue/concrete{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/indoors/town/desert/manor)
 "wKt" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/hexstone,
@@ -64112,10 +64127,6 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/outdoors/town/desert)
-"yhv" = (
-/obj/structure/flora/roguegrass/herb/manabloom,
-/turf/open/floor/rogue/dirt/desert,
-/area/rogue/outdoors/desert)
 "yhJ" = (
 /obj/machinery/light/roguestreet/orange/walllamp,
 /turf/open/floor/rogue/citybrick/citybrick1,
@@ -389844,8 +389855,8 @@ dEK
 mCU
 mCU
 mCU
-tLJ
-tLJ
+eMk
+eMk
 mCU
 mCU
 vTa
@@ -390158,7 +390169,7 @@ ekv
 aMs
 mCU
 mCU
-tLJ
+eMk
 mCU
 vTa
 vTa
@@ -400147,7 +400158,7 @@ vfO
 uIK
 rNd
 uqu
-lMG
+wKp
 uqu
 rgN
 hgm
@@ -466652,7 +466663,7 @@ eMy
 eMy
 iRm
 maV
-yhv
+aYm
 fEH
 fEH
 jrl
@@ -506549,7 +506560,7 @@ vTa
 vTa
 vTa
 vTa
-eMk
+eBa
 hCp
 hCp
 hCp
@@ -506861,7 +506872,7 @@ vTa
 vTa
 vTa
 vTa
-eMk
+eBa
 hCp
 hCp
 hCp
@@ -508405,8 +508416,8 @@ rlI
 rlI
 rlI
 rlI
-dRo
-dRo
+tLJ
+tLJ
 vTa
 vTa
 vTa
@@ -508719,7 +508730,7 @@ rlI
 rlI
 rlI
 rlI
-dRo
+tLJ
 rlI
 vTa
 vTa
