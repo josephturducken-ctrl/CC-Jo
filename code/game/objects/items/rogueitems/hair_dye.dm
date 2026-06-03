@@ -7,6 +7,7 @@
     var/uses_remaining = 30
     grid_width = 32
     grid_height = 32
+	dropshrink = 0.8
 
 /obj/item/hair_dye_cream/attack(mob/living/M, mob/living/user)
     if(!ishuman(M))

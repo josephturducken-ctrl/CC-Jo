@@ -151,6 +151,7 @@
 	var/quality = SMELTERY_LEVEL_NORMAL
 	grid_width = 64
 	grid_height = 32
+	dropshrink = 0.8
 
 	obj_flags = CAN_BE_HIT // Caustic Edit / For a fix to make iron be able to be disassembled into scrap via a stake. This also makes ingots destructable, so be careful
 
