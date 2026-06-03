@@ -302,9 +302,19 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended
 	duration = 30 MINUTES
 
+/datum/status_effect/debuff/armamentrites
+	id = "armamentrites"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/armamentrites
+	duration = 2 HOURS
+
 /atom/movable/screen/alert/status_effect/debuff/ritesexpended
 	name = "Rites Complete"
 	desc = "It will take time before I can next perform a rite."
+
+/atom/movable/screen/alert/status_effect/debuff/armamentrites
+	name = "Armament Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	duration = 2 HOURS
 
 /datum/status_effect/debuff/ritesexpended_heavy
 	id = "ritesexpended_heavy"
