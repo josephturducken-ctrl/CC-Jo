@@ -13,7 +13,8 @@
 /datum/action/cooldown/spell/projectile
 	abstract_type = /datum/action/cooldown/spell/projectile
 	self_cast_possible = FALSE
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC // Projectiles travel physically, no same-Z restriction
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
+	allow_cross_z = TRUE // Projectiles may cross Z-levels, normally.
 
 	/// What projectile we create when we shoot our spell.
 	var/obj/projectile/projectile_type = /obj/projectile/magic/teleport

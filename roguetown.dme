@@ -3262,7 +3262,6 @@
 #include "code\modules\spells\spell_types\wizard\fulgurmancy\thunderstrike.dm"
 #include "code\modules\spells\spell_types\wizard\geomancy\_geomancy_shared.dm"
 #include "code\modules\spells\spell_types\wizard\geomancy\boulder_strike.dm"
-#include "code\modules\spells\spell_types\wizard\geomancy\earthen_wall.dm"
 #include "code\modules\spells\spell_types\wizard\geomancy\emergence.dm"
 #include "code\modules\spells\spell_types\wizard\geomancy\ensnare.dm"
 #include "code\modules\spells\spell_types\wizard\geomancy\gravel_blast.dm"
