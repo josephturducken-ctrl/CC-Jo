@@ -389,7 +389,7 @@
 "UT" = (
 /obj/structure/fluff/traveltile/alashurentrance{
 	aportalgoesto = "alashur4";
-	name = "Eastern path to Al-Ashur"
+	name = "Southern Coastal Inlet to Al-Ashur"
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/underworld/adventurespawn)
