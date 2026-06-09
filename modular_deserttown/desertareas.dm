@@ -91,6 +91,13 @@
 	ambush_times = null
 	ambush_mobs = null
 
+/area/rogue/outdoors/desertdeep/coastal 
+	name = "Coastal Inlet"
+	first_time_text = null 
+	ambush_times = null 
+	ambush_mobs = null 
+	deathsight_message = "along a small coastal space"
+	
 //
 
 /area/rogue/outdoors/town/desert
