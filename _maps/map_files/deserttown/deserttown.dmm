@@ -1871,6 +1871,7 @@
 /area/rogue/indoors/town/church)
 "aJj" = (
 /obj/structure/bed/rogue/inn,
+/obj/item/bedsheet/rogue/fabric,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement/desert/town)
 "aJp" = (
@@ -10881,6 +10882,10 @@
 /obj/effect/spawner/lootdrop/roguegem/random,
 /turf/open/floor/rogue/grasscold,
 /area/rogue/under/underdarker)
+"dTX" = (
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/rogue/dirt/road/desert,
+/area/rogue/under/town/basement/desert/town)
 "dUc" = (
 /obj/effect/landmark/quest_spawner/medium,
 /turf/open/floor/rogue/dunes,
@@ -11284,7 +11289,26 @@
 /area/rogue/outdoors/desertdeep)
 "ebt" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bucket,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
+/obj/item/ration,
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tiledrab2"
 	},
@@ -12893,6 +12917,18 @@
 	pixel_x = 8;
 	pixel_y = -7
 	},
+/obj/item/bottle_kit{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/item/bottle_kit{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/item/bottle_kit{
+	pixel_x = -6;
+	pixel_y = -7
+	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -13912,19 +13948,14 @@
 /turf/open/floor/rogue/darkpath,
 /area/rogue/outdoors/town/desert)
 "fcC" = (
-/obj/structure/rack/rogue,
-/obj/item/candle/yellow,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
-/obj/item/ration,
+/obj/structure/closet/crate/chest/old_crate,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
+/obj/item/reagent_containers/food/snacks/sugar,
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tiledrab2"
 	},
@@ -20102,7 +20133,23 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/desert)
 "hzF" = (
-/obj/structure/fermentation_keg/sandpot/water,
+/obj/structure/closet/crate/chest/wicker,
+/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/food/snacks/grown/apple,
+/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry,
+/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry,
+/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry,
+/obj/item/reagent_containers/food/snacks/grown/fruit/tomato,
+/obj/item/reagent_containers/food/snacks/grown/fruit/tomato,
+/obj/item/reagent_containers/food/snacks/grown/fruit/tomato,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+/obj/item/reagent_containers/food/snacks/grown/berries/rogue,
+/obj/item/reagent_containers/food/snacks/grown/fruit/tomato,
+/obj/item/reagent_containers/food/snacks/grown/fruit/strawberry,
+/obj/item/reagent_containers/food/snacks/grown/apple,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -29665,6 +29712,10 @@
 	},
 /turf/open/floor/rogue/darkpath,
 /area/rogue/indoors/town/garrison/desert)
+"llB" = (
+/obj/structure/fermentation_keg/sandpot/beer,
+/turf/open/floor/rogue/tile/harem,
+/area/rogue/indoors/town/tavern/desert)
 "llN" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron,
@@ -34792,6 +34843,12 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/structure/closet/crate/chest/wicker,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -37447,7 +37504,7 @@
 /turf/open/floor/rogue/darkpath,
 /area/rogue/outdoors/town/desert)
 "okN" = (
-/obj/structure/roguemachine/withdraw,
+/obj/machinery/tanningrack,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -38314,6 +38371,12 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
+/obj/item/reagent_containers/food/snacks/grown/oat,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -38395,6 +38458,7 @@
 /obj/item/storage/roguebag,
 /obj/item/storage/roguebag,
 /obj/item/storage/roguebag,
+/obj/item/reagent_containers/glass/bottle/waterskin,
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tiledrab2"
 	},
@@ -41331,6 +41395,10 @@
 /area/rogue/outdoors/desert/river)
 "pEc" = (
 /obj/machinery/light/rogue/torchholder/r,
+/obj/structure/roguemachine/withdraw{
+	pixel_x = 32;
+	pixel_y = 0
+	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -46392,6 +46460,13 @@
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
 /obj/structure/closet/crate/chest/wicker,
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/egg,
+/obj/item/reagent_containers/food/snacks/butter,
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -48950,6 +49025,9 @@
 /area/rogue/indoors/town/church/chapel)
 "szA" = (
 /obj/structure/bed/rogue/inn{
+	dir = 1
+	},
+/obj/item/bedsheet/rogue/fabric{
 	dir = 1
 	},
 /turf/open/floor/rogue/wood,
@@ -52854,8 +52932,21 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop/desert)
 "tUe" = (
-/obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/waterskin,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/structure/closet/crate/chest/old_crate,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/food/snacks/rogue/honey,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
+/obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/deserttile{
 	icon_state = "tiledrab2"
 	},
@@ -64081,8 +64172,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church/basement)
 "xYq" = (
-/obj/structure/fermentation_keg/sandpot/beer,
 /obj/machinery/light/rogue/candle/r,
+/obj/structure/fermentation_keg/sandpot/water,
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/indoors/town/tavern/desert)
 "xYr" = (
@@ -285855,7 +285946,7 @@ gTm
 jYh
 kUs
 joU
-kUK
+dTX
 kUK
 jYh
 iCK
@@ -404728,7 +404819,7 @@ ttU
 pUr
 bEN
 gNA
-jsO
+llB
 jsO
 mLb
 vEK
