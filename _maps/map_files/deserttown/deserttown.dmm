@@ -7188,6 +7188,14 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors/town/dwarfin/desert)
+"cDG" = (
+/obj/structure/mineral_door/wood/deadbolt{
+	dir = 4
+	},
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/under/cave)
 "cDZ" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -22901,10 +22909,6 @@
 	},
 /turf/open/floor/rogue/darkpath,
 /area/rogue/under/town/basement/desert/keep)
-"iCz" = (
-/obj/machinery/light/rogue/firebowl/off,
-/turf/open/floor/rogue/lightpath,
-/area/rogue/under/cave)
 "iCC" = (
 /obj/effect/landmark/chimeric_calyx_spawner/thirty,
 /turf/open/floor/rogue/naturalstone/sandstone,
@@ -24027,14 +24031,6 @@
 "jdr" = (
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/outdoors/desertdeep)
-"jds" = (
-/obj/structure/mineral_door/wood/deadbolt{
-	dir = 4
-	},
-/turf/open/floor/rogue/tile/brownbrick{
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	},
-/area/rogue/under/cave)
 "jdy" = (
 /obj/structure/fluff/railing/border/east,
 /turf/open/floor/rogue/darkpath,
@@ -37964,6 +37960,10 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors/town/dwarfin/desert)
+"oqK" = (
+/obj/machinery/light/rogue/firebowl/off,
+/turf/open/floor/rogue/lightpath,
+/area/rogue/under/cave)
 "oqU" = (
 /obj/machinery/light/rogue/candle/green,
 /turf/open/floor/rogue/naturalstone/sandstone,
@@ -40100,6 +40100,10 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/church)
+"pdt" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/lightpath,
+/area/rogue/under/cave)
 "pdF" = (
 /obj/effect/decal/mossy{
 	dir = 1;
@@ -44601,12 +44605,6 @@
 /obj/item/natural/feather,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/dwarfin/desert)
-"qMs" = (
-/obj/structure/roguewindow/harem1,
-/turf/open/floor/rogue/tile/brownbrick{
-	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
-	},
-/area/rogue/under/cave)
 "qMA" = (
 /obj/machinery/light/rogue/torchholder{
 	dir = 8
@@ -45091,10 +45089,6 @@
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
 /area/rogue/indoors/town/church)
-"qWs" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/open/floor/rogue/lightpath,
-/area/rogue/under/cave)
 "qWB" = (
 /turf/open/floor/rogue/citybrick/citybrick2,
 /area/rogue/under/cave)
@@ -46887,6 +46881,12 @@
 /obj/item/reagent_containers/glass/bottle/waterskin,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/desert/warden)
+"rDA" = (
+/obj/structure/roguewindow/harem1,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/under/cave)
 "rDB" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -59562,6 +59562,12 @@
 /obj/structure/ritualcircle/zizo,
 /turf/open/floor/rogue/citybrick/citybrick1,
 /area/rogue/under/underdarker/pyramid)
+"wjA" = (
+/obj/structure/mineral_door/wood/deadbolt,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/under/cave)
 "wjC" = (
 /obj/structure/curtain/magenta{
 	layer = 4.05
@@ -157062,12 +157068,12 @@ amV
 amV
 eBo
 iLq
+iLq
 eBY
 eBY
 eBY
-eBY
-eBY
-eBY
+iLq
+iLq
 uBv
 uBv
 uBv
@@ -157379,7 +157385,7 @@ eBY
 eBY
 eBY
 eBY
-eBY
+iLq
 eBY
 uBv
 uBv
@@ -157686,7 +157692,7 @@ amV
 amV
 eBo
 iLq
-eBY
+tQy
 eBY
 eBY
 eBY
@@ -157997,9 +158003,9 @@ eBo
 amV
 amV
 eBo
-iLq
-eBY
-eBY
+wjA
+tQy
+tQy
 eBY
 eBY
 eBY
@@ -158310,7 +158316,7 @@ amV
 amV
 eBo
 iLq
-eBY
+tQy
 eBY
 eBY
 eBY
@@ -159558,8 +159564,8 @@ amV
 amV
 eBo
 iLq
-eBY
-eBY
+iLq
+iLq
 eBY
 eBY
 eBY
@@ -160177,7 +160183,7 @@ eBY
 eBY
 eBY
 eBY
-eBY
+amV
 amV
 amV
 eBo
@@ -160491,7 +160497,7 @@ eBY
 eBY
 eBY
 eBY
-eBY
+amV
 viJ
 iLq
 eBY
@@ -164847,7 +164853,7 @@ vgi
 eBo
 eBo
 eBo
-iCz
+oqK
 gZf
 gZf
 gZf
@@ -164869,7 +164875,7 @@ eBo
 eBo
 eBo
 eBo
-iCz
+oqK
 eBo
 eBo
 eBo
@@ -164887,7 +164893,7 @@ eBo
 eBo
 eBo
 eBo
-qWs
+pdt
 eBo
 eBo
 eBo
@@ -165795,7 +165801,7 @@ eBo
 eBo
 eBo
 eBo
-iCz
+oqK
 eBo
 eBo
 eBo
@@ -165814,7 +165820,7 @@ eBo
 eBo
 eBo
 eBo
-iCz
+oqK
 eBo
 eBo
 eBo
@@ -165830,7 +165836,7 @@ eBo
 eBo
 eBo
 eBo
-qWs
+pdt
 amV
 amV
 eBo
@@ -166094,25 +166100,25 @@ wch
 wch
 iLq
 iLq
-jds
+cDG
 iLq
 iLq
 iLq
 iLq
 iLq
-qMs
-qMs
+rDA
+rDA
 iLq
 iLq
-jds
-iLq
-iLq
-iLq
+cDG
 iLq
 iLq
 iLq
-qMs
-qMs
+iLq
+iLq
+iLq
+rDA
+rDA
 iLq
 eBY
 eBY
@@ -166123,11 +166129,11 @@ iLq
 iLq
 iLq
 iLq
-qMs
+rDA
 iLq
 iLq
 iLq
-jds
+cDG
 iLq
 iLq
 iLq
@@ -166158,8 +166164,8 @@ xid
 iLq
 tQj
 tQj
-tQj
-tQj
+iLq
+iLq
 tQj
 tQj
 tQj
@@ -166487,11 +166493,11 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
+tQj
+tQj
+tQj
+tQj
+tQj
 apO
 apO
 apO
@@ -166784,6 +166790,7 @@ apO
 apO
 apO
 apO
+iLq
 apO
 apO
 apO
@@ -166797,14 +166804,13 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+uBv
+uBv
+uBv
+uBv
+tQj
 apO
 apO
 apO
@@ -167096,6 +167102,7 @@ apO
 apO
 apO
 apO
+iLq
 apO
 apO
 apO
@@ -167108,15 +167115,14 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+uBv
+kvr
+kvr
+kvr
+uBv
+tQj
 apO
 apO
 apO
@@ -167420,16 +167426,16 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+uBv
+kvr
+kvr
+kvr
+kvr
+kvr
+uBv
+tQj
 apO
 apO
 apO
@@ -167720,6 +167726,7 @@ apO
 apO
 apO
 apO
+iLq
 apO
 apO
 apO
@@ -167731,17 +167738,16 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+kvr
+kvr
+kvr
+kvr
+kvr
+kvr
+uBv
+tQj
 apO
 apO
 apO
@@ -168032,6 +168038,7 @@ apO
 apO
 apO
 apO
+iLq
 apO
 apO
 apO
@@ -168044,16 +168051,15 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+kvr
+kvr
+kvr
+kvr
+uBv
+uBv
+tQj
 apO
 apO
 apO
@@ -168357,14 +168363,14 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+uBv
+kvr
+kvr
+kvr
+uBv
+tQj
 apO
 apO
 apO
@@ -168670,13 +168676,13 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
-apO
-apO
+tQj
+uBv
+uBv
+uBv
+uBv
+uBv
+tQj
 apO
 apO
 apO
@@ -168983,11 +168989,11 @@ apO
 apO
 apO
 apO
-apO
-apO
-apO
-apO
-apO
+tQj
+tQj
+uBv
+tQj
+tQj
 apO
 apO
 apO
@@ -169297,7 +169303,7 @@ apO
 apO
 apO
 apO
-apO
+tQj
 apO
 apO
 apO
@@ -170213,9 +170219,9 @@ xid
 xid
 tQj
 tQj
-apO
-apO
-apO
+tQj
+tQj
+tQj
 apO
 apO
 apO
@@ -170523,12 +170529,12 @@ xid
 xid
 xid
 xid
+xid
+xid
+xid
+xid
 tQj
-iLq
-apO
-apO
-apO
-apO
+tQj
 apO
 apO
 apO
@@ -170837,10 +170843,10 @@ xid
 xid
 tQj
 iLq
-apO
-apO
-apO
-apO
+tQj
+xid
+xid
+tQj
 apO
 apO
 apO
@@ -171149,10 +171155,10 @@ xid
 tQj
 tQj
 iLq
-apO
-apO
-apO
-apO
+tQj
+xid
+xid
+xid
 apO
 apO
 apO
@@ -171461,13 +171467,13 @@ iLq
 iLq
 iLq
 iLq
+iLq
 apO
+xid
+xid
 apO
-apO
-apO
-apO
-apO
-apO
+iLq
+iLq
 apO
 apO
 apO
@@ -171775,11 +171781,11 @@ apO
 apO
 apO
 apO
+xid
+xid
 apO
 apO
-apO
-apO
-apO
+iLq
 apO
 apO
 apO
@@ -172087,11 +172093,11 @@ apO
 apO
 apO
 apO
+xid
+xid
 apO
 apO
-apO
-apO
-apO
+iLq
 apO
 apO
 apO
@@ -172399,11 +172405,11 @@ apO
 apO
 apO
 apO
+xid
+xid
 apO
 apO
-apO
-apO
-apO
+iLq
 apO
 apO
 apO
@@ -172715,7 +172721,7 @@ apO
 apO
 apO
 apO
-apO
+iLq
 apO
 apO
 apO
@@ -173027,7 +173033,7 @@ apO
 apO
 apO
 apO
-apO
+iLq
 apO
 apO
 apO
@@ -173339,7 +173345,7 @@ apO
 apO
 apO
 apO
-apO
+iLq
 apO
 apO
 apO
@@ -173651,7 +173657,7 @@ apO
 apO
 apO
 apO
-apO
+iLq
 apO
 apO
 apO
@@ -173956,14 +173962,14 @@ iLq
 iLq
 apO
 apO
+iLq
+iLq
 apO
 apO
 apO
 apO
 apO
-apO
-apO
-apO
+iLq
 apO
 apO
 apO
@@ -174269,9 +174275,9 @@ eBo
 eBo
 apO
 apO
-apO
-apO
-apO
+eBo
+eBo
+eBo
 apO
 apO
 apO
@@ -174581,11 +174587,11 @@ amV
 amV
 amV
 amV
-apO
-apO
-apO
-apO
-apO
+amV
+amV
+amV
+amV
+amV
 apO
 apO
 apO
@@ -174894,10 +174900,10 @@ amV
 amV
 amV
 amV
-eBY
-apO
-apO
-apO
+amV
+amV
+amV
+amV
 apO
 apO
 apO
@@ -175205,9 +175211,9 @@ eBo
 eBo
 eBo
 eBo
-bck
-eBY
-eBY
+eBo
+eBo
+eBo
 eBY
 eBY
 apO
@@ -175510,16 +175516,16 @@ iLq
 iLq
 iLq
 iLq
-bck
-bck
-bck
-bck
-bck
-bck
-bck
-bck
-bck
-bck
+iLq
+iLq
+iLq
+iLq
+iLq
+iLq
+iLq
+iLq
+iLq
+iLq
 bck
 eBY
 eBY
@@ -285673,9 +285679,9 @@ lTL
 lTL
 lTL
 lTL
-lTL
-lTL
-lTL
+kVm
+kVm
+kVm
 lTL
 lTL
 lTL
@@ -285984,11 +285990,11 @@ lTL
 lTL
 lTL
 lTL
-lTL
-lTL
-lTL
-lTL
-lTL
+kVm
+kVm
+und
+kVm
+kVm
 lTL
 lTL
 lTL
@@ -286295,12 +286301,12 @@ lTL
 lTL
 lTL
 lTL
-lTL
-lTL
-lTL
-lTL
-lTL
-lTL
+kVm
+und
+und
+und
+kVm
+kVm
 lTL
 lTL
 lTL
@@ -286608,10 +286614,10 @@ lTL
 lTL
 lTL
 lTL
-lTL
-lTL
-lTL
-lTL
+kVm
+kVm
+und
+kVm
 lTL
 lTL
 lTL
@@ -286921,9 +286927,9 @@ lTL
 lTL
 lTL
 lTL
-lTL
-lTL
-lTL
+kVm
+kVm
+kVm
 lTL
 lTL
 lTL
