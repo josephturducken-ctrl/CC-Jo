@@ -3823,7 +3823,9 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/manor/desert)
 "bqJ" = (
-/mob/living/carbon/human/species/goblin/npc/bomber,
+/mob/living/carbon/human/species/goblin/npc/bomber{
+	ambush_faction = "goblins"
+	},
 /turf/open/floor/rogue/twig,
 /area/rogue/under/underdarker/undermire)
 "bqK" = (
@@ -4800,6 +4802,10 @@
 /obj/effect/spawner/roguemap/hauntpile,
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/under/cave/dungeon1)
+"bIo" = (
+/obj/effect/landmark/quest_spawner/hard,
+/turf/open/floor/rogue/twig,
+/area/rogue/under/underdarker/undermire)
 "bIF" = (
 /obj/structure/mineral_door/bars{
 	locked = 1;
@@ -11431,6 +11437,10 @@
 "dWd" = (
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue/indoors/town/physician/desert)
+"dWe" = (
+/obj/effect/landmark/quest_spawner/hard,
+/turf/open/floor/rogue/sandbrick,
+/area/rogue/under/underdarker/undermire)
 "dWl" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -12257,7 +12267,8 @@
 /area/rogue/outdoors/town/roofs/desert)
 "eli" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider{
-	faction = list("spiders","goblins")
+	faction = list("spiders","goblins");
+	ambush_faction = "goblins"
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/under/underdarker/undermire)
@@ -15914,7 +15925,8 @@
 /area/rogue/indoors/town/tavern/desert)
 "fEB" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider{
-	faction = list("spiders","goblins")
+	faction = list("spiders","goblins");
+	ambush_faction = "goblins"
 	},
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/under/underdarker/undermire)
@@ -16807,7 +16819,9 @@
 /turf/open/floor/rogue/citybrick,
 /area/rogue/under/cave/dungeon1)
 "fWH" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf{
+	ambush_faction = "goblins"
+	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
 	},
@@ -19840,7 +19854,8 @@
 "heF" = (
 /obj/item/rogueweapon/pick/steel,
 /mob/living/carbon/human/species/goblin/npc/ambush/cave{
-	faction = list("neutral","trolls")
+	faction = list("neutral","trolls");
+	ambush_faction = "trolls"
 	},
 /turf/open/floor/rogue/naturalstone/sandstone,
 /area/rogue/under/underdarker/undermire)
@@ -21584,7 +21599,9 @@
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/outdoors/desertdeep)
 "hNz" = (
-/mob/living/carbon/human/species/hobgoblin/npc,
+/mob/living/carbon/human/species/hobgoblin/npc{
+	ambush_faction = "goblins"
+	},
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/under/cave/rhgoblinencampment)
 "hNA" = (
@@ -40722,7 +40739,9 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/under/underdarker/undercity)
 "oQE" = (
-/mob/living/carbon/human/species/hobgoblin/npc,
+/mob/living/carbon/human/species/hobgoblin/npc{
+	ambush_faction = "goblins"
+	},
 /turf/open/floor/carpet/red,
 /area/rogue/under/cave/rhgoblinencampment)
 "oQH" = (
@@ -41144,6 +41163,13 @@
 	},
 /turf/open/floor/rogue/citybrick/citybrick3,
 /area/rogue/outdoors/town/desert)
+"oXH" = (
+/obj/structure/table/wood/poor,
+/obj/effect/spawner/lootdrop/armored_boots_spawner,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/under/underdarker/undercity)
 "oXT" = (
 /turf/closed/wall/mineral/rogue/sandstone{
 	color = "#919191"
@@ -45830,7 +45856,8 @@
 /area/rogue/indoors/town/bath/desert)
 "qJh" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider{
-	faction = list("spiders","goblins")
+	faction = list("spiders","goblins");
+	ambush_faction = "goblins"
 	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -57764,6 +57791,13 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/outdoors/town/roofs/desert)
+"uTd" = (
+/obj/structure/table/wood/poor,
+/obj/effect/spawner/lootdrop/helmet_spawner,
+/turf/open/floor/rogue/tile/brownbrick{
+	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
+	},
+/area/rogue/under/underdarker/undercity)
 "uTf" = (
 /obj/machinery/light/rogue/candle/r,
 /turf/open/floor/rogue/tile/brownbrick{
@@ -65200,6 +65234,10 @@
 "xAU" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/church/basement)
+"xAX" = (
+/obj/effect/landmark/quest_spawner/easy,
+/turf/open/floor/rogue/sandbrick,
+/area/rogue/under/underdarker/undermire)
 "xBf" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -66193,7 +66231,8 @@
 /area/rogue/indoors/town/bath/desert)
 "xTh" = (
 /mob/living/carbon/human/species/goblin/cave{
-	faction = list("neutral","wolfs")
+	faction = list("neutral","wolfs");
+	ambush_faction = "goblins"
 	},
 /turf/open/floor/rogue/tile/brownbrick{
 	icon = 'modular_deserttown/icons/alt/roguefloor.dmi'
@@ -66220,7 +66259,8 @@
 /area/rogue/outdoors/town/grove)
 "xTu" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/axe{
-	faction = list("trolls","goblins")
+	faction = list("trolls","goblins");
+	ambush_faction = "goblins"
 	},
 /turf/open/floor/rogue/tile/harem1,
 /area/rogue/under/cave/rhgoblinencampment)
@@ -159428,8 +159468,8 @@ vUu
 vUu
 vUu
 wel
-wsz
-wsz
+oXH
+uTd
 wsz
 wsz
 wsz
@@ -159744,7 +159784,7 @@ wsz
 wsz
 wsz
 spY
-wsz
+lJf
 wel
 vgi
 exU
@@ -160052,11 +160092,11 @@ vUu
 vUu
 vUu
 wel
-wsz
+lJf
 spY
 vYi
 wsz
-wsz
+bxH
 wel
 vgi
 exU
@@ -160364,7 +160404,7 @@ vUu
 vUu
 vUu
 wel
-wsz
+bxH
 wsz
 wsz
 spY
@@ -160676,7 +160716,7 @@ vUu
 vUu
 vUu
 wel
-wsz
+lJf
 wsz
 wsz
 wsz
@@ -161300,7 +161340,7 @@ vUu
 vUu
 vUu
 wel
-wsz
+vdV
 wsz
 wsz
 wsz
@@ -161358,7 +161398,7 @@ dIh
 dIh
 dIh
 dIh
-mGu
+fIN
 mKI
 dIh
 fIN
@@ -161669,7 +161709,7 @@ fIN
 fIN
 fIN
 fIN
-dIh
+bIo
 dIh
 dIh
 dIh
@@ -167632,7 +167672,7 @@ amV
 amV
 amV
 amV
-amV
+xAX
 amV
 amV
 amV
@@ -167650,7 +167690,7 @@ iyP
 meh
 amV
 amV
-amV
+dWe
 amV
 amV
 amV
