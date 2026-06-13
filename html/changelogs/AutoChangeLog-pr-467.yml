@@ -1,0 +1,5 @@
+author: "CydiaButt13"
+delete-after: True
+changes:
+  - rscadd: "associated_skill = /datum/skill/combat/staves to all shovels"
+  - rscadd: "associated_skill = /datum/skill/combat/maces to the wooden spade"
