@@ -58,7 +58,7 @@
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Staff + Reg. Chokuto")
-				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 3, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 2, TRUE)
 				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/iron/shrine_priest
 				beltl = /obj/item/rogueweapon/scabbard/sword/kazengun/chokuto
 				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog/chokuto
