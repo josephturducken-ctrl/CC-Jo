@@ -804,7 +804,7 @@
 		msg += "[m1] soaked."
 
 	//Status effects
-	var/list/status_examines = status_effect_examines()
+	var/list/status_examines = status_effect_examines( , user) //Caustic Edit - Sending the viewer over to the status examines!
 	if(length(status_examines))
 		msg += status_examines
 
@@ -1118,7 +1118,7 @@
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
-/mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
+/mob/living/proc/status_effect_examines(pronoun_replacement, mob/user) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
 	if(!pronoun_replacement)
 		pronoun_replacement = p_they(TRUE)
@@ -1128,6 +1128,13 @@
 			var/new_text = replacetext(E.examine_text, "SUBJECTPRONOUN", pronoun_replacement)
 			new_text = replacetext(new_text, "[pronoun_replacement] is", "[pronoun_replacement] [p_are()]") //To make sure something become "They are" or "She is", not "They are" and "She are"
 			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
+		//Caustic Edit - Adding in the Job-specific examine texts for status effects!
+		if(E.job_specific_examine && E.specific_jobs && islist(E.specific_jobs))
+			if(user.job in E.specific_jobs)
+				var/new_text = replacetext(E.job_specific_examine, "SUBJECTPRONOUN", pronoun_replacement)
+				new_text = replacetext(new_text, "[pronoun_replacement] is", "[pronoun_replacement] [p_are()]") //To make sure something become "They are" or "She is", not "They are" and "She are"
+				dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
+		//Caustic Edit End
 	if(dat.len)
 		return dat.Join()
 

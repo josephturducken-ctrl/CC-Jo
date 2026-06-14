@@ -555,6 +555,8 @@
 	desc = "I feel... unlucky."
 	icon_state = "debuff"
 
+
+
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
 	var/turf/T = get_turf(src)
 	if(istype(O, /obj/structure/closet/crate/coffin))

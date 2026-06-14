@@ -27,6 +27,15 @@
 	/// If defined, this text will appear when the mob is examined - to use he, she etc.
 	/// use "SUBJECTPRONOUN" and replace it in the examines themselves
 	var/examine_text
+	//Caustic Edit - Lets add a list to limit the examine text by Job, so Jobs can be defined to see the description, and not others.
+
+	//This text will appear to specific jobs as defined in the var below!
+	//Otherwise handled the same as above.
+	var/job_specific_examine
+	//Add a list of Job names to this variable and it will limit who can see the job-specific text by these jobs
+	var/specific_jobs
+	
+	//Caustic Edit End
 	/// The typepath to the alert thrown by the status effect when created.
 	/// Status effect "name"s and "description"s are shown to the owner here.
 	var/alert_type = /atom/movable/screen/alert/status_effect
