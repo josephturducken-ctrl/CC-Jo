@@ -883,6 +883,8 @@
 				var/datum/status_effect/buff/campfire_stamina/campfire_effect = human.apply_status_effect(/datum/status_effect/buff/campfire_stamina, valid_bed)
 				if(greater_fire || ready_for_buff) //Grant stamina if we're a greater fire, or they are resting or are a towner.
 					campfire_effect.should_stamina = TRUE
+				else
+					campfire_effect.should_stamina = FALSE //Similarly, turn that bit off if they get up again, since none of the other checks should change.
 			//CC Edit End
 
 
