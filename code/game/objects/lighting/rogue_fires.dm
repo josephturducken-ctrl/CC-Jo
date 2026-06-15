@@ -3,6 +3,8 @@
 #define VOLUME_PER_STEW_COOK_AFTER 1 // Volume to deduct after the sleep is over
 #define DEEP_FRY_TIME 5 SECONDS // Default deep fry time
 #define OIL_CONSUMED 5 // Amount of oil consumed per deep fry (1 fat = 4 fry)
+#define BOILING_TIME 5 SECONDS // Default boiling time
+#define WATER_CONSUMED 5
 
 /obj/machinery/light/rogue/firebowl
 	name = "brazier"
@@ -556,6 +558,7 @@
 					playsound(src.loc, 'sound/misc/frying.ogg', 80, FALSE, extrarange = 5)
 					return
 // Stew + Deep Frying code - refactored!!
+// Now with 100% more boiling!
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
 			var/obj/item/reagent_containers/glass/bucket/pot = attachment
 			if(istype(W, /obj/item/reagent_containers/food/snacks))
@@ -573,7 +576,7 @@
 					if(!pot.reagents.has_reagent(/datum/reagent/consumable/oil/tallow, OIL_CONSUMED))
 						to_chat(user, span_notice("Not enough tallow."))
 						return
-					if(pot.reagents.has_reagent(/datum/reagent/water))
+					if(pot.reagents.has_reagent(/datum/reagent/water) && S.deep_fried_type && !S.boiled_type)
 						to_chat(user, span_warning("You can't deep fry in a pot with water!"))
 						return
 					if(do_after(user, DEEP_FRY_TIME / cooktime_divisor, target = src))
@@ -969,3 +972,5 @@
 
 #undef DEEP_FRY_TIME
 #undef OIL_CONSUMED
+#undef BOILING_TIME
+#undef WATER_CONSUMED

@@ -36,22 +36,6 @@
 /obj/item/reagent_containers/food/snacks/rogue/meat_rotten/can_craft_with()
 	return TRUE
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/attackby(obj/item/I, mob/living/user)
-	update_cooktime(user)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/kitchen/rollingpin))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src] into a nitzel."))
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/nitzel(loc)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
-	else 
-		return ..()
-
 /* ............. Generic Steak ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	ingredient_size = 2
@@ -128,22 +112,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_POOR
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/spider/attackby(obj/item/I, mob/living/user)
-	update_cooktime(user)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/kitchen/rollingpin))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src] into a schnitzel."))
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/schnitzel(loc)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
-	else 
-		return ..()
-
 /* ............. Whole Bird ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/poultry
 	name = "plucked bird"
@@ -175,22 +143,6 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_POOR
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet/attackby(obj/item/I, mob/living/user)
-	update_cooktime(user)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/kitchen/rollingpin))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src]."))
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/chickentender(loc)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
-	else
-		return ..()
-
 /* ............. Crab Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/crab
 	name = "crab meat"
@@ -206,22 +158,6 @@
 	diet_types = list("Meats")
 	diet_change_amount = FOOD_DIETARY_VALUE_POOR
 	//CC Edit End
-
-/obj/item/reagent_containers/food/snacks/rogue/meat/crab/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, "<span class='notice'>Covering the crab with butterdough...</span>")
-			if(do_after(user,short_cooktime, target = src))
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put it on a table!"))
-		return TRUE
-	. = ..()
 
 /* ............. Cabbit Meat ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/rabbit
@@ -322,51 +258,16 @@
 	..()
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/mince))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Stuffing a wiener..."))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/fat))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Stuffing a wiener..."))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/meat/sausage(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
-		if(isturf(loc)&& (found_table))
-			to_chat(user, span_notice("Preparing a tartar..."))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/tartar(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to work on it."))
-	else
-		return ..()
-
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef
 	name = "minced meat"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
 	name = "minced fish"
 	icon_state = "fishmince"
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/mince/spider
+	name = "minced spidermeat"
+	icon_state = "spidermince"
 
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/rabbit
 	name = "minced cabbit"
@@ -389,21 +290,22 @@
 	diet_change_amount = FOOD_DIETARY_VALUE_BAD
 	//CC Edit End
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage/attackby(obj/item/I, mob/living/user)
-	update_cooktime(user)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/kitchen/rollingpin))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'modular/Neu_Food/sound/rollingpin.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Tenderizing [src]."))
-			if(do_after(user,long_cooktime, target = src))
-				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/wienernitzel(loc)
-				qdel(src)
-		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
-	else
-		return ..()
+/* ............. Underdark Cuisine ................*/
+/obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball //If you will add another meatball, consider refactoring this into a more general meatball object with variables for the type of meat, the name, and the icon.
+	name = "raw spidermeatball"
+	desc = "A meatball made from minced spidermeat. It's a bit chewy, but not bad if you can get past the idea of eating spiders."
+	icon_state = "raw_spidermeatball"
+	ingredient_size = 1
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball/cooked
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/meatball/cooked
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise
+	name = "raw spider surprise"
+	desc = "A meatball made from minced spidermeat and flour. It looks like a normal meatball, but you can see the occasional leg or eyeball poking out of the sides."
+	icon_state = "raw_spider_surprise"
+	ingredient_size = 1
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise/cooked
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meat/spider/surprise/cooked
 
 /* ............. fish chop ................*/
 /obj/item/reagent_containers/food/snacks/rogue/meat/fish
