@@ -24,7 +24,7 @@
 		<b>Touch</b>: Direct a sliver of divine thaumaturgy into your being, causing your voice to become LOUD when you next speak. Known to sometimes scare the rats inside the SCOMlines. Can be used on light sources at range, and it will cause them flicker. You may also use this to speak to others of the same patron, or to all if you're from the church. Aim for your MOUTH to speak to others, aim for your NECK to change who you direct your voice towards, and aim for your EARS to silence, or unsilence the utterances of others.\n \
 		<b>Use</b>: Issue a prayer for illumination, causing you or another living creature to begin glowing with light for five minutes - this stacks each time you cast it, with no upper limit. Using thaumaturgy on a person will remove this blessing from them, and MMB on your praying hand will remove any light blessings from yourself."
 	catchphrase = null
-	possible_item_intents = list(/datum/intent/fill, INTENT_HELP, /datum/intent/use)
+	possible_item_intents = list(/datum/intent/fill, INTENT_HELP, /datum/intent/use, /datum/intent/bless)
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	icon_state = "pulling"
 	icon_state = "grabbing_greyscale"
@@ -34,6 +34,7 @@
 	var/thaumaturgy_devotion = 30 //CC Edit - Thaumaturgy has been buffed and tweaked, now costs 30 devotion to cast as opposed to 10. 
 	var/light_devotion = 5
 	var/water_moisten = 2
+	var/minor_blessing = 5 //Caustic Edit - A small thing for flavor, but it can also be used to remove the Necra Curse from Graverobbing, and more in the future.
 	var/speaking_to = SPEAKING_TO_ALL // CC Edit - Speak Defines for who we comm to. Defaults to all.
 	experimental_inhand = FALSE
 
@@ -90,6 +91,15 @@
 				user.devotion?.update_devotion(-fatigue_used)
 				qdel(src)
 			//CC Edit - Thaumaturgical Comms
+
+		//Caustic Edit - Adding in the Bless intent for flavor (and getting rid of Necra's Curse on Graverobbers!)
+		if(/datum/intent/bless)
+			fatigue_used = bless(target, user)
+			if (fatigue_used)
+				user.devotion?.update_devotion(-fatigue_used)
+				qdel(src)
+		//Caustic Edit End
+
 #define BLESSINGOFLIGHT_FILTER "bol_glow"
 
 /atom/movable/screen/alert/status_effect/light_buff
@@ -169,6 +179,41 @@
 	return light_devotion
 
 #undef BLESSINGOFLIGHT_FILTER
+
+//Caustic Edit - Add in the Bless option for Orison!
+/obj/item/melee/touch_attack/orison/proc/bless(atom/thing, mob/living/carbon/human/user)
+	var/holy_skill = user.get_skill_level(attached_spell.associated_skill)
+	var/cast_time = 35 - (holy_skill * 3)
+
+	if(!thing.Adjacent(user))
+		to_chat(user, span_info("I need to be next to [thing] to bless it!"))
+		return
+	
+	if(thing == user)
+		to_chat(user, span_info("I already can feel the gaze of [user.patron.name] on me. I don't need a minor blessing."))
+		return
+
+	if(!isliving(thing))
+		user.visible_message(span_notice("[user] makes a faithful gesture towards [thing], preparing a minor blessing..."), span_notice("[user.patron.name], please grant this a minor blessing..."))
+	else
+		user.visible_message(span_notice("[user] makes a faithful gesture towards [thing], preparing a minor blessing..."), span_notice("[user.patron.name], please grant them a minor blessing..."))
+
+	if(!do_after(user, cast_time, target = thing))
+		return
+	
+	if(!isliving(thing))
+		user.visible_message(span_notice("[user] finishes their prayer, bestowing a minor blessing on [thing]."), span_notice("I can feel the blessing of [user.patron.name]... [thing] is slightly sanctified."))
+	else
+		user.visible_message(span_notice("[user] finishes their prayer, bestowing a minor blessing on [thing]."), span_notice("I can feel the minor blessing taking hold on [thing], thank you [user.patron.name]."))
+		var/mob/living/target = thing
+		if(target && !user.has_status_effect(/datum/status_effect/debuff/cursed))
+			var/datum/status_effect/debuff/cursed/curse = target.has_status_effect(/datum/status_effect/debuff/cursed)
+			if(curse)
+				qdel(curse)
+				to_chat(user, span_notice("I can feel Necra's curse leaving this one..."))
+	
+	return minor_blessing
+//Caustic Edit End
 
 /atom/movable/screen/alert/status_effect/thaumaturgy
 	name = "Thaumaturgical Voice"

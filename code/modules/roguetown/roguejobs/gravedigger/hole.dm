@@ -531,7 +531,11 @@
 				if(isliving(user))
 					var/mob/living/L = user
 					if(!HAS_TRAIT(L, TRAIT_GRAVEROBBER))
-						L.apply_status_effect(/datum/status_effect/debuff/cursed)
+						var/datum/status_effect/debuff/cursed/curse = L.has_status_effect(/datum/status_effect/debuff/cursed)
+						if(!curse)
+							L.apply_status_effect(/datum/status_effect/debuff/cursed)
+						else
+							curse.increase_strength()
 			
 			stage = 3
 			climb_offset = 0
@@ -544,18 +548,69 @@
 		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
 		return
 
+//Caustic Edit - Redoing this to make it actually a penalty to dig up graves...
 /datum/status_effect/debuff/cursed
 	id = "cursed"
+	job_specific_examine = "Necra's curse looms over this one... They did something to seriously anger her."
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/cursed
 	effectedstats = list(STATKEY_LCK = -3)
-	duration = 10 MINUTES
+	duration = -1
+	var/strength = 1 //This will vary, increasing in strength for each grave defiled. The debuffs will get worse and more debilitating until removed!
+
+/datum/status_effect/debuff/cursed/on_creation(mob/living/new_owner, ...)
+	specific_jobs = GLOB.church_positions.Copy()
+
+	. = ..()
+
+/datum/status_effect/debuff/cursed/proc/increase_strength()
+	if(strength == 4)
+		return
+	
+	if(strength < 4)
+		strength += 1
+
+	switch(strength)
+		if(2)
+			to_chat(owner, "I feel Necra's gaze on me once more, and it's growing with intensity! She is angry with my actions.")
+			on_remove()
+			effectedstats = list(STATKEY_LCK = -4, STATKEY_CON = -1)
+			on_apply()
+		if(3)
+			to_chat(owner, "Again Necra's gaze turns to me, and she is very angry! I feel the curse strengthing further...")
+			on_remove()
+			effectedstats = list(STATKEY_LCK = -5, STATKEY_CON = -1, STATKEY_SPD = -1)
+			on_apply()
+		if(4)
+			to_chat(owner, "Necra is furious with me! I feel feeble and frail, but it doesn't feel like it will get any worse then this.")
+			on_remove()
+			effectedstats = list(STATKEY_LCK = -5, STATKEY_CON = -2, STATKEY_SPD = -1, STATKEY_STR = -1)
+			on_apply()
+			ADD_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_CURSE)
+
+/datum/status_effect/debuff/cursed/on_remove()
+	if(strength == 4 && HAS_TRAIT_FROM(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_CURSE))
+		REMOVE_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_CURSE)
+
+	. = ..()
 
 /atom/movable/screen/alert/status_effect/debuff/cursed
 	name = "Cursed"
-	desc = "I feel... unlucky."
+	desc = "Necra is displeased. I feel unlucky... Only a blessing from someone in good standing with the gods can help appease her."
 	icon_state = "debuff"
 
-
+/atom/movable/screen/alert/status_effect/proc/update_alert()
+	var/datum/status_effect/debuff/cursed/effect = attached_effect
+	if(!effect) //Just in case...
+		return
+	
+	switch(effect.strength)
+		if(2)
+			desc = "Necra is angry with me. I feel unlucky, and slightly frail. Only a blessing from someone in good standing with the gods can help appease her."
+		if(3)
+			desc = "Necra is very angry with me! I feel unlucky, slightly frail, and slow. Only a blessing from someone in good standing with the gods can help appease her."
+		if(4)
+			desc = "Necra is furious with me! I feel unlucky, frail, slow, and weak. A single lucky hit could really do some damage to me... Only a blessing from someone in good standing with the gods can help appease her."
+//Caustic Edit End
 
 /obj/structure/closet/dirthole/MouseDrop_T(atom/movable/O, mob/living/user)
 	var/turf/T = get_turf(src)
