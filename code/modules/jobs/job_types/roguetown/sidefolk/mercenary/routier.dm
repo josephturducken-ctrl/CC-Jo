@@ -7,7 +7,7 @@
 	subclass_languages = list(/datum/language/otavan)
 	class_select_category = CLASS_CAT_OTAVA
 	category_tags = list(CTAG_MERCENARY)
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_NOBLE)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_NOBLE, TRAIT_MANORHOLDERSMALL)
 	noble_income = 15
 	cmode_music = 'sound/music/combat_routier.ogg'
 	subclass_stats = list(

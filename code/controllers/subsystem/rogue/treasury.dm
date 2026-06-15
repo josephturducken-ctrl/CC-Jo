@@ -29,6 +29,7 @@ SUBSYSTEM_DEF(treasury)
 		TAX_CATEGORY_IMPORT_TARIFF = 0.15,
 		TAX_CATEGORY_EXPORT_DUTY = 0.15,
 		TAX_CATEGORY_FINE = 1.0,
+		TAX_CATEGORY_ESTATE_LEVY = 0.15, //СС + TA EDIT
 	)
 	var/trade_spread = 0.10
 	var/mint_multiplier = 0.8
@@ -414,6 +415,9 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	if(HAS_TRAIT(recipient, TRAIT_OUTLAW))
 		return FALSE
+	var/datum/manor/manor = recipient.mind?.get_owned_manor() //CC + TA EDIT
+	if(manor) //CC + TA EDIT
+		return FALSE //CC + TA EDIT
 	var/datum/fund/account = get_account(recipient)
 	if(!account)
 		create_bank_account(recipient)
@@ -691,6 +695,8 @@ SUBSYSTEM_DEF(treasury)
 			return "Export Duty"
 		if(TAX_CATEGORY_FINE)
 			return "Fine"
+		if(TAX_CATEGORY_ESTATE_LEVY) //CC + TA EDIT
+			return "Estate Peasants Levy" //CC + TA EDIT
 	return capitalize(category)
 
 /datum/controller/subsystem/treasury/proc/withdraw_money_treasury(amt, target)

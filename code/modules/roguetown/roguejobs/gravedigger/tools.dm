@@ -1,10 +1,12 @@
 /obj/item/rogueweapon/shovel
-	force = 21
+	force = 11
+	force_wielded = 21
 	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel)
 	gripped_intents = list(/datum/intent/shovelscoop, /datum/intent/mace/strike/shovel, /datum/intent/axe/chop/stone)
 	name = "shovel"
 	desc = "Essential for digging (graves) in this darkened earth."
 	icon_state = "shovel"
+	associated_skill = /datum/skill/combat/staves
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
@@ -234,6 +236,7 @@
 	name = "spade"
 	desc = "Indispensable for tending the soil."
 	icon_state = "spade"
+	associated_skill = /datum/skill/combat/maces
 	sharpness = IS_BLUNT
 	//dropshrink = 0.8
 	gripped_intents = null
@@ -246,26 +249,32 @@
 
 /obj/item/rogueweapon/shovel/aalloy
 	force = 8
+	force_wielded = 18
 	name = "decrepit shovel"
 	desc = "A tool of wrought bronze, for burying the lyfeless. His worshippers would say that death is necessary; that the bod will nourish this world, so that more lyfe may sprout. But to those who know the truth - Her truth, it is nothing more than a mockery."
 	icon_state = "ashovel"
+	associated_skill = /datum/skill/combat/staves
 	smeltresult = /obj/item/ingot/aaslag
 	color = "#bb9696"
 	sellprice = 15
 
 /obj/item/rogueweapon/shovel/bronze
-	force = 23
+	force = 12
+	force_wielded = 22
 	name = "bronze shovel"
 	desc = "Dig the mound, so that water may flow into a thirsting crop. Puncture the earth, so that its depths may be catered to your whim. Leaven the soil, so that the buried may know peace from this world's evils."
 	icon_state = "bronzeshovel"
+	associated_skill = /datum/skill/combat/staves
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = 300
 
 /obj/item/rogueweapon/shovel/silver
-	force = 25
+	force = 13
+	force_wielded = 23
 	name = "silver shovel"
 	desc = "The only trait that distinguishes a man from a beast is their empathy. To mutilate the dead, regardless of what they've done in lyfe, is to invoke divine wrath. See them buried beneath crossed soil; ferry their spirit to the world beyond Psydonia, and towards their final judgement."
 	icon_state = "silvershovel"
+	associated_skill = /datum/skill/combat/staves
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver

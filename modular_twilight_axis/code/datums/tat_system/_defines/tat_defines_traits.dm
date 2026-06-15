@@ -89,6 +89,8 @@
 #define TAT_TRAIT_SKILLED_PHYSICKER "tat_skilled_physicker"
 #define TAT_TRAIT_SKILLED_ALCHEMIST "tat_skilled_alchemist"
 
+#define TAT_TRAIT_DEBUG "debug_test"
+
 #define TAT_TRAIT_SKILL_CAP_BONUS_RULES list( \
 	TRAIT_SMITHING_EXPERT = list(/datum/skill/craft/blacksmithing = 6, /datum/skill/craft/smelting = 6, /datum/skill/craft/engineering = 6, /datum/skill/labor/mining = 6, /datum/skill/craft/masonry = 6, /datum/skill/craft/ceramics = 6), \
 	TAT_TRAIT_SKILLED_FORGEHAND = list(/datum/skill/craft/blacksmithing = 5, /datum/skill/craft/smelting = 5, /datum/skill/craft/engineering = 5), \
@@ -172,7 +174,14 @@ GLOBAL_LIST_INIT(tat_trait_skill_cap_bonus_rules, TAT_TRAIT_SKILL_CAP_BONUS_RULE
 	TRAIT_SHIRTLESS, \
 	TRAIT_NODEF, \
 	TRAIT_REVERSE_GUIDANCE, \
-	TRAIT_LESSER_REVERSE_GUIDANCE \
+	TRAIT_LESSER_REVERSE_GUIDANCE, \
+	TRAIT_SIMPLESPEECH, \
+	TRAIT_MANGLED_JAW, \
+	TRAIT_MISSING_NOSE, \
+	TRAIT_SILVER_WEAK, \
+	TRAIT_UNSEEMLY, \
+	TRAIT_DNR, \
+	TRAIT_DUSTABLE \
 )
 
 #define TAT_CATEGORY_SKILL_DISCOUNT "skill_discount"
@@ -206,6 +215,8 @@ GLOBAL_LIST_INIT(tat_trait_skill_cap_bonus_rules, TAT_TRAIT_SKILL_CAP_BONUS_RULE
 	
 // TAT_TRAIT_CONTRACTOR = TAT_TRAIT_ENTRY("Contractor", 80, TAT_CATEGORY_CLASS_MODULE, TAT_CATEGORY_CLASS_MODULE_NAME, "Awakens the contract-bearing curse in your veins. The whole world is waiting your gifts and deals."),
 //TAT_TRAIT_FREEPTS = TAT_TRAIT_ENTRY("Free points", -200, TAT_CATEGORY_COMBAT_MASTERY, TAT_CATEGORY_ENHANCEMENT_NAME, "You are an admin, congrats! Have some free points. Hope you will use it wisely."), 
+//TRAIT_MANORHOLDERSMALL = TAT_TRAIT_ENTRY("Petty Estate Holder", 10, TAT_CATEGORY_ENHANCEMENT, TAT_CATEGORY_ENHANCEMENT_NAME, "My holdings are barely worth mentioning within the duchy."), 
+//TRAIT_MANORHOLDERMEDIUM = TAT_TRAIT_ENTRY("Minor Estate Holder", 20, TAT_CATEGORY_ENHANCEMENT, TAT_CATEGORY_ENHANCEMENT_NAME, "I hold a somewhat important land within the duchy."), 
 #define TAT_AVAILABLE_TRAITS_LIST \
 	TAT_TRAIT_SPELLBLADE = TAT_TRAIT_ENTRY("Spellblade", 10, TAT_CATEGORY_CLASS_MODULE, TAT_CATEGORY_CLASS_MODULE_NAME, "Grants a set of weapon-binding spells."), \
 	TAT_TRAIT_RESIDENT = TAT_TRAIT_ENTRY("Resident", 0, TAT_CATEGORY_MAJOR_FLAW, TAT_CATEGORY_MAJOR_FLAW_NAME, "Grants a Meister account and ownership of a house in the city."), \
@@ -345,16 +356,29 @@ GLOBAL_LIST_INIT(tat_trait_skill_cap_bonus_rules, TAT_TRAIT_SKILL_CAP_BONUS_RULE
 	TRAIT_NODEF = TAT_TRAIT_ENTRY("No Defense", -20, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "You expose yourself completely in battle."), \
 	TRAIT_REVERSE_GUIDANCE = TAT_TRAIT_ENTRY("Reverse Guidance", -10, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Something hinders you in battle. Anti-guidance: 20%."), \
 	TRAIT_LESSER_REVERSE_GUIDANCE = TAT_TRAIT_ENTRY("Lesser Reverse Guidance", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Something faintly hinders you in battle. Anti-guidance: 10%."), \
+	TRAIT_SHIRTLESS = TAT_TRAIT_ENTRY("Shirtless", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "You refuse to wear shirts, armor, or anything on the top of your head."), \
+	TRAIT_SIMPLESPEECH = TAT_TRAIT_ENTRY("Simple Speech", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "You struggle to understand the more complex words."), \
+	TRAIT_MANGLED_JAW = TAT_TRAIT_ENTRY("Mangled Jaw", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "It is painful for you to eat and drink. You may need to be fed by others."), \
+	TRAIT_MISSING_NOSE = TAT_TRAIT_ENTRY("Damaged Nose", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Your nose is damaged or destroyed, making it more difficult to catch your breath."), \
+	TRAIT_SILVER_WEAK = TAT_TRAIT_ENTRY("Silver Weakness", -10, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Whether by curse or unholy nature, silver burns your skin."), \
+	TRAIT_UNSEEMLY = TAT_TRAIT_ENTRY("Ugly", -5, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "You are ugly, making it quite unpleasant to look at you."), \
+	TRAIT_DNR = TAT_TRAIT_ENTRY("Weakened Lux", -10, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Your lux is drained, and Necra grasps at your soul. Should you die nothing can raise you again."), \
+	TRAIT_DUSTABLE = TAT_TRAIT_ENTRY("Dusting", -15, TAT_CATEGORY_ODDITY, TAT_CATEGORY_ODDITY_NAME, "Your body's grasp on this realm is weak. Should you die, your form will dissolve into inert dust."), \
+	TRAIT_NOFALLDAMAGE1 = TAT_TRAIT_ENTRY("Fall Damage Reduction", 20, TAT_CATEGORY_ENHANCEMENT, TAT_CATEGORY_ENHANCEMENT_NAME, "You can handle short falls without harm."), \
+	TAT_TRAIT_DEBUG = TAT_TRAIT_ENTRY("Debug Test Trait", -2000, TAT_CATEGORY_SKILL_CONVERSION, TAT_CATEGORY_SKILL_CONVERSION_NAME, "Debug Test Trait."), \
+
 
 #define TAT_TRAIT_STAT_POINT_RULES list( \
 	TAT_TRAIT_BONUS_STAT_POOL = TAT_BUILD_STAT_BONUS_EXTRA_STATS, \
 	TAT_TRAIT_WANTED = TAT_BUILD_STAT_BONUS_WANTED, \
+	TAT_TRAIT_DEBUG = 2000, \
 )
 
 #define TAT_TRAIT_ITEM_POINT_RULES list( \
 	TAT_TRAIT_WANTED = TAT_BUILD_ITEM_BONUS_WANTED, \
 	TAT_TRAIT_LOOTRAT = TAT_BUILD_ITEM_BONUS_LOOTRAT, \
 	TAT_TRAIT_LOOTRAT_2 = TAT_BUILD_ITEM_BONUS_LOOTRAT_2, \
+	TAT_TRAIT_DEBUG = 2000, \
 )
 
 #define TAT_TRAIT_ITEM_UNLOCK_RULES list( \

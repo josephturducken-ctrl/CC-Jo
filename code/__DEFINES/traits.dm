@@ -16,6 +16,9 @@
 #define TRAIT_STRONGBITE "Strong Bite"
 #define TRAIT_STRONGKICK "Strong Kick"
 #define TRAIT_NOBLE "Noble Blooded"
+#define TRAIT_MANORHOLDERBIG "Great Estate Holder"
+#define TRAIT_MANORHOLDERMEDIUM "Minor Estate Holder"
+#define TRAIT_MANORHOLDERSMALL "Petty Estate Holder"
 #define TRAIT_DEFILED_NOBLE "Drained Noble Blood"
 #define TRAIT_EMPATH "Empath"
 #define TRAIT_EXPLOSIVE_SUPPLY "Explosive Supply"
@@ -359,6 +362,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_IGNORESLOWDOWN = span_info("Nothing stops this carriage!"),
 	TRAIT_IGNOREDAMAGESLOWDOWN = span_info("Hits slow me down no longer."),
 	TRAIT_NOBLE = span_blue("I'm of noble blood."),
+	TRAIT_MANORHOLDERBIG = span_blue("I hold a land of great importance within the duchy."),
+	TRAIT_MANORHOLDERMEDIUM = span_blue("I hold a somewhat important land within the duchy."),
+	TRAIT_MANORHOLDERSMALL = span_blue("My holdings are barely worth mentioning within the duchy."),
 	TRAIT_PACIFISM = span_info("I cannot harm another living being."),
 	TRAIT_DEFILED_NOBLE = span_blue("I'm of noble blood but... Something feels off!"),
 	TRAIT_EMPATH = span_info("I can notice when people are in pain."),

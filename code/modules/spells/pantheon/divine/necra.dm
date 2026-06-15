@@ -225,7 +225,7 @@
 	var/is_departed = (is_player && !has_ghost)
 	var/is_forsaken = (!is_player)
 	if(minutes_dead < 5 && is_earthbound) // fresh + earthbound = VERY BAD
-		score -= 15
+		score -= 0 //CCedit, Every second counts for the rot curse
 	if(is_forsaken || is_departed) // forsaken or departed = good, this means it's only 2 minutes till they're valid
 		score += 3
 	if(is_skeleton) // skeletons start on neutral, unless they're players
@@ -237,9 +237,9 @@
 	var/score = get_necra_score(C)
 	if(score <= 0)
 		return NECRA_HATES
-	if(score <= 5)
+	if(score <= 1) //CCedit
 		return NECRA_DISAPPROVES
-	if(score <= 10)
+	if(score <= 5) //CCedit, Necra hates the undead so hurry up!
 		return NECRA_NEUTRAL
 
 	return NECRA_APPROVES
@@ -475,7 +475,7 @@ var/global/mob/_corpse_sort_ref = null
 			user.adjustOxyLoss(40)
 
 		if(NECRA_DISAPPROVES)
-			to_chat(user, span_purple("<i>The Undermaiden answers your pleas with clear disapproval.</i>"))
+			to_chat(user, span_purple("<i>The Undermaiden answers your pleas with exhaustion.</i>")) //CCedit
 			user.emote("whimper")
 			user.Jitter(5)
 
@@ -526,7 +526,7 @@ var/global/mob/_corpse_sort_ref = null
 		return
 	
 	if(necra_tracked_corpse?.mind && !necra_tracked_corpse.mind.has_antag_datum(/datum/antagonist/zombie) && necra_tracked_corpse.stat != DEAD)
-		to_chat(src, span_purple("<i>The Undermaiden's interest wanes, you briefly sense your bounty back from undeath, alive once more.</i>"))
+		to_chat(src, span_purple("<i>The Undermaiden's interest grows discontent, you briefly sense your bounty back from undeath, alive once more.</i>")) //CCedit
 		src.necra_tracked_corpse = null
 		STOP_PROCESSING(SSprocessing, src)
 		return
@@ -756,29 +756,29 @@ var/global/mob/_corpse_sort_ref = null
 	// NECRA DISAPPROVES
 	if(judgement == NECRA_DISAPPROVES)
 		var/true_dir = direction_name
-
+		//CCedit Start, deemed too deppresive
 		var/list/noise_words = list(
-			"are you sure?","do you have to?","really?","why?","yae?","where?",
-			"are you certain?","is this the right way?","are you lost?","did you forget something?",
-			"should you be here?","who told you that?","what are you doing?","why would you go there?",
-			"are you being watched?","can you hear me?","do you trust this?","is it safe?",
-			"are you alone?","what was that?","did you see that?","are you afraid?",
-			"should you turn back?","is that wise?","what if you're wrong?","do you feel it?",
+			"is this...?","here?","really?","why?","yae?","where?",
+			"perhaps...?","is this the right way?","are they lost?","did I forget something?",
+			"should We be here?","who told you that?","what are We doing?","why would you go there?",
+			"are We being watched?","can you hear me?","do you trust me?","is it safe to wander?",
+			"are they alone?","what was that?","did you see that?","are you afraid?",
+			"why is it hard to find them?","is that them?","what if they aren't?","do you feel it?",
 			"why are you hesitating?","what's behind you?","who's there?","are you listening?",
-			"do you remember?","have you forgotten?","why keep going?","what are you chasing?",
-			"is it worth it?","what if it's a trap?","are you sure about that?","do you doubt yourself?",
+			"do I remember?","have I forgotten?","why keep going this way?","what are We chasing?", 
+			"who is holding My hand?","what if it's a trap?","are you sure about that?","do you doubt Me?",
 			"why this path?","why not another way?","what are you missing?","can you feel her?",
-			"does she approve?","are you being judged?","what does she see?","why are you still here?",
-			"do you regret this?","should you stop?","are you going the wrong way?","what lies ahead?",
-			"what lies behind?","are you too late?","are you too early?","is it watching you?",
+			"does she approve?","are they being judged?","what does she see?","why are you still here?",
+			"do you see them?","should We stop?","are you going the wrong way?","what lies ahead?",
+			"what lies behind?","are We too late?","are We too early?","are they watching you?",
 			"do you hear the whispers?","are they getting louder?","can you ignore them?",
-			"what do they want?","what do you want?","why continue?","why persist?",
+			"what do they want?","what do you want?","who are they?","who are you?", 
 			"are you close?","are you far?","does it matter?","are you sure it's not here?",
-			"why not turn around?","what if you're mistaken?","is this your choice?",
+			"why not turn around?","what if We're mistaken?","is this your choice?",
 			"are you being guided?","or misled?","do you understand?","are you certain you do?",
-			"what are you becoming?","is this who you are?","should you keep going?"
+			"what are you dong?","is this who I am?","should I keep going?"
 		)
-
+		//CCedit end
 		var/list/cardinals_pool = list("northeast","southeast","northwest","southwest")
 		var/list/output = list()
 
@@ -791,7 +791,7 @@ var/global/mob/_corpse_sort_ref = null
 		output += true_dir
 		output = shuffle(output)
 
-		var/msg = "A ghastly whisper reaches you: <i><br>"
+		var/msg = "An exhausted whisper reaches you: <i><br>" //CCedit
 		for(var/word in output)
 			msg += "[word]… "
 		msg += "</i>"

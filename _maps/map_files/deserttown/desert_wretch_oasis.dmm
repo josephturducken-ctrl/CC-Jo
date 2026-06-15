@@ -884,6 +884,11 @@
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/carpet/red,
 /area/rogue/under/cave/inhumen)
+"fW" = (
+/obj/structure/flora/roguetree/palm,
+/obj/structure/flora/roguegrass/jungle/sparse,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "fX" = (
 /turf/closed/wall/mineral/rogue/sandbrick,
 /area/rogue/outdoors/banditcamp/desert)
@@ -1187,6 +1192,13 @@
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/inhumen)
+"hU" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/structure/flora/junglebush/c,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "hX" = (
 /obj/structure/vine,
 /obj/structure/glowshroom,
@@ -1436,6 +1448,13 @@
 /obj/machinery/light/rogue/candle/r,
 /turf/open/floor/carpet/red,
 /area/rogue/under/cave/inhumen)
+"jt" = (
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "jw" = (
 /obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/walldeco/church/line{
@@ -1468,6 +1487,10 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/vampire_manor/desert)
+"jF" = (
+/obj/structure/flora/roguegrass/jungle/sparse,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "jG" = (
 /obj/effect/wisp/prestidigitation{
 	desc = "A small, fiery ball of light made up of mystical energy.";
@@ -1527,6 +1550,16 @@
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/banditcamp/desert)
+"jW" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "jY" = (
 /obj/effect/decal/duneedge{
 	dir = 4
@@ -2441,6 +2474,16 @@
 	},
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/under/cave/inhumen)
+"px" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "py" = (
 /obj/structure/bars,
 /turf/open/floor/rogue/sandbrick,
@@ -2610,6 +2653,10 @@
 "qv" = (
 /turf/open/floor/rogue/lightpath,
 /area/rogue/indoors/banditcamp/desert)
+"qx" = (
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "qy" = (
 /obj/machinery/gear_painter,
 /turf/open/floor/rogue/dunes,
@@ -2828,6 +2875,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/cave/inhumen)
+"rI" = (
+/obj/structure/flora/roguegrass/jungle,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "rL" = (
 /obj/effect/decal/duneedge{
 	dir = 4
@@ -3256,6 +3307,14 @@
 /obj/effect/landmark/start/wretch,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/cave/inhumen)
+"tN" = (
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/effect/decal/duneedge,
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "tR" = (
 /obj/item/cushion/desert1,
 /obj/effect/landmark/start/bandit{
@@ -3332,6 +3391,13 @@
 /obj/structure/stairs/stone,
 /turf/open/floor/rogue/naturalstone/sandstone,
 /area/rogue/under/cave/inhumen)
+"uq" = (
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/roguegrass/jungle,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "ur" = (
 /obj/effect/decal/duneedge{
 	dir = 1
@@ -3360,6 +3426,11 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/vampire_manor/desert)
+"uE" = (
+/obj/structure/fluff/railing/border/west,
+/obj/structure/flora/roguegrass/jungle,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "uI" = (
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/desertdeep/wretch_lair)
@@ -3379,9 +3450,7 @@
 /turf/open/floor/rogue/tile/brownbrick,
 /area/rogue/indoors/banditcamp/desert)
 "uT" = (
-/obj/effect/decal/duneedge{
-	dir = 4
-	},
+/obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt/desert,
 /area/rogue/outdoors/desertdeep/wretch_lair)
 "uX" = (
@@ -3446,6 +3515,13 @@
 /obj/machinery/light/rogue/firebowl/standing/blue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cave/inhumen)
+"vq" = (
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/junglebush/c,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "vr" = (
 /obj/effect/decal/duneedge{
 	dir = 1
@@ -3522,6 +3598,13 @@
 /obj/machinery/light/rogue/candle/blue/r,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/vampire_manor/desert)
+"vT" = (
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/roguegrass/jungle/sparse,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "vV" = (
 /obj/machinery/light/rogue/oven/south,
 /obj/machinery/light/rogue/hearth{
@@ -4069,6 +4152,10 @@
 "zt" = (
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/indoors/banditcamp/desert)
+"zv" = (
+/obj/structure/flora/roguegrass/swampweed,
+/turf/open/floor/rogue/dirt/desert,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "zz" = (
 /obj/item/hag_catalyst/varnish_base{
 	pixel_x = -6;
@@ -4266,6 +4353,13 @@
 /obj/machinery/light/rogue/candle/l,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/vampire_manor/desert)
+"AO" = (
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/roguegrass/jungle,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "AP" = (
 /obj/structure/stairs/desert{
 	dir = 4
@@ -4470,6 +4564,10 @@
 	},
 /turf/open/floor/rogue/darkpath,
 /area/rogue/indoors/banditcamp/desert)
+"Ca" = (
+/obj/structure/flora/junglebush/c,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "Cc" = (
 /obj/structure/ritualcircle/necra,
 /turf/open/floor/rogue/sandbrick,
@@ -4599,6 +4697,14 @@
 /obj/structure/fluff/walldeco/sparrowflag,
 /turf/closed/wall/mineral/rogue/sandstone,
 /area/rogue/indoors/vampire_manor/desert/passage)
+"CZ" = (
+/obj/effect/decal/duneedge,
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "Da" = (
 /obj/structure/fluff/walldeco/rpainting/crown{
 	pixel_y = 32
@@ -4658,6 +4764,16 @@
 /obj/item/cushion/desert1,
 /turf/open/floor/rogue/tile/harem,
 /area/rogue/indoors/banditcamp/desert)
+"DA" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/roguegrass/jungle/sparse,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "DC" = (
 /obj/machinery/light/rogue/candle,
 /turf/open/floor/rogue/sandbrick,
@@ -4687,10 +4803,8 @@
 /turf/open/floor/rogue/sandbrick,
 /area/rogue/under/cave/inhumen)
 "DI" = (
-/obj/effect/decal/duneedge{
-	dir = 8
-	},
-/turf/open/floor/rogue/dirt/desert,
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
 /area/rogue/outdoors/desertdeep/wretch_lair)
 "DM" = (
 /turf/open/floor/rogue/rooftop,
@@ -4777,6 +4891,16 @@
 /obj/structure/vine,
 /turf/open/floor/rogue/shroud/hag,
 /area/rogue/indoors/shelter/bog_hag)
+"Eu" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "Ev" = (
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/desertdeep/safe)
@@ -4876,6 +5000,10 @@
 /obj/structure/bars,
 /turf/open/water/bath,
 /area/rogue/under/cave/inhumen)
+"EY" = (
+/obj/structure/flora/junglebush,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "EZ" = (
 /obj/item/hag_catalyst/varnish_base{
 	pixel_x = -13;
@@ -5164,6 +5292,16 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/sandbrick,
+/area/rogue/outdoors/desertdeep/wretch_lair)
+"GJ" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
 /area/rogue/outdoors/desertdeep/wretch_lair)
 "GN" = (
 /obj/item/cushion/desert2,
@@ -5544,6 +5682,16 @@
 /obj/machinery/light/rogue/candle/l,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/vampire_manor/desert)
+"Jc" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/junglebush/c,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "Jd" = (
 /turf/open/floor/rogue/dunes,
 /area/rogue/outdoors/banditcamp/desert)
@@ -5791,6 +5939,10 @@
 /obj/structure/fluff/railing/corner,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/vampire_manor/desert)
+"KF" = (
+/obj/structure/flora/roguegrass/pyroclasticflowers,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "KI" = (
 /obj/structure/table/finestone,
 /obj/item/clothing/neck/roguetown/psicross/eora,
@@ -5814,6 +5966,16 @@
 /obj/effect/decal/cleanable/black_rot_vomit,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/bog_hag)
+"KS" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/roguegrass/jungle,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "KT" = (
 /obj/structure/stairs/desert{
 	dir = 4
@@ -6752,6 +6914,13 @@
 /obj/item/hag_catalyst/synth_base,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog_hag)
+"QX" = (
+/obj/effect/decal/duneedge{
+	dir = 8
+	},
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "QY" = (
 /obj/structure/table/wood/poor,
 /obj/item/needle,
@@ -7591,6 +7760,13 @@
 	},
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/vampire_manor/desert)
+"Wg" = (
+/obj/effect/decal/duneedge{
+	dir = 4
+	},
+/obj/structure/flora/roguegrass/jungle/sparse,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "Wj" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
@@ -7859,6 +8035,13 @@
 "XE" = (
 /turf/open/floor/rogue/citybrick/citybrick4,
 /area/rogue/indoors/vampire_manor/desert)
+"XF" = (
+/obj/effect/decal/duneedge{
+	dir = 1
+	},
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/rogue/desert_grass,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "XG" = (
 /obj/structure/fluff/walldeco/chains{
 	pixel_x = 22;
@@ -8066,6 +8249,10 @@
 /obj/effect/decal/cleanable/debris/woody,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/cave/inhumen)
+"YG" = (
+/obj/structure/flora/roguegrass/herb/random,
+/turf/open/floor/rogue/dirt/desert,
+/area/rogue/outdoors/desertdeep/wretch_lair)
 "YH" = (
 /turf/closed/wall/mineral/rogue/sandstone,
 /area/rogue/indoors/banditcamp/hoardmaster)
@@ -34179,10 +34366,10 @@ ss
 ss
 HC
 eF
+AO
 eF
-eF
-eF
-eF
+Wg
+vq
 Fr
 ss
 ss
@@ -34306,15 +34493,15 @@ Dk
 ss
 ss
 jY
-eF
+jt
 nf
-nf
+Ca
 Dt
 NS
+EY
 nf
 nf
-nf
-eF
+Wg
 aG
 ss
 ss
@@ -34439,13 +34626,13 @@ nf
 nf
 Sg
 nf
+YG
 NS
-NS
-NS
+uT
 NS
 Dt
 nf
-nf
+DI
 aG
 ss
 ss
@@ -34563,20 +34750,20 @@ ss
 Ds
 ss
 ss
-jY
+tN
+Ca
 nf
+EY
 nf
-nf
-nf
+uT
 NS
 NS
-NS
-NS
+YG
+DI
 nf
+jF
 nf
-nf
-nf
-nf
+Ca
 Fr
 ss
 ss
@@ -34694,18 +34881,18 @@ ss
 ss
 jY
 nf
-nf
+rI
 Dt
 nf
-nf
-nf
-nf
+rI
+Ca
+DI
 nf
 Sg
 nf
 nf
-nf
-nf
+EY
+qx
 nf
 nf
 aG
@@ -34823,22 +35010,22 @@ ss
 ss
 ss
 mj
+EY
 nf
-nf
-nf
+jF
+NS
+NS
+zv
 NS
 NS
 NS
 NS
-NS
-NS
-NS
-NS
+uT
 NS
 nf
 Dt
 nf
-nf
+EY
 aG
 ss
 ss
@@ -34951,24 +35138,24 @@ ss
 ss
 ss
 jY
-eF
+vq
 nf
 Dt
+qx
+NS
+YG
+CG
+CG
+CG
+CG
+CG
+CG
+CG
+NS
+NS
+NS
 nf
-NS
-NS
-CG
-CG
-CG
-CG
-CG
-CG
-CG
-NS
-NS
-NS
-nf
-nf
+Ca
 nf
 aG
 ss
@@ -35082,7 +35269,7 @@ jY
 eF
 Sg
 nf
-nf
+rI
 nf
 NS
 NS
@@ -35100,7 +35287,7 @@ NS
 NS
 Sg
 nf
-nb
+XF
 ss
 ss
 RD
@@ -35209,12 +35396,12 @@ ss
 ss
 HC
 nf
+EY
 nf
-nf
-nf
-nf
+qx
+DI
 NS
-NS
+uT
 CG
 CG
 CG
@@ -35228,7 +35415,7 @@ CG
 CG
 CG
 NS
-nf
+rI
 nf
 nf
 aG
@@ -35337,13 +35524,13 @@ Tc
 ss
 ss
 jY
-nf
-nf
+Ca
+rI
 NS
 NS
+YG
 NS
 NS
-NS
 CG
 CG
 CG
@@ -35357,10 +35544,10 @@ CG
 CG
 CG
 CG
-NS
+zv
 NS
 Dt
-nf
+Ca
 nb
 ss
 ss
@@ -35466,10 +35653,10 @@ YE
 ge
 ss
 jY
-nf
-nf
+jF
+EY
 NS
-NS
+uT
 CG
 CG
 CG
@@ -35488,10 +35675,10 @@ CG
 CG
 CG
 CG
-NS
+YG
 nf
 nf
-nf
+EY
 aG
 ss
 ss
@@ -35620,7 +35807,7 @@ CG
 CG
 NS
 NS
-nf
+qx
 nf
 nb
 ss
@@ -35724,8 +35911,8 @@ CR
 CR
 CR
 ge
-nf
-NS
+qx
+uT
 NS
 NS
 CG
@@ -35752,8 +35939,8 @@ CG
 NS
 NS
 Dt
-nf
-aG
+rI
+Eu
 ss
 ss
 Rg
@@ -35855,17 +36042,17 @@ CR
 CR
 ge
 nf
-nf
+DI
 NS
-NS
+zv
 CG
 CG
 CG
 CG
 CG
+uT
 NS
-NS
-NS
+YG
 ge
 PS
 Th
@@ -35880,8 +36067,8 @@ CG
 CG
 CG
 CG
-NS
-nf
+uT
+Ca
 nf
 rp
 ss
@@ -35995,7 +36182,7 @@ CG
 CG
 NS
 Sg
-DI
+NS
 ge
 fE
 RS
@@ -36013,7 +36200,7 @@ hn
 JA
 GO
 GO
-KU
+GJ
 ss
 GI
 ge
@@ -36114,17 +36301,17 @@ Xg
 ge
 ge
 ge
-nf
-nf
+rI
+Ca
 NS
-NS
+uT
 CG
 CG
 CG
 CG
 NS
+Ca
 nf
-nb
 ss
 nD
 RS
@@ -36245,16 +36432,16 @@ ge
 ge
 ge
 nf
-nf
-NS
+EY
+YG
 NS
 CG
 CG
 CG
 NS
-nf
+KF
 Dt
-nf
+Ca
 uT
 ge
 RS
@@ -36376,13 +36563,13 @@ md
 ge
 nf
 nf
-nf
+KF
 NS
 NS
 CG
 CG
 CG
-NS
+uT
 NS
 NS
 NS
@@ -36401,9 +36588,9 @@ CG
 CG
 Uv
 ZM
+uE
 TO
-TO
-aG
+jW
 ss
 GI
 ge
@@ -36506,8 +36693,8 @@ YE
 ge
 BD
 nf
-Sg
-nf
+fW
+rI
 NS
 CG
 CG
@@ -36515,7 +36702,7 @@ CG
 CG
 CG
 CG
-NS
+zv
 ge
 zX
 Ud
@@ -36531,8 +36718,8 @@ CG
 CG
 CG
 NS
-nf
-nf
+jF
+DI
 nb
 ss
 ss
@@ -36635,9 +36822,9 @@ Nk
 YE
 eV
 ss
-AH
-nf
-nf
+CZ
+Ca
+DI
 NS
 NS
 CG
@@ -36660,9 +36847,9 @@ CG
 CG
 CG
 CG
-NS
-nf
-nf
+uT
+qx
+Ca
 nb
 ss
 ss
@@ -36790,10 +36977,10 @@ CG
 CG
 CG
 NS
+EY
 nf
 nf
-nf
-KU
+KS
 ss
 ss
 Tc
@@ -36899,9 +37086,9 @@ ss
 ss
 AH
 BD
-BD
+uq
+qx
 nf
-nf
 NS
 NS
 NS
@@ -36918,8 +37105,8 @@ CG
 CG
 CG
 CG
-NS
-nf
+YG
+qx
 nf
 Dt
 KU
@@ -37031,11 +37218,11 @@ ss
 ss
 ss
 mj
-nf
-nf
-nf
+EY
+rI
+Ca
 NS
-NS
+YG
 CG
 CG
 CG
@@ -37050,8 +37237,8 @@ CG
 CG
 NS
 Sg
-nf
-nb
+jF
+hU
 ss
 ss
 JG
@@ -37179,8 +37366,8 @@ CG
 CG
 NS
 NS
-nf
-nf
+DI
+rI
 KU
 ss
 RD
@@ -37293,12 +37480,12 @@ ss
 ss
 mj
 Dt
-nf
-nf
-nf
+jF
+DI
+rI
 NS
+uT
 NS
-NS
 CG
 CG
 CG
@@ -37307,7 +37494,7 @@ CG
 CG
 CG
 NS
-NS
+zv
 Dt
 nf
 eD
@@ -37422,23 +37609,23 @@ PX
 ss
 ss
 AH
+qx
+nf
+EY
 nf
 nf
 nf
-nf
-nf
-nf
 NS
 NS
 NS
 NS
 NS
+YG
 NS
 NS
-NS
-NS
-nf
-nf
+uT
+rI
+EY
 KU
 ss
 ss
@@ -37557,12 +37744,12 @@ nf
 nf
 Sg
 nf
+Ca
 nf
-nf
-nf
+jF
 Sg
 nf
-nf
+Ca
 Dt
 nf
 nf
@@ -37686,18 +37873,18 @@ ss
 AH
 BD
 nf
-nf
+jF
 nf
 Dt
+uT
+YG
 NS
-NS
-NS
+nf
+EY
 nf
 nf
-nf
-nf
-BD
-KU
+QX
+DA
 ss
 JG
 JG
@@ -37816,16 +38003,16 @@ ss
 ss
 ss
 AH
+rI
+EY
 nf
-nf
-nf
+YG
 NS
-NS
-NS
+uT
+qx
 nf
 nf
-nf
-KU
+px
 ss
 ss
 RD
@@ -37946,15 +38133,15 @@ Br
 JG
 ss
 ss
-AH
+CZ
 BD
 BD
 UY
-BD
+QX
 LW
-BD
-BD
-KU
+vT
+uq
+Jc
 ss
 JG
 gX

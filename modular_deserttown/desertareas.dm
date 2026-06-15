@@ -91,6 +91,13 @@
 	ambush_times = null
 	ambush_mobs = null
 
+/area/rogue/outdoors/desertdeep/coastal 
+	name = "Coastal Inlet"
+	first_time_text = null 
+	ambush_times = null 
+	ambush_mobs = null 
+	deathsight_message = "along a small coastal space"
+	
 //
 
 /area/rogue/outdoors/town/desert
@@ -327,13 +334,20 @@
 	keep_area = TRUE
 
 /area/rogue/indoors/town/magician/desert
-	name = "Wizard's Tower"
+	name = "University Wizard's Tower"
 	// spookysounds = SPOOKY_MYSTICAL
 	// spookynight = SPOOKY_MYSTICAL
 	// droning_sound = 'sound/music/area/magiciantower.ogg'
 	// droning_sound_dusk = null
 	// droning_sound_night = null
 	// keep_area = TRUE
+
+// Caustic Edit - To Make the Academy Part of the University properly
+/area/rogue/indoors/town/magician/desertacademy
+	name = "University Academy"
+	droning_sound = 'sound/music/area/academy.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
 
 /area/rogue/indoors/town/shop/desert
 	name = "Bazaar"
@@ -469,7 +483,7 @@
 /area/rogue/underworld/desert
 	first_time_text = "wayfarer's dream"
 
-// Undercity And Pyramid Segments - All of these use underdarker from roguetownareas.dm for now since they share the same level with it
+// Undercity, UnderMire And Pyramid Segments - All of these use underdarker from roguetownareas.dm for now since they share the same level with it
 /area/rogue/under/underdarker/undercity
 	name = "City Beneath The Sands"
 	first_time_text = "City Beneath The Sands"
@@ -479,6 +493,23 @@
 	name = "The Condemned Pyramid"	
 	first_time_text = "The Condemned Pyramid"
 	deathsight_message = "a sunken pyramid"
+
+/area/rogue/under/underdarker/undermire
+	name = "The WasteMire"
+	first_time_text = "The WasteMire"
+	deathsight_message = "a filthy swamp, far beneath the dunes"
+
+// CC - Dungeon Additions
+/area/rogue/under/cave/desertminomaze
+	name = "Labyrinth of Penance"
+	loot_budget = LOOT_BUDGET_DESERTMINOMAZE
+	droning_sound = 'sound/music/area/prospector.ogg'
+	droning_sound_dusk = null 
+	droning_sound_night = null 
+	first_time_text = "The Labyrinth of Penance"
+	ambush_times = null 
+	ambush_mobs = null 
+	deathsight_message = "a maze of the unredeemed"
 
 // desert_wretch_oasis Special Areas. Bandit zone uses areas earlier in code
 /area/rogue/indoors/vampire_manor/desert 

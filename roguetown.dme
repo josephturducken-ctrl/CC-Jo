@@ -3484,9 +3484,8 @@
 #include "modular_causticcove\code\game\objects\items\clothes\stockings.dm"
 #include "modular_causticcove\code\game\objects\items\rogueitems\leash.dm"
 #include "modular_causticcove\code\game\objects\items\rogueitems\util.dm"
-#include "modular_causticcove\code\game\objects\items\weapons\ranged\ammo.dm"
-#include "modular_causticcove\code\game\objects\items\weapons\ranged\arquebus.dm"
-#include "modular_causticcove\code\game\objects\items\weapons\ranged\handgonne.dm"
+#include "modular_causticcove\code\game\objects\items\weapons\ranged\ammo_bullets.dm"
+#include "modular_causticcove\code\game\objects\items\weapons\ranged\blackpowder.dm"
 #include "modular_causticcove\code\game\objects\structures\staircase_helper.dm"
 #include "modular_causticcove\code\modules\accessability\epilepsy.dm"
 #include "modular_causticcove\code\modules\accessability\epilepsy_prefs.dm"
@@ -3683,6 +3682,10 @@
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\tat_build\tat_class.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\adventurer\adventurer.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\adventurer\wretch.dm"
+#include "modular_twilight_axis\manors\code\manor.dm"
+#include "modular_twilight_axis\manors\code\manor_preferences.dm"
+#include "modular_twilight_axis\manors\code\manor_tgui.dm"
+#include "modular_twilight_axis\manors\code\workstation.dm"
 
 //Modular OV files!
 #include "modular_ochrevalley\code\datums\stress\negative_events.dm"

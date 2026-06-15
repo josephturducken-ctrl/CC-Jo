@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/tat_trader_lootbox/clothes = TAT_ITEM_ENTRY("Sewing Trader Cache", 5, "misc", TAT_UNLOCK_TYPE_TRAIT, "tat_trader_license", "trader cache"), \
 	/obj/item/tat_trader_lootbox/potion = TAT_ITEM_ENTRY("Alchemical Trader Cache", 4, "misc", TAT_UNLOCK_TYPE_TRAIT, "tat_trader_license", "trader cache"), \
 	/obj/item/powderflask = TAT_ITEM_ENTRY("Blackpowder Flask", 1, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
-	/obj/item/quiver/bulletpouch/iron = TAT_ITEM_ENTRY("20 Lead Bullets", 2, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
+	/obj/item/quiver/bulletpouch/iron = TAT_ITEM_ENTRY("20 Iron Bullets", 2, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
 	/obj/item/clothing/neck/roguetown/psicross/silver = TAT_ITEM_ENTRY("Silver Psycross", 1, "misc", "weapon_supply", TAT_SUPPLY_SILVER, "cross"),\
 	/obj/item/clothing/neck/roguetown/psicross/silver/astrata = TAT_ITEM_ENTRY("Silver Astrata Cross", 1, "misc", "weapon_supply", TAT_SUPPLY_SILVER, "cross"),\
 	/obj/item/clothing/neck/roguetown/psicross/silver/undivided = TAT_ITEM_ENTRY("Silver Tennite cross", 1, "misc", "weapon_supply", TAT_SUPPLY_SILVER, "cross"),\
@@ -115,8 +115,8 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/rogueweapon/flail = TAT_ITEM_ENTRY("Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \
 	/obj/item/rogueweapon/flail/alt = TAT_ITEM_ENTRY("Flail, Studded", 2, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "blunt"), \
 	/obj/item/rogueweapon/flail/bronze = TAT_ITEM_ENTRY("Bronze Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_BRONZE, "blunt"), \
-	/obj/item/rogueweapon/flail/peasantwarflail = TAT_ITEM_ENTRY("Peasant War Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "blunt"), \
-	/obj/item/rogueweapon/flail/peasantwarflail/iron = TAT_ITEM_ENTRY("Iron Peasant War Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \
+	/obj/item/rogueweapon/flail/peasantwarflail = TAT_ITEM_ENTRY("Peasant War Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \
+	/obj/item/rogueweapon/flail/peasantwarflail/iron = TAT_ITEM_ENTRY("Iron Greatflail", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \
 	/obj/item/rogueweapon/flail/sflail = TAT_ITEM_ENTRY("Steel Flail", 3, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "blunt"), \
 	/obj/item/rogueweapon/flail/sflail/silver = TAT_ITEM_ENTRY("Silver Morningstar", 4, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "blunt"), \
 	/obj/item/rogueweapon/spear = TAT_ITEM_ENTRY("Spear", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "polearm"), \
@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/storage/belt/rogue/leather/rope = TAT_ITEM_ENTRY("Rope Belt", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "belt"), \
 	/obj/item/storage/belt/rogue/leather/black = TAT_ITEM_ENTRY("Black Leather Belt", 0.5, "clothing", "armor_family", TAT_ARMOR_CLOTH, "belt"), \
 	/obj/item/storage/belt/rogue/leather/cloth = TAT_ITEM_ENTRY("Cloth Belt", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "belt"), \
- 	/obj/item/clothing/suit/roguetown/shirt/undershirt/black = TAT_ITEM_ENTRY("Shirt", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "suit"), \
+	/obj/item/clothing/suit/roguetown/shirt/undershirt/black = TAT_ITEM_ENTRY("Shirt", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "suit"), \
 	/obj/item/storage/belt/rogue/leather/knifebelt/black/iron = TAT_ITEM_ENTRY("Iron Tossblade belt", 1, "clothing", "armor_family", TAT_ARMOR_LEATHER, "belt"), \
 	/obj/item/storage/belt/rogue/leather/knifebelt/black/steel = TAT_ITEM_ENTRY("Steel Tossblade Belt", 2, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "belt"), \
 	/obj/item/storage/belt/rogue/leather/knifebelt/black/silver = TAT_ITEM_ENTRY("Silver Tossblade belt", 3, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "belt"), \
@@ -352,13 +352,13 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm = TAT_ITEM_ENTRY("Psydonic Helm", 2.5, "clothing", "armor_family", TAT_ARMOR_PLATE, "head"), \
 	/obj/item/clothing/head/roguetown/helmet/heavy/psybucket = TAT_ITEM_ENTRY("Psydonic Bucket", 2.5, "clothing", "armor_family", TAT_ARMOR_PLATE, "head"), \
 	/obj/item/rogueweapon/huntingknife/idagger/silver/stake = TAT_ITEM_ENTRY("Silver Stake", 2, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "knife"), \
-	/obj/item/rogueweapon/huntingknife/idagger/stake = TAT_ITEM_ENTRY("Stake", 1, "weapon", "weapon_supply", "knife", null), \
 	/obj/item/rogueweapon/huntingknife/combat/fencerguy = TAT_ITEM_ENTRY("Grenzelhoftian Seax", 2, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "knife"), \
 	/obj/item/rogueweapon/greatsword/bsword/psy = TAT_ITEM_ENTRY("Forgoten Blade", 3, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "sword"), \
 	/obj/item/flashlight/flare/torch = TAT_ITEM_ENTRY("Torch", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "adventur' supply"), \
 	/obj/item/flashlight/flare/torch/lantern = TAT_ITEM_ENTRY("Iron Lamptern", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "adventur' supply"), \
 	/obj/item/flashlight/flare/torch/lantern/bronzelamptern = TAT_ITEM_ENTRY("Bronze Lamptern", 0, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
-	/obj/item/flashlight/flare/torch/metal = TAT_ITEM_ENTRY("Fietorch", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "adventur' supply"), \
+	/obj/item/flashlight/flare/torch/lantern/bronze = TAT_ITEM_ENTRY("Bronze Hand-lamptern", 0, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
+	/obj/item/flashlight/flare/torch/metal = TAT_ITEM_ENTRY("Fieftorch", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "adventur' supply"), \
 	/obj/item/clothing/under/roguetown/heavy_leather_pants/otavan/generic = TAT_ITEM_ENTRY("Fencing Breeches", 1.5, "clothing", "armor_family", TAT_ARMOR_LEATHER, "pants"), \
 	/obj/item/clothing/under/roguetown/trou/leather/atgervi = TAT_ITEM_ENTRY("Fur Pants", 1.5, "clothing", "armor_family", TAT_ARMOR_LEATHER, "pants"), \
 	/obj/item/clothing/shoes/roguetown/boots/leather= TAT_ITEM_ENTRY("Leather Boots", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "shoes"), \
@@ -585,9 +585,9 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/quiver/bolt/heavy/bronze = TAT_ITEM_ENTRY("Heavy Bronze Bolts", 2, "weapon", "weapon_supply", TAT_SUPPLY_BRONZE, "munition"), \
 	/obj/item/quiver/bolt/heavy/blunt = TAT_ITEM_ENTRY("Heavy Blunt Bolts", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "munition"), \
 	/obj/item/quiver/bolt/heavy/silver = TAT_ITEM_ENTRY("Heavy Silver Bolts", 2, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "munition"), \
-	/obj/item/needle = TAT_ITEM_ENTRY("Needle", 1, "misc", "weapon_supply", TAT_SUPPLY_IRON, "medical"), \
-	/obj/item/needle/thorn = TAT_ITEM_ENTRY("Needle", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "medical"), \
-	/obj/item/needle/bronze = TAT_ITEM_ENTRY("Needle", 0, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "medical"), \
+	/obj/item/needle = TAT_ITEM_ENTRY("Iron Needle", 1, "misc", "weapon_supply", TAT_SUPPLY_IRON, "medical"), \
+	/obj/item/needle/thorn = TAT_ITEM_ENTRY("Thorn Needle", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "medical"), \
+	/obj/item/needle/bronze = TAT_ITEM_ENTRY("Bronze Needle", 0, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "medical"), \
 	/obj/item/skillbook/unfinished = TAT_ITEM_ENTRY("Unfinished Skill Book", 1, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/storage/meatbag = TAT_ITEM_ENTRY("Game Satchel", 1, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/pestle = TAT_ITEM_ENTRY("Pestle", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "medical"), \
@@ -607,6 +607,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/rogue/instrument/shamisen = TAT_ITEM_ENTRY("Shamisen", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "music"), \
 	/obj/item/rogue/instrument/vocals = TAT_ITEM_ENTRY("Vocal's Talisman", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "music"), \
 	/obj/item/rogue/instrument/viola = TAT_ITEM_ENTRY("Viola", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "music"), \
+	/obj/item/rogue/instrument/psyaltery = TAT_ITEM_ENTRY("Psyaltery", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "music"), \
 	/obj/item/clothing/suit/roguetown/armor/gambeson = TAT_ITEM_ENTRY("Gambeson", 2, "clothing", "armor_family", TAT_ARMOR_CLOTH, "suit"), \
 	/obj/item/rogueweapon/hoe = TAT_ITEM_ENTRY("Hoe", 0.5, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
 	/obj/item/rogueweapon/hoe/bronze = TAT_ITEM_ENTRY("Bronze Hoe", 0.5, "weapon", "weapon_supply", TAT_SUPPLY_BRONZE, "misc"), \
@@ -620,7 +621,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/reagent_containers/glass/bucket/pot = TAT_ITEM_ENTRY("Iron Pot", 0.5, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
 	/obj/item/reagent_containers/glass/bucket/pot/kettle/tankard = TAT_ITEM_ENTRY("Stein", 0.5, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
 	/obj/item/cooking/pan/bronze = TAT_ITEM_ENTRY("Bronze Frying Pan", 0, "weapon", "weapon_supply", TAT_SUPPLY_BRONZE, "misc"), \
-	/obj/item/cooking/pan/aalloy = TAT_ITEM_ENTRY("Frying Pan", 0, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
+	/obj/item/cooking/pan/aalloy = TAT_ITEM_ENTRY("Decrepit Frying Pan", 0, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
 	/obj/item/reagent_containers/glass/bottle/waterskin/milk = TAT_ITEM_ENTRY("Not Milk....", 2, "misc", "weapon_supply", TAT_SUPPLY_IRON, "food"), \
 	/obj/item/storage/backpack/rogue/satchel/short = TAT_ITEM_ENTRY("Short Satchel", 1.5, "misc", "armor_family", TAT_ARMOR_CLOTH, "back"), \
 	/obj/item/storage/backpack/rogue/satchel = TAT_ITEM_ENTRY("Satchel", 1, "misc", "armor_family", TAT_ARMOR_CLOTH, "back"), \
@@ -653,7 +654,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/repair_kit = TAT_ITEM_ENTRY("Fabric Patch", 4, "misc", "weapon_supply", TAT_SUPPLY_IRON, "adventur' supply"), \
 	/obj/item/millstone = TAT_ITEM_ENTRY("Millstone", 2, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/kitchen/rollingpin = TAT_ITEM_ENTRY("Rolling Pin", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
-	/obj/item/gun/ballistic/arquebus_pistol = TAT_ITEM_ENTRY("Arquebus Pistol", 7, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
+	/obj/item/gun/ballistic/blackpowder/small/arquebus_pistol = TAT_ITEM_ENTRY("Arquebus Pistol", 7, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
 	/obj/item/natural/feather = TAT_ITEM_ENTRY("Feather", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn = TAT_ITEM_ENTRY("Gronn Norsii horned helmet", 1.5, "clothing", "armor_family", TAT_ARMOR_PLATE, "head"), \
 	/obj/item/clothing/head/roguetown/articap = TAT_ITEM_ENTRY("Tinker Hat", 0, "clothing", "weapon_supply", TAT_SUPPLY_BRONZE, "head"), \
@@ -662,7 +663,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/clothing/gloves/roguetown/plate/iron/banded = TAT_ITEM_ENTRY("Branded Iron Gauntlets", 1.5, "clothing", "armor_family", TAT_ARMOR_PLATE, "gloves"), \
 	/obj/item/clothing/under/roguetown/platelegs/iron/gronn = TAT_ITEM_ENTRY("Gronn Norsii Plate Legs", 1.5, "clothing", "armor_family", TAT_ARMOR_PLATE, "pants"), \
 	/obj/item/clothing/shoes/roguetown/boots/armor/iron/gronn = TAT_ITEM_ENTRY("Gronn Norsii Iron Plated Boots", 1, "clothing", "armor_family", TAT_ARMOR_PLATE, "shoes"), \
-	/obj/item/gun/ballistic/handgonne = TAT_ITEM_ENTRY("Culverin", 7, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
+	/obj/item/gun/ballistic/blackpowder/handgonne = TAT_ITEM_ENTRY("Culverin", 7, "weapon", "weapon_supply", TAT_SUPPLY_FIREARMS, "blackpowder"), \
 	/obj/item/grapplinghook = TAT_ITEM_ENTRY("Grappling Hook", 8, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
 	/obj/item/rogueweapon/chisel  = TAT_ITEM_ENTRY("Chisel", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "wood work"), \
 	/obj/item/rogueweapon/hammer/wood = TAT_ITEM_ENTRY("Wooden Hammer", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "wood work"), \
@@ -670,10 +671,10 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/rogueweapon/handsaw = TAT_ITEM_ENTRY("Handsaw", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "wood work"), \
 	/obj/item/rogueweapon/handsaw/bronze = TAT_ITEM_ENTRY("Bronze Handsaw", 0.5, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "wood work"), \
 	/obj/item/clothing/cloak/tabard = TAT_ITEM_ENTRY("Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
-	/obj/item/clothing/cloak/tabard/stabard = TAT_ITEM_ENTRY("Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
-	/obj/item/clothing/cloak/tabard/stabard/surcoat = TAT_ITEM_ENTRY("Surcoat", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
-	/obj/item/clothing/cloak/tabard/stabard/surcoat/short = TAT_ITEM_ENTRY("Short Surcoat", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
-	/obj/item/clothing/cloak/apron/cook = TAT_ITEM_ENTRY("Cook Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/tabard/stabard = TAT_ITEM_ENTRY("Surcoat", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/tabard/stabard/surcoat = TAT_ITEM_ENTRY("Jupon", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/tabard/stabard/surcoat/short = TAT_ITEM_ENTRY("Short Jupon", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/apron/cook = TAT_ITEM_ENTRY("Cook's Apron", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/clothing/cloak/sleevedtabard = TAT_ITEM_ENTRY("Sleeved Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/clothing/under/roguetown/tights/explorerpants = TAT_ITEM_ENTRY("Explorer Pants", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "pants"), \
 	/obj/item/clothing/cloak/hierophant = TAT_ITEM_ENTRY("Hierophant Sash", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
@@ -686,7 +687,8 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/clothing/cloak/templar/astratan = TAT_ITEM_ENTRY("Astratan Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/clothing/cloak/templar/undivided = TAT_ITEM_ENTRY("Undivided Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/clothing/cloak/templar/undivided_alt = TAT_ITEM_ENTRY("Undivided Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
-	/obj/item/clothing/cloak/eastcloak1 = TAT_ITEM_ENTRY("Leather Cloak", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/eastcloak1 = TAT_ITEM_ENTRY("Cloud-Cutter's Cloak", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
+	/obj/item/clothing/cloak/eastcloak2 = TAT_ITEM_ENTRY("Leather Cloak", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/clothing/cloak/tabard/psydontabard = TAT_ITEM_ENTRY("Psydon Tabard", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "cloak"), \
 	/obj/item/rogueweapon/handclaw/steel = TAT_ITEM_ENTRY("Steel Mantis Claws", 3, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "unarmed"), \
 	/obj/item/storage/magebag = TAT_ITEM_ENTRY("Scholar's Pouch", 1.5, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "magic"), \
@@ -699,8 +701,8 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/reagent_containers/glass/bottle/waterskin/purifier = TAT_ITEM_ENTRY("Purifier", 3, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
 	/obj/item/mobilestove = TAT_ITEM_ENTRY("Stove Kit", 1, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
 	/obj/item/contraption/wood_metalizer = TAT_ITEM_ENTRY("Metallizer", 3, "misc", "weapon_supply", TAT_SUPPLY_BRONZE, "adventur' supply"), \
-	/obj/item/clothing/shoes/roguetown/horseshoes = TAT_ITEM_ENTRY("Horseshoes", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "shoes"), \
-	/obj/item/clothing/shoes/roguetown/horseshoes/steel = TAT_ITEM_ENTRY("Horseshoes", 1.5, "clothing", "armor_family", TAT_ARMOR_CLOTH, "shoes"), \
+	/obj/item/clothing/shoes/roguetown/horseshoes = TAT_ITEM_ENTRY("Iron Horseshoes", 0, "clothing", "armor_family", TAT_ARMOR_CLOTH, "shoes"), \
+	/obj/item/clothing/shoes/roguetown/horseshoes/steel = TAT_ITEM_ENTRY("Steel Horseshoes", 1.5, "clothing", "armor_family", TAT_ARMOR_CLOTH, "shoes"), \
 	/obj/item/customlock = TAT_ITEM_ENTRY("Unfinished Lock", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/roguekey/custom = TAT_ITEM_ENTRY("Custom Key", 0.5, "misc", "weapon_supply", TAT_SUPPLY_IRON, "lyfe"), \
 	/obj/item/clothing/neck/roguetown/psicross/inhumen/gronn = TAT_ITEM_ENTRY("Plotting Talisman", 0, "misc", "weapon_supply", TAT_SUPPLY_IRON, "cross"),\
@@ -815,7 +817,7 @@ GLOBAL_LIST_INIT(tat_donation_access_all_ckeys, TAT_DONATION_ACCESS_ALL_CKEYS)
 	/obj/item/rogueweapon/pick/militia/steel = TAT_ITEM_ENTRY("Militia Steel Warpick", 3, "weapon", "weapon_supply", TAT_SUPPLY_STEEL, "misc"), \
 	/obj/item/rogueweapon/pick/militia = TAT_ITEM_ENTRY("Militia Warpick", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "misc"), \
 	/obj/item/rogueweapon/spear/militia = TAT_ITEM_ENTRY("Militia Spear", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "polearm"), \
-	/obj/item/rogueweapon/greataxe/militia = TAT_ITEM_ENTRY("Militia Shovel-Axe", 1, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "axe"), \
+	/obj/item/rogueweapon/greataxe/militia = TAT_ITEM_ENTRY("Militia Shovel-Axe", 2.5, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "axe"), \
 	/obj/item/rogueweapon/greataxe/militia/silver = TAT_ITEM_ENTRY("Militia Silver Shovel-Axe", 3, "weapon", "weapon_supply", TAT_SUPPLY_SILVER, "axe"), \
 	/obj/item/rogueweapon/woodstaff/militia = TAT_ITEM_ENTRY("Militia Goedendag", 3, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \
 	/obj/item/rogueweapon/flail/militia = TAT_ITEM_ENTRY("Militia Flail", 2, "weapon", "weapon_supply", TAT_SUPPLY_IRON, "blunt"), \

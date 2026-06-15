@@ -33,7 +33,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket
 	head = /obj/item/clothing/head/roguetown/archercap
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/gun/ballistic/arquebus_pistol
+	beltl = /obj/item/gun/ballistic/blackpowder/small/arquebus_pistol
 	beltr = /obj/item/rogueweapon/scabbard/sheath/courtphysician
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/storage/backpack/rogue/backpack/bagpack

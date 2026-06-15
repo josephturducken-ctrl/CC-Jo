@@ -652,6 +652,12 @@
 			if(AR)
 				arrows -= AR
 				B.attackby(AR, loc, params)
+				//Caustic Edit - This was never added here cause Spaghett
+				if(ismob(loc))
+					var/mob/M = loc
+					if(HAS_TRAIT(M, TRAIT_COMBAT_AWARE))
+						M.balloon_alert(M, "[length(arrows)] left...")
+				//Caustic Edit End
 		return
 	..()
 

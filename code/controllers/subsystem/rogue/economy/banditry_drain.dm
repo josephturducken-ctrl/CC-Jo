@@ -22,7 +22,31 @@
 		var/per_player = (level == DANGER_LEVEL_BLEAK) ? BANDITRY_DRAIN_BLEAK_PER_PLAYER : BANDITRY_DRAIN_DANGEROUS_PER_PLAYER
 		result["total"] += cost
 		result["lines"] += "[TR.region_name] ([level]) -[cost]m ([base_cost] base + [per_player]m/head x [pop])"
+
+	var/list/outpost_info = get_outpost_banditry_support() //СС + TA EDIT START
+	if(outpost_info["workers"] > 0)
+		var/reduction = min(result["total"], ceil(outpost_info["workers"] * 7 * outpost_info["production_modifier"]))
+		if(reduction > 0)
+			result["total"] -= reduction
+			result["outpost_reduction"] = reduction
+			result["outpost_manors"] = outpost_info["manors"] //СС + TA EDIT END
 	return result
+
+/datum/controller/subsystem/economy/proc/get_outpost_banditry_support() //СС + TA EDIT START
+	var/list/info = list("workers" = 0, "manors" = list(), "owners" = list(), "owner_names" = list())
+	for(var/mob/living/carbon/human/H in GLOB.human_list)
+		if(!H || !H.mind)
+			continue
+		var/datum/manor/manor = H.mind.get_owned_manor()
+		if(!manor)
+			continue
+		var/list/ws_info = manor.get_outpost_workers()
+		if(ws_info["workers"] <= 0)
+			continue
+		info["production_modifier"] = ws_info["production_modifier"]
+		info["workers"] += ws_info["workers"]
+		info["manors"] += list("[manor.manor_name]" = "[H.real_name]")
+	return info //СС + TA EDIT END
 
 /datum/controller/subsystem/economy/proc/tick_banditry_drain()
 	if(!SStreasury?.discretionary_fund)
@@ -46,3 +70,41 @@
 		daily_report_diff["banditry_drain_burned"] = burn_now
 		daily_report_diff["banditry_drain_accrued_debt"] = shortfall
 		daily_report_diff["banditry_drain_lines"] = preview["lines"]
+		if(preview["outpost_reduction"]) //СС + TA EDIT START
+			daily_report_diff["outpost_reduction"] = preview["outpost_reduction"]
+			daily_report_diff["outpost_manors"] = preview["outpost_manors"]
+			daily_report_diff["outpost_owners"] = preview["outpost_owners"]
+
+	var/outpost_reduction = preview["outpost_reduction"] || 0
+	for(var/mob/living/carbon/human/H in GLOB.human_list)
+		if(!H || !H.mind)
+			continue
+		var/datum/manor/manor = H.mind.get_owned_manor()
+		if(!manor)
+			continue
+		var/outpost_workers = manor.get_outpost_workers()
+		if(outpost_workers <= 0)
+			continue
+		if(H.client)
+			if(outpost_reduction > 0)
+				to_chat(H, span_notice("Your troops at the outpost helped reduce losses from banditry by [outpost_reduction] mammon."))
+			else
+				to_chat(H, span_notice("Your troops at the outpose were mobilized, but failed to influence the situation due to high banditry."))
+
+	var/list/outpost_candidates = list()
+	var/outpost_info = get_outpost_banditry_support()
+	if(outpost_info["workers"] > 0)
+		for(var/datum/threat_region/TR as anything in SSregionthreat.threat_regions)
+			if(TR.get_danger_level() > DANGER_LEVEL_SAFE)
+				outpost_candidates += TR
+		if(length(outpost_candidates) && prob(10))
+			var/datum/threat_region/TR = pick(outpost_candidates)
+			var/reduction_amount = min(TR.latent_ambush - TR.min_ambush, 5 + floor(outpost_info["workers"] / 5))
+			if(reduction_amount > 0)
+				TR.reduce_latent_ambush(reduction_amount)
+				if(daily_report_diff)
+					daily_report_diff["outpost_threat_reduced"] = TR.region_name
+					daily_report_diff["outpost_threat_reduction_amount"] = reduction_amount
+				for(var/mob/living/carbon/human/H in outpost_info["owners"])
+					if(H.client)
+						to_chat(H, span_notice("Your troops at the outpost helped reducing the danger of [TR.region_name].")) //СС + TA EDIT END

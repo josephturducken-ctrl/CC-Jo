@@ -1595,12 +1595,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 				contained_atom.flags_1 |= HOLOGRAM_1
 	return O
 
+//Caustic Edit - Desert Areas included.
 #define VALID_HUNTING_AREAS list(\
 	/area/rogue/outdoors/beach/forest, \
 	/area/rogue/outdoors/woods, \
 	/area/rogue/outdoors/bog, \
 	/area/rogue/outdoors/mountains, \
-	/area/rogue/outdoors/rtfield \
+	/area/rogue/outdoors/rtfield, \
+	/area/rogue/outdoors/desert, \
+	/area/rogue/outdoors/desertdeep \
 )
 
 /proc/is_valid_hunting_area(area/A)

@@ -1,0 +1,4 @@
+author: "Altangy"
+delete-after: True
+changes:
+  - balance: "Locate Corpse starts working faster and is less depressive"

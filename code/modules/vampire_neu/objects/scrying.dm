@@ -2,7 +2,6 @@
 	name = "Eye of Night"
 	icon_state = "scrying"
 	desc = "An unholy creation of impossible design, floats before you. Upon its surface flashes countless images and shapes beyond your understanding, places that shouldn't exist. Merely being in its vicinity sends a shiver down your spine."
-
 /obj/structure/vampire/scryingorb/attack_hand(mob/living/carbon/human/user)
 	if(user?.mind.has_antag_datum(/datum/antagonist/vampire/lord))
 		user.visible_message("<font color='red'>[user]'s eyes turn dark red, as they channel the [src]</font>", "<font color='red'>I begin to channel my consciousness into a Predator's Eye.</font>")
@@ -15,7 +14,7 @@
 	. = ..()
 	if(user.mind?.has_antag_datum(/datum/antagonist/vampire/lord))
 		. += span_bloody("Your scrying eye; spy upon the mortal or immortal realms alyke, peer through all languages and places. Just be careful whom walks past your eye. Your presence is powerful enough to be noticed even lyke this.")
-		
+
 /mob/dead/observer/rogue/arcaneeye
 	sight = 0
 	see_in_dark = 2
@@ -106,7 +105,7 @@
 		to_chat(V, span_boldnotice("A message from [src.real_name]:[msg]"))
 	for(var/datum/mind/D in SSmapping.retainer.death_knights)
 		to_chat(D, span_boldnotice("A message from [src.real_name]:[msg]"))
-	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.player_list) //CC Edit mob_list -> player_list
+	for(var/mob/dead/observer/rogue/arcaneeye/A in GLOB.player_list)
 		to_chat(A, span_boldnotice("A message from [src.real_name]:[msg]"))
 
 /mob/dead/observer/rogue/arcaneeye/proc/eye_up()
@@ -124,28 +123,20 @@
 		to_chat(src, span_notice("I move down."))
 
 /mob/dead/observer/rogue/arcaneeye/Move(NewLoc, direct)
-	if(world.time < next_gmove)
-		return
-	next_gmove = world.time + 3
-
 	if(updatedir)
 		setDir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
-	var/oldloc = loc
-
 	if(NewLoc)
-		forceMove(NewLoc)
-	else
-		forceMove(get_turf(src))  //Get out of closets and such as a ghost
-		if((direct & NORTH) && y < world.maxy)
-			y++
-		else if((direct & SOUTH) && y > 1)
-			y--
-		if((direct & EAST) && x < world.maxx)
-			x++
-		else if((direct & WEST) && x > 1)
-			x--
-
-	Moved(oldloc, direct)
+		var/turf/target_turf = get_turf(NewLoc)
+		if(target_turf)
+			return forceMove(target_turf)
+		return FALSE
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf)
+		return FALSE
+	var/turf/step_turf = get_step(current_turf, direct)
+	if(step_turf)
+		return forceMove(step_turf)
+	return FALSE
 
 /mob/proc/scry(can_reenter_corpse = 1, force_respawn = FALSE, drawskip)
 	stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
