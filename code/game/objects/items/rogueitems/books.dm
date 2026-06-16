@@ -214,6 +214,10 @@
 			return
 		var/mob/living/to_bless = M
 		to_bless.apply_status_effect(/datum/status_effect/buff/blessed)
+		//Caustic Edit - Making this one override the minor-blessing from Orison!
+		if(to_bless.has_stress_event(/datum/stressevent/minor_blessed))
+			to_bless.remove_stress(/datum/stressevent/minor_blessed)
+		//Caustic Edit End
 		to_bless.add_stress(/datum/stressevent/blessed)
 		user.visible_message(span_notice("[user] blesses [M]."))
 		playsound(user, 'sound/magic/bless.ogg', 100, FALSE)
