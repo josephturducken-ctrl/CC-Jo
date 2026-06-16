@@ -211,7 +211,10 @@
 			if(curse)
 				qdel(curse)
 				to_chat(user, span_notice("I can feel Necra's curse leaving this one..."))
-	
+		else
+			if(!target.has_stress_event(/datum/stressevent/blessed))
+				target.add_stress(/datum/stressevent/minor_blessed)
+
 	return minor_blessing
 //Caustic Edit End
 
