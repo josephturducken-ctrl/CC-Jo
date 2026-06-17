@@ -84,8 +84,6 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 #define QUEST_BANDS_RECOVERY 2
 #define QUEST_BANDS_BLOCKADE 6
 
-#define QUEST_REWARD_GLOBAL_MULT 1
-
 #define QUEST_REWARD_GLOBAL_MULT 0.8
 
 // Flat reward base
@@ -168,3 +166,14 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 // Multiplied by (region's delivery_reward_multiplier - 1.0), so a 1.0× region adds nothing and a
 // 2.0× region (Terrorbog, Mt Decap, Underdark) adds the full amount.
 #define QUEST_DELIVERY_THREAT_BONUS 20
+
+#define BLOCKADE_FELLOWSHIP_REQUIREMENT 3
+#define BLOCKADE_WAVE_TIMER_DS (10 MINUTES)
+
+#define BLOCKADE_ARM_TIMEOUT_DS (30 MINUTES)
+#define BLOCKADE_RECALL_WINDOW_DS (15 MINUTES)
+
+#define BLOCKADE_TOTAL_WAVES 3
+#define BLOCKADE_WAVE_1_TP 120
+#define BLOCKADE_WAVE_2_TP 120
+#define BLOCKADE_WAVE_3_TP 150
