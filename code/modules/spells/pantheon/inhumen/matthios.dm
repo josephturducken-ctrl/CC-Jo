@@ -346,8 +346,14 @@
 	var/strike_delay = 2
 	var/damage = 20
 
-/obj/effect/proc_holder/spell/invoked/matthios_firebreath/cast(list/targets, mob/user = usr)
-	var/turf/T = get_turf(targets[1])
+/datum/action/cooldown/spell/matthios/raze/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/user = owner
+	if(!istype(user))
+		return FALSE
+	var/turf/T = get_turf(cast_on)
+	if(!T)
+		return FALSE
 	var/turf/source_turf = get_turf(user)
 
 	if(T.z != user.z)
