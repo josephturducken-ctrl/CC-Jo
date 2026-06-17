@@ -2199,13 +2199,6 @@
 /obj/item/clothing/head/roguetown/helmet/baotha/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "ARMOR")
-	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT) //Caustic Edit
-
-/obj/item/clothing/head/roguetown/helmet/baotha/dropped(mob/living/carbon/human/user)
-	. = ..()
-	/*if(QDELETED(src))
-		return
-	qdel(src)*/ //Caustic Edit
 
 /obj/item/clothing/neck/roguetown/coif/baotha
 	name = "saccharine veil"
