@@ -30,6 +30,20 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 	ai_controller = /datum/ai_controller/human_npc
 	dodgetime = 30
 
+/mob/living/carbon/human/species/goblin/siege //Slightly smarter varient for players in seiges, meant to last longer than the regular horde's masses
+	gob_outfit =/datum/outfit/job/roguetown/npc/goblin/siege
+
+/mob/living/carbon/human/species/goblin/npc/siege //Slightly smarter varient for sieges
+	ai_controller = /datum/ai_controller/human_npc
+	dodgetime = 20 //Slightly more competent than their lobotomised counterparts.
+	gob_outfit = /datum/outfit/job/roguetown/npc/goblin/siege
+	//Keep in mind these are balanced out by them firebombing 90% of their own numbers and dying instantly 20% of the time. KEEP THIS, ITS SOVL SIRE.
+
+/mob/living/carbon/human/species/goblin/npc/after_creation()
+	..()
+	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
+	AddComponent(/datum/component/ai_aggro_system)
+
 /mob/living/carbon/human/species/goblin/npc/ambush
 	threat_point = THREAT_TRASH
 	ambush_faction = "goblins"
@@ -260,6 +274,7 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 	faction = list(FACTION_ORCS)
 	if(is_species(src, /datum/species/goblin/hell))
 		faction += FACTION_INFERNAL
+		ADD_TRAIT(src, TRAIT_FIRE_RESIST, TRAIT_GENERIC) //50% less fire damage.
 	name = "goblin"
 	real_name = "goblin"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
@@ -323,11 +338,20 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.STASTR = 8
-	if(is_species(H, /datum/species/goblin/moon))
+	if(is_species(H, /datum/species/goblin/moon) || is_species(H, /datum/species/goblin/hell))
 		H.STASPD = 16
 	else
 		H.STASPD = 14
-	H.STACON = 4
+	if(is_species(H, /datum/species/goblin/hell))
+		H.STACON = 6
+		if(prob(5)) //5% on ALL loadouts to be a pyromancer
+			neck = /obj/item/storage/belt/rogue/pouch/bombs
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+			H.name = "goblin pyromancer"
+			H.real_name = "goblin pyromancer"
+			SEND_SIGNAL(H, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.goblin_pyromancer_aggro, TRUE)
+	else
+		H.STACON = 4
 	H.STAWIL = 4
 	H.STAPER = 8
 	if(is_species(H, /datum/species/goblin/moon))
@@ -357,6 +381,7 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 			if(prob(23))
 				r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
 				l_hand = /obj/item/rogueweapon/huntingknife/stoneknife
+				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC) //I am a cruel god
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			if(prob(80))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
@@ -376,37 +401,29 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 			if(prob(20))
 				r_hand = /obj/item/rogueweapon/flail
 				l_hand = /obj/item/rogueweapon/shield/wood
-		if(6) // bow archer
-			r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			backl = /obj/item/quiver/stonearrows
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-			H.STASTR -= 2
-			H.STAPER += 3
-			H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-			H.upgrade_ai_controller(/datum/ai_controller/human_npc/archer)
-		if(7) // slinger
-			r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-			wrists = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
-			neck = /obj/item/quiver/sling/stone
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-			H.adjust_skillrank(/datum/skill/combat/slings, 2, TRUE)
-		if(8) // bottle bomber
-			r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
-			neck = /obj/item/storage/belt/rogue/pouch/bombs
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
-			H.name = "goblin pyromancer"
-			H.real_name = "goblin pyromancer"
-			SEND_SIGNAL(H, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.goblin_pyromancer_aggro, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axes, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE) // Trash mob
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+		if(6) // bottle bomber on a 40% (ITS TOO SOVLFUL TO REMOVE SIRE)
+			if(prob(40))
+				r_hand = /obj/item/rogueweapon/huntingknife/stoneknife
+				neck = /obj/item/storage/belt/rogue/pouch/bombs
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+				H.name = "goblin pyromancer"
+				H.real_name = "goblin pyromancer"
+				SEND_SIGNAL(H, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.goblin_pyromancer_aggro, TRUE)
+			else
+				r_hand = /obj/item/rogueweapon/stoneaxe
+				l_hand = /obj/item/rogueweapon/stoneaxe
+				armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC) //I am a cruel god
+	H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/maces, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/axes, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/shields, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE) // Trash mob
+	H.adjust_skillrank_up_to(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+	//Upto is nessessary so latejoin goblins on raids don't have EXPERT SKILLS WHAAAAAAAAAT
 
 /datum/outfit/job/roguetown/npc/goblin/archer/pre_equip(mob/living/carbon/human/H)
 	..()

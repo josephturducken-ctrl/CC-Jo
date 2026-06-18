@@ -258,6 +258,7 @@
 #define TRAIT_IRONMAN "Construct" // basically rotman but not really, used for diff flavor of some things
 #define TRAIT_FACELESS_KNOWN "Faceless but Known" //recognizable despite having no face (skeletonized head - for skeleton) — does NOT bypass TRAIT_DISFIGURED
 #define TRAIT_NOHUNGER	"Foodless"
+#define TRAIT_NPC_EXAMINE "NPC Examination" //Mindless NPC examination check, goes through armor.
 #define TRAIT_DARKVISION "Darksight"
 #define TRAIT_NITEVISION "Nitevision"
 #define TRAIT_NOCSHADES "Nocshaded"

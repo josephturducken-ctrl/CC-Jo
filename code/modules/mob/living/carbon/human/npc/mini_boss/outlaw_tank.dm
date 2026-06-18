@@ -2,11 +2,17 @@ GLOBAL_LIST_INIT(tank_aggro, list(
 	"You cannot break me.",
 	"Hit harder. I dare you.",
 	"Is that all?",
-	"I am a wall.",
+	"I am the wall.",
+	"Give up! You won't break me.",
+	"You won't break me, I'll break YOU!",
+	"I'm fucking invincible!",
 	"Your blows mean nothing.",
 	"Come. Shatter yourself upon me.",
 	"I have endured worse.",
 	"You will tire before I fall.",
+	"*laugh",
+	"*chuckle",
+	"*grumble",
 ))
 
 /mob/living/carbon/human/species/human/northern/outlaw_tank
@@ -37,6 +43,7 @@ GLOBAL_LIST_INIT(tank_aggro, list(
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/npc/mini_boss/tank)
 	for(var/obj/item/equipped_item in get_equipped_items() + held_items)
 		equipped_item.AddComponent(/datum/component/item_on_drop/dust)
@@ -75,10 +82,12 @@ GLOBAL_LIST_INIT(tank_aggro, list(
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight/iron
 	neck = /obj/item/clothing/neck/roguetown/bevor/iron
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/iron
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	r_hand = /obj/item/rogueweapon/mace/steel
 	l_hand = /obj/item/rogueweapon/shield/tower
 	H.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/shields, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+
+	H.dna.species.soundpack_m = new /datum/voicepack/male/knight() //HUZZAR!!
+	H.dna.species.soundpack_f = new /datum/voicepack/female/warrior()

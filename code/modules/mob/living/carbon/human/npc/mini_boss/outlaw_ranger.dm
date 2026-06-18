@@ -4,9 +4,15 @@ GLOBAL_LIST_INIT(ranger_aggro, list(
 	"I see you.",
 	"Nowhere to hide.",
 	"One shot is all I need.",
+	"Slow is smooth, smooth is fast",
+	"An arrow to your knee.",
+	"Take aim... and..-",
+	"Missing isn't something I do",
 	"Stay back if you value your life.",
 	"I don't miss.",
 	"That was a warning shot.",
+	"*laugh",
+	"*shake",
 ))
 
 /mob/living/carbon/human/species/human/northern/outlaw_ranger
@@ -36,6 +42,7 @@ GLOBAL_LIST_INIT(ranger_aggro, list(
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/npc/mini_boss/ranger)
 	for(var/obj/item/equipped_item in get_equipped_items() + held_items)
 		equipped_item.AddComponent(/datum/component/item_on_drop/dust)
@@ -81,3 +88,6 @@ GLOBAL_LIST_INIT(ranger_aggro, list(
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+
+	H.dna.species.soundpack_m = new /datum/voicepack/male/evil() //Aura
+	H.dna.species.soundpack_f = new /datum/voicepack/female/haughty()

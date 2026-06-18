@@ -27,6 +27,7 @@
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/thief)
 	//Begin RANDOMISE here
 	dna.species.handle_body(src)
@@ -42,6 +43,7 @@
 		real_name = pick(world.file2list("strings/names/first_male.txt"))
 	update_hair()
 	update_body()
+	src.regenerate_icons() //Fixes the weird body but lets check performance first
 	head.sellprice = HEAD_BOUNTY_THIEF
 
 
@@ -77,3 +79,19 @@
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+
+	if(prob(30))
+		var/voicepack_choice = rand(1, 4)
+		switch(voicepack_choice)
+			if(1)
+				H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+				H.dna.species.soundpack_f = new /datum/voicepack/female/warrior()
+			if(2)
+				H.dna.species.soundpack_m = new /datum/voicepack/male/stern()
+				H.dna.species.soundpack_f = new /datum/voicepack/female/haughty()
+			if(3)
+				H.dna.species.soundpack_m = new /datum/voicepack/male/foppish()
+				H.dna.species.soundpack_f = new /datum/voicepack/female/dainty()
+			if(4)
+				H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
+				H.dna.species.soundpack_f = new /datum/voicepack/female/dainty()
