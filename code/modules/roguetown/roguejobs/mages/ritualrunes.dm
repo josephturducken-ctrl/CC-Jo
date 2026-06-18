@@ -324,10 +324,13 @@ GLOBAL_LIST(leyline_teleport_runes)
 	can_be_scribed = FALSE
 
 /obj/effect/decal/cleanable/roguerune/arcyne/attack_hand(mob/living/user)
-	if(!isarcyne(user))
+	if(!can_use_arcyne_rune(user))
 		to_chat(user, span_warning("You aren't able to understand the words of [src]."))
 		return
 	. = ..()
+
+/obj/effect/decal/cleanable/roguerune/arcyne/proc/can_use_arcyne_rune(mob/living/user)
+	return HAS_TRAIT(user, TRAIT_LEYLINE_ATTUNEMENT)
 
 
 
@@ -381,6 +384,9 @@ GLOBAL_LIST(leyline_teleport_runes)
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment/New()
 	. = ..()
 	rituals += GLOB.t2enchantmentrunerituallist
+
+/obj/effect/decal/cleanable/roguerune/arcyne/enchantment/can_use_arcyne_rune(mob/living/user)
+	return HAS_TRAIT(user, TRAIT_LEYLINE_ATTUNEMENT)
 
 /obj/effect/decal/cleanable/roguerune/arcyne/enchantment/invoke(list/invokers, datum/runeritual/runeritual)
 	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients

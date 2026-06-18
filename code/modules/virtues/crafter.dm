@@ -91,6 +91,16 @@
 				recipient.mind?.special_items["Hammer"] = /obj/item/rogueweapon/hammer/wood
 				recipient.mind?.special_items["Chisel"] = /obj/item/rogueweapon/chisel
 				recipient.mind?.special_items["Hand Saw"] = /obj/item/rogueweapon/handsaw
+			if(SKILLED_ENCHANT)
+				added_skills.Add(list(list(/datum/skill/craft/alchemy, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/blacksmithing, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/engineering, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/craft/smelting, 2, 2)))
+				added_skills.Add(list(list(/datum/skill/magic/arcane, 2, 2)))
+				added_traits.Add(TRAIT_ENCHANTING_EXPERT, TRAIT_ALCHEMY_EXPERT, TRAIT_ARCYNE, TRAIT_LEYLINE_ATTUNEMENT)
+				recipient.mind?.special_items["Pestle"] = /obj/item/pestle
+				recipient.mind?.special_items["Mortar"] = /obj/item/reagent_containers/glass/mortar
+				recipient.mind?.special_items["Chalk"] = /obj/item/chalk
 
 
 #undef SKILLED_BSMITH
