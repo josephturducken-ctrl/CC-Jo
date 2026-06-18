@@ -2,7 +2,7 @@
 	name = "Arcyne Potential"
 	//Caustic edit
 	desc = "I am talented in the Arcyne arts, expanding my capacity for magic. I have become more intelligent from its studies."
-	custom_text = "Gives +3 spellpoints (or +3 utility spellpoints if pool-based), and T1 Arcyne Potential if you don't have any Arcyne."
+	custom_text = "Gives +3 utility spellpoints, and T1 Arcyne Potential if you don't have any Arcyne."
 	added_skills = list(list(/datum/skill/magic/arcane, 1, 6))
 
 /datum/virtue/combat/magical_potential/apply_to_human(mob/living/carbon/human/recipient)
