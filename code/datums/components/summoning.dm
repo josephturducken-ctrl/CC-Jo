@@ -6,6 +6,7 @@
 	var/spawn_text
 	var/spawn_sound
 	var/list/faction
+	var/spawn_lifespan
 
 	var/last_spawned_time = 0
 	var/list/spawned_mobs = list()
@@ -21,6 +22,7 @@
 	src.spawn_text = spawn_text
 	src.spawn_sound = spawn_sound
 	src.faction = faction
+	src.spawn_lifespan = spawn_lifespan
 
 /datum/component/summoning/RegisterWithParent()
 	if(ismachinery(parent) || isstructure(parent) || isgun(parent)) // turrets, etc
@@ -60,6 +62,8 @@
 	spawned_mobs += L
 	if(faction != null)
 		L.faction = faction
+	if(spawn_lifespan)
+		apply_mob_lifespan(L, summoner, spawn_lifespan)
 	RegisterSignal(L, COMSIG_MOB_DEATH, PROC_REF(on_spawned_death)) // so we can remove them from the list, etc (for mobs with corpses)
 	playsound(spawn_location,spawn_sound, 50, TRUE)
 	spawn_location.visible_message("<span class='danger'>[L] [spawn_text].</span>")
