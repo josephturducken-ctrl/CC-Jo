@@ -1176,7 +1176,7 @@
 		//target.visible_message(span_danger("[target] is unmade by divine magic! The Toll is accepted, and [target] is dragged to ever-death!"), span_userdanger("I'm unmade by divine magic!"))
 		//target.gib()
 		//Caustic Edit End
-		return
+		//return
 		if(alert(user, "[target]'s body rattles and seizes under the divine force. This will likely unmake them permanently. Continue?", "Divine Revival", "PURGE THE UNCLEAN!", "Stop") != "PURGE THE UNCLEAN!")
 			to_chat(user, span_notice("You halt the rite before the divine force can fully take hold."))
 			return FALSE
