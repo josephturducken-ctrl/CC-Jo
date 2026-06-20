@@ -942,7 +942,7 @@
 	is_tool = TRUE
 	sellprice = 9 //Still a useful knife! These things are really fucking versatile in the game!
 
-/obj/item/rogueweapon/huntingknife/stoneknife/kukri
+/obj/item/rogueweapon/huntingknife/combat/jadekukri
 	name = "jade kukri"
 	desc = "A kukri made out of jade. Its more of a ceremonial piece than it is an implement of war, its somewhat fragile. Be gentle with it."
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
@@ -952,14 +952,15 @@
 	wdefense = 3
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/obj/item/rogueweapon/huntingknife/stoneknife/opalknife
+/obj/item/rogueweapon/huntingknife/combat/opalknife
 	name = "opal knife"
-	desc = "A beautiful knife carved out of opal. Its not intended for combat. Its presence is vital in some Crimson Elven ceremonies."
+	desc = "A beautiful knife carved out of opal, intended for ceremonies over combat. Styled after the curved butchering knives of \
+	antiquity, this gemstone dagger plays a key part in many Elven rituals; more specifically, those involving the sacrifice of livestock."
 	icon = 'icons/roguetown/gems/gem_opal.dmi'
 	icon_state = "knife_opal"
 	max_integrity = 75
 	max_blade_int = 50
-	wdefense = 3
+	wdefense = 1
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish

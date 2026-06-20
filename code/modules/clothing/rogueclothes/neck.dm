@@ -207,6 +207,15 @@
 	max_integrity = ARMOR_INT_SIDE_IRON
 	sellprice = 20
 
+/obj/item/clothing/neck/roguetown/chaincoif/bronze
+	name = "bronze chain coif"
+	desc = "A maille-hood, fashioned from interlinked bronze rings. As preached by the Pantheon, these maille-hoods were originally made in mimicry of what was worn by the earliest priests."
+	icon_state = "bchaincoif"
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/bronze
+	max_integrity = ARMOR_INT_SIDE_BRONZE
+	armor = ARMOR_BRONZE
+
 /obj/item/clothing/neck/roguetown/chaincoif/full
 	name = "full chain coif"
 	icon_state = "fchaincoif"
@@ -1336,19 +1345,23 @@
 /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios
 	name = "gilded chain mantle"
 	desc = "The world is yours, as they say - yet, why doth the Gods still led us astray?"
-	color = "#ffc960"
+	icon_state = "matthioschainmantle"
+	item_state = "matthioschainmantle"
 	smeltresult = /obj/item/ingot/component/matthios
 
 /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#fff385", "alpha" = 120, "size" = 1)) //IS THIS TRVE?
+*/ // Combine with #ffc960 to make an easier, do-it-yourself version of Gilded items without the need for exotic sprites.
 
 //
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
 	name = "avantyne bevor"
 	desc = "An avantyne neckguard cut for the medium rite, still protective without becoming impossible to remove."
-	color = "#c1b18d"
+	icon_state = "zizobevor"
+	item_state = "zizobevor"
 	chunkcolor = "#363030"
 	material_category = ARMOR_MAT_PLATE
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -1357,6 +1370,8 @@
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#5f1515", "alpha" = 120, "size" = 1)) //Cursed look.
+*/ // Combine with #c1b18d to make an easier, do-it-yourself version of Avantyne items without the need for exotic sprites.
 
 //Caustic Edit - Let us remove and drop armors again! For fun stuffs.
 /obj/item/clothing/neck/roguetown/bevor/zizo/heavy/Initialize()
@@ -1373,24 +1388,15 @@
 /obj/item/clothing/neck/roguetown/gorget/steel/graggar
 	name = "vicious gorget"
 	desc = "Curled plate, cradling the neck. Once, they were chains - now, they've allowed you to break free."
-	color = "#ddc0a7"
+	icon_state = "graggargorget"
+	item_state = "graggargorget"
 	smeltresult = /obj/item/ingot/component/graggar
 
 /obj/item/clothing/neck/roguetown/gorget/steel/graggar/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
-
-//Caustic Edit - Let us remove and drop armors again! For fun stuffs.
-/obj/item/clothing/neck/roguetown/gorget/steel/graggar/heavy/Initialize()
-	. = ..()
-	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/neck/roguetown/gorget/steel/graggar/heavy/dropped(mob/living/carbon/human/user)
-	. = ..()
-	/*if(QDELETED(src))
-		return
-	qdel(src)*/
-//Caustic Edit End
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#1a146e", "alpha" = 120, "size" = 1)) //Cursed look.
+*/ // Combine with #ddc0a7 to make an easier, do-it-yourself version of Vicious items without the need for exotic sprites.
 
 /obj/item/clothing/neck/roguetown/psicross/malum/secret
 	name = "beriddled amulet"

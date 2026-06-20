@@ -17,7 +17,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/light/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("RMB to adjust the haubyrine's coverage; it can either cover the entire torso, or be tightened up to just cover the chest.")
+	. += span_info("RMB to adjust the haubyrnie's coverage; it can either cover the entire torso, or be tightened up to just cover the chest.")
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/light/iron
 	name = "iron haubyrnie"
@@ -26,6 +26,15 @@
 	icon_state = "ihaubyrnie"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_IRON
 	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/light/bronze
+	name = "bronze haubyrnie"
+	desc = "A sleeveless maille shirt, fashioned from dozens of interlinked bronze rings. It's light enough to comfortably tuck underneath a \
+	blouse, yet tough enough to thwart the razor-sharp edges of unwelcomed company. For the discerning traveler - ideally, from an antique land."
+	icon_state = "bhaubyrnie"
+	max_integrity = ARMOR_INT_CHEST_LIGHT_IRON - 30
+	smeltresult = /obj/item/ingot/bronze
+	armor = ARMOR_BRONZE
 
 //MEDIUM ARMOR - HAUBERGEON//
 /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -60,6 +69,15 @@
 	is favored amongst Psydonia's levymen, alongside a sharpened spear and a cooled pint of ale."
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
 	smeltresult = /obj/item/ingot/iron
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/bronze
+	icon_state = "bhaubergeon"
+	name = "bronze haubergeon"
+	desc = "A maille shirt fashioned from hundreds of interlinked bronze rings. The value of flexible protection, especially in \
+	the centuries before plate, made any form of chainmail a rather valuable commodity; enough-so that it was worth its own weight \
+	in gold."
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
+	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/Initialize(mapload)
 	. = ..()
@@ -127,6 +145,17 @@
 	item_state = "ihauberk"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/bronze
+	name = "bronze hauberk"
+	desc = "A maille-aketon of bronze, sleeved to cover both the arms and legs. In antiquity, such an armored garment was seen as second-to-none \
+	in every facet; light enough to leave a well-trained warrior unfettered, yet still capable of turning away both arrow-and-blade."
+	icon_state = "bhauberk"
+	item_state = "bhauberk"
+	smeltresult = /obj/item/ingot/bronze
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/aalloy
 	name = "decrepit hauberk"
@@ -284,19 +313,23 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios
 	name = "gilded hauberk"
 	desc = "All that glimmers is gold; yet only shining stars shalt break the mold.."
-	color = "#ffc960"
+	icon_state = "matthioshauberk"
+	item_state = "matthioshauberk"
 	smeltresult = /obj/item/ingot/component/matthios
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#fff385", "alpha" = 120, "size" = 1)) //IS THIS TRVE?
+*/ // Combine with #ffc960 to make an easier, do-it-yourself version of Gilded items without the need for exotic sprites.
 
 //
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 	name = "avantyne hauberk"
 	desc = "The rings crackle softly with avantynic power, yet this lighter weave can still be taken off without being lost to the rite."
-	color = "#c1b18d"
+	icon_state = "zizohauberk"
+	item_state = "zizohauberk"
 	chunkcolor = "#363030"
 	material_category = ARMOR_MAT_CHAINMAIL
 	smeltresult = /obj/item/ingot/component/zizo
@@ -304,6 +337,12 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#5f1515", "alpha" = 120, "size" = 1)) //Cursed look.
+*/ // Combine with #c1b18d to make an easier, do-it-yourself version of Avantyne items without the need for exotic sprites.
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/heavy
+	name = "fused avantyne hauberk"
+	desc = "The rings crackle softly with avantynic power, yet its fused firmly lyke a second skin. There is no going back, there is only forward in her name."
 
 //Caustic Edit - Let us remove and drop armors again! For fun stuffs.
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/heavy/Initialize(mapload)
@@ -320,21 +359,13 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
 	name = "vicious hauberk"
 	desc = "The blessing of a Martyr is nothing, when put before the Sinistar's rage."
-	color = "#ddc0a7"
+	icon_state = "graggarhauberk"
+	item_state = "graggarhauberk"
 	smeltresult = /obj/item/ingot/component/graggar
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/Initialize()
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+	/*add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#1a146e", "alpha" = 120, "size" = 1)) //Cursed look.
+*/ // Combine with #ddc0a7 to make an easier, do-it-yourself version of Vicious items without the need for exotic sprites.
 
-//Caustic Edit - Let us remove and drop armors again! For fun stuffs.
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/heavy/Initialize()
-	. = ..()
-	//ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/heavy/dropped(mob/living/carbon/human/user)
-	. = ..()
-	/*if(QDELETED(src))
-		return
-	qdel(src)*/
-//Caustic Edit End

@@ -19,6 +19,8 @@
 	chunkcolor = "#978151"
 	material_category = ARMOR_MAT_LEATHER
 	cold_protection = 10
+	var/shiftable = TRUE
+	var/shifted = FALSE
 	sellprice = 16 //Lighter equipment. Still decent.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/ComponentInitialize()
@@ -26,6 +28,34 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 	if(armor_class > ARMOR_CLASS_LIGHT)
 		AddComponent(/datum/component/armour_filtering/negative, TRAIT_IRONMAN)
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/attack_right(mob/user)
+	if(!shiftable)
+		return
+	if(shifted)
+		if(alert("Would you like to wear your gambeson normally? This restores the new greyscaled style.",, "Yes", "No") != "No")
+			icon_state = "gambeson"
+			color = "#976E6B"
+			update_icon()
+			shifted = FALSE
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_shirt()
+					H.update_inv_armor()
+			return
+	else
+		if(alert("Would you like to wear your padded gambeson traditionally? This restores the original coloration.",, "Yes", "No") != "No")
+			icon_state = "gambesonold"
+			color = null
+			update_icon()
+			shifted = TRUE
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_shirt()
+					H.update_inv_armor()
+			return
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/dark
 	color = "#646464"
@@ -38,13 +68,23 @@
 	color = null
 	chunkcolor = null
 	allowed_sex = list(MALE, FEMALE)
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER //50 more integ than a gamberson, at the cost of leg protection
+	shiftable = FALSE
 	sellprice = 33 //This is a very nice jacket! Where'd you get it?...
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/lord/light
+	name = "light arming jacket"
+	desc = "A lightweight collared jacket, purpose-woven for skirmishes and battle. The modest weight and streamlined form make it ideal for wearing under a cuirass or elegant halfplate."
+	icon_state = "dgamb"
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM //50 more integrity and superior protection vs a light gamberson, and cheaper than a proper gamberson with the same integrity.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe
 	name = "thin stalker robe"
 	desc = "A thick robe in royal purple, befitting a travelling noble, while remaining easy for them to slip about in.."
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "shadowrobe"
+	shiftable = FALSE
 	sellprice = 88 //Hand's attire. If someone nabs this, well, they best get paid well that's for sure.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/raneshen
@@ -58,6 +98,7 @@
 	desc = "A light and insulative jacket, hewn from cloth. Peasants tend to wear these in the colder months, though they've also been repurposed - by more desperate hands - as armor-padding."
 	armor = ARMOR_PADDED_BAD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
+	shiftable = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy
 	name = "padded arming jacket"
@@ -81,8 +122,8 @@
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	color = "#976E6B"
-	var/shiftable = TRUE
-	var/shifted = FALSE
+	shiftable = TRUE
+	shifted = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/holysee
 	color = "#d6dce6"
@@ -91,7 +132,7 @@
 	if(!shiftable)
 		return
 	if(shifted)
-		if(alert("Would you like to wear your gambeson normally? -Restores greyscaling, new style.",, "Yes", "No") != "No")
+		if(alert("Would you like to wear your padded gambeson normally? -Restores greyscaling, new style.",, "Yes", "No") != "No")
 			icon_state = "gambesonp"
 			color = "#976E6B"
 			update_icon()
@@ -103,7 +144,7 @@
 					H.update_inv_armor()
 			return
 	else
-		if(alert("Would you like to wear your gambeson traditionally? -Removes Greyscaling, old style.",, "Yes", "No") != "No")
+		if(alert("Would you like to wear your padded gambeson traditionally? -Removes Greyscaling, old style.",, "Yes", "No") != "No")
 			icon_state = "gambesonpold"
 			color = null
 			update_icon()
@@ -114,7 +155,6 @@
 					H.update_inv_shirt()
 					H.update_inv_armor()
 			return
-
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
 	name = "fencing gambeson"
