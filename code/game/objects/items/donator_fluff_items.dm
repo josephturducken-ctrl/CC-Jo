@@ -1588,3 +1588,12 @@ mas//Lazily shoving all donator fluff items in here for now. Feel free to make t
 	item_state = "ollanius_hoeburk"
 	icon_state = "ollanius_hoeburk"
 	flags_inv = HIDEBOOB
+
+// JADEMANIQUE 
+
+/obj/item/rogue/instrument/guitar/jade_guitar
+	name = "Gilbranzed Guitar"
+	desc = "\"A sturdy guitar with numerous nicks and scratches, poorly hidden under loving maintenance \
+	The gilbranze strings and fastens seem to be of museum quality, with a touchmark in the form of the initials 'AWE' on one end.\""
+	icon = 'icons/obj/items/donor_music.dmi'
+	icon_state = "gilbranzeguitar"
