@@ -28,7 +28,8 @@
 	titles = list(
 		"Veiled Lady",
 		"Corpse Mother",
-		"Undermaiden"
+		"Undermaiden",
+		"Neriko"
 	)
 
 // Near a grave, cross, or within the church
