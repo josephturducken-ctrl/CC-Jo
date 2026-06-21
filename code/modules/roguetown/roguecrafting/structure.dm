@@ -1033,7 +1033,7 @@
 	wallcraft = TRUE
 
 /datum/crafting_recipe/roguetown/structure/fireplace
-	name = "Fireplace (North)"
+	name = "Fireplace"
 	category = "Misc"
 	result = /obj/machinery/light/rogue/campfire/fireplace
 	reqs = list(/obj/item/grown/log/tree/small = 1,
@@ -1235,11 +1235,17 @@
 	name = "large table"
 	category = "Tables"
 	result = /obj/structure/table/wood/large_table
-	reqs = list(/obj/item/natural/wood/plank = 2)
+	reqs = list(/obj/item/natural/wood/plank = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
+
+// Caustic Edit
+/datum/crafting_recipe/roguetown/structure/largetable/corner
+	name = "large table (corner)"
+	diagonal = TRUE
+// Caustic Edit end
 
 /datum/crafting_recipe/roguetown/structure/operatingtable
 	name = "operating table"
@@ -1576,5 +1582,203 @@
 	verbage_simple = "grind"
 	verbage = "grinds"
 	craftsound = null
+
+/datum/crafting_recipe/roguetown/structure/furrug
+	name = "giant fur rug"
+	category = "Floors"
+	result = /obj/structure/giantfur
+	reqs = list(/obj/item/natural/fur = 3)
+	craftdiff = 0
+	subtype_reqs = FALSE // Allows using any furs
+
+/datum/crafting_recipe/roguetown/structure/furrugsmall
+	name = "giant fur pelt"
+	category = "Floors"
+	result = /obj/structure/giantfur/small
+	reqs = list(/obj/item/natural/fur = 2)
+	craftdiff = 0
+	subtype_reqs = FALSE // Allows using any furs
+
+/datum/crafting_recipe/roguetown/structure/floorcandle
+	name = "floor candles"
+	category = "Lighting"
+	result = /obj/machinery/light/rogue/candle/floorcandle
+	reqs = list(/obj/item/candle/yellow = 1)
+	verbage_simple = "lay out"
+	verbage = "lays out"
+	craftdiff = 0
+	ignoredensity = TRUE
+
+/datum/crafting_recipe/roguetown/structure/floorcandlealt
+	name = "floor candles (alt)"
+	category = "Lighting"
+	result = /obj/machinery/light/rogue/candle/floorcandle/alt
+	reqs = list(/obj/item/candle/yellow = 1)
+	verbage_simple = "lay out"
+	verbage = "lays out"
+	craftdiff = 0
+	ignoredensity = TRUE
+
+/datum/crafting_recipe/roguetown/structure/floorcandlepink
+	name = "floor candles (Eoran)"
+	category = "Lighting"
+	result = /obj/machinery/light/rogue/candle/floorcandle/pink
+	reqs = list(/obj/item/candle/eora = 1)
+	verbage_simple = "lay out"
+	verbage = "lays out"
+	craftdiff = 0
+	ignoredensity = TRUE
+
+/datum/crafting_recipe/roguetown/structure/floorcandlepinkalt
+	name = "floor candles (Eoran) (alt)"
+	category = "Lighting"
+	result = /obj/machinery/light/rogue/candle/floorcandle/alt/pink
+	reqs = list(/obj/item/candle/eora = 1)
+	verbage_simple = "lay out"
+	verbage = "lays out"
+	craftdiff = 0
+	ignoredensity = TRUE
+
+/datum/crafting_recipe/roguetown/structure/closetdark
+	name = "closet (dark)"
+	category = "Containers"
+	result = /obj/structure/closet/crate/roguecloset/dark
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/closetdark
+	name = "toilet"
+	result = /obj/structure/toilet
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/shelf
+	name = "shelf (wall)"
+	result = /obj/structure/rack/rogue/shelf
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	wallcraft = TRUE
+	craftdiff = 1
+	ignoredensity = TRUE // So you can put them over tables
+
+/datum/crafting_recipe/roguetown/structure/shelf_big
+	name = "shelf (standing small)"
+	result = /obj/structure/rack/rogue/shelf/big
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+	ignoredensity = TRUE // So you can put them over tables
+
+/datum/crafting_recipe/roguetown/structure/shelf_biggest
+	name = "shelf (standing)"
+	result = /obj/structure/rack/rogue/shelf/biggest
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/drawer
+	name = "drawer"
+	result = /obj/structure/closet/crate/drawer
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/structure/crate
+	name = "old crate"
+	category = "Containers"
+	result = /obj/structure/closet/crate/chest/old_crate
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/structure/chest_sturdy
+	name = "sturdy chest"
+	category = "Containers"
+	result = /obj/structure/closet/crate/chest/neu
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/chest_sturdy_iron
+	name = "reinforced chest"
+	category = "Containers"
+	result = /obj/structure/closet/crate/chest/neu_iron
+	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/scrap = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/structure/closet_dark
+	name = "dark closet"
+	category = "Containers"
+	result = /obj/structure/closet/crate/roguecloset/dark
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/closet_alt
+	name = "closet (alt)"
+	category = "Containers"
+	result = /obj/structure/closet/crate/roguecloset/inn
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/deer_trophy
+	name = "saiga trophy"
+	result = /obj/structure/rogue/trophy/deer
+	reqs = list(/obj/item/natural/wood/plank = 1, /obj/item/natural/head/saiga = 1)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	wallcraft = TRUE
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/structure/chair_plain
+	name = "wooden chair (plain)"
+	category = "Seats"
+	result = /obj/item/chair/rogue/chair3
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/bench_plain
+	name = "wooden bench (plain)"
+	category = "Seats"
+	result = /obj/structure/chair/bench/church/smallbench
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+
+/datum/crafting_recipe/roguetown/structure/bookcase
+	name = "Bookcase"
+	result = /obj/structure/bookcase
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
 
 // Caustic Edit End

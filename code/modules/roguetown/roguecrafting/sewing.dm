@@ -141,18 +141,6 @@
 	craftdiff = 4
 	bypass_dupe_test = TRUE
 
-/datum/crafting_recipe/roguetown/sewing/nurseveil
-	name = "nurse's veil, improvised"
-	category = "Hats"
-	result = list(/obj/item/clothing/head/roguetown/veiled)
-	tools = list(/obj/item/rogueweapon/huntingknife)
-	reqs = list(
-		/obj/item/tablecloth/silk = 1
-	)
-	craftdiff = 1
-	sellprice = 5
-	bypass_dupe_test = TRUE // Uses the tablecloth, a much rarer and valuable article, in lieu of cloth.
-
 /* craftdif of 1 */
 
 /datum/crafting_recipe/roguetown/sewing/clothgloves
@@ -950,7 +938,7 @@
 	craftdiff = 2
 	sellprice = 5
 
-/datum/crafting_recipe/roguetown/sewing/nurseveil
+/datum/crafting_recipe/roguetown/sewing/nurseveil_improv // Caustic Edit
 	name = "nurse's veil, improvised"
 	category = "Hats"
 	result = list(/obj/item/clothing/head/roguetown/veiled)

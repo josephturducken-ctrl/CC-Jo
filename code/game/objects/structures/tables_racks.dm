@@ -646,11 +646,32 @@
 	climb_offset = 0
 	pixel_y = 32
 
+	var/move_on_craft = TRUE // Caustic Edit
+
+// Caustic Edit
+/obj/structure/rack/rogue/shelf/OnCrafted(dirin)
+	if(move_on_craft) 
+		pixel_x = 0
+		pixel_y = 0
+		switch(dirin)
+			if(NORTH)
+				pixel_y = 32
+			if(SOUTH)
+				pixel_y = -32
+			if(EAST)
+				pixel_x = 32
+			if(WEST)
+				pixel_x = -32
+	. = ..()
+// Caustic Edit end
+
 /obj/structure/rack/rogue/shelf/big
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "shelf_big"
 	dir = SOUTH
 	pixel_y = 16
+
+	move_on_craft = FALSE // Caustic Edit
 
 /obj/structure/rack/rogue/shelf/biggest
 	icon_state = "shelf_biggest"
@@ -658,6 +679,8 @@
 	// This isn't pixel-shifted, and therefore should be dense.
 	density = TRUE
 	climb_offset = 10
+
+	move_on_craft = FALSE // Caustic Edit
 
 /obj/structure/rack/rogue/shelf/notdense // makes the wall mounted one less weird in a way, got downside of offset when loaded again tho
 	density = FALSE

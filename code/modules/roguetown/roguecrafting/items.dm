@@ -357,6 +357,7 @@
 		/obj/item/natural/fur = 1
 		)
 	craftdiff = 1
+	subtype_reqs = FALSE // Caustic Edit. Allows using any furs
 
 /datum/crafting_recipe/roguetown/survival/whetstone
 	name = "whetstone"
