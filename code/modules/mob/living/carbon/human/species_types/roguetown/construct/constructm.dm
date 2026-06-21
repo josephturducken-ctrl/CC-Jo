@@ -764,7 +764,7 @@
 	name = "Metal Fatigue I"
 	desc = "My frame bears needless burden. Additional metal drags at my joints and dulls the rhythm of my workings."
 	icon_state = "muscles"
- 
+
 /datum/status_effect/debuff/ironman_heavy
 	id = "ironman_heavy"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ironman_heavy
