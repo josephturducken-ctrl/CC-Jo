@@ -444,6 +444,9 @@
 //Creamed
 #define COMSIG_COMPONENT_CLEAN_FACE_ACT "clean_face_act"		//called when you wash your face at a sink: (num/strength)
 
+//Bed
+#define COMSIG_SLEEPING_ON_BED "sleeping_on_bed" //from base of /mob/living/carbon/proc/handle_sleep(): (mob/living/sleeper, obj/structure/bed)
+
 //Food
 #define COMSIG_FOOD_EATEN "food_eaten"		//from base of obj/item/reagent_containers/food/snacks/attack(): (mob/living/eater, mob/feeder)
 

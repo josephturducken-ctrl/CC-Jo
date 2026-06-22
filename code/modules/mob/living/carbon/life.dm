@@ -571,6 +571,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 		else if(isturf(loc)) //No illegal tech.
 			var/obj/structure/bed/rogue/bed = locate() in loc
 			if(bed)
+				SEND_SIGNAL(bed, COMSIG_SLEEPING_ON_BED, src)
 				sleepy_mod = bed.sleepy
 			else
 				if(HAS_TRAIT(src, TRAIT_OUTDOORSMAN))
