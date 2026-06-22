@@ -174,6 +174,13 @@
 	output = /datum/reagent/consumable/sauce/blackberry_confiture
 	cooktime = STEW_COOKING_TIME
 	req_liquid = /datum/reagent/consumable/soup/melted_sugar
+
+/datum/stew_recipe/raspberry_confiture
+	inputs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/raspberry)
+	output = /datum/reagent/consumable/sauce/raspberry_confiture
+	cooktime = STEW_COOKING_TIME
+	req_liquid = /datum/reagent/consumable/soup/melted_sugar
+
 //JAM FERMENTING T2 SWEET SAUCES
 /datum/brewing_recipe/apple_jam
 	name = "Apple Jam"
@@ -270,6 +277,19 @@
 	brewed_amount = 2
 	brew_time = 3 MINUTES
 	sell_value = 50
+
+/datum/brewing_recipe/raspberry_jam
+	name = "Raspberry Jam"
+	category = "Other"
+	bottle_name = "raspberry jam"
+	bottle_desc = "A container of locally preserved raspberries."
+	reagent_to_brew = /datum/reagent/consumable/sauce/raspberry_jam
+	needed_reagents = list(/datum/reagent/consumable/sauce/raspberry_confiture = 100)
+	needed_items = list(/obj/item/reagent_containers/food/snacks/sugar = 2)
+	brewed_amount = 2
+	brew_time = 3 MINUTES
+	sell_value = 50
+
 //T3 otavan sauces: better jams!
 /datum/brewing_recipe/apple_moutarde
 	name = "Apple Moutarde"
@@ -366,6 +386,19 @@
 	brewed_amount = 2
 	brew_time = 3 MINUTES
 	sell_value = 50
+
+/datum/brewing_recipe/raspberry_moutarde
+	name = "Raspberry Moutarde"
+	category = "Other"
+	bottle_name = "raspberry moutarde"
+	bottle_desc = "A container of locally preserved raspberries."
+	reagent_to_brew = /datum/reagent/consumable/sauce/raspberry_moutarde
+	needed_reagents = list(/datum/reagent/consumable/sauce/raspberry_jam = 100)
+	needed_items = list(/obj/item/alch/mentha = 2)
+	brewed_amount = 2
+	brew_time = 3 MINUTES
+	sell_value = 50
+
 //T4 Otavan Sauces: Insert honey
 /datum/brewing_recipe/apple_etruscole
 	name = "Apple Etruscole"
@@ -458,6 +491,18 @@
 	bottle_desc = "A container of locally preserved blackberries."
 	reagent_to_brew = /datum/reagent/consumable/sauce/blackberry_etruscole
 	needed_reagents = list(/datum/reagent/consumable/sauce/blackberry_moutarde = 100)
+	needed_items = list(/obj/item/reagent_containers/food/snacks/rogue/honey = 2)
+	brewed_amount = 2
+	brew_time = 3 MINUTES
+	sell_value = 50
+
+/datum/brewing_recipe/raspberry_etruscole
+	name = "Raspberry Etruscole"
+	category = "Other"
+	bottle_name = "raspberry etruscole"
+	bottle_desc = "A container of locally preserved raspberries."
+	reagent_to_brew = /datum/reagent/consumable/sauce/raspberry_etruscole
+	needed_reagents = list(/datum/reagent/consumable/sauce/raspberry_moutarde = 100)
 	needed_items = list(/obj/item/reagent_containers/food/snacks/rogue/honey = 2)
 	brewed_amount = 2
 	brew_time = 3 MINUTES

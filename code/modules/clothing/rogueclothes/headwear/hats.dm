@@ -449,15 +449,18 @@
 	name = "shawl"
 	desc = "Keeps the hair in check, and looks proper."
 	icon_state = "shawl"
+	sewrepair = TRUE // Caustic Edit
 
 /obj/item/clothing/head/roguetown/articap
 	name = "artificer's cap"
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
 	icon_state = "articap"
+	sewrepair = TRUE // Caustic Edit
 
 /obj/item/clothing/head/roguetown/brimmed
 	desc = "A simple brimmed hat that provides some relief from the sun."
 	icon_state = "brimmed"
+	sewrepair = TRUE // Caustic Edit
 
 // azure addition - random wizard hats
 
@@ -490,11 +493,13 @@
 	name = "archer's cap"
 	desc = "For the merry men."
 	icon_state = "archercap"
+	sewrepair = TRUE // Caustic Edit
 
 /obj/item/clothing/head/roguetown/physician
 	name = "doctor's hat"
 	desc = "My cure is most effective."
 	icon_state = "physhat"
+	sewrepair = TRUE // Caustic Edit
 
 /obj/item/clothing/head/roguetown/helmet/tricorn
 	slot_flags = ITEM_SLOT_HEAD
@@ -581,6 +586,7 @@
 	name = "maid headdress"
 	desc = "A decorative cloth headband clearly indicating the wearer as a maid."
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK // Caustic Edit
+	sewrepair = TRUE // Caustic Edit
 	alternate_worn_layer  = 8.9 //On top of helmet //Caustic Edit End
 	icon_state = "maidhead"
 	item_state = "maidhead"
@@ -595,6 +601,7 @@
 	item_state = "dochat1"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_RED
+	sewrepair = TRUE // Caustic Edit
 	icon = 'icons/roguetown/clothing/special/courtphys.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
 	salvage_result = /obj/item/natural/silk
@@ -638,3 +645,4 @@
 	desc = "A pleated cloth headband. It has gained widespread popularity from Valorian nobles travelling with their servants."
 	icon_state = "maidband"
 	body_parts_covered = NONE
+	sewrepair = TRUE // Caustic Edit

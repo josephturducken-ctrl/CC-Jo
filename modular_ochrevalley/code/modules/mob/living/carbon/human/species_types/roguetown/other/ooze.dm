@@ -71,6 +71,8 @@
 		/obj/item/bodypart/taur/fatnaga,
 		/obj/item/bodypart/taur/bunny,
 		/obj/item/bodypart/taur/mammoth,
+		/obj/item/bodypart/taur/biglegs,
+		/obj/item/bodypart/taur/biglegsstanced,
 	)
 	enflamed_icon = "widefire"
 	customizers = list(
@@ -83,10 +85,10 @@
 		/datum/customizer/bodypart_feature/legwear,
 		/datum/customizer/bodypart_feature/piercing,
 		/datum/customizer/organ/penis/anthro,
-		/datum/customizer/organ/breasts/human,
-		/datum/customizer/organ/vagina/human_anthro,
-		/datum/customizer/organ/belly/human,
-		/datum/customizer/organ/butt/human,
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/anthro,
+		/datum/customizer/organ/belly/animal,
+		/datum/customizer/organ/butt/animal,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/tail/anthro,
 		/datum/customizer/organ/tail_feature/anthro,

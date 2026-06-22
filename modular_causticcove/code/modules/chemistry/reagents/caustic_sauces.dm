@@ -244,6 +244,22 @@
 	sauce_type = 3
 	sauce_level = 2
 
+/datum/reagent/consumable/sauce/raspberry_confiture
+	name = "raspberry confiture"
+	description = "It is smeared with a crimson spread."
+	color = "#b62525"
+	taste_description = "sweet raspberries"
+	sauce_type = 3
+	sauce_level = 1
+
+/datum/reagent/consumable/sauce/raspberry_jam
+	name = "raspberry jam"
+	description = "It is smeared with a crimson jam."
+	color = "#e64a4a"
+	taste_description = "sweet raspberries"
+	sauce_type = 3
+	sauce_level = 2
+
 /datum/reagent/consumable/sauce/apple_moutarde
 	name = "apple moutarde"
 	description = "It is smeared with a reddish jam with mentha infused."
@@ -305,6 +321,14 @@
 	description = "It is smeared with a black jam with mentha infused."
 	color = "#2b0707"
 	taste_description = "sweet minty blackberries"
+	sauce_type = 3
+	sauce_level = 3
+
+/datum/reagent/consumable/sauce/raspberry_moutarde
+	name = "raspberry moutarde"
+	description = "It is smeared with a crimson jam with mentha infused."
+	color = "#860d0d"
+	taste_description = "sweet minty raspberries"
 	sauce_type = 3
 	sauce_level = 3
 
@@ -372,6 +396,13 @@
 	sauce_type = 3
 	sauce_level = 4
 
+/datum/reagent/consumable/sauce/raspberry_etruscole
+	name = "raspberry etruscole"
+	description = "It is smeared with a crimson jam with mentha infused."
+	color = "#9b1e1e"
+	taste_description = "decedant minty raspberries"
+	sauce_type = 3
+	sauce_level = 4
 
 //Aavnic (All sour)
 /datum/reagent/consumable/sauce/sour_cream
