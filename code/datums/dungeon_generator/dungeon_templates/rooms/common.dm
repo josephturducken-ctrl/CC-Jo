@@ -432,10 +432,10 @@
 	width = 24
 	height = 24
 
-	north_offset = 12
+	north_offset = 11
 	south_offset = 11
 	east_offset = 11
-	west_offset = 10
+	west_offset = 11
 
 /datum/map_template/dungeon/room/bathhouse_custom
 	width = 20

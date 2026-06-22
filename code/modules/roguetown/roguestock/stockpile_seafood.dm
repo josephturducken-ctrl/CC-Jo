@@ -6,6 +6,10 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 6
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/fishfilet
 	name = "Fish Filet"
@@ -15,6 +19,10 @@
 	importexport_amt = 10
 	stockpile_limit = 50
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.8
+	regen_limit = 6
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/dried_fish
 	name = "Dried Fish Filet"
@@ -24,6 +32,10 @@
 	importexport_amt = 5
 	stockpile_limit = 30
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.6
+	regen_limit = 3
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/salmon
 	name = "Salmon"
@@ -33,6 +45,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/bass
 	name = "Seabass"
@@ -42,6 +57,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/carp
 	name = "Carp"
@@ -51,6 +69,9 @@
 	importexport_amt = 10
 	stockpile_limit = 15
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/sole
 	name = "Sole"
@@ -60,6 +81,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cod
 	name = "Cod"
@@ -69,6 +93,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/crab
 	name = "Crab"
@@ -78,6 +105,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/clam
 	name = "Clam"
@@ -87,6 +117,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/lobster
 	name = "Lobster"
@@ -96,6 +129,9 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/shrimp
 	name = "Shrimp"
@@ -105,3 +141,6 @@
 	importexport_amt = 10
 	stockpile_limit = 10
 	category = "Seafood"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End

@@ -16,7 +16,7 @@
 	skin_tone_wording = "Material"
 	use_skin_tone_wording_for_examine = FALSE
 	default_color = "FFFFFF"
-	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,NOBLOOD) // this already overwrites all blood-related things, I made it better at stopping bleeding completely
+	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY,NOBLOOD,MUTCOLORS) // this already overwrites all blood-related things, I made it better at stopping bleeding completely
 	///Caustic edit
 	allowed_taur_types = list(
 		/obj/item/bodypart/taur/lamia,
@@ -45,6 +45,7 @@
 		/obj/item/bodypart/taur/bunny,
 		/obj/item/bodypart/taur/biglegs,
 		/obj/item/bodypart/taur/biglegsstanced,
+		/obj/item/bodypart/taur/lupine_venard,
 	)
 	///Caustic edit end
 	default_features = MANDATORY_FEATURE_LIST
@@ -188,13 +189,19 @@
 
 /datum/species/construct/metal/get_skin_list()
 	return list(
-		"BRASS" = "dfbd6c",
-		"IRON" = "525352",
-		"STEEL" = "babbb9",
-		"BRONZE" = "e2a670",
-		"GOLD" = "bf9b30",
-		"WOOD" = "8B4513",
-		"PORCELAIN" = "FFF5EE",
+		"BRASS" = "#dfbd6c",
+		"IRON" = "#525352",
+		"STEEL" = "#babbb9",
+		"BRONZE" = "#e2a670",
+		"GOLD" = "#bf9b30",
+		"WOOD" = "#8B4513",
+		"PORCELAIN" = "#FFF5EE",
+		"ASTRATAN MARBLE" = "#F6EEB2",
+		"NOCTURIAN MARBLE" = "#140B06",
+		"ABYSSIAN SILVER" = "#33497B",
+		"UNDERDARK CRYSTAL" = "#190C30",
+		"CANVAS" = "#D4C7B4",
+		"COTTON" = "#F3EFDB",
 	)
 
 /datum/species/construct/metal/get_hairc_list()

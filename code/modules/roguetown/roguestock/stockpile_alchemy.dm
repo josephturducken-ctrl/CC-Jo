@@ -6,6 +6,10 @@
 	importexport_amt = 5
 	stockpile_limit = 20
 	category = "Alchemy"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.25
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/calendula
 	name = "Calendula"
@@ -15,6 +19,10 @@
 	importexport_amt = 5
 	stockpile_limit = 20
 	category = "Alchemy"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.25
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/dendor_essence
 	name = "Essence of Wilderness"
@@ -25,3 +33,6 @@
 	stockpile_limit = 5
 	category = "Alchemy"
 	accept_toggle_enabled = FALSE
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End

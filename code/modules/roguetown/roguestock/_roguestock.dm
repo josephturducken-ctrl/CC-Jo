@@ -18,8 +18,8 @@
 
 	//Caustic Edit - Adding back a small generation of imports to mimic the old auto-gen
 	var/auto_regen = TRUE
-	var/regen_amount = 2
-	var/regen_limit = 10
+	var/regen_amount = 1 //Can be a fraction to instead have a probability of regenning or not
+	var/regen_limit = 5
 	//Caustic Edit End
 
 /datum/roguestock/New()

@@ -7,6 +7,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 50
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/poultry
 	name = "Bird Meat"
@@ -17,6 +21,10 @@
 	stockpile_amount = 2
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/rabbit
 	name = "Cabbit Meat"
@@ -27,6 +35,10 @@
 	stockpile_amount = 2
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/pork
 	name = "Pork"
@@ -37,6 +49,10 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/fat
 	name = "Fat"
@@ -47,6 +63,10 @@
 	importexport_amt = 5
 	stockpile_limit = 50
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tallow
 	name = "Tallow"
@@ -56,6 +76,9 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/egg
 	name = "Egg"
@@ -66,6 +89,10 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/butter
 	name = "Butter"
@@ -76,6 +103,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cheese
 	name = "Cheese"
@@ -86,6 +117,10 @@
 	importexport_amt = 5
 	stockpile_limit = 25
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/salumoi
 	name = "Salumoi"
@@ -95,6 +130,9 @@
 	importexport_amt = 3
 	stockpile_limit = 20
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/sausage
 	name = "Sausage"
@@ -104,3 +142,6 @@
 	importexport_amt = 3
 	stockpile_limit = 20
 	category = "Animal"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End

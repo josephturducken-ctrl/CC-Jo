@@ -64,7 +64,7 @@
 
 	if(obj_integrity >= max_integrity)
 		to_chat(loc, span_notice(repairmsg_end))
-		return
+		return 0 //Caustic Edit - Tweaking this to allow for doing something different based on if it succeeds or fails
 
 	var/repair_amount
 	var/next_tick_time
@@ -98,6 +98,8 @@
 	to_chat(loc, span_notice(repairmsg_continue))
 
 	reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), next_tick_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
+
+	return repair_amount //Caustic Edit - Tweaking this to allow for doing something different based on if it succeeds or fails
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/proc/regen_interrupt(damage_amount, damage_type, damage_flag, attack_dir)
 	if(interrupt_damount && interrupt_damount > damage_amount)

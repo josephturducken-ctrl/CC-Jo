@@ -742,8 +742,11 @@
 						should_update = TRUE
 				else
 					var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
-					if(!wings)
-						wings = new /obj/item/organ/wings()
+					if(!wings) //Caustic Edit - Quick hacky fix to account for Harpies who use Mirror Transform to remove their wings. Give them back their flighted versions.
+						if(istype(H.client.prefs.pref_species, /datum/species/harpy))
+							wings = new /obj/item/organ/wings/flight/harpy()
+						else
+							wings = new /obj/item/organ/wings() //Caustic Edit End
 						wings.Insert(H, TRUE, FALSE)
 					wings.accessory_type = valid_wings[new_style]
 					var/datum/sprite_accessory/wings/wings_type = SPRITE_ACCESSORY(wings.accessory_type)

@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(treasury)
 	var/initial_payment_done = FALSE
 	var/list/loans = list()
 	var/loan_interest_rate = 0.25
-	var/loan_max_issuance_day = 5
+	var/loan_max_issuance_day = 8 //Caustic Edit - Increase this from 5 to 8
 	var/list/poll_tax_rates = list(
 		POLL_TAX_CAT_NOBLE = 0,
 		POLL_TAX_CAT_CLERGY = 0,
@@ -174,9 +174,19 @@ SUBSYSTEM_DEF(treasury)
 						X.demand += rand(5,15)
 					if(X.demand > initial(X.demand))
 						X.demand -= rand(5,15)*/
-			for(var/datum/roguestock/stockpile/A in stockpile_datums) //Caustic Edit - Modified this to just mimic the old free regen of resources, should be able to define it on a per-resource basis if desired for balans
-				if(A.auto_regen && A.stockpile_amount < A.regen_limit && A.stockpile_amount < (A.stockpile_limit + A.regen_amount))
-					A.stockpile_amount += A.regen_amount
+			//Caustic Edit - Modified this to just mimic the old free regen of resources, should be able to define it on a per-resource basis if desired for balans
+			for(var/datum/roguestock/stockpile/A in stockpile_datums)
+				var/should_regen = FALSE
+				var/num_to_gen = 1
+				if(A.auto_regen && A.regen_amount < 1 && A.regen_amount > 0) //If it's between 0 and 1, it's a probability to generate 1 stock
+					should_regen = prob(A.regen_amount * 100)
+				else if(A.auto_regen && A.stockpile_amount < A.regen_limit && ((A.stockpile_amount + A.regen_amount) < A.stockpile_limit)) //Otherwise, always generate this amount
+					should_regen = TRUE
+					num_to_gen = A.regen_amount
+				
+				if(should_regen)
+					A.stockpile_amount += num_to_gen
+			//Caustic Edit End
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/town/vault]
 		var/amt_to_generate = 0
 		for(var/obj/item/I in A)
@@ -725,10 +735,10 @@ SUBSYSTEM_DEF(treasury)
 		return POLL_TAX_CAT_MERCHANT
 	if((H.job in list("Innkeeper", "Head Physician", "Apothecary", "Bathmaster", "Town Crier", "Magicians Associate")) || HAS_TRAIT(H, TRAIT_RESIDENT))
 		return POLL_TAX_CAT_BURGHER
+	if(H.job == "Mercenary") //Caustic Edit - Moved this up a bit so it takes priority over the Adventurer Tax - To account for moving those jobs around a bit.
+		return POLL_TAX_CAT_MERCENARY
 	if(H.job in GLOB.wanderer_positions)
 		return POLL_TAX_CAT_ADVENTURER
-	if(H.job == "Mercenary")
-		return POLL_TAX_CAT_MERCENARY
 	if((H.job in GLOB.peasant_positions) || (H.job in GLOB.sidefolk_positions))
 		return POLL_TAX_CAT_PEASANT
 	return null

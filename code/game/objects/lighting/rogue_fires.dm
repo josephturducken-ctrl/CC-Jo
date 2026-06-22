@@ -852,7 +852,7 @@
 			if(distance > healing_range || HAS_TRAIT(human, TRAIT_IRONMAN))
 				continue
 			human.add_stress(/datum/stressevent/campfire)
-			// CC Edit - Campfires only boost energy regen when you're sleeping and laying down. For towners, this does not affect them.
+			// CC Edit - Campfires only boost energy regen when you're laying down. For towners, this does not affect them.
 			//If the campfire is a greater firepit (densefire), apply this effect anyways.
 
 			//Check for the bed first.
@@ -870,16 +870,24 @@
 			//Check if we're a towner role, and NOT in cmode.
 			var/static/list/towner_jobs
 			towner_jobs = GLOB.peasant_positions | GLOB.burgher_positions | GLOB.sidefolk_positions
-			if(((human.mind?.assigned_role in towner_jobs)) || !human.cmode) //Don't be in cmode
+			if(!human.cmode) //Don't be in cmode
+				var/is_towner = (human.mind?.assigned_role in towner_jobs)
+				var/ready_for_buff = (is_towner || human.resting)
 
 				if(!human.has_status_effect(/datum/status_effect/buff/campfire_stamina))
-					to_chat(human, span_info("The warmth of the fire comforts me, affording me a short rest. I would need to lie down on a bed, or bundle up in bedsheets to get a better rest."))
+					to_chat(human, span_info("The warmth of the fire comforts me, affording me a short rest. I would need to lie down, or bundle up in a bed to get a better rest."))
 				
-				if(human.resting) //Can only heal and recover energy if resting... Second check for greater campfire.
+				if(ready_for_buff) //Can only heal if resting (or a towner)...
 					human.apply_status_effect(/datum/status_effect/buff/campfire, valid_bed)
 
-				if(greater_fire || human.resting) //Check to grant stamina only if we're a greater fire, otherwise resting.
-					human.apply_status_effect(/datum/status_effect/buff/campfire_stamina, valid_bed)
+				var/datum/status_effect/buff/campfire_stamina/campfire_effect = human.apply_status_effect(/datum/status_effect/buff/campfire_stamina, valid_bed)
+				if(!campfire_effect)
+					campfire_effect = human.has_status_effect(/datum/status_effect/buff/campfire_stamina)
+				
+				if(greater_fire || ready_for_buff) //Grant stamina if we're a greater fire, or they are resting or are a towner.
+					campfire_effect.should_stamina = TRUE
+				else
+					campfire_effect.should_stamina = FALSE //Similarly, turn that bit off if they get up again, since none of the other checks should change.
 			//CC Edit End
 
 

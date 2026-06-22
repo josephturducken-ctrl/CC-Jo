@@ -968,6 +968,14 @@
 		remove_status_effect(/datum/status_effect/debuff/hungryt2)
 		remove_status_effect(/datum/status_effect/debuff/hungryt3)
 		return FALSE
+	
+	//Caustic Edit - Add a call to hook in the restarting of Natural Armor Regen
+	if(change > 0 && skin_armor)
+		if(istype(skin_armor, /obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor) && ((nutrition + change) > NUTRITION_LEVEL_HUNGRY))
+			var/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/armor = skin_armor
+			armor.restart_regen()
+	//Caustic Edit End
+
 	return ..()
 
 /mob/living/carbon/human/set_nutrition(change) //Seriously fuck you oldcoders.

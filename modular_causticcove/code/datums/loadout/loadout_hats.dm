@@ -13,4 +13,12 @@
 	path = /obj/item/clothing/head/roguetown/courtphysician/female
 	sort_category = "Hats"
 
+/datum/loadout_item/mushhat
+	name = "Mushroom Hat"
+	path = /obj/item/clothing/head/roguetown/mushroomhat
+	sort_category = "Hats"
 
+/datum/loadout_item/mushhatwide
+	name = "Wide Mushroom Hat"
+	path = /obj/item/clothing/head/roguetown/mushroomhat/wide
+	sort_category = "Hats"

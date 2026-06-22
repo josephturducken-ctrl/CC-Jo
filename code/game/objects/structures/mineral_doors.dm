@@ -972,8 +972,8 @@
 	repair_skill = /datum/skill/craft/masonry
 
 /obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
-	if(user.get_active_held_item())
-		..()
+	//if(user.get_active_held_item())
+	..() //Caustic Edit - This line and above, just always calling the parent method to let the QoL locks work on these doors!
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
@@ -984,6 +984,21 @@
 	..()
 
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
+	//if(user.get_active_held_item())
+	..()
+		//return //Caustic Edit - This line and the 2 above, just always calling the parent method to let the QoL locks work on these doors!
+	/*if(door_opened || isSwitchingStates) //Caustic Edit - Lets try moving this to the Middle Click option and see if that allows for rightclick-locking the door like others?
+		return
+	if(brokenstate)
+		to_chat(user, span_warning("There isn't much left of this door."))
+		return
+	if(get_dir(src,user) == viewportdir)
+		view_toggle(user)
+	else
+		to_chat(user, span_warning("The viewport doesn't toggle from this side."))
+		return*/
+
+/obj/structure/mineral_door/wood/donjon/MiddleClick(mob/user, params)
 	if(user.get_active_held_item())
 		..()
 		return
@@ -997,6 +1012,7 @@
 	else
 		to_chat(user, span_warning("The viewport doesn't toggle from this side."))
 		return
+//Caustic Edit End
 
 /obj/structure/mineral_door/wood/donjon/proc/view_toggle(mob/user)
 	if(door_opened)

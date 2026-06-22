@@ -26,6 +26,12 @@
 		if(istype(rockturfs, /turf/closed/mineral/random/rogue/high) || istype(rockturfs, /turf/closed/mineral/rogue/cinnabar) || istype(rockturfs, /turf/closed/mineral/rogue/iron) || istype(rockturfs, /turf/closed/mineral/rogue/gold) || istype(rockturfs, /turf/closed/mineral/rogue/silver))
 			new /obj/effect/temp_visual/highqualityore(get_turf(rockturfs))
 			//to_chat(user, span_warning("I see some high quality stone"))
+		if(istype(rockturfs, /turf/closed/mineral/random/rogue/sandstone/med) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/copper) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/tin) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/coal)) //Caustic Edit - Add handling for the Sandstone Rocktypes in Desert Town!
+			new /obj/effect/temp_visual/medqualityore(get_turf(rockturfs))
+			//to_chat(user, span_warning("I see some medium quality stone"))
+		if(istype(rockturfs, /turf/closed/mineral/random/rogue/sandstone/high) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/cinnabar) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/iron) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/gold) || istype(rockturfs, /turf/closed/mineral/rogue/sandstone/silver))
+			new /obj/effect/temp_visual/highqualityore(get_turf(rockturfs))
+			//to_chat(user, span_warning("I see some high quality stone")) //Caustic Edit End
 		if(istype(rockturfs, /turf/closed/mineral/rogue/gem))
 			new /obj/effect/temp_visual/gemqualityore(get_turf(rockturfs))
 			//to_chat(user, span_warning("I see some GREAT quality stone"))

@@ -30,6 +30,10 @@
 		return
 	user.visible_message(span_notice("[user] unfolds the letter and accepts its seal."), \
 		span_notice("I claim the rights of Citizenry and Burghership granted by this letter."))
+	//Caustic Edit - Lets also remove the TRAIT_OUTLAW if the user has it, since... I'd _hope_ no one will attempt to steal one? Probably a player issue if they do
+	if(HAS_TRAIT(user, TRAIT_OUTLAW))
+		REMOVE_TRAIT(user, TRAIT_OUTLAW, TRAIT_GENERIC)
+	//Caustic Edit End
 	ADD_TRAIT(user, TRAIT_RESIDENT, TRAIT_CITIZENRY_LETTER)
 	playsound(get_turf(user), 'sound/misc/gold_license.ogg', 60, FALSE, -1)
 	qdel(src)

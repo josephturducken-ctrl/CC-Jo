@@ -58,15 +58,13 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth/death(gibbed)
 	..()
-	var/turf/deathspot = get_turf(src)
-	new /obj/item/magic/elemental/fragment(deathspot)
-	new /obj/item/magic/elemental/fragment(deathspot)
-	new /obj/item/magic/elemental/shard(deathspot)
-	new /obj/item/magic/elemental/shard(deathspot)
-	new /obj/item/magic/elemental/mote(deathspot)
-	new /obj/item/magic/elemental/mote(deathspot)
-	new /obj/item/magic/elemental/mote(deathspot)
-	new /obj/item/magic/elemental/mote(deathspot)
+	var/turf/deathspot = get_turf(src)///Caustic edit
+	for(var/i =1 to 2)
+		new /obj/item/magic/elemental/fragment(deathspot)
+	for(var/i =1 to 2)
+		new /obj/item/magic/elemental/shard(deathspot)
+	for(var/i =1 to 4)
+		new /obj/item/magic/elemental/mote(deathspot) ///Caustic edit end
 	new /obj/item/magic/melded/t1(deathspot)
 	update_icon()
 	spill_embedded_objects()

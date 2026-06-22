@@ -7,6 +7,9 @@
 	stockpile_limit = 4
 	accept_toggle_enabled = TRUE
 	category = "Precious"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gem_gemerald
 	name = "Gemerald"
@@ -17,6 +20,9 @@
 	stockpile_limit = 4
 	accept_toggle_enabled = TRUE
 	category = "Precious"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gem_saffira
 	name = "Saffira"
@@ -27,6 +33,9 @@
 	stockpile_limit = 3
 	accept_toggle_enabled = TRUE
 	category = "Precious"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gem_blortz
 	name = "Blortz"
@@ -37,6 +46,9 @@
 	stockpile_limit = 3
 	accept_toggle_enabled = TRUE
 	category = "Precious"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gem_dorpel
 	name = "Dorpel"
@@ -47,4 +59,6 @@
 	stockpile_limit = 2
 	accept_toggle_enabled = TRUE
 	category = "Precious"
-
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End

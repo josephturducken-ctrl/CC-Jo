@@ -7,6 +7,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/pear
 	name = "Pear"
@@ -17,6 +21,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/jacksberry
 	name = "Jacksberries"
@@ -27,6 +35,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50 // Jackberries are used to mass produce raisins so higher limit
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/blackberry
 	name = "Blackberry"
@@ -37,6 +49,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/raspberry
 	name = "Raspberry"
@@ -47,6 +63,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/strawberry
 	name = "Strawberry"
@@ -57,6 +77,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/lemon
 	name = "Lemon"
@@ -67,6 +91,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/lime
 	name = "Lime"
@@ -77,6 +105,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tangerine
 	name = "Tangerine"
@@ -87,6 +119,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/plum
 	name = "Plum"
@@ -97,6 +133,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.5
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tomato
 	name = "Tomato"
@@ -107,6 +147,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/pumpkin
 	name = "Pumpkin"
@@ -117,3 +161,7 @@
 	stockpile_amount = 0
 	stockpile_limit = 25
 	category = "Fruit"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.3
+	regen_limit = 4
+	//Caustic Edit End

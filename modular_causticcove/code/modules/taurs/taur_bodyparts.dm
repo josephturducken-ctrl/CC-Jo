@@ -257,3 +257,12 @@
 	taur_icon_state = "biglegsstanced_s"
 
 	has_taur_color = TRUE
+
+/obj/item/bodypart/taur/lupine_venard
+	name = "Lupine Venard Body"
+
+	offset_x = -16
+	taur_icon_state = "chemtaur_s"
+
+	has_taur_color = TRUE
+	can_wag = TRUE //Not actually wagging, but just loafing

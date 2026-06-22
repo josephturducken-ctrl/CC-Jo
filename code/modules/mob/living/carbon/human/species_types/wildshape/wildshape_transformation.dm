@@ -43,12 +43,12 @@
 
 	// CC Edit Start
 	// Transfer voregans and contents of them to the destination form
-	W.vore_organs = vore_organs.Copy()
+	W.vore_organs = vore_organs//.Copy() //I think this bit is where it was ending up duping the Voregans?
 	W.vore_selected = vore_selected
-	for(var/obj/belly/B as anything in vore_organs)
+	for(var/obj/belly/B as anything in vore_organs) //I think this is all that's needed, is just transferring the bellies back and forth?
 		B.forceMove(W)
 		B.owner = W
-	vore_organs.Cut()
+	//vore_organs.Cut()
 	// CC Edit End
 
 	for(var/datum/wound/old_wound in W.get_wounds())
@@ -170,12 +170,12 @@
 
 	// CC Edit Start
 	// Transfer voregans and contents of them to the destination form
-	W.vore_organs = vore_organs.Copy()
+	//W.vore_organs = vore_organs.Copy() //I think this bit is where it was ending up duping the Voregans?
 	W.vore_selected = vore_selected
-	for(var/obj/belly/B as anything in vore_organs)
+	for(var/obj/belly/B as anything in vore_organs) //I think this is all that's needed, is just transferring the bellies back and forth?
 		B.forceMove(W)
 		B.owner = W
-	vore_organs.Cut()
+	//vore_organs.Cut()
 	// CC Edit End
 
 

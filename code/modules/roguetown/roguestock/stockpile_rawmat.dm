@@ -6,6 +6,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/coal
 	name = "Coal"
@@ -15,6 +19,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/stone
 	name = "Stone"
@@ -24,6 +32,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 50 // Allow a small amount of stones to be sold for chiselling
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/clay
 	name = "Clay"
@@ -33,6 +45,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/salt//Comes from rocks not a farm
 	name = "Salt"
@@ -42,6 +58,10 @@
 	stockpile_amount = 2
 	importexport_amt = 5
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/glass
 	name = "Glass Batch"	//'Raw' glass
@@ -51,6 +71,10 @@
 	stockpile_amount = 5
 	importexport_amt = 5
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/iron
 	name = "Raw Iron"
@@ -60,6 +84,10 @@
 	stockpile_amount = 15
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/copper
 	name = "Raw Copper"
@@ -69,6 +97,10 @@
 	stockpile_amount = 12
 	importexport_amt = 10
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.9
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tin
 	name = "Raw Tin"
@@ -78,6 +110,10 @@
 	stockpile_amount = 12
 	importexport_amt = 10
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.9
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gold
 	name = "Raw Gold"
@@ -87,6 +123,10 @@
 	stockpile_amount = 4
 	stockpile_limit = 50
 	importexport_amt = 10
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.25
+	regen_limit = 3
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/silver
 	name = "Raw Silver"
@@ -96,6 +136,10 @@
 	stockpile_amount = 0 // Explicitly empty - players must produce their own silver.
 	stockpile_limit = 25
 	importexport_amt = 5
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.2
+	regen_limit = 2
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cinnabar
 	name = "Cinnabar"
@@ -105,6 +149,10 @@
 	stockpile_amount = 20
 	stockpile_limit = 50
 	importexport_amt = 5
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cloth
 	name = "Cloth"
@@ -114,6 +162,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 100
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/fibers
 	name = "Fibers"
@@ -123,6 +175,10 @@
 	stockpile_amount = 10
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/silk
 	name = "Silk"
@@ -131,6 +187,10 @@
 	trade_good_id = TRADE_GOOD_SILK
 	importexport_amt = 5
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.6
+	regen_limit = 4
+	//Caustic Edit End
 
 //natural/hide/cured must be defined/populated in sstreasury before natural/hide, for istype stockpile check to work
 /datum/roguestock/stockpile/cured
@@ -141,6 +201,10 @@
 	stockpile_amount = 15
 	importexport_amt = 10
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/hide
 	name = "Hide"
@@ -150,6 +214,10 @@
 	stockpile_amount = 10
 	importexport_amt = 5
 	stockpile_limit = 50
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 4
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/fur
 	name = "Fur"
@@ -158,3 +226,7 @@
 	trade_good_id = TRADE_GOOD_FUR
 	importexport_amt = 5
 	stockpile_limit = 25
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.4
+	regen_limit = 2
+	//Caustic Edit End

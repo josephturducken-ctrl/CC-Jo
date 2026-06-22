@@ -61,7 +61,13 @@
 	if(already_assembled)
 		return
 
-	if(istype(W,/obj/item/natural/stoneblock))
+	// Caustic Edit / Prevents hammer duping by adding them to chisels
+	if(istype(W, /obj/item/rogueweapon/hammer/iron/arcyne))
+		user.visible_message("<span class='info'>[user] tries to set the [W] against the chisel, but a mystical force pries them apart.</span>")
+		return
+	// Caustic Edit end
+
+	else if(istype(W,/obj/item/natural/stoneblock))
 		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
 		user.visible_message("<span class='info'>[user] adds a striking tool to the chisel set.</span>")
 		var/obj/item/rogueweapon/chisel/assembly/stoneblock/F = new(src.loc)
@@ -134,9 +140,14 @@
 	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/rogueweapon/chisel/bronze/attackby(obj/item/W, mob/living/user, params)
-	. = ..()
 	if(already_assembled)
 		return
+
+	// Caustic Edit / Prevents hammer duping by adding them to chisels
+	if(istype(W, /obj/item/rogueweapon/hammer/iron/arcyne))
+		user.visible_message("<span class='info'>[user] tries to set the [W] against the chisel, but a mystical force pries them apart.</span>")
+		return
+	// Caustic Edit end
 
 	if(istype(W,/obj/item/natural/stoneblock))
 		playsound(get_turf(user.loc), 'sound/foley/brickdrop.ogg', 100)
@@ -200,6 +211,7 @@
 		user.put_in_hands(F)
 		qdel(src)
 		return
+	. = ..()
 
 //................	Chisel toolset	............... //
 /obj/item/rogueweapon/chisel/assembly	// template

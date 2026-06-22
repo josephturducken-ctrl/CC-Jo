@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(sidefolk_positions, list( //Weerdoes who hang around the town
 	"Vagabond",
 	"Migrant",
 	"Pilgrim",
-	"Mercenary",	
+	//"Mercenary", //Caustic Edit - Commenting out this one and moving to Wanderer
 	"Veteran",
 ))
 
@@ -171,6 +171,7 @@ GLOBAL_LIST_INIT(wanderer_positions, list( //Homeless
 	"Court Agent",
 	"Trader",
 	"Wild Soul", //caustic edit
+	"Mercenary", //Caustic Edit - Moved Merc down here
 ))
 
 GLOBAL_LIST_INIT(antagonist_positions, list( //Mostly lesser antagonists

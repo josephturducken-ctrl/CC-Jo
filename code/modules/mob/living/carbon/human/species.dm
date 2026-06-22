@@ -2282,13 +2282,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //Tail Wagging//
 ////////////////
 
+//Caustic Edit - Reworking this slightly to allow for Taur Wagging as well
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T)
+	var/obj/item/bodypart/taur/Tr = H.get_bodypart(BODY_ZONE_TAUR)
+	if(!T && !Tr)
 		return FALSE
-	if(T.can_wag)
+	if(T && T.can_wag)
+		return TRUE
+	if(Tr && Tr.can_wag)
 		return TRUE
 	return FALSE
 
@@ -2296,29 +2300,44 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T)
+	var/obj/item/bodypart/taur/Tr = H.get_bodypart(BODY_ZONE_TAUR)
+	if(!T && !Tr)
 		return FALSE
-	return T.wagging
+	if(T)
+		return T.wagging
+	else
+		return Tr.wagging
 
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T)
+	var/obj/item/bodypart/taur/Tr = H.get_bodypart(BODY_ZONE_TAUR)
+	if(!T && !Tr)
 		return FALSE
-	T.wagging = TRUE
+	if(T)
+		T.wagging = TRUE
+	else
+		Tr.wagging = TRUE
 	H.update_body_parts(TRUE)
 
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(!T)
+	var/obj/item/bodypart/taur/Tr = H.get_bodypart(BODY_ZONE_TAUR)
+	if(!T && !Tr)
 		return
-	if(!T.wagging)
-		return
-	T.wagging = FALSE
+	if(T)
+		if(!T.wagging)
+			return
+		T.wagging = FALSE
+	else
+		if(!Tr.wagging)
+			return
+		Tr.wagging = FALSE
 	H.update_body_parts(TRUE)
+//Caustic Edit End
 
 ///////////////
 //FLIGHT SHIT//

@@ -59,13 +59,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite/death(gibbed)
 	..()
-	var/turf/deathspot = get_turf(src)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
+	var/turf/deathspot = get_turf(src) ///Caustic edit
+	for(var/i =1 to 6)
+		new /obj/item/magic/fae/fairydust(deathspot) ///Caustic edit end
 	update_icon()
 	sleep(1)
 	qdel(src)

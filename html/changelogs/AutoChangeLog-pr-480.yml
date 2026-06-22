@@ -1,0 +1,5 @@
+author: "FluffMedic"
+delete-after: True
+changes:
+  - qol: "Tier 2 summons' high tier drop from 4 ->6"
+  - code_imp: "Altered code to be less same thing copy and pasted, and more so do this X number of times"

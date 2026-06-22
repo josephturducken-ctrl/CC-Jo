@@ -594,7 +594,7 @@
 	examine_text = "SUBJECTPRONOUN is enjoying a brief respite."
 	var/healing_on_tick = 5
 	var/outline_colour = "#814ab1" //CC Edit - Warmer purple colors for the blue energy healing to make it more visually distinct.
-
+	var/should_stamina = FALSE //Caustic Edit - Add this in so that the campfire can control if it should actually be regaining stamina now or not, to prevent that chat-spamming issue
 
 /datum/status_effect/buff/campfire_stamina/on_apply()
 	var/filter = owner.get_filter(CAMPFIRE_BASE_FILTER)
@@ -603,13 +603,15 @@
 	return TRUE
 
 /datum/status_effect/buff/campfire_stamina/tick()
-	if(HAS_TRAIT(owner, TRAIT_IRONMAN))
+	//Caustic Edit - Move the temp increasing up here, since it would warm regardless of Combat Modo, but don't continue if we have not been toggled to actually give Stamina.
+	owner.adjust_bodytemperature(8)
+	if(HAS_TRAIT(owner, TRAIT_IRONMAN) || !should_stamina)
 		return
+	//Caustic Edit End
 	var/stamheal = healing_on_tick
 	if(!owner.cmode)
 		stamheal *= 3 //CC Edit 2 -> 3 (15 Energy per tick)
 	owner.energy_add(stamheal)
-	owner.adjust_bodytemperature(8)
 
 /datum/status_effect/buff/campfire_stamina/on_remove()
 	owner.remove_filter(CAMPFIRE_BASE_FILTER)

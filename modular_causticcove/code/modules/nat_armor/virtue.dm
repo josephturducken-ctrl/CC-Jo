@@ -7,7 +7,7 @@
 	\n NOTE: OVRRIDES ANY WORN ARMOR ON THE BODY, WORN ARMOR WEIGHT CLASS STILL APPLIES DEBUFFS. "
 
 /datum/virtue/combat/natarmor/apply_to_human(mob/living/carbon/human/recipient)
-	recipient.skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor(recipient)
+	recipient.skin_armor = new /obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor(recipient)
 
 //CC Edit - Cannot abuse natural armor if you do not hunger in the first place.
 /datum/virtue/combat/natarmor/handle_traits(mob/living/carbon/human/recipient)

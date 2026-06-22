@@ -106,3 +106,35 @@
 	tools = list(/obj/item/needle)
 	craftdiff = 6
 
+/obj/item/clothing/head/roguetown/mushroomhat
+	name = "Mushroom Cap"
+	desc = "A thick hat made to mimic a mushroom's cap. Quite spongy. This one is dotted with spots."
+	icon = 'modular_causticcove/icons/items/head.dmi'
+	mob_overlay_icon = 'modular_causticcove/icons/items/onmob/head.dmi'
+	icon_state = "mushroom_hat"
+	item_state = "mushroom_hat"
+	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 1
+	detail_tag = "_detail"
+	color = CLOTHING_RED
+	detail_color = CLOTHING_CREAM
+
+/obj/item/clothing/head/roguetown/mushroomhat/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/clothing/head/roguetown/mushroomhat/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
+/obj/item/clothing/head/roguetown/mushroomhat/wide
+	name = "Wide Mushroom Cap"
+	desc = "A large and bulky hat made to look like a mushroom head. This one is plain-faced."
+	icon_state = "mushroom_hat_wide"
+	item_state = "mushroom_hat_wide"

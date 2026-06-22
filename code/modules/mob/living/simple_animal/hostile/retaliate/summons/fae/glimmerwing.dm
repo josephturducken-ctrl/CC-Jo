@@ -54,15 +54,11 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing/death(gibbed)
 	..()
-	var/turf/deathspot = get_turf(src)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
+	var/turf/deathspot = get_turf(src) ///Caustic edit
+	for(var/i =1 to 6)
+		new /obj/item/magic/fae/iridescentscale(deathspot)
+	for(var/i =1 to 4)
+		new /obj/item/magic/fae/fairydust(deathspot) ///Caustic edit end
 	update_icon()
 	spill_embedded_objects()
 	qdel(src)

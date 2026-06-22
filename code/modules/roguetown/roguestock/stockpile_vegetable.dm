@@ -12,6 +12,10 @@
 	stockpile_amount = 25
 	stockpile_limit = 50
 	category = "Vegetable" //Not entirely accurate but it looks prettier in UI
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/oat
 	name = "Oats"
@@ -22,6 +26,10 @@
 	stockpile_amount = 15
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/rice
 	name = "Rice"
@@ -32,6 +40,10 @@
 	stockpile_amount = 15
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cabbage
 	name = "Cabbage"
@@ -42,6 +54,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/potato
 	name = "Potato"
@@ -52,6 +68,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/onion
 	name = "Onion"
@@ -62,6 +82,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/garlick
 	name = "Garlick"
@@ -72,6 +96,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/turnip
 	name = "Turnip"
@@ -82,6 +110,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/carrot
 	name = "Carrot"
@@ -92,6 +124,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 2
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/cucumber
 	name = "Cucumber"
@@ -102,6 +138,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/eggplant
 	name = "Eggplant"
@@ -112,6 +152,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/sugar
 	name = "Sugar"
@@ -122,6 +166,10 @@
 	stockpile_amount = 5
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 6
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/coffee
 	name = "Coffee Beans"
@@ -132,6 +180,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 6
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tea
 	name = "Dried Tea Leaves"
@@ -142,6 +194,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 1
+	regen_limit = 6
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/poppy
 	name = "Poppy"
@@ -152,6 +208,10 @@
 	stockpile_amount = 10
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 8
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/rocknut
 	name = "Rocknut"
@@ -162,3 +222,7 @@
 	stockpile_amount = 5
 	stockpile_limit = 50
 	category = "Vegetable"
+	//Caustic Edit - Adding in the regen limits and such!
+	regen_amount = 0.75
+	regen_limit = 8
+	//Caustic Edit End

@@ -6,6 +6,9 @@
 	importexport_amt = 5
 	stockpile_limit = 15
 	category = "Refined"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/copper_ingot
 	name = "Copper Ingot"
@@ -16,6 +19,9 @@
 	stockpile_limit = 15
 	category = "Refined"
 	accept_toggle_enabled = FALSE
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/tin_ingot
 	name = "Tin Ingot"
@@ -26,6 +32,9 @@
 	stockpile_limit = 15
 	category = "Refined"
 	accept_toggle_enabled = FALSE
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/steel_ingot
 	name = "Steel Ingot"
@@ -35,6 +44,9 @@
 	importexport_amt = 5
 	stockpile_limit = 15
 	category = "Refined"
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/gold_ingot
 	name = "Gold Ingot"
@@ -45,6 +57,9 @@
 	stockpile_limit = 8
 	category = "Refined"
 	accept_toggle_enabled = FALSE
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End
 
 /datum/roguestock/stockpile/silver_ingot
 	name = "Silver Ingot"
@@ -55,3 +70,6 @@
 	stockpile_limit = 8
 	category = "Refined"
 	accept_toggle_enabled = FALSE
+	//Caustic Edit - Adding in the regen limits and such!
+	auto_regen = FALSE
+	//Caustic Edit End

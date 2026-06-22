@@ -155,7 +155,12 @@
 
 	var/atom/movable/AM = targets[selected_name]
 	if(ismob(AM))
-		AM.forceMove(user.loc)
+		//Caustic Edit - Lol. It was moving yourself to your current location, so you can't take yourself out of the cart...
+		if(AM == user)
+			AM.forceMove(src.loc)
+		else
+			AM.forceMove(user.loc)
+		//Caustic Edit End
 	else
 		user.put_in_hands(AM)
 	remove_from(AM)
@@ -194,6 +199,26 @@
 		return
 	..()
 
+//Caustic Edit - Lets... actually add a protective check similar to Closets in here.
+/obj/structure/handcart/proc/can_insert(atom/movable/AM)
+	if(ismob(AM))
+		if(!isliving(AM)) //let's not put ghosts or camera mobs inside closets...
+			return FALSE
+		var/mob/living/L = AM
+		if(L.anchored || (L.buckled && L.buckled != src) || L.incorporeal_move || L.has_buckled_mobs())
+			return FALSE
+		L.stop_pulling()
+	else if(isobj(AM))
+		if(AM.anchored || AM.has_buckled_mobs())
+			return FALSE
+		else if(isitem(AM) && !HAS_TRAIT(AM, TRAIT_NODROP))
+			return TRUE
+	else
+		return FALSE
+
+	return TRUE
+//Caustic Edit End
+
 /obj/structure/handcart/proc/fits_in_cart(atom/movable/O)
 	var/atom_weight = get_atom_weight(O)
 	if(current_capacity + atom_weight > maximum_capacity)
@@ -201,6 +226,12 @@
 	return TRUE
 
 /obj/structure/handcart/proc/put_in(atom/movable/O, mob/user)
+	//Caustic Edit - Adding in that check above
+	if(!can_insert(O))
+		to_chat(user, span_warning("You can't move that!"))
+		return FALSE
+	//Caustic Edit End
+
 	if(!fits_in_cart(O))
 		to_chat(user, span_warning("The cart cannot hold any more weight!"))
 		return FALSE

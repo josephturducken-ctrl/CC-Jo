@@ -660,6 +660,8 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
 	salvage_result = /obj/item/natural/hide/cured
 
+	sewrepair = TRUE // Caustic Edit
+
 /obj/item/clothing/shoes/roguetown/courtphysician/female
 	name = "sanguine heels"
 	desc = "Leather heels, the solemn tap of these bears grim news, or salvation."

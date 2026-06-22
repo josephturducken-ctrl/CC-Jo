@@ -32,7 +32,7 @@
 
 /datum/outfit/job/roguetown/mercenary/shrine_priest/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Your a Shrine Priest someone trained in the mystical arts of Kazegun not a farmer or commonfolk, the rituals you preform to comune with spirits or lay them to rest. Weither it be through prayer, or a dance of miracles and blade. For one reason or another you have left Kazegun wether to pursue a better life, coin or just seeking a fresh start."))
+	to_chat(H, span_warning("You are a Shrine Priest someone trained in the mystical arts of Kazegun not a farmer or commonfolk, the rituals you preform to comune with spirits or lay them to rest. Weither it be through prayer, or a dance of miracles and blade. For one reason or another you have left Kazegun wether to pursue a better life, coin or just seeking a fresh start."))
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_WEAK, devotion_limit = CLERIC_REQ_2)
 	head = /obj/item/clothing/head/roguetown/mentorhat
@@ -52,6 +52,17 @@
 		/obj/item/roguekey/mercenary,
 		/obj/item/ritechalk
 		)
-	H.set_blindness(0)
-	beltl = /obj/item/rogueweapon/sword/sabre/mulyeog
-	beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
+	var/weapons = list("Staff + Reg. Chokuto","Decorated Chokuto")
+	if(H.mind)
+		var/weapon_choice = input(H, "Choose your weapons.", "TAKE UP ARMS") as anything in weapons
+		H.set_blindness(0)
+		switch(weapon_choice)
+			if("Staff + Reg. Chokuto")
+				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 2, TRUE)
+				backr = /obj/item/rogueweapon/woodstaff/quarterstaff/iron/shrine_priest
+				beltl = /obj/item/rogueweapon/scabbard/sword/kazengun/chokuto
+				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog/chokuto
+			if("Decorated Chokuto")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+				beltl = /obj/item/rogueweapon/scabbard/sword/kazengun/chokuto/decorated
+				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog/chokuto/decorated

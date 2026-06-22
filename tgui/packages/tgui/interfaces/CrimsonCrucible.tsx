@@ -8,7 +8,7 @@ import {
   Stack,
 } from 'tgui-core/components';
 
-import { backendSuspendStart, globalStore, useBackend } from '../backend';
+import { /*backendSuspendStart, globalStore,*/ useBackend } from '../backend';
 import { Window } from '../layouts';
 
 type Project = {
@@ -216,7 +216,7 @@ const setCrucibleWindowSize = (expanded: boolean) => {
 };
 
 const closeCrucibleWindow = () => {
-  globalStore.dispatch(backendSuspendStart());
+  //globalStore.dispatch(backendSuspendStart());
 };
 
 const shellStyle = {

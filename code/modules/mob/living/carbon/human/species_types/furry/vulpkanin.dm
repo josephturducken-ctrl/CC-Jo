@@ -29,6 +29,7 @@
 		/obj/item/bodypart/taur/fatwolf,
 		/obj/item/bodypart/taur/biglegs,
 		/obj/item/bodypart/taur/biglegsstanced,
+		/obj/item/bodypart/taur/lupine_venard,
 	)
 	///Caustic edit end
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
@@ -96,6 +97,7 @@
 		/datum/customizer/organ/breasts/animal,
 		/datum/customizer/organ/vagina/animal,
 		//Caustic edit
+		/datum/customizer/organ/tail_feature/anthro, //This reaaaaally needs to be reworked into proper body markings instead...
 		/datum/customizer/organ/belly/animal,
 		/datum/customizer/organ/butt/animal,
 		//Caustic edit end

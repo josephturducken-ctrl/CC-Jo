@@ -1,93 +1,85 @@
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor
-	slot_flags = null
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor //Reworked to see if it functions better while utilizing the armor/regenerating/skin type instead.
 	name = "natural armor"
-	desc = "You shouldn't be seeing this. CALL A DEV!"
-	icon_state = null
-	body_parts_covered = FULL_BODY
-	body_parts_inherent = FULL_BODY
+	desc = ""
+	slot_flags = null
+	body_parts_covered = COVERAGE_FULL_BODY_ACTUAL
+	body_parts_inherent = COVERAGE_FULL_BODY_ACTUAL
 	armor = ARMOR_NATURAL
-	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
 	max_integrity = 300
 	item_flags = DROPDEL
-	var/next_regen
-	var/regen_delay = 45 SECONDS
-	var/regen_cap = 100
-	var/regen_cost = 2 //less is cheaper
+	
+	repairmsg_begin = "My natural armour begins to slowly mend itself..."
+	repairmsg_continue = "My natural armour mends some of its abuse.."
+	repairmsg_stop = "My natural armour stops mending from the onslaught!"
+	repairmsg_end = "My natural armour has fully repaired itself!"
+	var/repairmsg_toohungry = "I'm too hungry to continue mending my natural armor!"
+	var/repairmsg_nohungry = "With that meal, I can feel my natural armor growing stronger again!"
+
+	var/regen_cost = 2
+	interrupt_damount = 15
+	repair_time = 30 SECONDS
+
 	var/mob/living/carbon/human/skin_haver
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/dense
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/dense
 	name = "dense natural armor"
 	max_integrity = 400 // The classes that get this also have crit resistance and decent con as is. Might still need to lower this if they can infinitely tank anyways.
 	armor = ARMOR_NATURAL_DENSE
 	blocksound = CHAINHIT //gonna see if this sound helps differentiate it from the light nat armor
-	regen_cap = 100
-	regen_delay = 60 SECONDS
-	regen_cost = 2
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/Initialize(mapload)
+	regen_cost = 2
+	interrupt_damount = 25
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/Initialize(mapload)
 	. = ..()
 	skin_haver = loc
 	trait_add(skin_haver)
-	START_PROCESSING(SSobj, src)
 	return
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/Destroy()
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/Destroy()
 	trait_remove(skin_haver)
-	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/process()
-	if(next_regen > world.time)
-		return
-	regenerate(skin_haver)
-	next_regen = world.time + regen_delay
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/proc/trait_add(mob/living/user)
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/proc/trait_add(mob/living/user)
 	skin_haver = user
 	ADD_TRAIT(skin_haver, TRAIT_NATURAL_ARMOR, TRAIT_GENERIC)
 	return
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/proc/trait_remove(mob/living/user)
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/proc/trait_remove(mob/living/user)
 	skin_haver = user
 	REMOVE_TRAIT(skin_haver, TRAIT_NATURAL_ARMOR, TRAIT_GENERIC)
 	return
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/natural_armor/proc/regenerate(mob/living/user)
-	//mob wearing the natural armor
-	skin_haver = user
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/armour_regen()
 	if(HAS_TRAIT_FROM(skin_haver, TRAIT_NOHUNGER, TRAIT_VIRTUE)) // Hard coding the incompatibility of deathless' hunger removal, since domesticated wildsoul can still have deathless. Can still be nobreath through other sources.
 		REMOVE_TRAIT(skin_haver, TRAIT_NOHUNGER, TRAIT_VIRTUE)
 		to_chat(skin_haver, span_danger("My natural armor awakens a hunger in me."))
+	
+	if(skin_haver.nutrition <= NUTRITION_LEVEL_HUNGRY) //If you are getting hungry, lets just end repairing early.
+		reptimer = null
 
-	//making sure that the thing wearing the armor is human
-	if(!istype(skin_haver))
+		if(obj_integrity >= max_integrity) //It COULD be already fixed though, too
+			to_chat(loc, span_notice(repairmsg_end))
+		else
+			to_chat(loc, span_notice(repairmsg_toohungry))
+		
 		return
 
-	//no need to regenerate if armor is already full
+	var/repair_amount = ..()
+
+	if(repair_amount > 0)
+		//Every 1 point of integrity is 2 points of hunger
+		skin_haver.adjust_nutrition(-repair_amount * regen_cost)
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/natural_armor/proc/restart_regen()
 	if(obj_integrity >= max_integrity)
 		return
-	
-	//we can't regenerate if we have no nutrition to do it with
-	if(skin_haver.nutrition <= (regen_cap * regen_cost))
-		return
 
-	//we can only regenerate 100 points of integrity at a time
-	var/regen_amt = min(regen_cap, max_integrity - obj_integrity)
-	obj_integrity += regen_amt
+	if(!reptimer)
+		// If relative repair mode is on, use the interval instead of repairing 20% every repair_time seconds
+		var/wait_time = relative_repair_mode ? relative_repair_interval : repair_time
 
-	if(obj_broken)
-		obj_broken = FALSE //doesn't effect anything but the examine
-
-	//Every 1 point of integrity is 2 points of hunger
-	skin_haver.adjust_nutrition(-regen_amt * regen_cost)
-
-	//some user feed back for regeneration
-	if(obj_integrity < max_integrity)
-		to_chat(skin_haver, span_smallgreen("You feel your natural protection knitting itself back together..."))
-		return
-	//letting the owner know it's fully restored
-	else
-		to_chat(skin_haver, span_green("You feel your natural protection has fully healed!"))
-		return
+		to_chat(loc, span_notice(repairmsg_nohungry))
+		reptimer = addtimer(CALLBACK(src, PROC_REF(armour_regen)), wait_time, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)

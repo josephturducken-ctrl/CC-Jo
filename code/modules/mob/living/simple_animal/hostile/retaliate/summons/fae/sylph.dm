@@ -97,16 +97,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/fae/sylph/death(gibbed)
 	..()
-	var/turf/deathspot = get_turf(src)
+	var/turf/deathspot = get_turf(src) ///Caustic edit
 	new /obj/item/magic/fae/sylvanessence(deathspot)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/iridescentscale(deathspot)
-	new /obj/item/magic/fae/heartwoodcore(deathspot)
-	new /obj/item/magic/fae/heartwoodcore(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
-	new /obj/item/magic/fae/fairydust(deathspot)
+	for(var/i =1 to 2)
+		new /obj/item/magic/fae/heartwoodcore(deathspot)
+	for(var/i =1 to 2)
+		new /obj/item/magic/fae/iridescentscale(deathspot)
+	for(var/i =1 to 4)
+		new /obj/item/magic/fae/fairydust(deathspot) ///Caustic edit end
 	new /obj/item/magic/melded/t2(deathspot)
 	update_icon()
 	spill_embedded_objects()
