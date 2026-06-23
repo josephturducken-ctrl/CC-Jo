@@ -40,15 +40,14 @@ GLOBAL_VAR_INIT(mobids, 1)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			observe.reset_perspective(null)
-	qdel(hud_used)
-	for(var/cc in client_colours)
-		qdel(cc)
+	QDEL_NULL(hud_used)
+	QDEL_LIST(client_colours)
 	used_intent = null
-	//used_rmb_intent = null //Caustic Edit - This var got commented out because it is an empty list that's never used! Wow yeah, it was. Amazing. rmb_intent is used instead and this got forgot about it seems.
 	if(a_intent && a_intent.mastermob == src)
 		a_intent.mastermob = null
 	a_intent = null
 	o_intent = null
+	possible_mmb_intents = null
 	QDEL_LIST(possible_a_intents)
 	QDEL_LIST(possible_offhand_intents)
 	QDEL_NULL(mmb_intent)
