@@ -22,7 +22,7 @@
 	log_admin("[key_name(usr)] checked the individual player panel for [key_name(M)][isobserver(usr)?"":" while in game"].")
 
 	if(!M)
-		to_chat(usr, "<span class='warning'>I seem to be selecting a mob that doesn't exist anymore.</span>")
+		to_chat(usr, "<span class='warning'>I seem to be selecting a mob that doesn't exist anymore.</span>", MESSAGE_TYPE_ADMINLOG)
 		return
 
 	var/body = "<html><head><title>Options for [M.key]</title><style>"
@@ -315,7 +315,7 @@
 		return
 
 	if(!M.ckey)
-		to_chat(src, span_warning("There is no ckey attached to this mob."))
+		to_chat(src, span_warning("There is no ckey attached to this mob."), MESSAGE_TYPE_ADMINLOG)
 		return
 
 	check_pq_menu(M.ckey)
@@ -344,7 +344,7 @@
 	set category = "🖳︎ SERVER"
 
 	if(!check_rights(R_POLL))
-		to_chat(usr, span_warning("You do not have the rights to start a vote."))
+		to_chat(usr, span_warning("You do not have the rights to start a vote."), MESSAGE_TYPE_ADMINLOG)
 		return
 
 	var/list/allowed_modes = list("End Round", "Storyteller", "Custom")
@@ -371,7 +371,7 @@
 		return
 	
 	if(!M.ckey)
-		to_chat(src, span_warning("There is no ckey attached to this mob."))
+		to_chat(src, span_warning("There is no ckey attached to this mob."), MESSAGE_TYPE_ADMINLOG)
 		return
 
 	var/ckey = lowertext(M.ckey)
@@ -382,7 +382,7 @@
 		return
 	*/
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
-		to_chat(src, span_boldwarning("User does not exist."))
+		to_chat(src, span_boldwarning("User does not exist."), MESSAGE_TYPE_ADMINLOG)
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
 	if(!check_rights(R_ADMIN,0))
@@ -391,7 +391,7 @@
 	if((!isnull(amt2change) && amt2change != 0) && !raisin)
 		return
 	adjust_playerquality(amt2change, ckey, admin, raisin)
-	to_chat(M.client, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [admin] for reason: [raisin]</span></span>")
+	to_chat(M.client, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [admin] for reason: [raisin]</span></span>", MESSAGE_TYPE_ADMINLOG)
 
 /datum/admins/proc/Game()
 	if(!check_rights(0))
@@ -450,13 +450,13 @@
 				if("Regular Restart")
 					SSticker.Reboot(init_by, "admin reboot - by Admin", 10)
 				if("Hard Restart (No Delay, No Feeback Reason)")
-					to_chat(world, "World reboot - [init_by]")
+					to_chat(world, "World reboot - [init_by]", MESSAGE_TYPE_OOC)
 					world.Reboot()
 				if("Hardest Restart (No actions, just reboot)")
-					to_chat(world, "Hard world reboot - [init_by]")
+					to_chat(world, "Hard world reboot - [init_by]", MESSAGE_TYPE_OOC)
 					world.Reboot(fast_track = TRUE)
 				if("Server Restart (Kill and restart DD)")
-					to_chat(world, "Server restart - [init_by]")
+					to_chat(world, "Server restart - [init_by]", MESSAGE_TYPE_OOC)
 					world.TgsEndProcess()
 
 /datum/admins/proc/end_round()
@@ -485,7 +485,7 @@
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b></span>\n \t [message]")
+		to_chat(world, "<span class='adminnotice'><b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b></span>\n \t [message]", MESSAGE_TYPE_OOC)
 		log_admin("Announce: [key_name(usr)] : [message]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -507,7 +507,7 @@
 	else
 		message_admins("[key_name(usr)] set the admin notice.")
 		log_admin("[key_name(usr)] set the admin notice:\n[new_admin_notice]")
-		to_chat(world, span_adminnotice("<b>Admin Notice:</b>\n \t [new_admin_notice]"))
+		to_chat(world, span_adminnotice("<b>Admin Notice:</b>\n \t [new_admin_notice]"), MESSAGE_TYPE_OOC)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Admin Notice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	GLOB.admin_notice = new_admin_notice
 	return
@@ -547,7 +547,7 @@
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Now") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
-		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
+		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>", MESSAGE_TYPE_ADMINLOG)
 
 	return 0
 
@@ -557,9 +557,9 @@
 	set name="Toggle Entering"
 	GLOB.enter_allowed = !( GLOB.enter_allowed )
 	if (!( GLOB.enter_allowed ))
-		to_chat(world, "<B>New players may no longer enter the game.</B>")
+		to_chat(world, "<B>New players may no longer enter the game.</B>", MESSAGE_TYPE_OOC)
 	else
-		to_chat(world, "<B>New players may now enter the game.</B>")
+		to_chat(world, "<B>New players may now enter the game.</B>", MESSAGE_TYPE_OOC)
 	log_admin("[key_name(usr)] toggled new player game entering.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled new player game entering."))
 	world.update_status()
@@ -573,9 +573,9 @@
 	var/alai = CONFIG_GET(flag/allow_ai)
 	CONFIG_SET(flag/allow_ai, !alai)
 	if (alai)
-		to_chat(world, "<B>The AI job is no longer chooseable.</B>")
+		to_chat(world, "<B>The AI job is no longer chooseable.</B>", MESSAGE_TYPE_OOC)
 	else
-		to_chat(world, "<B>The AI job is chooseable now.</B>")
+		to_chat(world, "<B>The AI job is chooseable now.</B>", MESSAGE_TYPE_OOC)
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle AI", "[!alai ? "Disabled" : "Enabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -588,9 +588,9 @@
 	var/new_nores = !CONFIG_GET(flag/norespawn)
 	CONFIG_SET(flag/norespawn, new_nores)
 	if (!new_nores)
-		to_chat(world, "<B>I may now respawn.</B>")
+		to_chat(world, "<B>I may now respawn.</B>", MESSAGE_TYPE_OOC)
 	else
-		to_chat(world, "<B>I may no longer respawn :(</B>")
+		to_chat(world, "<B>I may no longer respawn :(</B>", MESSAGE_TYPE_OOC)
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled respawn to [!new_nores ? "On" : "Off"]."))
 	log_admin("[key_name(usr)] toggled respawn to [!new_nores ? "On" : "Off"].")
 	world.update_status()
@@ -608,10 +608,10 @@
 		newtime = newtime*10
 		SSticker.SetTimeLeft(newtime)
 		if(newtime < 0)
-			to_chat(world, "<b>The game start has been delayed.</b>")
+			to_chat(world, "<b>The game start has been delayed.</b>", MESSAGE_TYPE_OOC)
 			log_admin("[key_name(usr)] delayed the round start.")
 		else
-			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>")
+			to_chat(world, "<b>The game will start in [DisplayTimeText(newtime)].</b>", MESSAGE_TYPE_OOC)
 			SEND_SOUND(world, sound('sound/blank.ogg'))
 			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -707,10 +707,10 @@
 	set name = "Show Traitor Panel"
 
 	if(!istype(M))
-		to_chat(usr, "This can only be used on instances of type /mob")
+		to_chat(usr, "This can only be used on instances of type /mob", MESSAGE_TYPE_ADMINLOG)
 		return
 	if(!M.mind)
-		to_chat(usr, "This mob has no mind!")
+		to_chat(usr, "This mob has no mind!", MESSAGE_TYPE_ADMINLOG)
 		return
 
 	M.mind.traitor_panel()
@@ -723,9 +723,9 @@
 	set name="Toggle tinted welding helmes"
 	GLOB.tinted_weldhelh = !( GLOB.tinted_weldhelh )
 	if (GLOB.tinted_weldhelh)
-		to_chat(world, "<B>The tinted_weldhelh has been enabled!</B>")
+		to_chat(world, "<B>The tinted_weldhelh has been enabled!</B>", MESSAGE_TYPE_OOC)
 	else
-		to_chat(world, "<B>The tinted_weldhelh has been disabled!</B>")
+		to_chat(world, "<B>The tinted_weldhelh has been disabled!</B>", MESSAGE_TYPE_OOC)
 	log_admin("[key_name(usr)] toggled tinted_weldhelh.")
 	message_admins("[key_name_admin(usr)] toggled tinted_weldhelh.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Tinted Welding Helmets", "[GLOB.tinted_weldhelh ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -738,9 +738,9 @@
 	var/new_guest_ban = !CONFIG_GET(flag/guest_ban)
 	CONFIG_SET(flag/guest_ban, new_guest_ban)
 	if (new_guest_ban)
-		to_chat(world, "<B>Guests may no longer enter the game.</B>")
+		to_chat(world, "<B>Guests may no longer enter the game.</B>", MESSAGE_TYPE_OOC)
 	else
-		to_chat(world, "<B>Guests may now enter the game.</B>")
+		to_chat(world, "<B>Guests may now enter the game.</B>", MESSAGE_TYPE_OOC)
 	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -808,7 +808,7 @@
 			if(kick_only_afk && !C.is_afk()) //Ignore clients who are not afk
 				continue
 			if(message)
-				to_chat(C, message)
+				to_chat(C, message, MESSAGE_TYPE_OOC)
 			kicked_client_names.Add("[C.key]")
 			qdel(C)
 	return kicked_client_names
@@ -935,11 +935,11 @@ GLOBAL_VAR_INIT(extend_round_timestamp, 0)
 		return
 
 	if(world.time < GLOB.extend_round_timestamp + (1 MINUTES))
-		to_chat(usr, "<span class='notice'>Someone recently pressed this button! Wait a minute before pressing it again.</span>")
+		to_chat(usr, "<span class='notice'>Someone recently pressed this button! Wait a minute before pressing it again.</span>", MESSAGE_TYPE_ADMINLOG)
 		return
 
 	if((GLOB.round_timer > world.time + (3 * ROUND_EXTENSION_TIME)) || SSgamemode.round_ends_at - world.time > (3 * ROUND_EXTENSION_TIME))
-		to_chat(usr, "<span class='notice'>Failsafe! Round end is already over 3 times out! Ignoring.</span>")
+		to_chat(usr, "<span class='notice'>Failsafe! Round end is already over 3 times out! Ignoring.</span>", MESSAGE_TYPE_ADMINLOG)
 		return
 	if(SSgamemode.round_ends_at != 0) // End round is already ticking.
 		SSgamemode.round_ends_at += ROUND_EXTENSION_TIME

@@ -104,7 +104,7 @@
 		for(var/mob/living/H in GLOB.player_list)
 			selections[H.real_name] = H.ckey
 		if(!selections.len)
-			to_chat(src, span_boldwarning("No characters found."))
+			to_chat(src, span_boldwarning("No characters found."), MESSAGE_TYPE_ADMINLOG)
 			return
 		selection = input("Which Character?") as null|anything in sortList(selections)
 		if(!selection)
@@ -127,7 +127,7 @@
 
 /proc/check_pq_menu(ckey)
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
-		to_chat(usr, span_boldwarning("User does not exist."))
+		to_chat(usr, span_boldwarning("User does not exist."), MESSAGE_TYPE_ADMINLOG)
 		return
 	var/popup_window_data = "<center>[ckey]</center>"
 	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
@@ -162,7 +162,7 @@
 		for(var/mob/living/H in GLOB.player_list)
 			selections[H.real_name] = H.ckey
 		if(!selections.len)
-			to_chat(src, span_boldwarning("No characters found."))
+			to_chat(src, span_boldwarning("No characters found."), MESSAGE_TYPE_ADMINLOG)
 			return
 		selection = input("Which Character?") as null|anything in sortList(selections)
 		if(!selection)
@@ -185,7 +185,7 @@
 			return
 		theykey = selection
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
-		to_chat(src, span_boldwarning("User does not exist."))
+		to_chat(src, span_boldwarning("User does not exist."), MESSAGE_TYPE_ADMINLOG)
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
 	if(!check_rights(R_ADMIN,0))
@@ -196,7 +196,7 @@
 	adjust_playerquality(amt2change, theykey, src.ckey, raisin)
 	for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
 		if(lowertext(C.key) == lowertext(theykey))
-			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>")
+			to_chat(C, "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">Your PQ has been adjusted by [amt2change] by [key] for reason: [raisin]</span></span>", MESSAGE_TYPE_ADMINLOG)
 			return
 
 /proc/add_commend(key, giver)
