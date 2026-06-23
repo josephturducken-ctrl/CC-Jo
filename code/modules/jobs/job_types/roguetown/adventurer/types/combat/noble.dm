@@ -1,35 +1,38 @@
 /datum/advclass/noble
 	name = "Aristocrat"
-	tutorial = "You are a traveling noble visiting foreign lands. With wealth, come the poor, ready to pilfer you of your hard earned (inherited) coin, so tread lightly unless you want to meet a grizzly end."
+	tutorial = "You are a traveling noble visiting the lands of Azure Peak's dutchy. With wealth, come the poor, ready to pilfer you of your hard earned (inherited) coin, so tread lightly unless you want to meet a grizzly end."
 	allowed_sexes = list(MALE, FEMALE)
 	forbidden_races = list() //Caustic edit from list(RACES_CONSTRUCT RACES_DESPISED)
 	outfit = /datum/outfit/job/roguetown/adventurer/noble
-	traits_applied = list(TRAIT_NOBLE)
+	traits_applied = list(TRAIT_NOBLE, TRAIT_NUTCRACKER)
 	noble_income = 15
 	class_select_category = CLASS_CAT_NOBLE
-	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT, CTAG_LICKER_WRETCH, TRAIT_EXPERT_HUNTER)
+	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT, CTAG_LICKER_WRETCH)
 
-	cmode_music = 'sound/music/combat_knight.ogg'
 	subclass_stats = list(
-		STATKEY_PER = 2,
+		STATKEY_PER = 1,
 		STATKEY_INT = 2,
 		STATKEY_STR = 1,
 		STATKEY_SPD = 1,
 	)
 	subclass_skills = list(
-		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/riding = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/swords = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/music = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/hunting = SKILL_LEVEL_NOVICE,
 	)
+	subclass_virtues = list(
+		/datum/virtue/utility/riding
+	) //Less spawn siega clutter, also makes sense you'd have a named mount.
 	townie_contract_gate_exempt = TRUE
 	townie_contract_gate_hide_in_list = TRUE
+
+	extra_context = "This subclass has different regional loadouts with some locked behind species (drow), your skills + traits + stats further differ based on proficiency picked."
 
 /datum/outfit/job/roguetown/adventurer/noble/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -213,7 +213,7 @@
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
 	name = "royal gown"
-	desc = "An elaborate ball gown, a favoured fashion of queens and elevated nobility in Enigma."
+	desc = "An elaborate ball gown, a favoured fashion of queens and elevated nobility throughout Psydonia." //Enigma references still exist in code, those are gonna need the chop.
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	icon_state = "royaldress"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
@@ -353,6 +353,10 @@
 	salvage_result = /obj/item/natural/silk
 	salvage_amount = 2
 	sellprice = 30
+
+/obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown/aristocratotava
+	detail_color = "#1f1818ff"
+	color = "#ffffffff"
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"
