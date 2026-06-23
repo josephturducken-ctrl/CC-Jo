@@ -6,7 +6,7 @@
 		return
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("Speech is currently admin-disabled."), MESSAGE_TYPE_INFO)
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -41,7 +41,7 @@
 	msg = span_adminnotice("[icon2html(GLOB.admins)]<b><font color=[font_color]>[prayer_type][deity ? " (to [deity])" : ""]: </font>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)]:</b> <span class='linkify'>[msg]</span>")
 	for(var/client/C in GLOB.admins)
 		if(C.prefs.chat_toggles & CHAT_PRAYER)
-			to_chat(C, msg)
+			to_chat(C, msg, MESSAGE_TYPE_PRAYER)
 			if(C.prefs.toggles & SOUND_PRAYERS)
 				if(HAS_TRAIT(usr, TRAIT_CHOSEN))
 					SEND_SOUND(C, sound('sound/pray.ogg'))
@@ -52,7 +52,7 @@
 //		var/T = get_turf(src)
 		if(M.stat == DEAD)
 			var/client/J = M.client
-			to_chat(J, msg)
+			to_chat(J, msg, MESSAGE_TYPE_PRAYER)
 
 	to_chat(usr, span_info("I pray to the gods: \"[msg_tmp]\""))
 
@@ -62,17 +62,17 @@
 /proc/CentCom_announce(text , mob/Sender)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
 	msg = span_adminnotice("<b><font color=orange>CENTCOM:</font>[ADMIN_FULLMONTY(Sender)] [ADMIN_CENTCOM_REPLY(Sender)]:</b> [msg]")
-	to_chat(GLOB.admins, msg)
+	to_chat(GLOB.admins, msg, MESSAGE_TYPE_PRAYER)
 
 /proc/Syndicate_announce(text , mob/Sender)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
 	msg = span_adminnotice("<b><font color=crimson>SYNDICATE:</font>[ADMIN_FULLMONTY(Sender)] [ADMIN_SYNDICATE_REPLY(Sender)]:</b> [msg]")
-	to_chat(GLOB.admins, msg)
+	to_chat(GLOB.admins, msg, MESSAGE_TYPE_PRAYER)
 
 /proc/Nuke_request(text , mob/Sender)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
 	msg = span_adminnotice("<b><font color=orange>NUKE CODE REQUEST:</font>[ADMIN_FULLMONTY(Sender)] [ADMIN_CENTCOM_REPLY(Sender)] [ADMIN_SET_SD_CODE]:</b> [msg]")
-	to_chat(GLOB.admins, msg)
+	to_chat(GLOB.admins, msg, MESSAGE_TYPE_PRAYER)
 
 /mob/proc/roguepray(msg as text)
 //	set category = "IC"
@@ -98,6 +98,6 @@
 	
 	for(var/client/janny in GLOB.admins)
 		if(janny.prefs.chat_toggles & CHAT_PRAYER)
-			to_chat(janny, msg)
+			to_chat(janny, msg, MESSAGE_TYPE_PRAYER)
 			if(janny.prefs.toggles & SOUND_PRAYERS)
 				SEND_SOUND(janny, sound('sound/pray.ogg'))
