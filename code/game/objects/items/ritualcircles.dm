@@ -2099,6 +2099,53 @@
 
 	return TRUE
 
+/obj/structure/ritualcircle/baotha/proc/baothaarmaments(mob/living/carbon/human/target)
+	if(!HAS_TRAIT(target, TRAIT_DEPRAVED))
+		loc.visible_message(span_cult("THE RITE REJECTS ONE WITHOUT REGRET IN THEIR HEART!!"))
+		return
+	target.Stun(60)
+	target.Knockdown(60)
+	to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+	target.emote("superagony")
+	playsound(loc, 'sound/misc/smelter_fin.ogg', 50)
+	loc.visible_message(span_cult("[target]'s lux gushes out from their mouth, splashing onto the rune and causing the chalk to fizzle into prismatic smoke; and once it clears, their saccharine presence is made clear!"))
+	spawn(20)
+		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
+		target.equipOutfit(/datum/outfit/job/roguetown/baothanrite)
+		tag_kit_items(target, list(
+			"armor" = target.get_item_by_slot(SLOT_ARMOR),
+			"shirt" = target.get_item_by_slot(SLOT_SHIRT),
+			"pants" = target.get_item_by_slot(SLOT_PANTS),
+			"shoes" = target.get_item_by_slot(SLOT_SHOES),
+			"wrists" = target.get_item_by_slot(SLOT_WRISTS),
+			"gloves" = target.get_item_by_slot(SLOT_GLOVES),
+			"head" = target.get_item_by_slot(SLOT_HEAD),
+			"neck" = target.get_item_by_slot(SLOT_NECK),
+			"backr" = target.get_item_by_slot(SLOT_BACK_R),
+		), list("armor", "shirt", "pants", "shoes", "wrists", "gloves", "head", "neck", "backr"))
+		target.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
+		spawn(40)
+			to_chat(target, span_cult("Live deliciously."))
+
+/datum/outfit/job/roguetown/baothanrite/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	..()
+	var/list/items = list()
+	items |= H.get_equipped_items(TRUE)
+	for(var/I in items)
+		H.dropItemToGround(I, TRUE)
+	H.drop_all_held_items()
+	head = /obj/item/clothing/head/roguetown/helmet/baotha
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/baotha
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/baotha
+	pants = /obj/item/clothing/under/roguetown/skirt/baotha
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/baotha
+	gloves = /obj/item/clothing/gloves/roguetown/plate/baotha
+	neck = /obj/item/clothing/neck/roguetown/coif/baotha
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/baotha
+	backr = /obj/item/rogueweapon/spear/partizan/baotha
+
+	H.mind.AddSpell(new /datum/action/cooldown/spell/mending/lesser)
+
 /obj/effect/decal/cleanable/roguerune/god/psydon
 	name = "Rune of Enduring"
 	desc = "A Holy Rune of Psydon. It depicts His holy symbol, yet nothing stirs within you."

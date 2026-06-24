@@ -268,6 +268,14 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/sewing/clothhoses
+	name = "cloth hoses"
+	category = "Pants"
+	result = list(/obj/item/clothing/under/roguetown/tights/hose)
+	reqs = list(/obj/item/natural/cloth = 3,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/sewing/Reyepatch
 	name = "right eye patch"
 	category = "Misc"
@@ -431,6 +439,14 @@
 	craftdiff = 1
 
 /* craftdif of 2+ */
+
+/datum/crafting_recipe/roguetown/sewing/clothpaddedgloves
+	name = "padded gloves"
+	category = "Gloves"
+	result = list(/obj/item/clothing/gloves/roguetown/cloth)
+	reqs = list(/obj/item/natural/cloth = 2,
+				/obj/item/natural/fibers = 1)
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/wrappings
 	name = "solar wrappings"
@@ -973,6 +989,29 @@
 	craftdiff = 3
 	sellprice = 20
 
+/datum/crafting_recipe/roguetown/sewing/paddedchausses
+	name = "padded chausses"
+	category = "Pants"
+	display_category = ITEM_CAT_ARMOR_LIGHT
+	result = list(/obj/item/clothing/under/roguetown/tights/clothlegs)
+	reqs = list(/obj/item/natural/cloth = 4,
+				/obj/item/natural/fibers = 1)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 20
+
+/datum/crafting_recipe/roguetown/sewing/paddedchaussesalt
+	name = "padded chausses, alternate"
+	category = "Pants"
+	display_category = ITEM_CAT_ARMOR_LIGHT
+	result = list(/obj/item/clothing/under/roguetown/tights/clothlegs)
+	reqs = list(/obj/item/clothing/under/roguetown/tights/hose = 1,
+				/obj/item/clothing/under/roguetown/trou/leather = 1,
+				/obj/item/natural/fibers = 2)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 20
+
 /datum/crafting_recipe/roguetown/sewing/armingjacket
 	name = "arming jacket"
 	category = "Gambesons"
@@ -1039,6 +1078,15 @@
 	craftdiff = 2
 	sellprice = 5
 
+/datum/crafting_recipe/roguetown/sewing/hgambeson/fencer
+	name = "fencing shirt"
+	category = "Gambesons"
+	display_category = ITEM_CAT_ARMOR_LIGHT
+	result = /obj/item/clothing/suit/roguetown/shirt/freifechter
+	reqs = list(/obj/item/natural/cloth = 5,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 4
+
 /datum/crafting_recipe/roguetown/sewing/nurseveil_improv // Caustic Edit
 	name = "nurse's veil, improvised"
 	category = "Hats"
@@ -1088,7 +1136,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/hgambesonskirt
-	name = "padded gambesoned skirt"
+	name = "padded gambesoned kilt"
 	category = "Pants"
 	display_category = ITEM_CAT_ARMOR_LIGHT
 	result = list(/obj/item/clothing/under/roguetown/skirt/gambeson/heavy)
