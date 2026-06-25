@@ -210,9 +210,9 @@
 				var/mob/living/carbon/human/H = L
 
 				//Numbing flag
-				if(mode_flags & DM_FLAG_NUMBING) //Caustic - I don't think we have this in actually. Might need to make a reagent with an effect?
-					if(H.reagents.get_reagent_amount(REAGENT_ID_NUMBENZYME) < 2)
-						H.reagents.add_reagent(REAGENT_ID_NUMBENZYME,4)
+				if(mode_flags & DM_FLAG_NUMBING) //Caustic - Attempting to use Poppymilk as a numbing substitution.
+					if(H.reagents.get_reagent_amount(REAGENT_ID_POPPYMILK) < 2)
+						H.reagents.add_reagent(REAGENT_ID_POPPYMILK, 4)
 
 				//Worn items flag
 				if(mode_flags & DM_FLAG_AFFECTWORN && H.contaminate_pref)

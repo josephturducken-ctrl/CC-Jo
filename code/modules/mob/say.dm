@@ -147,8 +147,10 @@
   */
 /mob/proc/get_message_mode(message)
 	var/key = copytext_char(message, 1, 2)
-	if(key == "#")
-		return MODE_WHISPER
+	if(key == "$" || (forced_psay && absorbed)) //Caustic Edit - Account for the absorbed and muffled effects from vorestuffs. Muffled forces a whisper! Psay is limited to absorbed mobs and the pred!
+		return MODE_PSAY
+	else if(key == "#" || muffled) 
+		return MODE_WHISPER //Caustic Edit End
 	else if(key == ";")
 		return MODE_HEADSET
 	else if(key == "%")

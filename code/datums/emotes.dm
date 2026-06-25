@@ -260,7 +260,7 @@
 	. = message
 	if(message_muffled && iscarbon(user))
 		var/mob/living/carbon/C = user
-		if(C.silent)
+		if(C.silent || C.muffled) //Caustic Edit - Account for Belly Muffling emotes!
 			. = message_muffled
 		if(!muzzle_ignore && HAS_TRAIT(C, TRAIT_MUTE) && emote_type == EMOTE_AUDIBLE)
 			. = message_muffled
@@ -327,6 +327,10 @@
 	return target
 
 /datum/emote/proc/is_emote_muffled(mob/living/carbon/H) //ONLY for audible emote use
+	//Caustic Edit - Account for Belly Muffling
+	if(H.muffled)
+		return FALSE
+	//Caustic Edit End
 	if(H.mouth?.muteinmouth)
 		return FALSE
 	for(var/obj/item/grabbing/grab in H.grabbedby)
