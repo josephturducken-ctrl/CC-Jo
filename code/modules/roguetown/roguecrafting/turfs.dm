@@ -390,7 +390,7 @@
 /datum/crafting_recipe/roguetown/turfs/hay
 	name = "floor (hay)"
 	result = /turf/open/floor/rogue/hay
-	reqs = list(/obj/item/natural/chaff/wheat = 2)
+	reqs = list(/obj/item/natural/fibers = 2) // Caustic Edit. Using a whole 2 wheat is very expensive for just 1 tile
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "assemble"
 	verbage = "assembles"
@@ -519,3 +519,38 @@
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/glass = 1, /obj/item/ingot/iron = 1)
 	craftdiff = 3
 	category = "Windows"
+
+// Caustic Edit Start
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg
+	name = "wooden shingles"
+	result = /turf/open/floor/rogue/rooftop/green
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 3
+	category = "Floors"
+
+/*
+/datum/crafting_recipe/roguetown/turfs/wood/roofg/corner
+	name = "wooden shingles (outer corner)"
+	result = /turf/open/floor/rogue/rooftop/green/corner1 // The sprites for these are weirdly oriented, so pre-emptive sorries for anyone using them to build. I didn't want to touch the sprites themselves since I don't want to break anything mapped in.
+	diagonal = TRUE
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg/corner_alt
+	name = "wooden shingles (inner corner)"
+	result = /turf/open/floor/rogue/rooftop/green/corner1
+*/ // I'm leaving these commented out for when the absolutely atrocious directions for the corner sprites is fixed.
+
+/datum/crafting_recipe/roguetown/turfs/wood/roof
+	name = "wooden shingles (brown)" // No corner sprites for these ones, sadly
+	result = /turf/open/floor/rogue/rooftop
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 3
+	category = "Floors"
+
+// Caustic Edit End

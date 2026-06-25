@@ -282,6 +282,13 @@
 	icon_state = "border"
 	pass_crawl = FALSE
 
+// Caustic edit - These were mapped in as var-edited decals before
+/obj/structure/fluff/railing/plat_edge
+	name = "platform edge"
+	icon = 'icons/turf/roguefloor.dmi'
+	icon_state = "borderfall"
+// Caustic Edit end
+
 /obj/structure/fluff/railing/fence
 	name = "palisade"
 	desc = "A rudimentary barrier that might keep the monsters at bay."

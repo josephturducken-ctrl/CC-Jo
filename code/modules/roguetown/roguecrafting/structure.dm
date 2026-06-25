@@ -1781,4 +1781,16 @@
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
 
+/datum/crafting_recipe/roguetown/structure/plat_edge
+	name = "platform edge"
+	category = "Railings"
+	result = /obj/structure/fluff/railing/plat_edge
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	ontile = TRUE
+	verbage_simple = "construct"
+	verbage = "constructs"
+	skillcraft = /datum/skill/craft/carpentry
+	buildsame = TRUE
+	craftdiff = 1
+
 // Caustic Edit End
