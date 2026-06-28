@@ -1312,12 +1312,14 @@ mas//Lazily shoving all donator fluff items in here for now. Feel free to make t
 	icon = 'icons/obj/items/donor_weapons.dmi'
 
 //NEROCAVALIER
+/* -- REMOVED BY REQUEST. KEPT FOR POSTERITY. NOW USED AS "BLACKSTEEL LONGSWORD".
 /obj/item/rogueweapon/nerocavalier/flsword
 	name = "blacksteel longsword"
 	desc = "A sleek blade of a dark, and burnished hue. A handle carved from a rosawood branch. A pairing that should sing a melody sweeter than any harp as it parts the air.. and yet, beautiful it may be, it is not worthy of song."
 	icon_state = "flsword"
 	icon = 'icons/obj/items/donor_weapons_64.dmi'
 	bigboy = TRUE
+*/
 
 //WALKTHEWASTE
 /obj/item/clothing/head/roguetown/mentorhat/walkthewaste
