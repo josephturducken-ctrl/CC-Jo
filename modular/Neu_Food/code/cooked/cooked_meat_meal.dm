@@ -284,7 +284,7 @@
 	//CC Edit End
 
 /* .............  Garlicked Fried Volf   ................ */
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick
+/obj/item/reagent_containers/food/snacks/rogue/meat/wolf/fried/garlick
 	name = "garlick volf"
 	desc = "A slab of volf, fried to a perfect medium rare. A bit gamey and chewy, but tasty. This piece has been coated over in glove of garlick."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_meat_meal.dmi'
@@ -296,7 +296,7 @@
 	//CC Edit End
 
 /* .............  Garlicked Fried Volf w/ Cucumber  ................ */
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried/garlick/cucumber
+/obj/item/reagent_containers/food/snacks/rogue/meat/wolf/fried/garlick/cucumber
 	name = "hunter's feast"
 	desc = "A slab of volf, fried to a perfect medium rare. A bit gamey and chewy, but tasty. This piece has been coated over in glove of garlick and served with side of cucumber."
 	icon_state = "fryvolf_garlick_cucumber"

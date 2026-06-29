@@ -150,7 +150,7 @@
 	//CC Edit End
 
 /* .............   Fried Volf   ................ */
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/wolf/fried
+/obj/item/reagent_containers/food/snacks/rogue/meat/wolf/fried
 	eat_effect = null
 	slices_num = 0
 	name = "fried volf"
@@ -168,7 +168,7 @@
 	//CC Edit End
 
 /* .............   Fried Rous   ................ */
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/rat/fried
+/obj/item/reagent_containers/food/snacks/rogue/meat/rat/fried
 	eat_effect = null
 	slices_num = 0
 	name = "fried rous"
@@ -196,7 +196,7 @@
 		return ..()
 
 /* .............   Fried Bear   ................ */
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak/bear/fried
+/obj/item/reagent_containers/food/snacks/rogue/meat/bear/fried
 	eat_effect = null
 	slices_num = 0
 	bitesize = 4
