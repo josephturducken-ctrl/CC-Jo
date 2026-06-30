@@ -81,6 +81,8 @@
 	new_facial.hair_color = "#31302E"
 	hair_color = "#31302E"
 
+	random_voice_NPC()
+
 	dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 	dna.species.handle_body(src)
 	if(gender == FEMALE)

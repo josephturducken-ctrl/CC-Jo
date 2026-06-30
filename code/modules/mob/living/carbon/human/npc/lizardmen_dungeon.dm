@@ -17,6 +17,7 @@
 
 /mob/living/carbon/human/species/lizardfolk/psy_vault_guard/Initialize()
 	. = ..()
+	gender = pick(MALE, FEMALE)
 	set_species(/datum/species/lizardfolk)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 	transform = transform.Scale(1.25, 1.25)
@@ -64,6 +65,9 @@
 	update_overlays()
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
 	head.sellprice = HEAD_BOUNTY_LIZARDMAN
+	random_voice_NPC()
+	random_eye_color_NPC()
+	src.regenerate_icons() //Fixes the weird body but lets check performance first
 
 
 /datum/outfit/job/roguetown/human/species/lizardfolk/psy_vault_guard/pre_equip(mob/living/carbon/human/H)

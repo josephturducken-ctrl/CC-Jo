@@ -22,6 +22,10 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggro
 
 /mob/living/carbon/human/species/human/northern/deranged_knight/Initialize()
 	. = ..()
+	//Begin RANDOMISE here
+	set_species(pick(NPC_RACES_TYPES))
+	gender = pick(MALE, FEMALE)
+	dna.species.random_character(src) //Now we just randomise here, MUST be called after both race + gender
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 
 /mob/living/carbon/human/species/human/northern/deranged_knight/proc/outfit_dk(datum/outfit/outfit)
@@ -86,46 +90,14 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggro
 	if(aggro_lines)
 		SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, aggro_lines, TRUE)
 
-	gender = pick(MALE,FEMALE)
 	regenerate_icons()
 
-	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
+	random_voice_NPC()
+	random_hair_no_beard_NPC()
+	random_eye_color_NPC()
 	var/obj/item/organ/ears/organ_ears = getorgan(/obj/item/organ/ears)
-	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
-	var/hairf = pick(list(/datum/sprite_accessory/hair/head/himecut,
-						/datum/sprite_accessory/hair/head/countryponytailalt,
-						/datum/sprite_accessory/hair/head/stacy,
-						/datum/sprite_accessory/hair/head/kusanagi_alt))
-	var/hairm = pick(list(/datum/sprite_accessory/hair/head/ponytailwitcher,
-						/datum/sprite_accessory/hair/head/dave,
-						/datum/sprite_accessory/hair/head/emo,
-						/datum/sprite_accessory/hair/head/sabitsuki,
-						/datum/sprite_accessory/hair/head/sabitsuki_ponytail))
-
-	var/datum/bodypart_feature/hair/head/new_hair = new()
-
-	if(gender == FEMALE)
-		new_hair.set_accessory_type(hairf, null, src)
-	else
-		new_hair.set_accessory_type(hairm, null, src)
-
-	new_hair.accessory_colors = "#DDDDDD"
-	new_hair.hair_color = "#DDDDDD"
-	hair_color = "#DDDDDD"
-
-	head.add_bodypart_feature(new_hair)
-
-	dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
-	dna.species.handle_body(src)
-
-	if(organ_eyes)
-		organ_eyes.eye_color = "#FFBF00"
-		organ_eyes.accessory_colors = "#FFBF00#FFBF00"
-
 	if(organ_ears)
-		organ_ears.accessory_colors = "#5f5f70"
-
-	skin_tone = "5f5f70"
+		organ_ears.accessory_colors = "[src.skin_tone]"
 
 	if(prob(1))
 		real_name = "Taras Mura"

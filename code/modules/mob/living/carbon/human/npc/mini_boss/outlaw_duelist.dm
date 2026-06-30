@@ -19,7 +19,10 @@ GLOBAL_LIST_INIT(duelist_aggro, list(
 
 /mob/living/carbon/human/species/human/northern/outlaw_duelist/Initialize()
 	. = ..()
-	set_species(/datum/species/human/northern)
+	//Begin RANDOMISE here
+	set_species(pick(NPC_RACES_TYPES))
+	gender = pick(MALE, FEMALE)
+	dna.species.random_character(src) //Now we just randomise here, MUST be called after both race + gender
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 
 /mob/living/carbon/human/species/human/northern/outlaw_duelist/after_creation()
@@ -43,7 +46,12 @@ GLOBAL_LIST_INIT(duelist_aggro, list(
 	update_hair()
 	update_body()
 	def_intent_change(INTENT_DODGE)
+	random_voice_NPC()
+	random_hair_NPC()
+	random_eye_color_NPC()
 	AddComponent(/datum/component/npc_death_line)
+	dna.species.handle_body(src)
+	src.regenerate_icons() //Fixes the weird body with random genders for NPCs.
 
 /mob/living/carbon/human/species/human/northern/outlaw_duelist/death(gibbed, nocutscene = FALSE)
 	. = ..()

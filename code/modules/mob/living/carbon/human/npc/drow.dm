@@ -91,7 +91,8 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 						/datum/sprite_accessory/hair/head/sabitsuki_ponytail))
 
 	var/datum/bodypart_feature/hair/head/new_hair = new()
-
+	random_voice_NPC()
+	//Next up, we add hair
 	if(gender == FEMALE)
 		new_hair.set_accessory_type(hairf, null, src)
 	else
