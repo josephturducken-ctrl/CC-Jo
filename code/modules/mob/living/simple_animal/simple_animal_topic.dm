@@ -36,4 +36,10 @@
 		mob_examine_panel.viewing = usr
 		mob_examine_panel.ui_interact(usr)
 		return
+	
+	if(href_list["task"] == "open_directory")
+		if(!ismob(usr) || !client)
+			return
+		client.show_character_directory()
+		return
         

@@ -1044,7 +1044,7 @@
 			showassess = TRUE
 
 	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes))
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a> [showassess ? " | <a href='?src=[REF(src)];task=assess;'>Assess</a>" : ""]"
+		. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a> [showassess ? "| <a href='?src=[REF(src)];task=assess;'>Assess</a> " : ""]| <a href='?src=[REF(src)];task=open_directory;'>Character Directory</a>"
 
 	/// Rumours & Gossip
 	if(length(rumour) || length(noble_gossip))
