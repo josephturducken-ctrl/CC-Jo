@@ -756,10 +756,11 @@
 	owner.remove_stress(/datum/stressevent/integrity_rig)
 	. = ..()
 
+//Caustic Edit - Debuff Changed from -4WIL -1SPD to -1STR, -1WIL, -2SPD for Medium. -4WIL, -2SPD to -1STR, -1WIL, -3SPD for Heavy
 /datum/status_effect/debuff/ironman_medium
 	id = "ironman_medium"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ironman_medium
-	effectedstats = list(STATKEY_WIL = -4, STATKEY_SPD = -1)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -1, STATKEY_SPD = -2)
 /atom/movable/screen/alert/status_effect/debuff/ironman_medium
 	name = "Metal Fatigue I"
 	desc = "My frame bears needless burden. Additional metal drags at my joints and dulls the rhythm of my workings."
@@ -768,7 +769,7 @@
 /datum/status_effect/debuff/ironman_heavy
 	id = "ironman_heavy"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/ironman_heavy
-	effectedstats = list(STATKEY_WIL = -4, STATKEY_SPD = -2)
+	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -1, STATKEY_SPD = -3)
 /atom/movable/screen/alert/status_effect/debuff/ironman_heavy
 	name = "Metal Fatigue II"
 	desc = "My frame labors under excess weight. Every motion grinds, every step strains more than they should."
