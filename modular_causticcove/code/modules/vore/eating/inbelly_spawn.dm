@@ -95,10 +95,28 @@
 	if(absorbed)
 		target_belly.absorb_living(new_character)	// Glorp.
 
-	log_admin("[prey] (as [new_character.real_name] has spawned inside one of [pred]'s bellies.")				// Log it. Avoid abuse.
-	message_admins("[prey] (as [new_character.real_name] has spawned inside one of [pred]'s bellies.", 1)
+	log_admin("[prey] (as [new_character.real_name]) has spawned inside one of [pred]'s bellies.")				// Log it. Avoid abuse.
+	message_admins("[prey] (as [new_character.real_name]) has spawned inside one of [pred]'s bellies.", 1)
 
 	return new_character			// incase its ever needed
+
+/mob/dead/observer
+	var/enable_inbelly_spawn_attempts = FALSE
+
+/mob/dead/observer/verb/ToggleInBellySpawnAttempts()
+	set name = "Toggle In-Belly Spawn"
+	set desc = "Toggles the ability to attempt to In-Belly spawn on someone on Middle Mouse Click. Defaults to off to not cause any accidents!"
+	set category = "VORE"
+
+	enable_inbelly_spawn_attempts = !enable_inbelly_spawn_attempts
+	to_chat(src, span_notice("In-Belly spawn attempts [enable_inbelly_spawn_attempts ? "enabled! Middle-Mouse click on your pred to request a spawn (if they have it set up!)" : "disabled! Middle-Mouse clicks will revert to their usual actions."]"))	
+
+/mob/dead/observer/MiddleClickOn(atom/A, params)
+	if(enable_inbelly_spawn_attempts && isliving(A))
+		var/mob/living/alive = A
+		alive.inbelly_spawn_prompt(src)
+	else
+		. = ..()
 
 /*/mob/living/proc/soulcatcher_spawn_prompt(mob/observer/dead/prey, req_time) //We don't have soulcatchers or NIFs
 	if(tgui_alert(src, "[prey.name] wants to join into your Soulcatcher.","Soulcatcher Request",list("Deny", "Allow"), timeout=1 MINUTES) != "Allow")

@@ -17,4 +17,5 @@ export type ExaminePanelData = {
   is_donator: boolean;
   // is_naked: boolean; // Caustic Edit: Removes naked requirement to view NSFW flavortext
   examine_theme: string | null;
+  character_ad: string;
 };

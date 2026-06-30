@@ -116,3 +116,9 @@
 	name = "Artificer's cap"
 	path = /obj/item/clothing/head/roguetown/articap
 
+//Reform Gem option in the Loadout!
+
+/datum/loadout_item/reform_gem
+	name = "Reform Gem"
+	path = /obj/item/reformation_gem
+	cost = 0 //Make it free to grab! It's a scene tool after all.

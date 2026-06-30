@@ -11,6 +11,7 @@ export type Data = {
 };
 
 export type mobEntry = {
+  ckey: string;
   name: string;
   species: string;
   ooc_notes_favs: string;
@@ -20,6 +21,7 @@ export type mobEntry = {
   ooc_notes_style: BooleanLike;
   gendertag: string;
   sexualitytag: string;
+  rpguidance: string;
   eventtag: string;
   ooc_notes: string;
   tag: string;

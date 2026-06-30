@@ -1,5 +1,37 @@
 GLOBAL_DATUM(character_directory, /datum/character_directory)
 
+/proc/get_character_ad_value(mob/living/carbon/human/character, datum/preferences/prefs, datum/mind/mind)
+	var/current_ad = prefs?.directory_ad
+	if(isnull(current_ad))
+		current_ad = mind?.directory_ad
+	if(isnull(current_ad))
+		current_ad = character?.client?.prefs?.directory_ad
+	if(isnull(current_ad))
+		current_ad = character?.mind?.directory_ad
+	return current_ad
+
+/proc/set_character_ad_value(mob/living/carbon/human/character, datum/preferences/prefs, datum/mind/mind, new_value, notify_roleplay_viewers = FALSE)
+	if(prefs)
+		prefs.directory_ad = new_value
+		prefs.save_character()
+	if(mind)
+		mind.directory_ad = new_value
+
+	if(character)
+		if(new_value)
+			var/formatted_ad = parsemarkdown_basic(html_encode(new_value), hyperlink = TRUE)
+			LAZYSET(GLOB.roleplay_ads, character.mobid, "<b>[html_encode(character.real_name)]</b> - [formatted_ad]<BR>")
+
+			if(notify_roleplay_viewers)
+				for(var/client/advertisee in (GLOB.clients - character.client))
+					if(!(advertisee.prefs.toggles & ROLEPLAY_ADS))
+						continue
+					to_chat(advertisee, span_info("[character.real_name] has set a roleplay ad."))
+		else
+			LAZYREMOVE(GLOB.roleplay_ads, character.mobid)
+
+	refresh_character_ad_examine_panels(character, prefs || character?.client?.prefs, mind || character?.mind)
+
 /client/verb/show_character_directory()
 	set name = "Character Directory"
 	set category = "OOC"
@@ -96,6 +128,16 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 		var/ooc_notes_style = null*/
 		var/gendertag = null
 		var/sexualitytag = null
+		var/rpguidance = null
+		switch(C.prefs.rp_guidance)
+			if(0) //Discourages Conflict
+				rpguidance = "Alternatives Preferred"
+			if(1) //Encourages Conflict
+				rpguidance = "Mechanics Willing"
+			if(2) //Same as normal. This can be changed in the future however if people wish. Encourages Conflict + Hunted.
+				rpguidance = "Mechanics Willing"
+			if(3)
+				rpguidance = "Unset"
 		//var/eventtag = GLOB.vantag_choices_list[VANTAG_NONE]
 		var/flavor_text = null
 		var/custom_link = null
@@ -106,14 +148,14 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 		if (C.mob?.mind) //could use ternary for all three but this is more efficient
 			tag = C.mob.mind.directory_tag || "Unset"
 			erptag = C.mob.mind.directory_erptag || "Unset"
-			character_ad = C.mob.mind.directory_ad
+			character_ad = get_character_ad_value(C.mob, C.prefs, C.mob.mind)
 			gendertag = C.mob.mind.directory_gendertag || "Unset"
 			sexualitytag = C.mob.mind.directory_sexualitytag || "Unset"
 			//eventtag = GLOB.vantag_choices_list[C.mob.mind.vantag_preference]
 		else
 			tag = C.prefs.directory_tag || "Unset"
 			erptag = C.prefs.directory_erptag || "Unset"
-			character_ad = C.prefs.directory_ad
+			character_ad = get_character_ad_value(null, C.prefs, null)
 			gendertag = C.prefs.directory_gendertag || "Unset"
 			sexualitytag = C.prefs.directory_sexualitytag || "Unset"
 			//eventtag = GLOB.vantag_choices_list[C.prefs.vantag_preference]
@@ -180,8 +222,11 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 		// But if we can't find the name, they must be using a non-compatible mob type currently.
 		if(!name)
 			continue
+		if(character_ad)
+			character_ad = parsemarkdown_basic(html_encode(character_ad), hyperlink = TRUE)
 
 		directory_mobs.Add(list(list(
+			"ckey" = C.ckey,
 			"name" = name,
 			"species" = species,
 			/*"ooc_notes_favs" = ooc_notes_favs,
@@ -191,6 +236,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 			"ooc_notes_style" = ooc_notes_style,*/
 			"gendertag" = gendertag,
 			"sexualitytag" = sexualitytag,
+			"rpguidance" = rpguidance,
 			//"eventtag" = eventtag,
 			"ooc_notes" = ooc_notes,
 			"tag" = tag,
@@ -219,8 +265,34 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 		ui.user.setClickCooldown(10)
 		update_static_data(ui.user, ui)
 		return TRUE
+	else if(action == "openExamine")
+		return open_character_examine(ui.user, params["ckey"], params["open_ad"])
 	else
 		return check_for_mind_or_prefs(ui.user, action, params["overwrite_prefs"])
+
+/datum/character_directory/proc/open_character_examine(mob/user, target_ckey, open_ad = FALSE)
+	if(!user || !target_ckey)
+		return FALSE
+
+	var/client/target_client = GLOB.directory[target_ckey]
+	if(!target_client)
+		to_chat(user, span_warning("That character is no longer available. Try refreshing the directory."))
+		return FALSE
+
+	var/datum/examine_panel/character_examine_panel
+	if(ishuman(target_client.mob))
+		character_examine_panel = new(target_client.mob)
+		character_examine_panel.holder = target_client.mob
+	else if(target_client.prefs)
+		character_examine_panel = new
+		character_examine_panel.pref = target_client.prefs
+	else
+		to_chat(user, span_warning("That character does not currently have profile data available."))
+		return FALSE
+
+	character_examine_panel.viewing = user
+	character_examine_panel.ui_interact(user)
+	return TRUE
 
 /datum/character_directory/proc/check_for_mind_or_prefs(mob/user, action, overwrite_prefs)
 	if (!user.client)
@@ -251,7 +323,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 			to_chat(user, span_notice("You are now [!visible ? "shown" : "not shown"] in the directory."))
 			return set_for_mind_or_prefs(user, action, !visible, can_set_prefs, can_set_mind)
 		if ("editAd")
-			var/current_ad = (can_set_mind ? user.mind.directory_ad : null) || (can_set_prefs ? user.client.prefs.directory_ad : null)
+			var/current_ad = get_character_ad_value(user, can_set_prefs ? user.client.prefs : null, can_set_mind ? user.mind : null)
 			var/new_ad = tgui_input_text(user, "Change your character ad", "Character Ad", current_ad, MAX_MESSAGE_LEN, TRUE, prevent_enter = TRUE)
 			if(isnull(new_ad))
 				return
@@ -304,11 +376,7 @@ GLOBAL_LIST_EMPTY(chardirectory_photos)
 				user.mind.show_in_directory = new_value
 			return TRUE
 		if ("editAd")
-			if (can_set_prefs)
-				user.client.prefs.directory_ad = new_value
-				user.client.prefs.save_character()
-			if (can_set_mind)
-				user.mind.directory_ad = new_value
+			set_character_ad_value(user, can_set_prefs ? user.client.prefs : null, can_set_mind ? user.mind : null, new_value)
 			return TRUE
 		/*if ("setEventTag")
 			if (can_set_prefs)
