@@ -97,7 +97,22 @@
 	ambush_times = null 
 	ambush_mobs = null 
 	deathsight_message = "along a small coastal space"
-	
+
+/area/rogue/outdoors/desert/dunepassage
+	name = "Dunelords Pass"
+	first_time_text = "Dunelords Passage"
+	deathsight_message = "a winding passage on the edge of the dunes"
+
+/area/rogue/under/cave/desert
+	name = "Inner Dune Cave"
+	deathsight_message = "caves near safer sands"
+	threat_region = THREAT_REGION_INNER_DUNES
+
+/area/rogue/under/cave/desertdeep
+	name = "Deep Dune Cave"
+	deathsight_message = "caves near unwelcoming sands"
+	threat_region = THREAT_REGION_DEEP_DUNES
+
 //
 
 /area/rogue/outdoors/town/desert
@@ -510,6 +525,13 @@
 	ambush_times = null 
 	ambush_mobs = null 
 	deathsight_message = "a maze of the unredeemed"
+
+/area/rogue/under/cave/Dunelord
+	name = "Dunelords Hideout"
+	first_time_text = "Dunelords Hideout"
+	ambush_times = null 
+	ambush_mobs = null 
+	deathsight_message = "the dunelords retreat"
 
 // desert_wretch_oasis Special Areas. Bandit zone uses areas earlier in code
 /area/rogue/indoors/vampire_manor/desert 
