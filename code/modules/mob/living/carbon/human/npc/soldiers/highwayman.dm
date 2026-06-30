@@ -41,6 +41,8 @@ GLOBAL_LIST_INIT(highwayman_aggro, world.file2list("strings/rt/highwaymanaggroli
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/highwayman)
+	gender = pick(MALE, FEMALE)
+	dna.species.handle_body(src)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	if(organ_eyes)
 		organ_eyes.eye_color = pick("27becc", "35cc27", "000000")
@@ -92,87 +94,7 @@ GLOBAL_LIST_INIT(highwayman_aggro, world.file2list("strings/rt/highwaymanaggroli
 						/datum/sprite_accessory/hair/facial/longbeard))
 	AddComponent(/datum/component/npc_death_line, null, 25)
 
-
-	var/haircolor_choice = rand(1, 4)
-	switch(haircolor_choice)
-		if(1)
-			new_hair.accessory_colors = "#C1A287"
-			new_hair.hair_color = "#C1A287"
-			new_facial.accessory_colors = "#C1A287"
-			new_facial.hair_color = "#C1A287"
-			hair_color = "#C1A287"
-		if(2)
-			new_hair.accessory_colors = "#A56B3D"
-			new_hair.hair_color = "#A56B3D"
-			new_facial.accessory_colors = "#A56B3D"
-			new_facial.hair_color = "#A56B3D"
-			hair_color = "#A56B3D"
-		if(3) //Black
-			new_hair.accessory_colors = "#030107"
-			new_hair.hair_color = "#030107"
-			new_facial.accessory_colors = "#030107"
-			new_facial.hair_color = "#030107"
-			hair_color = "#030107"
-		if(4) //Red
-			new_hair.accessory_colors = "#a53d3d"
-			new_hair.hair_color = "#a53d3d"
-			new_facial.accessory_colors = "#a53d3d"
-			new_facial.hair_color = "#a53d3d"
-			hair_color = "#a53d3d"
-	//Now we take skin-tone picks
-	var/obj/item/organ/ears/organ_ears = getorgan(/obj/item/organ/ears)
-	var/skintone_choice = rand(1, 7) //Heavily simplified
-	switch(skintone_choice)
-		if(1)
-			skin_tone = "SKIN_COLOR_GRENZELHOFT"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_GRENZELHOFT"
-		if(2)
-			skin_tone = "SKIN_COLOR_AVAR"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_AVAR"
-		if(3)
-			skin_tone = "SKIN_COLOR_OTAVA"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_OTAVA"
-		if(4)
-			skin_tone = "SKIN_COLOR_SHALVISTINE"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_SHALVISTINE"
-		if(5)
-			skin_tone = "SKIN_COLOR_LALVESTINE"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_LALVESTINE"
-		if(6)
-			skin_tone = "SKIN_COLOR_NALEDI"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_NALEDI"
-		if(7)
-			skin_tone = "SKIN_COLOR_KAZENGUN"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_KAZENGUN"
-	//Add our hair bodypart features
-	head.add_bodypart_feature(new_hair)
-	head.add_bodypart_feature(new_facial)
-
-	dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
-	dna.species.handle_body(src)
-	//eye picks, we have four-cause its easier to work with. Don't ask me why it randomly breaks to white eyes but sovlful NGL
-	if(organ_eyes)
-		var/eye_choice = rand(1, 4)
-		switch(eye_choice)
-			if(1)
-				organ_eyes.eye_color = "#336699"
-				organ_eyes.accessory_colors = "#336699#336699"
-			if(2)
-				organ_eyes.eye_color = "#339933"
-				organ_eyes.accessory_colors = "#339933#339933"
-			if(3)
-				organ_eyes.eye_color = "#995333"
-				organ_eyes.accessory_colors = "#995333#995333"
-			if(3)
-				organ_eyes.eye_color = "#131313" //Souless greytider look
-				organ_eyes.accessory_colors = "#131313#131313"
+	RandomiseNPCLook()
 
 	if(gender == FEMALE)
 		real_name = pick(world.file2list("strings/names/first_female.txt"))

@@ -26,7 +26,7 @@
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/thief)
 	gender = pick(MALE, FEMALE)
-	regenerate_icons()
+	dna.species.handle_body(src)
 
 	var/species = list(
 		/datum/species/human/northern,
@@ -40,7 +40,6 @@
 	)
 
 	set_species(pick(species))
-	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
 	var/hairf = pick(list(/datum/sprite_accessory/hair/head/bedhead, 
 						/datum/sprite_accessory/hair/head/bob))
@@ -49,81 +48,7 @@
 	var/beard = pick(list(/datum/sprite_accessory/hair/facial/vandyke,
 						/datum/sprite_accessory/hair/facial/croppedfullbeard))
 
-	var/datum/bodypart_feature/hair/head/new_hair = new()
-	var/datum/bodypart_feature/hair/facial/new_facial = new()
-
-	if(gender == FEMALE)
-		new_hair.set_accessory_type(hairf, null, src)
-	else
-		new_hair.set_accessory_type(hairm, null, src)
-		new_facial.set_accessory_type(beard, null, src)
-
-	if(prob(50))
-		new_hair.accessory_colors = "#96403d"
-		new_hair.hair_color = "#96403d"
-		new_facial.accessory_colors = "#96403d"
-		new_facial.hair_color = "#96403d"
-		hair_color = "#96403d"
-	else
-		new_hair.accessory_colors = "#C7C755"
-		new_hair.hair_color = "#C7C755"
-		new_facial.accessory_colors = "#C7C755"
-		new_facial.hair_color = "#C7C755"
-		hair_color = "#C7C755"
-
-	head.add_bodypart_feature(new_hair)
-	head.add_bodypart_feature(new_facial)
-
-	dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
-	dna.species.handle_body(src)
-
-	if(organ_eyes)
-		var/eye_choice = rand(1, 4)
-		switch(eye_choice)
-			if(1)
-				organ_eyes.eye_color = "#336699"
-				organ_eyes.accessory_colors = "#336699#336699"
-			if(2)
-				organ_eyes.eye_color = "#339933"
-				organ_eyes.accessory_colors = "#339933#339933"
-			if(3)
-				organ_eyes.eye_color = "#995333"
-				organ_eyes.accessory_colors = "#995333#995333"
-			if(3)
-				organ_eyes.eye_color = "#131313" //Souless greytider look
-				organ_eyes.accessory_colors = "#131313#131313"
-
-	var/obj/item/organ/ears/organ_ears = getorgan(/obj/item/organ/ears)
-	var/skintone_choice = rand(1, 7) //Heavily simplified
-	switch(skintone_choice)
-		if(1)
-			skin_tone = "SKIN_COLOR_GRENZELHOFT"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_GRENZELHOFT"
-		if(2)
-			skin_tone = "SKIN_COLOR_AVAR"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_AVAR"
-		if(3)
-			skin_tone = "SKIN_COLOR_OTAVA"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_OTAVA"
-		if(4)
-			skin_tone = "SKIN_COLOR_SHALVISTINE"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_SHALVISTINE"
-		if(5)
-			skin_tone = "SKIN_COLOR_LALVESTINE"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_LALVESTINE"
-		if(6)
-			skin_tone = "SKIN_COLOR_NALEDI"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_NALEDI"
-		if(7)
-			skin_tone = "SKIN_COLOR_KAZENGUN"
-			if(organ_ears)
-				organ_ears.accessory_colors = "SKIN_COLOR_KAZENGUN"
+	RandomiseNPCLook()
 
 	if(gender == FEMALE)
 		real_name = pick(world.file2list("strings/names/first_female.txt"))
