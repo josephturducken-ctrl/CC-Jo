@@ -390,7 +390,7 @@
 /datum/crafting_recipe/roguetown/turfs/hay
 	name = "floor (hay)"
 	result = /turf/open/floor/rogue/hay
-	reqs = list(/obj/item/natural/chaff/wheat = 2)
+	reqs = list(/obj/item/natural/fibers = 2) // Caustic Edit. Using a whole 2 wheat is very expensive for just 1 tile
 	skillcraft = /datum/skill/craft/crafting
 	verbage_simple = "assemble"
 	verbage = "assembles"
@@ -519,3 +519,41 @@
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/glass = 1, /obj/item/ingot/iron = 1)
 	craftdiff = 3
 	category = "Windows"
+
+// Caustic Edit Start
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg
+	name = "wooden shingles"
+	result = /turf/open/floor/rogue/rooftop/green
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 3
+	category = "Floors"
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg/corner
+	name = "wooden shingles (corner)"
+	result = /turf/open/floor/rogue/rooftop/green
+	diagonal = TRUE
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg/alt
+	name = "wooden shingles (alt)"
+	result = /turf/open/floor/rogue/rooftop/green/alt
+
+/datum/crafting_recipe/roguetown/turfs/wood/roofg/corner_alt
+	name = "wooden shingles (alt corner)"
+	result = /turf/open/floor/rogue/rooftop/green/alt
+	diagonal = TRUE
+
+/datum/crafting_recipe/roguetown/turfs/wood/roof
+	name = "wooden shingles (brown)" // No corner sprites for these ones, sadly
+	result = /turf/open/floor/rogue/rooftop
+	reqs = list(/obj/item/natural/wood/plank = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	verbage_simple = "construct"
+	verbage = "constructs"
+	craftdiff = 3
+	category = "Floors"
+
+// Caustic Edit End

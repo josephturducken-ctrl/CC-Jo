@@ -321,7 +321,12 @@
 						if(ispath(R.result, /turf))
 							var/turf/X = T.PlaceOnTop(R.result)
 							if(X)
-								X.OnCrafted(user.dir, user)
+								// Caustic Edit - Allows 'diagonal' turfs. Used for roof corners atm
+								if(R.diagonal)
+									X.OnCrafted(X.SelectDiagDirection(), user)
+								else
+									X.OnCrafted(user.dir, user)
+								// Caustic Edit end
 								X.add_fingerprint(user)
 								if(R.loud)
 									X.loud_message("Construction sounds can be heard")

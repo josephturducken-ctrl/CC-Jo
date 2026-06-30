@@ -5,3 +5,19 @@
 	icon_state = "deer_trophy"
 	dir = SOUTH
 	pixel_y = 32
+
+// Caustic Edit
+/obj/structure/rogue/trophy/deer/OnCrafted(dirin)
+	pixel_x = 0
+	pixel_y = 0
+	switch(dirin)
+		if(NORTH)
+			pixel_y = 32
+		if(SOUTH)
+			pixel_y = -32
+		if(EAST)
+			pixel_x = 32
+		if(WEST)
+			pixel_x = -32
+	. = ..()
+// Caustic Edit End

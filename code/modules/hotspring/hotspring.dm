@@ -201,6 +201,8 @@
 	torch_off_state = "stonelantern"
 	base_state = "stonelantern"
 
+	move_on_craft = FALSE // Caustic Edit
+
 /obj/machinery/light/rogue/torchholder/hotspring/standing
 	name = "standing stone lantern"
 	icon_state = "stonelantern_standing1"

@@ -139,3 +139,19 @@
 				dirtamt = min(dirtamt + 1, 5)
 				return
 	..()
+
+// Caustic Edit Start - Allows RMBing dirt piles to take dirt out
+/obj/structure/fluff/clodpile/attack_right(mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.stat != CONSCIOUS)
+			return
+		var/obj/item/I = new /obj/item/natural/dirtclod(src)
+		if(L.put_in_active_hand(I))
+			L.visible_message(span_warning("[L] picks up some dirt from the [name]."))
+			dirtamt--
+			if(dirtamt <= 0)
+				qdel(src)
+			return
+	.=..()
+// Caustic Edit End
