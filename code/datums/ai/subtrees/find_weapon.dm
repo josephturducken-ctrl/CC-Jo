@@ -10,7 +10,7 @@
 
 	var/mob/living/living_pawn = controller.pawn
 	//Caustic Edit - The AI doesn't need to find weapons if it cannot use them!
-	if(HAS_TRAIT(living_pawn, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(living_pawn, TRAIT_GNARLYDIGITS) || HAS_TRAIT(living_pawn, TRAIT_TINYPAWS))
+	if(HAS_TRAIT(controller.pawn, TRAIT_DEADITE) || HAS_TRAIT(living_pawn, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(living_pawn, TRAIT_GNARLYDIGITS) || HAS_TRAIT(living_pawn, TRAIT_TINYPAWS))
 		return
 	//Caustic Edit End
 
