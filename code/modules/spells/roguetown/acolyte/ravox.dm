@@ -583,11 +583,11 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 	if(!("[user.mind.current.real_name]_faction" in user.faction))  //FUCK VVV
 		user.faction |= "[user.mind.current.real_name]_faction"
 
-	if(!locate(/obj/effect/proc_holder/spell/invoked/gravemark) in user.mind?.spell_list) //OFF VVV
-		user.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark/no_sprite)
+	if(!locate(/datum/action/cooldown/spell/gravemark) in user.mind?.spell_list) //OFF VVV
+		user.mind?.AddSpell(new /datum/action/cooldown/spell/gravemark/no_sprite)
 
-	if(!locate(/obj/effect/proc_holder/spell/invoked/minion_order) in user.mind?.spell_list)  //SPELLGRANT IN CLASS FILE
-		user.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
+	if(!locate(/datum/action/cooldown/spell/minion_order) in user.mind?.spell_list)  //SPELLGRANT IN CLASS FILE
+		user.mind?.AddSpell(new /datum/action/cooldown/spell/minion_order)
 
 	var/skill = user.get_skill_level(/datum/skill/magic/holy)
 	var/time = 1 MINUTES

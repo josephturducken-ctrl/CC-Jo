@@ -19,7 +19,7 @@
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
-	weapon_cast_penalized = TRUE
+	weapon_cast_penalized = FALSE
 	charge_time = 1 SECONDS
 	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_SMALL

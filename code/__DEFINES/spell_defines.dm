@@ -22,6 +22,13 @@
 #define GLOW_INTENSITY_HIGH 3 // Large AOE
 #define GLOW_INTENSITY_VERY_HIGH 4 // Greater Fireball or Massive AOE / T4 spells
 
+//Gods - Ascendant
+#define GLOW_COLOR_GRAGGAR "#19345E" //Graggar Dark Blue
+#define GLOW_COLOR_ZIZO "#b76bff" //Graggar Dark Purple
+#define GLOW_COLOR_BAOTHA "#ff008c" //Baotha Violent Rose
+#define GLOW_COLOR_MATTHIOS "#ffd900" //Matthios Golden
+
+
 // Constants for enchantment effects (used by fit_clothing, gems, etc.)
 #define FORCE_BLADE_ENCHANT 2
 #define DURABILITY_ENCHANT 3

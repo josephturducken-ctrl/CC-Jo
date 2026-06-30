@@ -37,7 +37,7 @@
 		don_pelt(H)
 		var/datum/devotion/C = new /datum/devotion(H, H.patron)
 		C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, start_maxed = FALSE)
-		H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/convert_heretic)
+		H.mind?.AddSpell(new /datum/action/cooldown/spell/convert_heretic/free)
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/gnoll_armor/templar
 	icon_state = "templar"
