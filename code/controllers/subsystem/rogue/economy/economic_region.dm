@@ -343,9 +343,9 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 //Placeholders, uh, fill with whatever you want in the future, either future poss or whoever.
 /datum/economic_region/town_placeholder
 	region_id = TRADE_REGION_TOWN_PLACEHOLDER
-	name = "Town Placeholder" //Placeholder do update if you want.
-	subtitle = "Placeholder of the town."
-	description = "Placeholder."
+	name = "Sandsurtale" //Placeholder do update if you want.
+	subtitle = "The Deep Mountains to the North"
+	description = "Beyond the mountain range of the Desert Duchy is a less hostile desert, but still a desert in the end, always in need of food the mountain passages remain an integral neccessity to the Azurian crown, as its the safest way for royalty, and peasant alike to reach the desert nested town. Like most of the nearby landscape, ores are mined in excess, and the need for food is always present."
 	threat_region_id = THREAT_REGION_DESERT_TOWN
 	produces = list(
 		TRADE_GOOD_IRON_ORE = TG_SUPPLY_IRON,
@@ -366,9 +366,9 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 
 /datum/economic_region/lower_caverns_placeholder
 	region_id = TRADE_REGION_LOWER_CAVENRS_PLACEHOLDER
-	name = "Lower Caverns Placeholder" //Placeholder do update if you want.
-	subtitle = "Placeholder of the lower caverns."
-	description = "Placeholder."
+	name = "Grovedune" //Placeholder do update if you want.
+	subtitle = "The Numerous Mountain Passages that connect east, south and west, includes the Coastal Inlet."
+	description = "The Azurian Duchy has taken it upon themselves to maintain the nearby passages in and out of the enclave and exclave, the need for food and water is always a constant for safe zones, but with it comes an endless supply of mined materials."
 	threat_region_id = THREAT_REGION_DESERT_TOWN_CAVES
 	produces = list(
 		TRADE_GOOD_IRON_ORE = TG_SUPPLY_IRON,
@@ -481,9 +481,9 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 //CC Edit - Desert Mappification
 /datum/economic_region/inner_dunes_placeholder
 	region_id = TRADE_REGION_INNER_DUNES_PLACEHOLDER
-	name = "Inner Dunes Placeholder" //Placeholder do update if you want.
-	subtitle = "Someplace that likes the dunes. (PLACEHOLDER REGION!)"
-	description = "(PLACEHOLDER REGION!)"
+	name = "Dustvelh" //Placeholder do update if you want.
+	subtitle = "The Eastern Collective of Border Towns of the Exclave"
+	description = "The numerous connected regions and roads east of Al-Ashur, seperated by the hostile landscape, the flow of mined materials is almost constant, but the lack of proper farm and hunting grounds leave for a constant demand for food."
 	threat_region_id = THREAT_REGION_INNER_DUNES
 	produces = list(
 		TRADE_GOOD_IRON_ORE = TG_SUPPLY_IRON,
@@ -505,9 +505,9 @@ GLOBAL_LIST_INIT(economic_regions, init_economic_regions())
 //CC Edit - Desert Mappification
 /datum/economic_region/deep_dunes_placeholder
 	region_id = TRADE_REGION_DEEP_DUNES_PLACEHOLDER
-	name = "Deep Dunes Placeholder" //Placeholder do update if you want.
-	subtitle = "Someplace that likes the deeper dunes. (PLACEHOLDER REGION!)"
-	description = "(PLACEHOLDER REGION!)"
+	name = "Djannis" //Placeholder do update if you want.
+	subtitle = "The Western Collective of Small Border Towns of the Exclave. All on the other side of the Empty Wasteland"
+	description = "The numerous connected regions and roads connected west of Al-Ashur, separated by a massive empty desert also known as The Empty Sands. This stretch of desert is purely inhospitable and main cause for the duchies gifted obligation to take care of the land, the flow of mined materials is almost constant, skilled crafters eagerly offer their hoards of resources and equipment as due to the more chaotic proximity of this region. At a moments notice the demands of this land can grow to immense scale, but ultimately needed as out in the desert every source is invaluable."
 	threat_region_id = THREAT_REGION_DEEP_DUNES
 	produces = list( //Deeper dunes supplies some of the more important wood.
 		TRADE_GOOD_WOOD = TG_SUPPLY_CHEAP_RAW_MAT,
