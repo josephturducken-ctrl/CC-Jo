@@ -83,10 +83,11 @@
 		if(!destination_belly)
 			return
 		if(source.stat != DEAD && source.trash_catching)
-			if(source.adminbus_trash || /*is_type_in_list(O, GLOB.edible_trash) &&*/ O.trash_eatable && !is_type_in_list(O, GLOB.item_vore_blacklist)) //Caustic - It's still in here if we need a check for a whitelist for stuff ate, but... technically people have been doing that with all items so far. Maybe it's fine to keep it that way?
-				source.visible_message(span_warning("[O] is thrown directly into [source]'s [lowertext(destination_belly.name)]!"))
-				destination_belly.nom_atom(O)
-				return COMSIG_CANCEL_HITBY
+			if(length(vore_selected.contents) < 6) //Lets add a limiter to how many items can be in one belly, sure someone can abuse it by making many... but that's a player issue we can deal with.
+				if(source.adminbus_trash || destination_belly.validate_item_size(O) ||/*is_type_in_list(O, GLOB.edible_trash) &&*/ O.trash_eatable && !is_type_in_list(O, GLOB.item_vore_blacklist)) //Caustic - Trash Eatable was unused really, we'd otherwise have to go through and add it in to all items.
+					source.visible_message(span_warning("[O] is thrown directly into [source]'s [lowertext(destination_belly.name)]!"))
+					destination_belly.nom_atom(O)
+					return COMSIG_CANCEL_HITBY
 
 	//Throwing a prey into a pred takes priority. After that it checks to see if the person being thrown is a pred.
 	if(isliving(hitby))

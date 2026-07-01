@@ -175,6 +175,8 @@
 		return FALSE
 	
 	if(!prey.mind) //A quick check for if the Prey has no mind datum, it likely wasn't controlled by a player ever, so we don't need to check prefs.
+		if(prey.cmode && prey.stat == CONSCIOUS) //If they are in combat mode, which all AI mobs are, then they have to be not actively concious to be Nom'd. Should stop combat-noms.
+			return FALSE
 		return TRUE
 
 	if(!prey.devourable)
