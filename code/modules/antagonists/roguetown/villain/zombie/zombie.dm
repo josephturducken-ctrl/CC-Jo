@@ -36,6 +36,7 @@
 	var/last_bite
 	/// Traits applied to the owner mob when we turn into a zombie
 	var/static/list/traits_zombie = list(
+		TRAIT_LIMBATTACHMENT,
 		TRAIT_INFINITE_STAMINA,
 		TRAIT_NOMOOD,
 		TRAIT_NOHUNGER,
@@ -55,6 +56,7 @@
 		TRAIT_ROTMAN,
 		TRAIT_NORUN,
 		TRAIT_SILVER_WEAK,
+		TRAIT_DEADITE,
 		//Caustic edit
 		TRAIT_NECRAS_ABATEMENT,
 		//Caustic edit end
@@ -435,6 +437,7 @@
 		zombie.emote("scream") // Warning for nearby players
 		zombie.Knockdown(1)
 		zombie.drop_all_held_items()
+
 
 ///Making sure they're not any other antag as well as adding the zombie datum to their mind
 /mob/living/carbon/human/proc/zombie_check_can_convert()
