@@ -46,7 +46,7 @@
 	if(!istype(M))
 		return FALSE
 
-	if(check_loc && M.loc != loc)
+	if(check_loc && !Adjacent(M)) //M.loc != loc //Caustic Edit - Lets see if we can't just tweak this to allow for 1-tile-away buckles?
 		return FALSE
 
 	if((!can_buckle && !force) || M.buckled || (buckled_mobs.len >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
@@ -74,7 +74,7 @@
 		else if(isliving(M.pulledby))
 			M.reset_offsets("pulledby")
 
-	if(!check_loc && M.loc != loc)
+	if(M.loc != loc) //Caustic Edit - Removed this check !check_loc && - so it'll just always check and move the player if needed.
 		M.forceMove(loc)
 
 	M.buckling = null

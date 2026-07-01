@@ -528,7 +528,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					continue
 				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
-		if(!is_in_zweb(src.z,tocheck.z))
+		var/turf/tocheck_turf = get_turf(tocheck) //Caustic Edit - Change it so whispers can be sent regardless of something/someone being in a container!
+		if(!is_in_zweb(speaker_turf.z,tocheck_turf.z))
 			continue
 		listening |= M
 		the_dead[M] = TRUE
@@ -554,7 +555,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				listener_has_ceiling = FALSE
 		if(!hearall)
 			if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
-				if(AM.z != src.z)
+				if(listener_turf.z != speaker_turf.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 					continue
 		if(Zs_too && listener_turf.z != speaker_turf.z && !Zs_all)
 			if(!Zs_yell && !HAS_TRAIT(AM, TRAIT_KEENEARS) && !hearall)
@@ -573,12 +574,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				if(!speaker_has_ceiling && isliving(AM))
 					var/mob/living/M = AM
 					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
-						if(M == MH && MH.z == speaker_ceiling?.z)
+						var/turf/MH_turf = get_turf(MH)
+						if(M == MH && MH_turf.z == speaker_ceiling?.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 							speaker_obstructed = FALSE
 
 				if(!listener_has_ceiling)
 					for(var/mob/living/ML in viewers(world.view, listener_ceiling))
-						if(ML == src && ML.z == listener_ceiling?.z)
+						var/turf/ML_turf = get_turf(ML)
+						if(ML == src && ML_turf.z == listener_ceiling?.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 							listener_obstructed = FALSE
 				if(listener_obstructed && speaker_obstructed)
 					continue
