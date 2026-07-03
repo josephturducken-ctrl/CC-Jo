@@ -13,7 +13,7 @@
 	. += span_info("Left-clicking a variety of cooked meats, such as frysteaks and fillets of fish, will season them into higher-classed meals.")
 
 /obj/item/reagent_containers/peppermill/attackby(obj/item/P, mob/living/user, params)
-    if(istype(P, /obj/item/reagent_containers/food/snacks/pepper))
+    if(istype(P, /obj/item/reagent_containers/food/snacks/grown/pepperseed))
         if(do_after(user, 30))
             src.reagents.add_reagent(/datum/reagent/consumable/blackpepper, 3)
             user.visible_message("<span class='notice'>[user] fills the [src] with [P].</span>")
