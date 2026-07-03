@@ -72,7 +72,7 @@
 /obj/item/magic/deepsea/tiertwo
     name = "aquatic mote"
     icon_state = "water_two"
-    desc = "A mote of power from the abyssal depths.
+    desc = "A mote of power from the abyssal depths."
     tier = 2
 
 /obj/item/magic/deepsea/tierthree
