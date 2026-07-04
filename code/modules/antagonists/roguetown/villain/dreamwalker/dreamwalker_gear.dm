@@ -462,10 +462,12 @@
 		var/mob/living/carbon/human/H = AM
 		if(HAS_TRAIT(H, TRAIT_DREAMWALKER) && dream_check)
 			if(!consume_shard(H))
-				qdel(src)
+				crush_shard(AM)
 		else if (!dream_check)
 			if(!consume_shard(H))
-				qdel(src)
+				crush_shard(AM)
+		else
+			crush_shard(AM)
 
 /obj/effect/temp_visual/dream_shard/proc/consume_shard(mob/living/carbon/human/H)
 	if(!pickuppable)
@@ -477,6 +479,9 @@
 		E.color = "#005180"
 		playsound(H, 'sound/magic/magic_nulled.ogg', 70, TRUE)
 		qdel(src)
+		return TRUE
+	else
+		return FALSE
 
 /obj/effect/temp_visual/dream_shard/proc/move_to_dest(turf/target_turf)
 	if(src && target_turf)
@@ -505,3 +510,8 @@
 	if(health <= 0)
 		qdel(src)
 	return TRUE
+
+/obj/effect/temp_visual/dream_shard/proc/crush_shard(atom/movable/AM)
+	AM.visible_message(span_notice("[AM] crushes the [src] underfoot!"))
+	playsound(get_turf(src), 'sound/foley/breaksound.ogg', 80, TRUE)
+	qdel(src)
