@@ -4,7 +4,7 @@
 	desc = "Lets you breath underwater."
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/rogueore/cinnabar = 1,/obj/item/paper/scroll = 1/obj/item/magic/deepsea/tierone = 2, /obj/item/magic/leyline = 1)
+	required_atoms = list(/obj/item/rogueore/cinnabar = 1,/obj/item/paper/scroll = 1, /obj/item/magic/deepsea/tierone = 2, /obj/item/magic/leyline = 1)
 	result_atoms = list(/obj/item/enchantmentscroll/basic/waterbreath)
 
 /datum/runeritual/enchanting/barotrauma

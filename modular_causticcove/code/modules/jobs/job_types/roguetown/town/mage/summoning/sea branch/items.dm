@@ -56,7 +56,7 @@
 /obj/item/magic/deepsea
 	w_class = WEIGHT_CLASS_SMALL
 //	sellprice = T1SELLPRICE
-	icon = 'modular_causticcove\icons\mob\monster\summons\sea.dmi'
+	icon = 'modular_causticcove/icons/mob/monster/summons/sea.dmi'
 	tier = 1
 
 /obj/item/magic/deepsea/examine(mob/user)
