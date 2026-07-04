@@ -2,7 +2,7 @@
 	obj_damage = 75
 	blood_toll_bucket = STATS_KILLED_ELEMENTALS
 
-	icon = 'modular_causticcove\icons\mob\monster\summons\sea.dmi'
+	icon = 'modular_causticcove/icons/mob/monster/summons/sea.dmi'
 
 	icon_dead = "vvd"
 	gender = MALE
