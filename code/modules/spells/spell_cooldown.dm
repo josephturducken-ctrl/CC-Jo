@@ -138,13 +138,15 @@
 	var/charge_required = TRUE
 	/// Whether we're currently charging the spell.
 	var/currently_charging = FALSE
+	/// Whether the charge bar has completed and the spell is being held ready. While TRUE, hold_drain bleeds per process tick.
+	var/fully_charged = FALSE
 	/**
-	 * Cost to charge.
+	 * Per-tick cost to hold the spell once charged. Charge-up itself is free.
 	 *
-	 * Total drain is: ([charge_time] / [process_time]) * charge_drain
-	 * process_time is currently 4 from SSfastprocess.
+	 * Drained every SSfastprocess tick (wait = 2, i.e. 5x/second) from the moment
+	 * the charge bar completes until the spell is cast or dropped.
 	 */
-	var/charge_drain = 0
+	var/hold_drain = 0
 	/// Time to charge.
 	var/charge_time = 0
 	/// Slowdown while charging.
@@ -199,6 +201,9 @@
 	/// A parent variable to store devotion cost. -- Kuan's Note: This is kinda needed if we want to shift Miracles from proc_holder to spell/cooldown
 	var/devotion_cost = null
 
+	/// SHIM CUZ OF TM FUUUCCCK REMOVE THIS
+	var/charge_drain = 0
+
 /datum/action/cooldown/spell/New(Target)
 	. = ..()
 	// Create overhead spell icon effect (matching old proc_holder system)
@@ -236,6 +241,26 @@
 	return ..()
 
 /datum/action/cooldown/spell/process()
+	if(fully_charged)
+		if(!owner)
+			return PROCESS_KILL
+		if(!can_cast_spell(TRUE))
+			cancel_casting()
+			return PROCESS_KILL
+		if(hold_drain)
+			if(primary_resource_type == SPELL_COST_STAMINA && iscarbon(owner))
+				var/mob/living/carbon/C = owner
+				if(C.stamina >= C.max_stamina)
+					owner.balloon_alert(owner, "Too exhausted to hold the spell!")
+					cancel_casting()
+					return PROCESS_KILL
+			if(!check_resource_available(primary_resource_type, hold_drain))
+				owner.balloon_alert(owner, "I cannot hold the spell any longer!")
+				cancel_casting()
+				return PROCESS_KILL
+			invoke_resource_cost(primary_resource_type, hold_drain)
+		return
+
 	if(!currently_charging)
 		return ..() // Parent handles cooldown icon updates
 
@@ -246,20 +271,6 @@
 		cancel_casting()
 		return PROCESS_KILL
 
-	if(charge_drain)
-		// Cancel charging if caster is at max fatigue
-		if(primary_resource_type == SPELL_COST_STAMINA && iscarbon(owner))
-			var/mob/living/carbon/C = owner
-			if(C.stamina >= C.max_stamina)
-				owner.balloon_alert(owner, "Too exhausted to channel!")
-				cancel_casting()
-				return PROCESS_KILL
-		if(!check_resource_available(primary_resource_type, charge_drain))
-			owner.balloon_alert(owner, "I cannot uphold the channeling!")
-			cancel_casting()
-			return PROCESS_KILL
-		invoke_resource_cost(primary_resource_type, charge_drain)
-
 	// Update mouse charge pointer based on progress
 	if(owner.client && charge_started_at && charge_target_time)
 		var/progress = world.time - charge_started_at
@@ -268,18 +279,12 @@
 		if(owner.client.mouse_pointer_icon != new_icon)
 			owner.client.mouse_pointer_icon = new_icon
 
-	// If this is true we hit our charge goal so stop invoking the cost and update the pointer
+	// Charge goal reached — enter the held phase; keep processing so hold_drain bleeds while held.
 	if(world.time > (charge_started_at + charge_target_time))
-		// We don't want that mouseUp to end in sadness
-		if(!check_resource_available(primary_resource_type, charge_drain))
-			owner.balloon_alert(owner, "I cannot uphold the channeling!")
-			cancel_casting()
-			return PROCESS_KILL
-		// Fully charged — swap to charged icon and stop processing
+		fully_charged = TRUE
 		if(owner.client)
 			owner.client.mouse_pointer_icon = 'icons/effects/mousemice/swang/acharged.dmi'
 			playsound(owner, 'sound/magic/charged.ogg', 40, TRUE)
-		return PROCESS_KILL
 
 /datum/action/cooldown/spell/Grant(mob/grant_to)
 	// Spells are hard baked to pratically only work with living owners
@@ -480,6 +485,8 @@
 // Where the cast chain starts
 /datum/action/cooldown/spell/PreActivate(atom/target)
 	charged = FALSE
+	fully_charged = FALSE
+	STOP_PROCESSING(SSfastprocess, src)
 	if(owner?.channeling_spell == src)
 		owner.channeling_spell = null
 	if(!is_valid_target(target))
@@ -617,6 +624,12 @@
 	if(HAS_TRAIT(owner, TRAIT_NOC_CURSE))
 		if(feedback)
 			owner.balloon_alert(owner, "My magicka has left me...")
+		return FALSE
+
+	var/mob/living/living_owner = owner
+	if(istype(living_owner) && living_owner.has_status_effect(/datum/status_effect/debuff/exposed))
+		if(feedback)
+			owner.balloon_alert(owner, "Too exposed to focus!")
 		return FALSE
 
 	for(var/datum/action/cooldown/spell/spell in owner.actions)
@@ -951,6 +964,7 @@
 /// When we start charging the spell called from set_click_ability or start_casting
 /datum/action/cooldown/spell/proc/on_start_charge()
 	currently_charging = TRUE
+	fully_charged = FALSE
 	if(owner)
 		owner.tempfixeye = TRUE
 		if(!owner.fixedeye)
@@ -1010,6 +1024,7 @@
 /// End the charging cycle
 /datum/action/cooldown/spell/proc/end_charging()
 	currently_charging = FALSE
+	fully_charged = FALSE
 	charge_started_at = null
 	charge_target_time = null
 	// Only drop the cache if we're not about to enter the "charged, waiting to fire" phase
@@ -1510,8 +1525,10 @@
 		if(!success)
 			// Still charging — ignore the mouseup, keep charging
 			return
-		// Charge complete — transition to "click to cast" mode
+		// Charge complete — transition to "click to cast" mode, still bleeding hold_drain while held.
 		on_end_charge(TRUE)
+		fully_charged = TRUE
+		START_PROCESSING(SSfastprocess, src)
 		charge_started_at = 0
 		UnregisterSignal(source, COMSIG_CLIENT_MOUSEUP)
 		RegisterSignal(source, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(cast_after_charge))

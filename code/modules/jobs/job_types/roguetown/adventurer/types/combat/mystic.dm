@@ -151,7 +151,7 @@
 		/obj/item/chalk = 1,
 		)
 
-	H.mind.AddSpell(new /datum/action/cooldown/spell/stoneskin)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/augment_buff/stoneskin)
 	H.mind.AddSpell(new /datum/action/cooldown/spell/bestow_ward)
 
 	var/list/poke_options = list("Spitfire", "Frost Bolt", "Arc Bolt", "Greater Arcyne Bolt", "Stygian Efflorescence", "Arcyne Lance", "Lesser Gravel Blast", "Lesser Soulshot")
