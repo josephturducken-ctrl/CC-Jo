@@ -47,8 +47,8 @@ GLOBAL_LIST_EMPTY(leyline_activations)
 /obj/structure/leyline
 	name = "inactive leyline"
 	desc = "You shouldn't see the base level leyline."
-	icon = 'icons/effects/effects.dmi' //OV EDIT
-	icon_state = "inactiveleyline" //OV EDIT
+	icon = 'icons/effects/32x64.dmi'
+	icon_state = "leylinestable"
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE
 	max_integrity = -1
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(leyline_activations)
 /obj/structure/leyline/tamed
 	name = "tamed leyline"
 	desc = "A carefully warded and stabilized leyline. Its energy is weak, but reliable." //OV EDIT
-	icon_state = "inactiveleyline" //OV EDIT
+	icon_state = "leylinestable"
 	leyline_type = "tamed"
 	alignment = "neutral"
 	max_uses_per_day = 4
