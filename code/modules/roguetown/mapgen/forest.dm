@@ -27,6 +27,7 @@
 							/obj/item/grown/log/tree/stick = 16,
 							/obj/structure/flora/roguetree/stump/log = 3,
 							/obj/structure/flora/roguetree/stump = 4,
+							/obj/structure/leyline/normal/grove = 2, //Caustic Edit
 							/obj/structure/closet/dirthole/closed/loot=3,
 							/obj/structure/flora/roguegrass/maneater/real=3,
 							/obj/effect/hunting_track = 3)
