@@ -179,7 +179,7 @@
 	desc = "Tear open the veil of the infernal realm, and summon infernal watchers!"
 	blacklisted = FALSE
 	tier = 3
-	req_invokers = 2
+//	req_invokers = 2
 	alignment = "infernal"
 	primary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher)
 	secondary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound)
@@ -187,7 +187,7 @@
 	base_secondary_count = 2
 	gone_wrong_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp)
 	chants = list(INFERNAL_LAT_1, INFERNAL_ENG_1, INFERNAL_LAT_2, INFERNAL_ENG_2, INFERNAL_LAT_3, INFERNAL_ENG_3, INFERNAL_CLIMAX, INFERNAL_CTA)
-	secondary_chants = list(INFERNAL_RES_1, INFERNAL_RES_2, INFERNAL_RES_3, INFERNAL_RES_4, INFERNAL_RES_5, INFERNAL_RES_6, INFERNAL_CLIMAX, INFERNAL_CTA)
+//	secondary_chants = list(INFERNAL_RES_1, INFERNAL_RES_2, INFERNAL_RES_3, INFERNAL_RES_4, INFERNAL_RES_5, INFERNAL_RES_6, INFERNAL_CLIMAX, INFERNAL_CTA)
 
 /datum/runeritual/summoning/leyline_encounter/infernal_t4
 	name = "Grand Ritual of Infernal Inversion"
@@ -233,7 +233,7 @@
 	desc = "Disrupts the veil to lure dryads through the veil to defeat you!"
 	blacklisted = FALSE
 	tier = 3
-	req_invokers = 2
+//	req_invokers = 2
 	alignment = "fae"
 	primary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/fae/dryad)
 	secondary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/fae/glimmerwing)
@@ -241,7 +241,7 @@
 	base_secondary_count = 2
 	gone_wrong_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/fae/sprite)
 	chants = list(FAE_LAT_1, FAE_ENG_1, FAE_LAT_2, FAE_ENG_2, FAE_LAT_3, FAE_ENG_3, FAE_CLIMAX, FAE_CTA)
-	secondary_chants = list(FAE_RES_1, FAE_RES_2, FAE_RES_3, FAE_RES_4, FAE_RES_5, FAE_RES_6, FAE_CLIMAX, FAE_CTA)
+//	secondary_chants = list(FAE_RES_1, FAE_RES_2, FAE_RES_3, FAE_RES_4, FAE_RES_5, FAE_RES_6, FAE_CLIMAX, FAE_CTA)
 
 /datum/runeritual/summoning/leyline_encounter/fae_t4
 	name = "Grand Ritual of Fae Fury"
@@ -287,7 +287,7 @@
 	desc = "Shatters the veil with a surge of arcyne energy, summoning behemoths from the earthen realm!"
 	blacklisted = FALSE
 	tier = 3
-	req_invokers = 2
+//	req_invokers = 2
 	alignment = "elemental"
 	primary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/elemental/behemoth)
 	secondary_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/elemental/warden)
@@ -295,7 +295,7 @@
 	base_secondary_count = 2
 	gone_wrong_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/elemental/crawler)
 	chants = list(EARTHEN_LAT_1, EARTHEN_ENG_1, EARTHEN_LAT_2, EARTHEN_ENG_2, EARTHEN_LAT_3, EARTHEN_ENG_3, EARTHEN_CLIMAX, EARTHEN_CTA)
-	secondary_chants = list(EARTHEN_RES_1, EARTHEN_RES_2, EARTHEN_RES_3, EARTHEN_RES_4, EARTHEN_RES_5, EARTHEN_RES_6, EARTHEN_CLIMAX, EARTHEN_CTA)
+//	secondary_chants = list(EARTHEN_RES_1, EARTHEN_RES_2, EARTHEN_RES_3, EARTHEN_RES_4, EARTHEN_RES_5, EARTHEN_RES_6, EARTHEN_CLIMAX, EARTHEN_CTA)
 
 /datum/runeritual/summoning/leyline_encounter/earthen_t4
 	name = "Grand Ritual of Earthen Engulfment"
