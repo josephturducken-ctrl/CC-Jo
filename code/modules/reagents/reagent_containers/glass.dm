@@ -13,7 +13,7 @@
 
 	// Caustic Edit start
 	var/glazeable // For things that can be glazed or painted. Currently only clay containers
-	var/glazed
+	//var/glazed //There seems to be a var on /obj/item that adds this now?
 	// Caustic Edit end
 
 /obj/item/reagent_containers/glass/get_mechanics_examine(mob/user)

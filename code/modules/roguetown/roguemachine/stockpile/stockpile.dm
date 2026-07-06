@@ -270,7 +270,7 @@
 				if(message)
 					say("This is town property, it cannot be minted here.")
 				return
-			if(R.mint_item && I.atc_sealed)
+			if(R.transport_item && I.atc_sealed)
 				if(message)
 					say("This bears an Azurian Trading Company seal. The Crown will not mint Company stock.")
 				return
@@ -307,7 +307,7 @@
 					say("[tg_overflow.name] overflow - minted to Crown's Purse.")
 					return
 			var/auto_exported = FALSE
-			var/full_on_arrival = (!R.mint_item && R.stockpile_amount >= R.stockpile_limit)
+			var/full_on_arrival = (!R.transport_item && R.stockpile_amount >= R.stockpile_limit)
 			if(full_on_arrival)
 				R.stockpile_amount += 1
 				if(try_auto_export_units(R, 1) <= 0)

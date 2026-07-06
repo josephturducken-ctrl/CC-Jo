@@ -15,6 +15,8 @@
 	var/accept_toggle_enabled = TRUE
 	var/automatic_price = TRUE
 	var/automatic_limit = TRUE
+	var/cached_market_deposit_price = 0
+	var/cached_market_withdraw_price = 0
 
 	//Caustic Edit - Adding back a small generation of imports to mimic the old auto-gen
 	var/auto_regen = TRUE

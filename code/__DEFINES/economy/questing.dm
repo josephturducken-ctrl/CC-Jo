@@ -13,6 +13,10 @@
 #define QUEST_TOWNER_SMITH_CARAVAN "Smith Caravan"
 #define QUEST_TOWNER_MINER_OREVEIN "Ore Vein"
 
+#define QUEST_TURNIN_SELF 1
+#define QUEST_TURNIN_FELLOWSHIP 2
+#define QUEST_TURNIN_OFFICIAL 3
+
 #define TOWNER_POSTING_TIER_MEDIUM "medium"
 #define TOWNER_POSTING_TIER_HARD "hard"
 
@@ -21,8 +25,8 @@
 
 #define TOWNER_QUEST_FELLOWSHIP_SIZE 2
 
-#define TOWNER_CARAVAN_FLAT_BONUS_MEDIUM 30
-#define TOWNER_CARAVAN_FLAT_BONUS_HARD 60
+#define TOWNER_CARAVAN_FLAT_BONUS_MEDIUM 60
+#define TOWNER_CARAVAN_FLAT_BONUS_HARD 120
 
 #define TOWNER_PRESENCE_RADIUS 7
 #define TOWNER_PRESENCE_POLL_INTERVAL (3 SECONDS)
@@ -34,8 +38,8 @@
 #define TOWNER_OREVEIN_EXPIRY_DS (30 MINUTES)
 #define TOWNER_OREVEIN_TP_BUDGET_MEDIUM 80
 #define TOWNER_OREVEIN_TP_BUDGET_HARD 130
-#define TOWNER_OREVEIN_FLAT_BONUS_MEDIUM 30
-#define TOWNER_OREVEIN_FLAT_BONUS_HARD 60
+#define TOWNER_OREVEIN_FLAT_BONUS_MEDIUM 60
+#define TOWNER_OREVEIN_FLAT_BONUS_HARD 120
 #define TOWNER_OREVEIN_CLUSTER_COUNT_MEDIUM 4
 #define TOWNER_OREVEIN_CLUSTER_COUNT_HARD 6
 
@@ -54,18 +58,20 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 // Multipliers applied to the base TP for kill request rewards
 #define QUEST_KILL_THREAT_MULT 1.0
 // Bounty's main target is further multiplied  
-#define QUEST_BOUNTY_THREAT_MULT 2
+#define QUEST_BOUNTY_THREAT_MULT 1
 
 // Max mobs for kill request to avoid lagging
-#define QUEST_KILL_MAX_MOBS 15
-// Floor for TP to avoid no TP mob from being spammed 
+#define QUEST_KILL_MAX_MOBS 20
+// Floor for TP to avoid no TP mob from being spammed
 #define QUEST_MOB_MIN_TP 10
+#define QUEST_MOB_DUST_DELAY (5 MINUTES)
+#define QUEST_HEAD_DUST_DELAY (5 SECONDS)
 
 #define QUEST_TP_BUDGET_KILL_EASY 35
 #define QUEST_TP_BUDGET_CLEAR_OUT 80
-#define QUEST_TP_BUDGET_RAID 150
-#define QUEST_TP_BUDGET_BOUNTY_GOONS 100
-#define QUEST_TP_BUDGET_RECOVERY 60
+#define QUEST_TP_BUDGET_RAID 200
+#define QUEST_TP_BUDGET_BOUNTY_GOONS 150
+#define QUEST_TP_BUDGET_RECOVERY 80
 
 // TP budget variance
 #define QUEST_TP_BUDGET_VARIANCE 0.25
@@ -73,14 +79,22 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 // Bands of threat cleared on completion
 #define QUEST_BANDS_KILL_EASY 1
 #define QUEST_BANDS_CLEAR_OUT 2
-#define QUEST_BANDS_RAID 3
-#define QUEST_BANDS_BOUNTY 3
+#define QUEST_BANDS_RAID 4
+#define QUEST_BANDS_BOUNTY 4
 #define QUEST_BANDS_RECOVERY 2
+#define QUEST_BANDS_BLOCKADE 6
+
+#define QUEST_REWARD_GLOBAL_MULT 1
 
 // Flat reward base
 #define QUEST_REWARD_BASE_FLAT 10
 #define QUEST_REWARD_BASE_FETCH 15
 #define QUEST_REWARD_BASE_RECOVERY 25
+
+// Flat bonus layered on by difficulty, on top of the base + tp/distance reward.
+#define QUEST_DIFFICULTY_BONUS_EASY 0
+#define QUEST_DIFFICULTY_BONUS_MEDIUM 0
+#define QUEST_DIFFICULTY_BONUS_HARD 25
 
 #define QUEST_DEPOSIT_EASY 5
 #define QUEST_DEPOSIT_MEDIUM 10
@@ -106,6 +120,9 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 
 // Unclaimed listings past this threshold are rerolled in place, bypassing the per-tick cap.
 #define QUEST_POOL_STALE_THRESHOLD (20 MINUTES)
+#define QUEST_POOL_STALE_JITTER (10 MINUTES)
+// Player-issued listings (rumor/defense) get a longer window before reroll.
+#define QUEST_PLAYER_STALE_THRESHOLD (30 MINUTES)
 
 // Per CKEY cap
 #define QUEST_TAKE_COOLDOWN (10 MINUTES)
@@ -113,9 +130,9 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 // After a quest reroll is generated it is locked for this long to prevent regen
 #define QUEST_LANDMARK_COOLDOWN (5 MINUTES)
 
-#define QUEST_KILL_HUNT_TIMER (15 MINUTES)
-#define QUEST_KILL_HUNT_WARN_2M (13 MINUTES)
-#define QUEST_KILL_HUNT_WARN_30S (14 MINUTES + 30 SECONDS)
+#define QUEST_KILL_HUNT_TIMER (20 MINUTES)
+#define QUEST_KILL_HUNT_WARN_2M (18 MINUTES)
+#define QUEST_KILL_HUNT_WARN_30S (19 MINUTES + 30 SECONDS)
 
 #define QUEST_LANDMARK_MAX_LOCK_DURATION (60 MINUTES)
 
@@ -149,4 +166,3 @@ GLOBAL_LIST_INIT(defense_quest_tier_costs, list(
 // Multiplied by (region's delivery_reward_multiplier - 1.0), so a 1.0× region adds nothing and a
 // 2.0× region (Terrorbog, Mt Decap, Underdark) adds the full amount.
 #define QUEST_DELIVERY_THREAT_BONUS 20
-
