@@ -11,6 +11,9 @@ GLOBAL_LIST_EMPTY(active_economic_events)
 	var/day_started = 0
 	var/day_expires = 0
 	var/datum/weakref/urgent_order_ref
+	var/saturation_target = 0
+	var/saturation_progress = 0
+	var/relief_triggered = FALSE
 
 /datum/economic_event/proc/on_apply()
 	for(var/good_id in affected_goods)
