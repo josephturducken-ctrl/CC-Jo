@@ -250,8 +250,8 @@
 		/datum/action/cooldown/spell/nondetection,
 	)
 
-/datum/magic_aspect/ferramancy
-	name = "Ferramancy"
+/datum/magic_aspect/Ferramancy
+	name = "Spellsword"
 	latin_name = "Maior Aspectus Ferri"
 	desc = "Ferramancy is a second-order magical school. Amongst the many major aspects, it is likely the youngest - \
 	though this merely puts it as younger than the other aspects by only a millennium or so. Ferramancers conceptualize primal matters \
@@ -260,6 +260,41 @@
 	by hurling weapons at him. Dedicated Ferramancers are proud of their arts, and oft think themselves superior \
 	by bridging the gap between primal forces and humen ingenuity. For the same reasons, some other scholars look down on it for the impureness of its power. \
 	But perhaps the true reason is that metal rends wards and a mage's robe apart more efficiently than any other school of magick."
+	aspect_type = ASPECT_MAJOR
+	attuned_name = ASPECT_NAME_FERRAMANCY
+	school_color = GLOW_COLOR_METAL
+	binding_chants = list(
+		"Invoco chalybem indomitum!",
+		"I call upon the forge within, create!",
+		"Chalybs, imperio meo parere!",
+	)
+	unbinding_chants = list(
+		"Exstinguo fornacem internam!",
+		"I silence the ring of hammer and steel, grow cold.",
+		"Chalybs, ad quietem redire!",
+	)
+	fixed_spells = list(
+		/datum/action/cooldown/spell/projectile/sawblade_volley,
+		/datum/action/cooldown/spell/blade_burst,
+		/datum/action/cooldown/spell/projectile/iron_tempest,
+		/datum/action/cooldown/spell/iron_skin,
+		/datum/action/cooldown/spell/arcyne_forge,
+		/datum/action/cooldown/spell/readomen,
+	)
+	choice_spells = list(
+		/datum/action/cooldown/spell/projectile/stygian_efflorescence,
+		/datum/action/cooldown/spell/projectile/arcyne_lance,
+	)
+	variants = list(
+		"mastery" = list(
+			VARIANT_ADDITIVE =/datum/action/cooldown/spell/blade_dance,
+		),
+	)
+
+/datum/magic_aspect/spellsword
+	name = "Spellsword"
+	latin_name = "Maior Aspectus Ferri"
+	desc = "An often overlooked art in the modern dae and age of magical combat."
 	aspect_type = ASPECT_MAJOR
 	attuned_name = ASPECT_NAME_FERRAMANCY
 	school_color = GLOW_COLOR_METAL
