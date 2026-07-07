@@ -123,38 +123,7 @@
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	equipOutfit(new deserter_outfit)
-	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
-	gender = pick(MALE, FEMALE)
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
-	var/hairf = pick(list(
-						/datum/sprite_accessory/hair/head/lowbraid,
-						/datum/sprite_accessory/hair/head/countryponytailalt,
-						/datum/sprite_accessory/hair/head/gloomy,
-						/datum/sprite_accessory/hair/head/zone,
-						/datum/sprite_accessory/hair/head/hime,
-						/datum/sprite_accessory/hair/head/stacy,
-						/datum/sprite_accessory/hair/head/sabitsuki,
-						/datum/sprite_accessory/hair/head/sabitsuki_ponytail, 
-						/datum/sprite_accessory/hair/head/kusanagi_alt,
-						/datum/sprite_accessory/hair/head/fluffy,
-						/datum/sprite_accessory/hair/head/fluffylong))
-	var/hairm = pick(list(
-						/datum/sprite_accessory/hair/head/ponytailwitcher,
-						/datum/sprite_accessory/hair/head/bowlcut, 
-						/datum/sprite_accessory/hair/head/bowlcut2,
-						/datum/sprite_accessory/hair/head/lowbraid,
-						/datum/sprite_accessory/hair/head/emo,
-						/datum/sprite_accessory/hair/head/sabitsuki,
-						/datum/sprite_accessory/hair/head/sabitsuki_ponytail, 
-						/datum/sprite_accessory/hair/head/rogue))
-	var/beard = pick(list(/datum/sprite_accessory/hair/facial/stubble,
-						/datum/sprite_accessory/hair/facial/manly,
-						/datum/sprite_accessory/hair/facial/fiveoclockmoustache,
-						/datum/sprite_accessory/hair/facial/sevenoclockm,
-						/datum/sprite_accessory/hair/facial/chinlessbeard,
-						/datum/sprite_accessory/hair/facial/fullbeard,
-						/datum/sprite_accessory/hair/facial/chinstrap,
-						/datum/sprite_accessory/hair/facial/longbeard))
 	head.sellprice = HEAD_BOUNTY_DESERTER
 	AddComponent(/datum/component/npc_death_line, null, 25)
 	dna.species.handle_body(src)

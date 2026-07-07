@@ -1961,7 +1961,8 @@
 				to_chat(user, span_smallred("The ritual fails. A noble, a member of the Inquisition or a Tennite clergy member must be in the center of the circle!"))
 			spawn(120)
 				icon_state = "graggar_chalky" 
-/obj/structure/ritualcircle/graggar/proc/graggararmor(mob/living/carbon/human/target, helm_choice, armor_choice, weapon_choice)
+
+/obj/structure/ritualcircle/graggar/proc/graggararmor(mob/living/carbon/human/target, helm_choice, armor_choice)
 	if(!HAS_TRAIT(target, TRAIT_HORDE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITHOUT SLAUGHTER IN THEIR HEART!!"))
 		return
@@ -1984,14 +1985,13 @@
 	target.Stun(60)
 	target.Knockdown(60)
 	to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-	target.emote("Agony")
+	target.emote("superagony")
 	playsound(loc, 'sound/misc/smelter_fin.ogg', 50)
 	loc.visible_message(span_cult("[target]'s lux pours from their nose and into the rune! The motive force manifests across their body, chaining it with shackles of vicious plate!"))
 	spawn(20)
 		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 		var/datum/outfit/job/roguetown/viciousrite/ritual_outfit = new outfit_path()
 		ritual_outfit.selected_helm_path = helm_path
-		ritual_outfit.selected_weapon_choice = weapon_choice
 		target.equipOutfit(ritual_outfit)
 		tag_kit_items(target, list(
 			"armor" = target.get_item_by_slot(SLOT_ARMOR),
@@ -2139,7 +2139,11 @@
 			ADD_TRAIT(target, TRAIT_NOPAIN, TRAIT_RITUAL)
 			ADD_TRAIT(target, TRAIT_DODGEEXPERT, TRAIT_RITUAL)
 			var/is_heretic = istype(user.mind?.picked_advclass, /datum/advclass/wretch/heretic)
-			user.apply_status_effect(/datum/status_effect/debuff/armamentrites)
+			if(is_heretic)
+				user.apply_status_effect(/datum/status_effect/debuff/armamentrites)
+			if(is_heretic && target != user)
+				user.apply_status_effect(/datum/status_effect/debuff/lux_exhausted)
+				target.apply_status_effect(/datum/status_effect/debuff/lux_exhausted)
 			baothaarmaments(target)
 			spawn(120)
 				icon_state = "baotha_chalky"
