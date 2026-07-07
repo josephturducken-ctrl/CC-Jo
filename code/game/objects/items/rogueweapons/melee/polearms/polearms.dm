@@ -98,6 +98,12 @@
 /datum/intent/spear/bash/ranged
 	reach = 2
 
+/datum/intent/spear/bash/staff
+	name = "staff bash"
+	damfactor = 1
+	reach = 2
+
+
 /datum/intent/spear/cut
 	name = "cut"
 	blade_class = BCLASS_CUT
@@ -225,7 +231,7 @@
 	force = 10
 	force_wielded = 15
 	possible_item_intents = list(SPEAR_BASH)
-	gripped_intents = list(SPEAR_BASH,/datum/intent/mace/smash/wood)
+	gripped_intents = list(/datum/intent/spear/bash/ranged, /datum/intent/mace/smash/wood/ranged)
 	name = "wooden staff"
 	desc = "A solid dependable walking stick that allows one to traverse rough terrain with ease, keep the weight off an injured leg, or reliably fend off incoming blows. Perfect for beggars, pilgrims, and mages."
 	icon_state = "woodstaff"

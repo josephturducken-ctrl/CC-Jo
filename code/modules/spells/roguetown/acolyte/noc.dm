@@ -47,11 +47,120 @@
 
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 
-/datum/action/cooldown/spell/noc/sight/cast(atom/cast_on)
+/obj/effect/proc_holder/spell/self/noc_spell_bundle
+	name = "Arcyne Affinity"
+	desc = "Allows you to learn a set of spells. \n \
+	<b>MAGISTER</b>: Greater Arcyne Force Wall, Arcyne Ward, Blink, Message, Create Campfire \n \
+	<b>ENCHANTER</b>: Gravel Blast, Dragon Hide, Mending, Arcyne Forge, Hawk Eyes, Stoneskin\n \
+	<b>SEER</b>: Crystal Hide, Giants Strength, Guidance, Haste, Fortitude, Mindlink"
+	action_icon = 'icons/mob/actions/nocmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/nocmiracles.dmi'
+	overlay_state = "spellpack"
+	miracle = TRUE
+	devotion_cost = 200
+	recharge_time = 25 MINUTES
+	chargetime = 0
+	chargedrain = 0
+	range = 0
+	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
+	associated_skill = /datum/skill/magic/holy
+	var/chosen_bundle
+	var/list/magister_bundle = list(
+		/datum/action/cooldown/spell/projectile/greater_arcyne_bolt, //Offensive Tool
+		/datum/action/cooldown/spell/forcewall,
+		/datum/action/cooldown/spell/conjure_arcyne_ward,
+		/datum/action/cooldown/spell/phase,
+		/datum/action/cooldown/spell/message, //Utility
+		/datum/action/cooldown/spell/create_campfire //Buff
+	)
+	var/list/enchanter_bundle = list(
+		/datum/action/cooldown/spell/projectile/gravel_blast, //Offensive Tool
+		/datum/action/cooldown/spell/conjure_arcyne_ward/dragonhide,
+		/datum/action/cooldown/spell/mending,
+		/datum/action/cooldown/spell/arcyne_forge, //Utility
+		/datum/action/cooldown/spell/augment_buff/attune_hawk,
+		/datum/action/cooldown/spell/augment_buff/stoneskin //Buff
+	)
+	var/list/seer_bundle = list(
+		/datum/action/cooldown/spell/conjure_arcyne_ward/crystalhide,
+		/datum/action/cooldown/spell/augment_buff/attune_giant,
+		/datum/action/cooldown/spell/augment_buff/guidance,
+		/datum/action/cooldown/spell/augment_buff/attune_haste,
+		/datum/action/cooldown/spell/augment_buff/fortitude,
+		/datum/action/cooldown/spell/mindlink
+	)
+/obj/effect/proc_holder/spell/self/noc_spell_bundle/cast(list/targets, mob/user)
 	. = ..()
-	if(isturf(cast_on) && ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		var/turf/T = cast_on
+	var/choice = chosen_bundle
+	if(!chosen_bundle)
+		choice = alert(user, "What type of spells has Noc blessed you with?", "CHOOSE PATH", "Magister", "Enchanter", "Seer")
+		chosen_bundle = choice
+	switch(choice)
+		if("Magister")
+			add_spells(user, magister_bundle, grant_all = TRUE)
+			user.mind?.RemoveSpell(src.type)
+			return TRUE
+		if("Enchanter")
+			add_spells(user, enchanter_bundle, grant_all = TRUE)
+			user.mind?.RemoveSpell(src.type)
+			return TRUE
+		if("Seer")
+			add_spells(user, seer_bundle, grant_all = TRUE)
+			user.mind?.RemoveSpell(src.type)
+			return TRUE
+	return FALSE
+
+
+/obj/effect/proc_holder/spell/self/noc_spell_bundle/proc/add_spells(mob/user, list/spells, choice_count = 1, grant_all = FALSE)
+	for(var/spell_type in spells)
+		if(user?.mind.has_spell(spells[spell_type]))
+			spells.Remove(spell_type)
+	if(!grant_all)
+		var/choice_count_visual = choice_count
+		for(var/i in 1 to choice_count)
+			var/choice = input(user, "Choose a spell! Choices remaining: [choice_count_visual]") as null|anything in spells
+			if(!isnull(choice))
+				var/picked_spell = spells[choice]
+				var/datum/new_spell = new picked_spell
+				user?.mind.AddSpell(new_spell)
+				choice_count_visual--
+				spells.Remove(choice)
+	else
+		for(var/spell_type in spells)
+			var/datum/new_spell = new spell_type
+			user?.mind.AddSpell(new_spell)
+	if(!length(spells))
+		user.mind?.RemoveSpell(src.type)
+
+//15 PER peer-ahead.
+/obj/effect/proc_holder/spell/invoked/noc_sight
+	name = "Noc's Gaze"
+	action_icon = 'icons/mob/actions/nocmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/nocmiracles.dmi'
+	overlay_state = "noc_sight"
+	desc = "Peer ahead. (Use MMB to project your vision as if you had a very high perception.)"
+	chargetime = 0
+	chargedrain = 0
+	clothes_req = FALSE
+	recharge_time = 5 SECONDS
+	devotion_cost = 5
+	range = 7
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	invocations = list("Noc guide my gaze.")
+	invocation_type = "whisper"
+	sound = null
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	hide_charge_effect = TRUE
+	miracle = TRUE
+
+
+//Identical to peering ahead as if you had 15 PER. (the max)
+/obj/effect/proc_holder/spell/invoked/noc_sight/cast(list/targets, mob/user)
+	if(isturf(targets[1]) && ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/turf/T = targets[1]
 		var/_x = T.x-H.loc.x
 		var/_y = T.y-H.loc.y
 		var/ttime = 6

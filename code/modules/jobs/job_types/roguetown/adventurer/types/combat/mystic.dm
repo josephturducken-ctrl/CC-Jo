@@ -51,7 +51,7 @@
 		/obj/item/reagent_containers/glass/bottle = 3,
 		/obj/item/reagent_containers/glass/bottle/alchemical = 3,
 		/obj/item/recipe_book/alchemy = 1,
-		/obj/item/book/spellbook = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
@@ -150,12 +150,12 @@
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/recipe_book/survival = 1,
-		/obj/item/book/spellbook = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
 
 	grant_poke_spell(H)
-	H.mind.AddSpell(new /datum/action/cooldown/spell/stoneskin)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/augment_buff/stoneskin)
 	H.mind.AddSpell(new /datum/action/cooldown/spell/bestow_ward)
 
 	var/list/poke_options = list("Spitfire", "Frost Bolt", "Arc Bolt", "Greater Arcyne Bolt", "Stygian Efflorescence", "Arcyne Lance", "Lesser Gravel Blast", "Lesser Soulshot")
@@ -305,7 +305,7 @@
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/recipe_book/survival = 1,
-		/obj/item/book/spellbook = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
 	grant_poke_spell(H)

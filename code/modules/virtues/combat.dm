@@ -97,6 +97,7 @@
 	max_choices = 5
 	choice_costs = list(0, 0, 0, 2, 4, 4)
 	extra_choices = list(
+		"Arcyne Armament Skill (JMAN)" = /datum/skill/combat/arcyne,
 		"Swords Skill (JMAN)" = /datum/skill/combat/swords,
 		"Shield Skill (JMAN)" = /datum/skill/combat/shields,
 		"Dagger Skill (JMAN)" = /datum/skill/combat/knives,

@@ -420,7 +420,8 @@
 		// 7 weighted statline, mostly put into perception + int, they lack on their baseline speed being slightly higher unlike most mages on top of weaker martal talent
 	)
 	subclass_skills = list(
-		/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/arcyne = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_EXPERT,
 		/datum/skill/magic/arcane = SKILL_LEVEL_MASTER, //You've had a long, time to practice
@@ -449,7 +450,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget/paalloy //No head armor but good anti-decap armor, intended.
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	belt = /obj/item/storage/belt/rogue/leather/battleskirt
-	beltl = /obj/item/book/spellbook
+	beltl = /obj/item/rogueweapon/spellbook/greater
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff/implement/greater
 

@@ -55,7 +55,7 @@
 			if(H.mind)
 				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 6, "ward" = TRUE))
 			beltl = /obj/item/storage/magebag/starter
-			backpack_contents |= /obj/item/book/spellbook
+			backpack_contents |= /obj/item/rogueweapon/spellbook
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
 		if("Godsblood")
@@ -78,7 +78,7 @@
 			if(H.mind)
 				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 4))
 			beltl = /obj/item/storage/magebag/starter
-			backpack_contents |= /obj/item/book/spellbook
+			backpack_contents |= /obj/item/rogueweapon/spellbook
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)

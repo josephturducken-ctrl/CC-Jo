@@ -145,7 +145,7 @@
 
 	H.grant_language(/datum/language/undead)
 	// Grant a spellbook so the lich can pick aspects
-	new /obj/item/book/spellbook(get_turf(H))
+	new /obj/item/rogueweapon/spellbook/grand(get_turf(H))
 
 	if(H.mind)
 		// Lich-specific spells (not from aspects)

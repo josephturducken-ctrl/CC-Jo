@@ -33,7 +33,8 @@
 	/datum/skill/combat/shields, \
 	/datum/skill/combat/slings, \
 	/datum/skill/combat/staves, \
-	/datum/skill/combat/firearms \
+	/datum/skill/combat/firearms, \
+	/datum/skill/combat/arcyne \
 )
 
 #define TAT_SKILLS_WANDERING list( \
@@ -150,6 +151,7 @@
 		TAT_VIRTUE_CHOICE_SKILLED_ARTIF = list(/datum/skill/craft/carpentry = 2, /datum/skill/craft/masonry = 2, /datum/skill/craft/engineering = 2, /datum/skill/craft/smelting = 2, /datum/skill/craft/ceramics = 2) \
 	), \
 	/datum/virtue/combat/combat_virtue = list( \
+		TAT_VIRTUE_CHOICE_ARCYNE_ARMAMENT = list(/datum/skill/combat/arcyne = SKILL_LEVEL_JOURNEYMAN), \
 		TAT_VIRTUE_CHOICE_COMBAT_SWORDS = list(/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN), \
 		TAT_VIRTUE_CHOICE_COMBAT_SHIELDS = list(/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN), \
 		TAT_VIRTUE_CHOICE_COMBAT_DAGGERS = list(/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN), \

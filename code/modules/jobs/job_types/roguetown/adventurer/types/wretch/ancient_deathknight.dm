@@ -114,6 +114,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/natural/feather = 1, //For your helm
 		/obj/item/storage/belt/rogue/pouch/coins/aalloy = 1, //Hilarious
+		/obj/item/rogueweapon/spellbook = 1,
 	)
 
 	if(H.mind)

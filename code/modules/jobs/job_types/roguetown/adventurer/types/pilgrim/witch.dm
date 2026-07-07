@@ -55,10 +55,12 @@
 		if("Old Magick")
 			ADD_TRAIT(H, TRAIT_ARCYNE, TRAIT_GENERIC)
 			H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/arcyne, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/staves, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			if(H.mind)
 				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 5, "ward" = TRUE))
 			beltl = /obj/item/storage/magebag/starter
-			H.equip_to_slot_or_del(new /obj/item/book/spellbook(H), SLOT_IN_BACKPACK)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/spellbook(H), SLOT_IN_BACKPACK)
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
 		if("Godsblood")
@@ -81,7 +83,7 @@
 			if(H.mind)
 				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 3))
 			beltl = /obj/item/storage/magebag/starter
-			H.equip_to_slot_or_del(new /obj/item/book/spellbook(H), SLOT_IN_BACKPACK)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/spellbook(H), SLOT_IN_BACKPACK)
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)

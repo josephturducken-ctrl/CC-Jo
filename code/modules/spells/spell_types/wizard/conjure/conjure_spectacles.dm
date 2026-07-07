@@ -20,7 +20,7 @@
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 1
+	hold_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_MEDIUM
 	charge_sound = 'sound/magic/charging.ogg'
 	cooldown_time = 30 SECONDS
@@ -52,7 +52,7 @@
 
 	var/obj/item/clothing/mask/rogue/spectacles/R = new spectacles_choice(user.drop_location())
 	if(!QDELETED(R))
-		R.AddComponent(/datum/component/conjured_item, GLOW_COLOR_ARCANE)
+		R.AddComponent(/datum/component/conjured_item, GLOW_COLOR_ARCANE, FALSE, user, src)
 	user.put_in_hands(R)
 	src.conjured_spectacles = R
 	R.sellprice = 0
@@ -60,12 +60,6 @@
 
 /datum/action/cooldown/spell/conjure_spectacles/miracle
 	associated_skill = /datum/skill/magic/holy
-
-/datum/action/cooldown/spell/conjure_spectacles/Destroy()
-	if(src.conjured_spectacles)
-		conjured_spectacles.visible_message(span_warning("The [conjured_spectacles]'s borders begin to shimmer and fade, before it vanishes entirely!"))
-		qdel(src.conjured_spectacles)
-	return ..()
 
 /obj/item/clothing/mask/rogue/spectacles/inq/summoned
 // Nocshades summonable alternative

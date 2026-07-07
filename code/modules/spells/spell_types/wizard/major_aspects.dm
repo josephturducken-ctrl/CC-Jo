@@ -159,10 +159,7 @@
 		/datum/action/cooldown/spell/gravity,
 		/datum/action/cooldown/spell/gravity_anchor,
 		/datum/action/cooldown/spell/greater_cleaning,
-	)
-	choice_spells = list(
-		/datum/action/cooldown/spell/projectile/soulshot,
-		/datum/action/cooldown/spell/projectile/greater_arcyne_bolt,
+		/datum/action/cooldown/spell/projectile/basic_offensive,
 	)
 	variants = list(
 		"mastery" = list(
@@ -189,7 +186,7 @@
 		"Telum, a me discedere!",
 	)
 	fixed_spells = list(
-		/datum/action/cooldown/spell/projectile/greater_arcyne_bolt,
+		/datum/action/cooldown/spell/projectile/basic_offensive,
 		/datum/action/cooldown/spell/projectile/arcyne_salvo,
 		/datum/action/cooldown/spell/energetic_blast,
 		/datum/action/cooldown/spell/projectile/seeker_volley,
@@ -222,12 +219,12 @@
 		"Augmentum, a me discedere!",
 	)
 	fixed_spells = list(
-		/datum/action/cooldown/spell/forcewall,
-		/datum/action/cooldown/spell/mending,
+		/datum/action/cooldown/spell/projectile/basic_offensive,
+		/datum/action/cooldown/spell/bestow_ward,
 	)
 	choice_spells = list(
-		/datum/action/cooldown/spell/projectile/soulshot,
-		/datum/action/cooldown/spell/projectile/greater_arcyne_bolt,
+		/datum/action/cooldown/spell/twin_link,
+		/datum/action/cooldown/spell/conjure_arcyne_ward/steelhide,
 	)
 	variants = list(
 		"mastery" = list(
@@ -236,25 +233,24 @@
 	)
 	pointbuy_budget = 12
 	pointbuy_spells = list(
-		/datum/action/cooldown/spell/haste,
-		/datum/action/cooldown/spell/darkvision,
-		/datum/action/cooldown/spell/stoneskin,
-		/datum/action/cooldown/spell/hawks_eyes,
-		/datum/action/cooldown/spell/giants_strength,
-		/datum/action/cooldown/spell/fortitude,
-		/datum/action/cooldown/spell/guidance,
+		/datum/action/cooldown/spell/augment_buff/stoneskin,
+		/datum/action/cooldown/spell/augment_buff/guidance,
+		/datum/action/cooldown/spell/augment_buff/attune_hawk,
+		/datum/action/cooldown/spell/augment_buff/attune_giant,
+		/datum/action/cooldown/spell/augment_buff/attune_haste,
+		/datum/action/cooldown/spell/augment_buff/fortitude,
+		/datum/action/cooldown/spell/bind_armament,
+		/datum/action/cooldown/spell/surge,
+		/datum/action/cooldown/spell/precognition,
+		/datum/action/cooldown/spell/grasp,
+		/datum/action/cooldown/spell/forcewall,
 		/datum/action/cooldown/spell/featherfall,
-		/datum/action/cooldown/spell/enlarge,
+		/datum/action/cooldown/spell/augment_buff/enlarge,
 		/datum/action/cooldown/spell/leap,
 		/datum/action/cooldown/spell/nondetection,
-		// 1-cost utility filler
-		/datum/action/cooldown/spell/light,
-		/datum/action/cooldown/spell/mending,
-		/datum/action/cooldown/spell/create_campfire,
-		/datum/action/cooldown/spell/message,
 	)
 
-/datum/magic_aspect/ferramancy
+/datum/magic_aspect/Ferramancy
 	name = "Ferramancy"
 	latin_name = "Maior Aspectus Ferri"
 	desc = "Ferramancy is a second-order magical school. Amongst the many major aspects, it is likely the youngest - \
@@ -288,6 +284,39 @@
 	choice_spells = list(
 		/datum/action/cooldown/spell/projectile/stygian_efflorescence,
 		/datum/action/cooldown/spell/projectile/arcyne_lance,
+	)
+	variants = list(
+		"mastery" = list(
+			VARIANT_ADDITIVE =/datum/action/cooldown/spell/blade_dance,
+		),
+	)
+
+/datum/magic_aspect/spellsword
+	name = "Spellsword"
+	latin_name = "Maior Aspectus Ferri"
+	desc = "An often overlooked art in the modern dae and age of magical combat."
+	aspect_type = ASPECT_MAJOR
+	attuned_name = ASPECT_NAME_SPELLSWORD
+	school_color = GLOW_COLOR_METAL
+	binding_chants = list(
+		"Invoco chalybem indomitum!",
+		"I call upon the forge within, create!",
+		"Chalybs, imperio meo parere!",
+	)
+	unbinding_chants = list(
+		"Exstinguo fornacem internam!",
+		"I silence the ring of hammer and steel, grow cold.",
+		"Chalybs, ad quietem redire!",
+	)
+	fixed_spells = list(
+		/datum/action/cooldown/spell/ferramancy_strike/falling_crescent,
+		/datum/action/cooldown/spell/ferramancy_strike/sorcerers_lance,
+		/datum/action/cooldown/spell/ferramancy_strike/heavens_hammer,
+		/datum/action/cooldown/spell/projectile/stygian_efflorescence,
+		/datum/action/cooldown/spell/form_blade,
+		/datum/action/cooldown/spell/bind_armament,
+		/datum/action/cooldown/spell/arcyne_forge,
+		/datum/action/cooldown/spell/mending,
 	)
 	variants = list(
 		"mastery" = list(
