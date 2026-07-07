@@ -191,7 +191,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/deepsea/ghostlight/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
-	new /obj/item/magic/elemental/relic(deathspot)
 	for(var/i =1 to 2)
 		new /obj/item/magic/deepsea/tierthree(deathspot)
 	for(var/i =1 to 2)

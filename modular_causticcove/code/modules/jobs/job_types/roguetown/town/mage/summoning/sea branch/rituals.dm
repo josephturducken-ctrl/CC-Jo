@@ -29,7 +29,7 @@
 	desc = "summons a deep sea oceanglider"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/ash = 2, /obj/item/alch/waterdust = 3)
+	required_atoms = list(/obj/item/ash = 2, /obj/item/alch/waterdust = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/deepsea/stingray
 
 /datum/runeritual/summoning/coralback
@@ -37,7 +37,7 @@
 	desc = "summons a coralback"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/magic/deepsea/tierone = 3, /obj/item/alch/waterdust = 3)
+	required_atoms = list(/obj/item/magic/deepsea/tierone = 3, /obj/item/alch/waterdust = 2)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/rogue/deepsea/coralback
 
 /datum/runeritual/summoning/ghostlight
