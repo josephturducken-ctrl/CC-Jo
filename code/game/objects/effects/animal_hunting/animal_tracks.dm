@@ -447,8 +447,8 @@
 		if(prob(success_chance))
 			var/turf/spawn_turf = (nearby_turfs.len) ? pick(nearby_turfs) : T
 			var/bonus_type = pickweight(hunt_category.animals)
-			var/mob/living/example_mob = bonus_type
 			//Caustic Edit - Not really bothering too much with the rot-changes here
+			//var/mob/living/example_mob = bonus_type
 			//var/chosen_rot = initial(example_mob.rot_type) ? /datum/component/rot/simple/hunt : null
 			new /obj/effect/temp_visual/hunting_phantom(spawn_turf, bonus_type) //, chosen_rot
 			//Caustic Edit End

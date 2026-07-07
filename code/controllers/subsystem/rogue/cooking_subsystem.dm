@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(cooking)
 	for(var/base_type in recipe_index)
 		for(var/datum/food_recipe/R in recipe_index[base_type])
 			if(R.result_type == item_type)
-			return R
+				return R
 	return null
 
 #undef AUTO_SINGLE_EXEMPT_CATEGORIES
