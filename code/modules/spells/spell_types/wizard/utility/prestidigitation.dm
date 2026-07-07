@@ -68,8 +68,8 @@
 			extra_fatigue = 5
 		if(PRESTI_MOTE)
 			extra_fatigue = 15
-		/*if(PRESTI_SENSE) //Caustic Edit - We don't have the typed leylines, so lets remove this for now
-			extra_fatigue = 10*/
+		if(PRESTI_SENSE)
+			extra_fatigue = 10
 
 	user.stamina_add(fatigue_used + extra_fatigue)
 
@@ -305,3 +305,4 @@
 #undef PRESTI_CLEAN
 #undef PRESTI_SPARK
 #undef PRESTI_MOTE
+#undef PRESTI_SENSE
