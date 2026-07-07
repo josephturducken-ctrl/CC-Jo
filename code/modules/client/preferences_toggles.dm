@@ -300,7 +300,7 @@
 
 /client/verb/vocal_barks()
 	set name = "Toggle Vocal Barks"
-	set category = "Preferences.Options"
+	set category = "OPTIONS" //"Preferences.Options"
 	set desc = ""
 	if(prefs)
 		prefs.mute_barks = !prefs.mute_barks

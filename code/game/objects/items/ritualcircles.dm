@@ -1580,7 +1580,7 @@
 			var/rite_cooldown = /datum/status_effect/debuff/ritesexpended
 			var/is_heretic = istype(user.mind?.picked_advclass, /datum/advclass/wretch/heretic)
 			if(is_heretic)
-				rite_cooldown = /datum/status_effect/debuff/ritesexpended/heretic
+				user.apply_status_effect(/datum/status_effect/debuff/armamentrites)
 			user.apply_status_effect(rite_cooldown)
 			if(is_heretic && target != user)
 				user.apply_status_effect(/datum/status_effect/debuff/lux_exhausted)
@@ -1728,7 +1728,7 @@
 			var/rite_cooldown = /datum/status_effect/debuff/ritesexpended
 			var/is_heretic = istype(user.mind?.picked_advclass, /datum/advclass/wretch/heretic)
 			if(is_heretic)
-				rite_cooldown = /datum/status_effect/debuff/ritesexpended/heretic
+				user.apply_status_effect(/datum/status_effect/debuff/armamentrites)
 			user.apply_status_effect(rite_cooldown)
 			if(is_heretic && target != user)
 				user.apply_status_effect(/datum/status_effect/debuff/lux_exhausted)
@@ -1933,7 +1933,7 @@
 			var/rite_cooldown = /datum/status_effect/debuff/ritesexpended
 			var/is_heretic = istype(user.mind?.picked_advclass, /datum/advclass/wretch/heretic)
 			if(is_heretic)
-				rite_cooldown = /datum/status_effect/debuff/ritesexpended/heretic
+				user.apply_status_effect(/datum/status_effect/debuff/armamentrites)
 			user.apply_status_effect(rite_cooldown)
 			if(is_heretic && target != user)
 				user.apply_status_effect(/datum/status_effect/debuff/lux_exhausted)
