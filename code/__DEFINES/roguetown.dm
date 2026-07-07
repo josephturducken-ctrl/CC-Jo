@@ -125,6 +125,13 @@ Balloon Alert / Floating Text defines
 
 #define ACCEPTED_RACES list(RACES_SHUNNED, RACES_TOLERATED, RACES_RESPECTED, RACES_CONSTRUCT, RACES_DESPISED)	// CC Edit
 
+// Small races, usually applied due to sprite limits.
+#define RACES_SMALL \
+	/datum/species/dwarf/mountain,\
+	/datum/species/kobold,\
+	/datum/species/anthromorphsmall,\
+	/datum/species/dwarf/gnome,\
+
 // All but d. elves.
 #define RACES_ANTHRAX \
 	/datum/species/human/northern,\
