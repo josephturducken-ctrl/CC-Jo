@@ -27,7 +27,8 @@
 	)
 
 	titles = list(
-		"God" // people call him this for. some reason. he has a name, y'all 
+		"God", // people call him this for. some reason. he has a name, y'all
+		"Saidon"
 	) //Psydon is the appropriate term, but it's still accurate to call him God - he's the first God (and the one that created that word), after all.
 
 /////////////////////////////////
