@@ -38,7 +38,7 @@
 /obj/item/enchantmentscroll/greater/energysiphon
 	name = "enchanting scroll of energy leech"
 	desc = "A scroll imbued with an enchantment of energy leech. Steals energy of enemies that hit you when applied on armor, or enemies that you hit when applied on weapons."
-	component = /datum/magic_item/greater/frostveil
+	component = /datum/magic_item/greater/energysiphon
 
 /obj/item/enchantmentscroll/greater/energysiphon/attack_obj(obj/item/O, mob/living/user)
 	if(!..())
