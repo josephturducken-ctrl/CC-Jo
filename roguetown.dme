@@ -3876,7 +3876,7 @@
 
 //Effects
 #include "modular_ratwood\game\objects\effects\effect_system\effects_smoke.dm"
-#include "modular_ratwood\datums\status_effects\rogue\debuff.dm"
+//#include "modular_ratwood\datums\status_effects\rogue\debuff.dm" //Likely got ported along with the Zizobane Mushroom!
 
 //Mobs
 #include "modular_ratwood\modules\mob\living\carbon\human\npc\bum.dm"

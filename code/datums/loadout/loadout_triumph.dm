@@ -453,7 +453,7 @@
 	triumph_cost = 2
 	sort_category = "Triumphs"
 
-/datum/loadout_item/triumph_weaponkit_wodao
+/*/datum/loadout_item/triumph_weaponkit_wodao //Caustic - Commented this out for now, they were probably removed or renamed by AP? From Big and Partial merger 7/7/26
 	name = "Morphing Elixir, 'Wodao'"
 	path = /obj/item/enchantingkit/weapon/triumph_weaponkit_wodao
 	triumph_cost = 2
@@ -469,7 +469,7 @@
 	name = "Morphing Elixir, 'Greatdadao'"
 	path = /obj/item/enchantingkit/weapon/triumph_weaponkit_gdadao
 	triumph_cost = 2
-	sort_category = "Triumphs"
+	sort_category = "Triumphs"*/
 
 /datum/loadout_item/triumph_weaponkit_estoc
 	name = "Triumph Kit - Azurian Estoc"
