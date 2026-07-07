@@ -158,7 +158,7 @@
 			if(fueluse == 0)//It's litterally powered by arcane lava. It's not gonna run out of fuel.
 				fueluse = 4000
 		update_icon()
-
+/* Caustic Edit, disabling cause new leyline
 /obj/structure/leyline
 	name = "inactive leyline"
 	desc = "A curious arrangement of stones."
@@ -235,7 +235,7 @@
 					desc = "A curious arrangement of stones."
 					update_icon()
 					last_process = world.time
-
+Caustic Edit End*/
 /obj/structure/manaflower
 	name = "manaflower"
 	desc = ""

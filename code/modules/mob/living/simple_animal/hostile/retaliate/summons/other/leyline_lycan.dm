@@ -91,7 +91,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan/death(gibbed)
 	..()
-	source.guardian = null
+//	source.guardian = null Caustic edit
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/magic/leyline(deathspot)
 	spill_embedded_objects()
