@@ -299,7 +299,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diminish)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/vizier/restoration)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/vizier/divergence)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convergence)
+		//H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convergence)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/vizier/reversion)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/vizier/acceleration)	
 		H.mind.AddSpell(new /datum/action/cooldown/spell/augment_buff/guidance)		

@@ -123,9 +123,6 @@
 		return
 	qdel(src)
 
-/obj/item/clothing/gloves/roguetown/plate/baotha/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_BAOTHA_ARMOR)
-
 /obj/item/clothing/gloves/roguetown/plate/zizo
 	name = "avantyne gauntlets"
 	desc = "A razor-tipped finger was all it took to splay the divine fillament; now, it is time to bring down the wrath of God's hand in full. </br> Do mind the forearm's guards, however - they \

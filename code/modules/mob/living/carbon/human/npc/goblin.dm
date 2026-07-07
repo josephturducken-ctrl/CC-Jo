@@ -361,6 +361,30 @@ GLOBAL_LIST_INIT(goblin_pyromancer_aggro, list(
 
 
 //////////////////   OUTFITS	//////////////////
+/datum/outfit/job/roguetown/npc/goblin/siege/pre_equip(mob/living/carbon/human/H)
+	..() //Regular outfit is also loaded cause subtype, this just ensures they have the minimal requirements of armor + enough stats/skills to do specials
+	H.STAINT = 8 //Minimal req to do specials
+	H.STACON = 6 //Slightly harder to kill, crit weakness still works.
+	if(prob(40))
+		armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/iron/goblin
+	else
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
+	if(prob(40))
+		head = /obj/item/clothing/head/roguetown/helmet/goblin
+	else
+		head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+	//Our skills get bumped from (2) apprentice to (3) journeyman
+	H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/axes, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 2, TRUE) // Still Trash Mob
+	H.adjust_skillrank_up_to(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/knives, 3, TRUE) //Give players a way to use their stone knives, NPCs hit better.
+	H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 3, TRUE) //So players can break dorpels, NPCs hit better.
 
 /datum/outfit/job/roguetown/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()

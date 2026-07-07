@@ -510,9 +510,6 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smeltresult = /obj/item/ingot/avantyne
 
-/obj/item/clothing/shoes/roguetown/boots/armor/avantyne/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_ZIZO_ARMOR)
-
 /obj/item/clothing/shoes/roguetown/boots/armor/baotha
 	name = "saccharine heels"
 	desc = "..yet, even as She indulges and mourns beneath the stars, one must wonder; is She truly damned by the Pantheon, or by Herself alone?"
@@ -533,9 +530,6 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-
-/obj/item/clothing/shoes/roguetown/boots/armor/baotha/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_BAOTHA_ARMOR)
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "iron plated boots"

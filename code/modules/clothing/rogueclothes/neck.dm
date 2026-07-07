@@ -1501,9 +1501,6 @@
 		return
 	qdel(src)*/ //Caustic Edit - Allow removal again!
 
-/obj/item/clothing/neck/roguetown/coif/baotha/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_BAOTHA_ARMOR)
-
 //
 
 /obj/item/clothing/neck/roguetown/psicross/malum/secret

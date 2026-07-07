@@ -693,9 +693,6 @@
 		return
 	qdel(src)
 
-/obj/item/clothing/wrists/roguetown/bracers/leather/baotha/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_BAOTHA_ARMOR)
-
 //
 
 /obj/item/clothing/wrists/roguetown/bracers/hand

@@ -541,9 +541,6 @@
 	armor = ARMOR_PLATE_BSTEEL
 	smeltresult = /obj/item/ingot/avantyne //Made from 'inert avantyne wafers', meaning that anyone can feasibly wear it.
 
-/obj/item/clothing/suit/roguetown/armor/plate/fluted/avantyne/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_ZIZO_ARMOR)
-
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/baotha
 	name = "saccharine plate armor"
 	desc = "Is it not obvious what Ravox would've chosen? Yet upon the dae of His choice, She refused to gift any chance to Her sister.."
@@ -566,9 +563,6 @@
 	if(QDELETED(src))
 		return
 	qdel(src)
-
-/obj/item/clothing/suit/roguetown/armor/plate/fluted/baotha/get_examine_highlight_status()
-	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_ALARMING, HERESYDESC_BAOTHA_ARMOR)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "full-plate corset"

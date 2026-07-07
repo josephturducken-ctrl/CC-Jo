@@ -404,7 +404,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltl = /obj/item/rogueweapon/scabbard/sheath
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-	backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/chalk = 1, /obj/item/book/spellbook = 1)
+	backpack_contents = list(/obj/item/flashlight/flare/torch = 1, /obj/item/chalk = 1, /obj/item/rogueweapon/spellbook = 1)
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/lesser_knock)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/waterbolt)
