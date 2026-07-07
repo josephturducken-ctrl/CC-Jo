@@ -878,51 +878,6 @@
 	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/psyheal_rogue(get_turf(owner))
 	H.color = "#aa1717"
 
-#define VAPORS_HEALING_FILTER "fortifying_vapors_glow"
-
-/atom/movable/screen/alert/status_effect/buff/fortifyingvapors
-	name = "Fortifying Vapors"
-	desc = "A heady scent fills my nostrils. My pulse quickens; I feel clear and sharp."
-	icon_state = "vigorized"
-
-/datum/status_effect/buff/fortifyingvapors
-	id = "fortifyingvapors"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/fortifyingvapors
-	duration = 20 SECONDS
-	examine_text = "SUBJECTPRONOUN is surrounded by subtle, heady vapors."
-	var/healing_on_tick = 0.5 //half of miracle, twice the duration
-	var/outline_colour = "#9ebb5b"
-
-/datum/status_effect/buff/fortifyingvapors/on_apply()
-	var/filter = owner.get_filter(VAPORS_HEALING_FILTER)
-	if (!filter)
-		owner.add_filter(VAPORS_HEALING_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 1))
-	return TRUE
-
-/datum/status_effect/buff/fortifyingvapors/tick()
-	if(owner.construct)
-		return
-	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/fortifyingvapors(get_turf(owner))
-	H.color = "#9ebb5b"
-	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
-		owner.blood_volume = min(owner.blood_volume+healing_on_tick, BLOOD_VOLUME_NORMAL)
-	var/list/wCount = owner.get_wounds()
-	if(length(wCount))
-		owner.heal_wounds(healing_on_tick)
-		owner.update_damage_overlays()
-	owner.adjustBruteLoss(-healing_on_tick, 0)
-	owner.adjustFireLoss(-healing_on_tick, 0)
-	owner.adjustOxyLoss(-healing_on_tick, 0)
-	owner.adjustToxLoss(-healing_on_tick, 0)
-	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
-	owner.adjustCloneLoss(-healing_on_tick, 0)
-
-/datum/status_effect/buff/fortifyingvapors/on_remove()
-	owner.remove_filter(VAPORS_HEALING_FILTER)
-	owner.update_damage_hud()
-
-#undef VAPORS_HEALING_FILTER
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 #define ROCKEATER_AURA "rockeater_aura"
