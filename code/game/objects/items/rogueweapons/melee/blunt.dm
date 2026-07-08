@@ -1113,40 +1113,6 @@
 	if(. && istype(user?.used_intent, /datum/intent/mace/demolish))
 		demolish_obj(O, user)
 
-/obj/item/rogueweapon/mace/proc/demolish_turf(turf/T, mob/living/user)
-	if(QDELETED(T))
-		return FALSE
-
-	if(isnull(T.max_integrity))
-		return FALSE
-
-	if(T.max_integrity > 3000)
-		to_chat(user, "Too hard, sire!")
-		return FALSE
-
-	var/bonus_damage = round(T.max_integrity * 0.15)
-
-	T.take_damage(bonus_damage, BRUTE, d_type, 1)
-	to_chat(user, span_warning("Your blow expertly caves into [T]! (+[bonus_damage])"))
-	return TRUE
-
-/obj/item/rogueweapon/mace/proc/demolish_obj(obj/O, mob/living/user)
-	if(QDELETED(O))
-		return FALSE
-
-	if(isnull(O.max_integrity))
-		return FALSE
-
-	if(O.max_integrity > 3000)
-		to_chat(user, "Too hard, sire!")
-		return FALSE
-
-	var/bonus_damage = round(O.max_integrity * 0.15)
-
-	O.take_damage(bonus_damage, BRUTE, d_type, 1)
-	to_chat(user, span_warning("Your blow expertly caves into [O]! (+[bonus_damage])"))
-	return TRUE
-
 //Psydonite maul. Intended for FUCKING SHIT UP.
 /obj/item/rogueweapon/mace/maul/grand/psy
 	name = "psydonic maul"
@@ -1186,7 +1152,7 @@
 		added_def = 2,\
 	)
 
-/obj/item/rogueweapon/mace/maul/grand/psy/attack_obj(obj/O, mob/living/user)
+/obj/item/rogueweapon/mace/attack_turf(turf/T, mob/living/user, multiplier)
 	. = ..()
 	if(. && istype(user?.used_intent, /datum/intent/mace/demolish))
 		demolish_turf(T, user)
