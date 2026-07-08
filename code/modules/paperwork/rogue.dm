@@ -6,7 +6,8 @@
 	dropshrink = 0.6
 	firefuel = 30 SECONDS
 	textper = 108
-	maxlen = 2000
+	maxlen = 10000 // Caustic Edit. If regular parchment is 5000, scrolls can be made to be double
+	maxfields = 100 // Caustic Edit
 	throw_range = 3
 
 
@@ -58,20 +59,13 @@
 		return
 	if(!user.client || !user.hud_used)
 		return
-	if(!user.hud_used.reads)
-		return
+	//if(!user.hud_used.reads) // Caustic Edit. Apparently this line breaks ghosts' ability to read
+	//	return
 	if(!user.can_read(src))
 		return
 	/*font-size: 125%;*/
 	if(in_range(user, src) || isobserver(user))
-		user.hud_used.reads.icon_state = "scroll"
-		user.hud_used.reads.show()
-		user.hud_used.reads.maptext = MAPTEXT_LEGIBLE(info)
-		user.hud_used.reads.maptext_width = 230
-		user.hud_used.reads.maptext_height = 200
-		user.hud_used.reads.maptext_y = 150
-		user.hud_used.reads.maptext_x = 120
-		onclose(user, "reading", src)
+		. = ..() // Caustic Edit. No more fancy scroll-only stuff that breaks. Scrolls are bigger pieces of paper
 	else
 		return span_warning("I'm too far away to read it.")
 

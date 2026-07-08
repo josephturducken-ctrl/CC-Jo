@@ -282,6 +282,13 @@
 "Hm" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/underworld/desert)
+"Ii" = (
+/obj/structure/fluff/traveltile/alashurentrance{
+	name = "Carriage directly to Al-Ashur";
+	aportalgoesto = "alashurdirect"
+	},
+/turf/open/floor/rogue/underworld/road,
+/area/rogue/underworld/adventurespawn)
 "Jn" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 1
@@ -872,7 +879,7 @@ DS
 Xw
 pO
 Ta
-MR
+Ii
 MR
 MR
 fs

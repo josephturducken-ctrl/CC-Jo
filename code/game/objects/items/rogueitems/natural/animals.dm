@@ -78,7 +78,7 @@
 /obj/item/natural/fur/direbear
 	desc = "Fur from one of Dendor's mightiest creachers."
 	icon_state = "pelt_direbear"
-	color = "#33302b"
+	color = null
 	sellprice = 28
 
 /obj/item/natural/fur/rabbit
@@ -213,8 +213,8 @@
 	sellprice = 20
 
 /obj/item/natural/rabbitsfoot
-	name = "rabbit's foot"
+	name = "cabbit's foot"
 	icon_state = "rabbitfoot"
-	desc = "A rabbit's foot. A lucky charm."
+	desc = "A cabbit's foot. A lucky charm."
 	w_class = WEIGHT_CLASS_TINY
 	sellprice = 10

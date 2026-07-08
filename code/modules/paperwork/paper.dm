@@ -76,7 +76,8 @@
 	var/contact_poison_volume = 0
 	dropshrink = 0.5
 	var/textper = 100
-	var/maxlen = 2000
+	var/maxlen = 5000 // Caustic Edit
+	var/maxfields = 50 // Caustic Edit
 
 	var/cached_mailer
 	var/cached_mailedto
@@ -173,7 +174,7 @@
 /obj/item/paper/examine(mob/user)
 	. = ..()
 	if(!mailer)
-		. += "<a href='?src=[REF(src)];read=1'>Read</a> (<a href='?src=[REF(src)];Help=1'>Help</a>)"
+		. += "<A href='?src=[REF(src)];read=1'>Read</A> (<A href='?src=[REF(src)];help=1'>\[?\]</A>)"
 	else
 		. += "It's from [mailer], addressed to [mailedto].</a>"
 
@@ -182,8 +183,8 @@
 //	assets.send(user)
 	if(!user.client || !user.hud_used)
 		return
-	if(!user.hud_used.reads)
-		return
+	//if(!user.hud_used.reads) // Caustic Edit. Apparently this line breaks ghosts' ability to read
+	//	return
 	if(!user.can_read(src))
 		if(info)
 			user.adjust_experience(/datum/skill/misc/reading, 2, FALSE)
@@ -310,7 +311,7 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i in 1 to min(fields, 15))
+	for(var/i in 1 to min(fields, maxfields))
 		addtofield(i, "<A href='?src=[REF(src)];write=[i]'>write</A> (<A href='?src=[REF(src)];help=1'>\[?\]</A>)", 1)
 	info_links = info_links + "<A href='?src=[REF(src)];write=end'>write</A> <A href='?src=[REF(src)];help=1'>\[?\]</A>"
 
@@ -325,10 +326,54 @@
 
 
 /obj/item/paper/proc/parsepencode(t, obj/item/P, mob/user, iscrayon = 0)
+// Caustic Edit start
+/*
 	if(length(t) < 1)		//No input means nothing needs to be parsed
 		return
 
 	t = parsemarkdown(t, user, iscrayon)
+*/
+
+	t = replacetext(t, "\[center\]", "<center>")
+	t = replacetext(t, "\[/center\]", "</center>")
+	if(findtext(t, "\[sign\]"))
+		t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
+	t = replacetext(t, "\[tab\]", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+	t = replacetext(t, "\n", "<BR>")
+	t = replacetext(t, "\[center\]", "<center>")
+	t = replacetext(t, "\[/center\]", "</center>")
+	t = replacetext(t, "\[br\]", "<BR>")
+	t = replacetext(t, "\[b\]", "<B>")
+	t = replacetext(t, "\[/b\]", "</B>")
+	t = replacetext(t, "\[i\]", "<I>")
+	t = replacetext(t, "\[/i\]", "</I>")
+	t = replacetext(t, "\[u\]", "<U>")
+	t = replacetext(t, "\[/u\]", "</U>")
+	t = replacetext(t, "\[time\]", "[station_time_timestamp()]")
+	t = replacetext(t, "\[date\]", "[get_ic_date_short_as_string()]")
+	t = replacetext(t, "\[large\]", "<font size=\"4\">")
+	t = replacetext(t, "\[/large\]", "</font>")
+	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+	t = replacetext(t, "\[h1\]", "<H1>")
+	t = replacetext(t, "\[/h1\]", "</H1>")
+	t = replacetext(t, "\[h2\]", "<H2>")
+	t = replacetext(t, "\[/h2\]", "</H2>")
+	t = replacetext(t, "\[h3\]", "<H3>")
+	t = replacetext(t, "\[/h3\]", "</H3>")
+	t = replacetext(t, "\[*\]", "<li>")
+	t = replacetext(t, "\[hr\]", "<HR>")
+	t = replacetext(t, "\[small\]", "<font size = \"1\">")
+	t = replacetext(t, "\[/small\]", "</font>")
+	t = replacetext(t, "\[list\]", "<ul>")
+	t = replacetext(t, "\[/list\]", "</ul>")
+	t = replacetext(t, "\[table\]", "<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>")
+	t = replacetext(t, "\[/table\]", "</td></tr></table>")
+	t = replacetext(t, "\[grid\]", "<table>")
+	t = replacetext(t, "\[/grid\]", "</td></tr></table>")
+	t = replacetext(t, "\[row\]", "</td><tr>")
+	t = replacetext(t, "\[cell\]", "<td>")
+
+// Caustic Edit end
 
 	if(istype(P, /obj/item/natural/thorn))
 		t = "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#862f20>[t]</font>"
@@ -337,7 +382,7 @@
 
 	// Count the fields
 	var/laststart = 1
-	while(fields < 15)
+	while(fields < maxfields)
 		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
 		if(i == 0)
 			break
@@ -349,7 +394,7 @@
 /obj/item/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
 	fields = 0
 	var/laststart = 1
-	while(fields < 15)
+	while(fields < maxfields)
 		var/i = findtext(info, "<span class=\"paper_field\">", laststart)
 		if(i == 0)
 			break
@@ -363,18 +408,25 @@
 	<BODY>
 		You can use backslash (\\) to escape special characters.<br>
 		<br>
-		# text : Defines a header.<br>
-		|text| : Centers the text.<br>
-		**text** : Makes the text <b>bold</b>.<br>
-		*text* : Makes the text <i>italic</i>.<br>
-		^text^ : Increases the <font size = \"4\">size</font> of the text.<br>
-		%s : Inserts a signature of your name in a foolproof way.<br>
-		%f : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
-		((text)) : Decreases the <font size = \"1\">size</font> of the text.<br>
-		* item : An unordered list item.<br>
-		&nbsp;&nbsp;* item: An unordered list child item.<br>
-		--- : Adds a horizontal rule.<br>
-		-=FFFFFFtext=- : Adds a specific <font color = '#FFFFFF'>colour</font> to text.
+		\[h1\] text \[/h1\], \[h2\] text \[/h2\], \[h3\] text \[/h3\] : Defines headers.<br>
+		\[center\] text \[/center\] : Centers the text.<br>
+		\[b\] text \[/b\] : Makes the text <b>bold</b>.<br>
+		\[i\] text \[/i\] : Makes the text <i>italic</i>.<br>
+		\[u\] text \[/u\] : Makes the text <u>underlined</u>.<br>
+		\[large\] text \[/large\] : Increases the <font size = \"4\">size</font> of the text.<br>
+		\[small\] text \[/small\] : Decreases the <font size = \"1\">size</font> of the text.<br>
+		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
+		\[list\] \[*\]text \[/list\] : An unordered list<br>
+		\[*\] item : An unordered list item.<br>
+		\[hr\] : Adds a horizontal rule.<br>
+		\[time\] : Inserts the current in-game time of day.<br>
+		\[date\] : Inserts the current in-game date.<br>
+		\[grid\] text \[/grid\] : Inserts a borderless table.<br>
+		\[table\] text \[/table\] : Inserts a bordered table. Useful for spreadsheets. <br>
+		\[row\] : Inserts a new row to the table.<br>
+		\[cell\] : Inserts a new cell to the row of the table.<br>
+		\[table\] \[row\]\[cell\]text\[cell\]text2\[row\]\[cell\]text3\[cell\]text4 \[/table\] : An example usage for tables, makes a 2 row, 2 cell each table. <br>
+		"https://ps.muck.im" can be used to preview most of the functions and see how it looks (Go to settings and set the pen style to fancy to make it 1 to 1)
 	</BODY></HTML>"}, "window=paper_help")
 
 
@@ -392,7 +444,7 @@
 			user << browse(null, "window=reading")
 
 	var/literate = usr.is_literate()
-	if(!usr.canUseTopic(src, BE_CLOSE, literate))
+	if(!usr.canUseTopic(src, BE_CLOSE, literate) && !isobserver(usr)) // Caustic Edit. Ghosts can read
 		return
 
 	if(href_list["read"])

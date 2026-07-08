@@ -785,14 +785,13 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/proc/handle_swimming()
 	var/turf/T = get_turf(src)
 	var/area/A = get_area(src)
-	
 
-	var/is_on_water = istype(T, /turf/open/water)
-
-	var/is_on_new_water = istype(T, /turf/open/water/transparent)
-	
-	var/is_true_swimming = is_swimming || is_underwater || istype(A, /area/underwater) || is_on_new_water
-	var/is_area_underwater = istype(A, /area/underwater)
+	//Caustic Edit - If the mob is in a Belly, we are not swimming!
+	var/is_on_water = (istype(T, /turf/open/water) && !isbelly(loc))
+	var/is_on_new_water = (istype(T, /turf/open/water/transparent) && !isbelly(loc))
+	var/is_area_underwater = (istype(A, /area/underwater) && !isbelly(loc))
+	var/is_true_swimming = is_swimming || is_underwater || is_area_underwater || is_on_new_water
+	//Caustic Edit End
 	var/sw_skill = get_skill_level(/datum/skill/misc/swimming)
 	var/new_max_breath = (STACON * 5) + (sw_skill * 5)
 

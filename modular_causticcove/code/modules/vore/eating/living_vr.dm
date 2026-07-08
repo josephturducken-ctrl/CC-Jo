@@ -821,8 +821,8 @@
 
 	//if(I.) //Caustic - Potential Whitelist can go here.
 
-	if(!(I.grid_height <= world.icon_size || I.grid_height <= world.icon_size))
-		to_chat(src,span_warning("You can't eat such a large thing !"))//yet <-- YET???
+	if(!vore_selected.validate_item_size(I))
+		to_chat(src,span_warning("You can't eat such a large thing !"))//yet //Yeah, it was 'yet' :P I just made it allow a bit bigger stuff.
 		return
 
 	if(do_after(src, 10 SECONDS)){
@@ -846,6 +846,20 @@
 	set desc = "Toggle Trash Eater throw vore abilities."
 	trash_catching = !trash_catching
 	to_chat(src, span_warning("Trash catching [trash_catching ? "enabled" : "disabled"]."))
+
+/obj/belly/proc/validate_item_size(var/obj/item/I)
+	var/can_nom = FALSE
+	if(I.grid_height <= world.icon_size && I.grid_width <= (world.icon_size * 2))
+		can_nom = TRUE
+	
+	if(I.grid_height <= (world.icon_size * 2) && I.grid_width <= world.icon_size)
+		can_nom = TRUE
+
+	if(!can_nom && I.smeltresult && item_digest_mode == IM_SMELTING)
+		to_chat(src.owner, span_warning("With your [name] roaring to smelt something, you start to smelt down the [I]..."))
+		can_nom = TRUE
+	
+	return can_nom
 
 /*
 /mob/living/proc/eat_minerals() //Actual eating abstracted so the user isn't given a prompt due to an argument in this verb.

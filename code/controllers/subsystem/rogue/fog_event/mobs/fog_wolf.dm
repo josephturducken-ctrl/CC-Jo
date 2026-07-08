@@ -29,6 +29,8 @@
 	dodgetime = 30
 
 	faction = list(FACTION_REVENANTS, FACTION_WOLFS)
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/volf
 	base_intents = list(/datum/intent/simple/bite/volf)
 	melee_cooldown = WOLF_ATTACK_SPEED

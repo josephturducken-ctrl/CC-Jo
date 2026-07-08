@@ -37,7 +37,6 @@
 
 /datum/element/slosh/proc/choose_vorefootstep(mob/living/source)
 	if(step_count++ >= 5)
-
 		vore_organs_reagents = list()
 		var/highest_vol = 0
 
@@ -45,7 +44,7 @@
 			var/total_volume = B.reagents.total_volume
 			vore_organs_reagents += total_volume
 
-			if(B.show_liquids && B.vorefootsteps_sounds && highest_vol < total_volume)
+			if(B.vorefootsteps_sounds && highest_vol < total_volume) //Whyyyy did this have B.show_liquids && at the start???
 				highest_vol = total_volume
 
 		if(highest_vol < 20)
@@ -64,12 +63,12 @@
 			handle_vorefootstep(source)
 
 /datum/element/slosh/proc/handle_vorefootstep(mob/living/source)
-	if(!CONFIG_GET(number/vorefootstep_volume) || !vore_footstep_volume)
+	if(!vore_footstep_volume) //!CONFIG_GET(number/vorefootstep_volume) || -- Commenting this out for now. Lets ... just go with the Vore Footstep Volume itself, basically?
 		return
 
 	var/S = pick(GLOB.slosh)
 	if(!S) return
-	var/volume = CONFIG_GET(number/vorefootstep_volume) * (vore_footstep_volume/100)
+	var/volume = 100 * (vore_footstep_volume/100) //CONFIG_GET(number/vorefootstep_volume) * (vore_footstep_volume/100)
 
 	/*if(ishuman(source))
 		var/mob/living/carbon/human/human_source = source

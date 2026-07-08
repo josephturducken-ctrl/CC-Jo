@@ -101,6 +101,9 @@
 	retreat_health = 0
 	food = 0
 	next_ability_use
+
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/flame_primordial
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/fire/ability(turf/target_location, mob/living/user)
@@ -183,6 +186,8 @@
 	retreat_health = 0
 	food = 0
 
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/water_primordial
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/water/ability(turf/target_location, mob/living/user)
@@ -294,6 +299,8 @@
 	retreat_health = 0
 	food = 0
 
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/air_primordial
 
 /mob/living/simple_animal/hostile/retaliate/rogue/primordial/air/ability(turf/target_location, mob/living/user)

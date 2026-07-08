@@ -76,7 +76,8 @@
 		/obj/item/bottle_kit,
 		/obj/item/storage/keyring/innkeep_rooms,
 		/obj/item/reagent_containers/glass/bucket/pot/kettle/tankard/silver,
-		/obj/item/mini_flagpole/innkeeper
+		/obj/item/mini_flagpole/innkeeper,
+		/obj/item/reagent_containers/peppermill/innkeeper
 	)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_UPPER_CLASS, H)

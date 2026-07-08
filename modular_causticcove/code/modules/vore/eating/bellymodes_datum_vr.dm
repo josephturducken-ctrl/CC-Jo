@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	if(!L)
 		return
 
-		//Parasitic digestion immunity hook, used to be a synx istype check but this is more optimized.
+	//Parasitic digestion immunity hook, used to be a synx istype check but this is more optimized.
 	if(L.parasitic)
 		if(isliving(L))
 			var/paratox = B.digest_brute+B.digest_burn
@@ -61,30 +61,39 @@ GLOBAL_LIST_INIT(digest_modes, list())
 
 	// Deal digestion damage (and feed the pred)
 	var/old_health = L.getActualFuckingHealth()
-	var/old_brute = L.getBruteLoss()
-	var/old_burn = L.getFireLoss()
-	var/old_oxy = L.getOxyLoss()
-	var/old_tox = L.getToxLoss()
+	//var/old_brute = L.getBruteLoss()
+	//var/old_burn = L.getFireLoss()
+	//var/old_oxy = L.getOxyLoss()
+	//var/old_tox = L.getToxLoss()
 	var/old_clone = L.getCloneLoss()
+
 	L.adjustBruteLoss(B.digest_brute)
 	L.adjustFireLoss(B.digest_burn)
-	L.adjustOxyLoss(B.digest_oxy)
-	L.adjustToxLoss(B.digest_tox)
-	L.adjustCloneLoss(B.digest_clone)
+	//L.adjustOxyLoss(B.digest_oxy)
+	//L.adjustToxLoss(B.digest_tox)
+	//L.adjustCloneLoss(B.digest_clone)
 
-	if(old_brute > (L.maxHealth * 4.5) || old_burn > (L.maxHealth * 4.5)) //Bandaid Patch for unkillable mobs? Potentially just set the OxyLoss to 200 for one tick, which WILL kill them.
-		L.adjustOxyLoss(200, forced = TRUE)
+	//if(old_brute > (L.maxHealth * 4.5) || old_burn > (L.maxHealth * 4.5)) //Bandaid Patch for unkillable mobs? Potentially just set the OxyLoss to 200 for one tick, which WILL kill them.
+	//	L.adjustOxyLoss(200, forced = TRUE)
+	if(B.digest_brute > 1 || B.digest_burn > 1)
+		var/clone_dam = ((B.digest_brute + B.digest_burn) / B.digest_max) * 10 //At Max Digest, it will kill in 200/10 process ticks
+		L.adjustCloneLoss(clone_dam)
+		if(L.getCloneLoss() >= (L.maxHealth * 2) && !HAS_TRAIT(src, TRAIT_NODEATH))
+			L.death()
+			L.cure_blind(UNCONSCIOUS_BLIND)
 
 	//L.attempt_multishock(SHOCKFLAG_DIGESTION) //I don't believe this is in this codebase?
 	// Send a message when a prey-thing enters hard crit.
 	if(iscarbon(L) && old_health > 0 && L.getActualFuckingHealth() <= 0)
 		to_chat(B.owner, span_notice("You feel [L] go still within your [lowertext(B.name)]."))
-	var/actual_brute = L.getBruteLoss() - old_brute
-	var/actual_burn = L.getFireLoss() - old_burn
-	var/actual_oxy = L.getOxyLoss() - old_oxy
-	var/actual_tox = L.getToxLoss() - old_tox
+	
+	//var/actual_brute = L.getBruteLoss() - old_brute
+	//var/actual_burn = L.getFireLoss() - old_burn
+	//var/actual_oxy = L.getOxyLoss() - old_oxy
+	//var/actual_tox = L.getToxLoss() - old_tox
 	var/actual_clone = L.getCloneLoss() - old_clone
-	var/damage_gain = (actual_brute + actual_burn + actual_oxy/2 + actual_tox + actual_clone*2)*(B.nutrition_percent / 100)
+	//var/damage_gain = (actual_brute + actual_burn + actual_oxy/2 + actual_tox + actual_clone*2)*(B.nutrition_percent / 100)
+	var/damage_gain = (actual_clone*2)*(B.nutrition_percent / 100)
 	if(B.slow_digestion)
 		damage_gain = damage_gain * 0.5
 	var/offset = (1 + ((L.weight - 137) / 137)) // 130 pounds = .95 140 pounds = 1.02
@@ -95,7 +104,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 
 	consider_healthbar(L, old_health, B.owner)
 	if(offset && damage_gain > 0) // If any different than default weight, multiply the % of offset.
-		if(B.show_liquids && B.reagent_mode_flags & DM_FLAG_REAGENTSDIGEST && B.reagents.total_volume < B.reagents.maximum_volume) //digestion producing reagents
+		if(B.reagent_mode_flags & DM_FLAG_REAGENTSDIGEST && B.reagents.total_volume < B.reagents.maximum_volume) //digestion producing reagents //Check previously had B.show_liquids && at the start?
 			B.owner_adjust_nutrition(offset * (3 * damage_gain / difference) * L.get_digestion_nutrition_modifier() * B.owner.get_digestion_efficiency_modifier()) //Uncertain if balanced fairly, can adjust by multiplier for the cost of reagent, dont go below 1 or else it will result in more nutrition than normal - Jack
 			B.digest_nutri_gain += offset * (1.5 * damage_gain / difference) * L.get_digestion_nutrition_modifier() * B.owner.get_digestion_efficiency_modifier() //for transfering nutrition value over to GenerateBellyReagents_digesting()
 			B.GenerateBellyReagents_digesting()
@@ -118,7 +127,7 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	B.steal_nutrition(L)
 	if(L.nutrition < 100)
 		B.absorb_living(L)
-		if(B.show_liquids && B.reagent_mode_flags & DM_FLAG_REAGENTSABSORB && B.reagents.total_volume < B.reagents.maximum_volume) //absorption reagent production
+		if(B.reagent_mode_flags & DM_FLAG_REAGENTSABSORB && B.reagents.total_volume < B.reagents.maximum_volume) //absorption reagent production //Check previously had B.show_liquids && at the start?
 			B.GenerateBellyReagents_absorbed() //A bonus for pred, I know for a fact prey is usually at zero nutrition when absorption finally happens
 		consider_healthbar(L, old_nutrition, B.owner)
 		return list("to_update" = TRUE)
@@ -188,21 +197,34 @@ GLOBAL_LIST_INIT(digest_modes, list())
 	var/oldstat = L.stat
 	if(L.stat == DEAD || !L.permit_healbelly) //healpref check
 		return null // Can't heal the dead with healbelly
+
 	//var/mob/living/carbon/human/H = L
-	if(B.owner.nutrition > 90 && (L.getActualFuckingHealth() < L.getMaxHealth()))
-		L.adjustBruteLoss(-2.5)
-		L.adjustFireLoss(-2.5)
-		L.adjustToxLoss(-5)
-		L.adjustOxyLoss(-5)
-		L.adjustCloneLoss(-1.25)
-		B.owner.adjust_nutrition(-2)
-		if(B.health_impacts_size)
-			B.owner.handle_belly_update()
+	if(B.owner.nutrition > 90)
+		var/heal_actions = 0
+		if(L.health < L.getMaxHealth())
+			L.adjustBruteLoss(-2.5)
+			L.adjustFireLoss(-2.5)
+			L.adjustToxLoss(-5)
+			L.adjustOxyLoss(-5)
+			L.adjustCloneLoss(-1.25)
+			heal_actions += 1
 		if(L.nutrition <= 400)
 			L.adjust_nutrition(1)
-	else if(B.owner.nutrition > 90 && (L.nutrition <= 400))
-		B.owner.adjust_nutrition(-1)
-		L.adjust_nutrition(1)
+			heal_actions += 1
+		if(L.blood_volume < BLOOD_VOLUME_NORMAL)
+			L.blood_volume = min(L.blood_volume+2.5, BLOOD_VOLUME_NORMAL)
+			heal_actions += 1
+		var/list/wCount = L.get_wounds()
+		if(length(wCount))
+			L.heal_wounds(2.5)
+			L.update_damage_overlays()
+			heal_actions += 1
+
+		if(heal_actions > 0)
+			B.owner.adjust_nutrition(-heal_actions)
+			if(B.health_impacts_size)
+				B.owner.handle_belly_update()
+
 	if(L.stat != oldstat)
 		return list("to_update" = TRUE)
 

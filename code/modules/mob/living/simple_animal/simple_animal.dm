@@ -624,7 +624,16 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/list/dna_to_add // Copied over from the gibspawner.dm and trimmed down, so that gibs have a bloodtype? If it matters?
 	dna_to_add = list("Non-human DNA" = random_blood_type())
 
-	for(var/path in butcher_results)
+	// Caustic Edit
+	// If the perfect butcher results have more paths, they will no longer be ignored, allowing for things like rous fur, or cabbit feet to be acquired
+	var/list/list_to_use = butcher_results
+	if(initial(length(perfect_butcher_results)) > initial(length(butcher_results))) // If it's stupid and it works, is it stupid? (Please tell me if there's a better way to do this, I couldn't find anything)
+	// Prevents stopping a butchery mid-way and restarting it to get doubled loot as it re-checks the lists.
+		list_to_use = perfect_butcher_results
+
+	// Caustic Edit End
+
+	for(var/path in list_to_use) // Caustic Edit
 		var/amount = butcher_results[path]
 		if(!do_after(user, time_per_cut, target = src))
 			if(botch_count || normal_count || perfect_count)
@@ -650,7 +659,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		else
 			normal_count++
 
-		butcher_results -= path
+		if(!length(list_to_use) || !amount) // Caustic Edit. If the list is empty, or there isn't an item set, set the amount to 0 to prevent a runtime and corpses not finishing butchering.
+			amount = 0
+		list_to_use -= path
 
 		// Spawn the item(s)
 		for(var/j in 1 to amount)
@@ -665,7 +676,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(user.mind && !isemptylist(butcher_results))
 			user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * BUTCHERING_EXP_PER_STEP)
 		playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-	if(isemptylist(butcher_results))
+	if(isemptylist(list_to_use))
 		if(head_butcher)
 			var/head_path = head_butcher
 			head_butcher = null

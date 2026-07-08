@@ -367,7 +367,7 @@
 		return
 	if(mobility_flags & MOBILITY_STAND)
 		return
-	if(!istype(loc, /obj/structure/closet/crate/coffin))
+	if(!istype(loc, /obj/structure/closet/crate/coffin) && !isbelly(loc)) //Caustic Edit - Add isbelly check so vamps can snooze in a belly.
 		return
 	var/obj/structure/closet/crate/coffin/coffin = loc
 	if(coffin.opened)

@@ -2,6 +2,10 @@
 	if(!potential_prey || !istype(potential_prey))		// Did our prey cease to exist?
 		return
 
+	if(!potential_prey.started_as_observer) //Lets check this, just to be sure no one spawns over and over this way... You gotta at least go to the main menu and observe to in-belly spawn.
+		to_chat(potential_prey, span_notice("In order to In-Belly Spawn, you need to join the round as an observer. Please don't attempt to use this as a free respawn!"))
+		return
+
 	// Are we cool with this prey spawning in at all?
 	var/answer = tgui_alert(src, "[potential_prey.client.prefs.real_name] wants to spawn in one of your bellies. Do you accept?", "Inbelly Spawning", list("Yes", "No"))
 	if(answer != "Yes")
@@ -86,7 +90,13 @@
 		joined_area.on_joining_game(new_character)
 	new_character.update_fov_angles()
 
+	new_character.after_creation()
+
 	GLOB.chosen_names += new_character.real_name
+	new_character.islatejoin = TRUE
+	SSticker.minds += new_character.mind //Is this what is needed to handle skill gain?
+	GLOB.joined_player_list += new_character.ckey
+	update_wretch_slots()
 
 	new_character.regenerate_icons()
 	new_character.update_transform()
@@ -95,10 +105,28 @@
 	if(absorbed)
 		target_belly.absorb_living(new_character)	// Glorp.
 
-	log_admin("[prey] (as [new_character.real_name] has spawned inside one of [pred]'s bellies.")				// Log it. Avoid abuse.
-	message_admins("[prey] (as [new_character.real_name] has spawned inside one of [pred]'s bellies.", 1)
+	log_admin("[prey] (as [new_character.real_name]) has spawned inside one of [pred]'s bellies.")				// Log it. Avoid abuse.
+	message_admins("[prey] (as [new_character.real_name]) has spawned inside one of [pred]'s bellies.", 1)
 
 	return new_character			// incase its ever needed
+
+/mob/dead/observer
+	var/enable_inbelly_spawn_attempts = FALSE
+
+/mob/dead/observer/verb/ToggleInBellySpawnAttempts()
+	set name = "Toggle In-Belly Spawn"
+	set desc = "Toggles the ability to attempt to In-Belly spawn on someone on Middle Mouse Click. Defaults to off to not cause any accidents!"
+	set category = "VORE"
+
+	enable_inbelly_spawn_attempts = !enable_inbelly_spawn_attempts
+	to_chat(src, span_notice("In-Belly spawn attempts [enable_inbelly_spawn_attempts ? "enabled! Middle-Mouse click on your pred to request a spawn (if they have it set up!) This is generally for ease of continuing a scene, you will spawn without any gear or stats and skills." : "disabled! Middle-Mouse clicks will revert to their usual actions."]"))	
+
+/mob/dead/observer/MiddleClickOn(atom/A, params)
+	if(enable_inbelly_spawn_attempts && isliving(A))
+		var/mob/living/alive = A
+		alive.inbelly_spawn_prompt(src)
+	else
+		. = ..()
 
 /*/mob/living/proc/soulcatcher_spawn_prompt(mob/observer/dead/prey, req_time) //We don't have soulcatchers or NIFs
 	if(tgui_alert(src, "[prey.name] wants to join into your Soulcatcher.","Soulcatcher Request",list("Deny", "Allow"), timeout=1 MINUTES) != "Allow")

@@ -339,7 +339,7 @@
 				if(T)
 					var/mob/target
 					for(var/mob/M in T)
-						if(M.invisibility || M == src)
+						if(M.invisibility || M == src || M.stat == DEAD || isbelly(M.loc)) //Caustic Edit - Lets not target dead mobs, nor mobs that are in a belly! This must be how that's been happening?
 							continue
 						target = M
 						break

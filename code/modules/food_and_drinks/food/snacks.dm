@@ -386,19 +386,41 @@ All foods are distributed among various categories. Use common sense.
 								eater.add_stress(/datum/stressevent/noble_desperate)
 							if(eat_effect != /datum/status_effect/debuff/rotfood && eat_effect != /datum/status_effect/debuff/burnedfood && eat_effect != /datum/status_effect/debuff/uncookedfood)
 								apply_effect = FALSE
-					if (FARE_POOR to FARE_NEUTRAL)
+					//Caustic Edit - If a noble is being fed, it will act as if it's 1 tier better! ... The worst case though is always bad.
+					if (FARE_POOR)
 						eater.add_stress(/datum/stressevent/noble_bland_food)
 						if (prob(25))
 							to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
 						if(eat_effect != /datum/status_effect/debuff/rotfood && eat_effect != /datum/status_effect/debuff/burnedfood && eat_effect != /datum/status_effect/debuff/uncookedfood)
 							apply_effect = FALSE
+					if (FARE_NEUTRAL)
+						if (isliving(src.loc))
+							eater.remove_stress(/datum/stressevent/noble_bland_food)
+							if (prob(25))
+								to_chat(eater, span_red("This food is plain, but to be fed... That makes up for it."))
+						else
+							eater.add_stress(/datum/stressevent/noble_bland_food)
+							if (prob(25))
+								to_chat(eater, span_red("This is rather bland. I deserve better food than this..."))
+							if(eat_effect != /datum/status_effect/debuff/rotfood && eat_effect != /datum/status_effect/debuff/burnedfood && eat_effect != /datum/status_effect/debuff/uncookedfood)
+								apply_effect = FALSE
 					if (FARE_FINE)
-						eater.remove_stress(/datum/stressevent/noble_bland_food)
+						if (isliving(src.loc))
+							eater.remove_stress(/datum/stressevent/noble_bland_food)
+							eater.add_stress(/datum/stressevent/noble_lavish_food)
+							if (prob(25))
+								to_chat(eater, span_green("Ah, a fine meal, and doted on like this? Exquisite."))
+						else
+							eater.remove_stress(/datum/stressevent/noble_bland_food)
 					if (FARE_LAVISH)
 						eater.remove_stress(/datum/stressevent/noble_bland_food)
 						eater.add_stress(/datum/stressevent/noble_lavish_food)
 						if (prob(25))
-							to_chat(eater, span_green("Ah, food fit for my title."))
+							if (isliving(src.loc))
+								to_chat(eater, span_green("Oh! This is exellent! To be fed the most lavish of meals..."))
+							else
+								to_chat(eater, span_green("Ah, food fit for my title."))
+					//Caustic Edit End
 
 			// yeomen and courtiers are also used to a better quality of life but are way less picky
 			if (human_eater.is_burgher() || human_eater.is_courtier())

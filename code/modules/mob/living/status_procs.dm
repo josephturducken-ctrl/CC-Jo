@@ -181,7 +181,7 @@
 
 ///////////////////////////////// PARALYZED //////////////////////////////////
 /mob/living/proc/IsParalyzed() //If we're immobilized
-	return has_status_effect(STATUS_EFFECT_PARALYZED)
+	return has_status_effect(STATUS_EFFECT_PARALYZED) //|| HAS_TRAIT(TRAIT_PARALYSIS) //Caustic Edit - If we add this here, will it prevent or break anything important...?
 
 /mob/living/proc/AmountParalyzed() //How many deciseconds remain in our Paralyzed status effect
 	var/datum/status_effect/incapacitating/paralyzed/P = IsParalyzed(FALSE)

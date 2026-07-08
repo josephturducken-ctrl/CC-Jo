@@ -85,7 +85,7 @@
 					continue
 
 
-			var/is_muffled = (M in muffled_listeners)
+			var/is_muffled = (M.muffled || (M in muffled_listeners)) //Caustic Edit - Account for belly Muffling in sound effects! Neat?
 			if(M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S, repeat, is_muffled))
 				. += M
 

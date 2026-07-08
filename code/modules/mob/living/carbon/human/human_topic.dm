@@ -16,6 +16,12 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		mob_examine_panel.viewing = usr
 		mob_examine_panel.ui_interact(usr)
 		return
+	
+	if(href_list["task"] == "open_directory")
+		if(!ismob(usr) || !usr.client)
+			return
+		usr.client.show_character_directory()
+		return
 
 	if(href_list["inspect_limb"] && (observer_privilege || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
 		var/list/msg = list()

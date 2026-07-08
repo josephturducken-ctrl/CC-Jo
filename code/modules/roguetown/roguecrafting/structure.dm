@@ -1597,7 +1597,6 @@
 	result = /obj/structure/giantfur
 	reqs = list(/obj/item/natural/fur = 3)
 	craftdiff = 0
-	subtype_reqs = FALSE // Allows using any furs
 
 /datum/crafting_recipe/roguetown/structure/furrugsmall
 	name = "giant fur pelt"
@@ -1605,7 +1604,6 @@
 	result = /obj/structure/giantfur/small
 	reqs = list(/obj/item/natural/fur = 2)
 	craftdiff = 0
-	subtype_reqs = FALSE // Allows using any furs
 
 /datum/crafting_recipe/roguetown/structure/floorcandle
 	name = "floor candles"

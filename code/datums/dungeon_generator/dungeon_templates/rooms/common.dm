@@ -426,7 +426,7 @@
 	east_offset = 18
 	south_offset = 26
 
-/datum/map_template/dungeon/room/hoblingoblin
+/*/datum/map_template/dungeon/room/hoblingoblin //Caustic Edit - Lets try commenting this out and seeing if it stops the errors...
 	mappath = "_maps/dungeon_generator/room/hoblingoblin.dmm"
 	id = "hoblin_goblin"
 	width = 24
@@ -435,7 +435,7 @@
 	north_offset = 11
 	south_offset = 11
 	east_offset = 11
-	west_offset = 11
+	west_offset = 11*/
 
 /datum/map_template/dungeon/room/bathhouse_custom
 	width = 20

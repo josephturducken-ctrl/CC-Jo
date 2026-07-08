@@ -188,14 +188,14 @@
 				L.Stun(5)
 
 			//Thickbelly flag
-			if((mode_flags & DM_FLAG_THICKBELLY) && !L.muffled) //Caustic - This likely should function like a gag?
+			if((mode_flags & DM_FLAG_THICKBELLY) && !L.muffled) //Caustic - Now forces whispers on say!
 				L.muffled = TRUE
 			//Fix muffled sometimes being sticky.
 			else if(!(mode_flags & DM_FLAG_THICKBELLY) && L.muffled)
 				L.muffled = FALSE
 
 			//Force psay
-			if((mode_flags & DM_FLAG_FORCEPSAY) && !L.forced_psay && L.absorbed) //Caustic - This might be 'private say' in any case of PSAY, so subtle 'says'
+			if((mode_flags & DM_FLAG_FORCEPSAY) && !L.forced_psay && L.absorbed) //Caustic - Now has it's own private "thinking" chat between all prey and the pred who absorbed them!
 				L.forced_psay = TRUE
 			//Fix forcepsay sometimes being sticky.
 			else if(!(mode_flags & DM_FLAG_FORCEPSAY) && L.forced_psay)
@@ -210,9 +210,9 @@
 				var/mob/living/carbon/human/H = L
 
 				//Numbing flag
-				if(mode_flags & DM_FLAG_NUMBING) //Caustic - I don't think we have this in actually. Might need to make a reagent with an effect?
-					if(H.reagents.get_reagent_amount(REAGENT_ID_NUMBENZYME) < 2)
-						H.reagents.add_reagent(REAGENT_ID_NUMBENZYME,4)
+				if(mode_flags & DM_FLAG_NUMBING) //Caustic - Attempting to use Poppymilk as a numbing substitution.
+					if(H.reagents.get_reagent_amount(REAGENT_ID_POPPYMILK) < 2)
+						H.reagents.add_reagent(REAGENT_ID_POPPYMILK, 4)
 
 				//Worn items flag
 				if(mode_flags & DM_FLAG_AFFECTWORN && H.contaminate_pref)
@@ -354,7 +354,7 @@
 	if(L.nutrition >= 100)
 		var/oldnutrition = (L.nutrition * 0.05)
 		L.nutrition = (L.nutrition * 0.95)
-		if(show_liquids && reagent_mode_flags & DM_FLAG_REAGENTSDRAIN && reagents.total_volume < reagents.maximum_volume)   // draining reagent production //Added to this proc now since it's used for draining
+		if(reagent_mode_flags & DM_FLAG_REAGENTSDRAIN && reagents.total_volume < reagents.maximum_volume)   // draining reagent production //Added to this proc now since it's used for draining //Check previously had show_liquids && at the start
 			owner_adjust_nutrition(oldnutrition * 0.75) //keeping the price static, due to how much nutrition can flunctuate
 			GenerateBellyReagents_absorbing() //Dont need unique proc so far
 		else

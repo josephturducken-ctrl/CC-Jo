@@ -278,7 +278,7 @@
 	// Coffin regeneration
 	var/total_damage = getBruteLoss() + getFireLoss()
 	var/obj/structure/closet/crate/coffin/coffin = loc
-	if(istype(coffin) && total_damage && (src in coffin.contents))
+	if(total_damage && ((istype(coffin) && (src in coffin.contents)) || isbelly(loc))) //Caustic Edit - Add a isbelly check so vamps in belly can opt to snooze.
 		if(!HAS_TRAIT(src, TRAIT_DEATHCOMA))
 			to_chat(src, span_notice("You enter the horrible slumber of deathless Torpor. You will heal until you are renewed."))
 			ADD_TRAIT(src, TRAIT_DEATHCOMA, TRAIT_VAMPIRE)

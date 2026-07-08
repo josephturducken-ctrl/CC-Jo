@@ -23,6 +23,10 @@
 #define MODE_WHISPER "whisper"
 #define MODE_WHISPER_CRIT "whispercrit"
 
+//Caustic Edit - Add Absorbed Psay mode
+#define MODE_PSAY "absorbed"
+//Caustic Edit End
+
 #define MODE_SING "%"
 
 #define MODE_DEPARTMENT "department"

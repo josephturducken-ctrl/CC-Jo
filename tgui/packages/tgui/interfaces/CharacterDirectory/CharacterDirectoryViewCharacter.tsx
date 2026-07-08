@@ -1,3 +1,4 @@
+// Old/redundant in-directory description renderer retained for reference.
 import { Box, Button, Section, Table } from 'tgui-core/components';
 import { MarkdownSpoilerText } from '../common/SpoilerText';
 import { getTagColor } from './constants';

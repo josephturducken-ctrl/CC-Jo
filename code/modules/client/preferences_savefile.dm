@@ -229,6 +229,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["audio_preload"]		>> audio_preload
 	S["rp_guidance"]		>> rp_guidance
+
+	if(!rp_guidance)
+		rp_guidance = 3 //Reset it to default if it's somehow null.
 	///Caustic edit end
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings

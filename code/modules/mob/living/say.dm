@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/static/list/unconscious_allowed_modes = list(MODE_CHANGELING = TRUE, MODE_ALIEN = TRUE)
 	var/talk_key = get_key(message)
 
-	var/static/list/one_character_prefix = list(MODE_HEADSET = TRUE, MODE_ROBOT = TRUE, MODE_WHISPER = TRUE, MODE_SING = TRUE)
+	var/static/list/one_character_prefix = list(MODE_HEADSET = TRUE, MODE_ROBOT = TRUE, MODE_WHISPER = TRUE, MODE_PSAY = TRUE, MODE_SING = TRUE) //Caustic Edit - Add Psay here so it doesn't trim the first character of your message!
 
 	var/ic_blocked = FALSE
 	if(client && !forced && CHAT_FILTER_CHECK(message))
@@ -208,6 +208,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			last_words = message
 			message_mode = MODE_WHISPER_CRIT
 			succumbed = TRUE
+	//Caustic Edit - Add in an attempt at the Psay message channel?
+	else if(message_mode == MODE_PSAY) //For now this just gets logged as a whisper
+		message_range = 0
+		var/whisper_log_type = npc_speech ? LOG_NPC_SAY : LOG_WHISPER
+		src.log_talk(message, whisper_log_type)
+		send_thoughts(message, message_range, src, bubble_type, spans, language, message_mode, original_message)
+		return
+	//Caustic Edit End
 	else
 		var/log_type = npc_speech ? LOG_NPC_SAY : LOG_SAY
 		src.log_talk(message, log_type, forced_by=forced)
@@ -262,6 +270,31 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		to_chat(src, compose_message(src, language, message, , spans, message_mode))
 
 	return 1
+
+//Caustic Edit - Add Psay for absorbed players and their pred!
+/mob/living/proc/send_thoughts(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
+	var/list/listening = list()
+	var/mob/living/pred
+	if(absorbed && isbelly(loc))
+		var/obj/belly/bloc = loc
+		pred = bloc.owner
+	else
+		pred = src
+	
+	if(pred.client)
+		listening |= pred
+
+	for(var/obj/belly/B in pred.vore_organs)
+		for(var/mob/living/M in B.contents)
+			if(M.client && M.absorbed)
+				listening |= M
+
+	log_seen(src, null, listening, original_message, SEEN_LOG_SAY)
+
+	var/rendered = compose_message(src, message_language, message, , spans, message_mode)
+	for(var/mob/living/thinker in listening)
+		thinker.show_message(rendered)
+//Caustic Edit End
 
 /mob/living/proc/send_speech_sign(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode, original_message)
 	var/static/list/eavesdropping_modes = list(MODE_WHISPER = TRUE, MODE_WHISPER_CRIT = TRUE)
@@ -495,7 +528,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					continue
 				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
-		if(!is_in_zweb(src.z,tocheck.z))
+		var/turf/tocheck_turf = get_turf(tocheck) //Caustic Edit - Change it so whispers can be sent regardless of something/someone being in a container!
+		if(!is_in_zweb(speaker_turf.z,tocheck_turf.z))
 			continue
 		listening |= M
 		the_dead[M] = TRUE
@@ -521,7 +555,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				listener_has_ceiling = FALSE
 		if(!hearall)
 			if((!Zs_too && !isobserver(AM)) || message_mode == MODE_WHISPER)
-				if(AM.z != src.z)
+				if(listener_turf.z != speaker_turf.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 					continue
 		if(Zs_too && listener_turf.z != speaker_turf.z && !Zs_all)
 			if(!Zs_yell && !HAS_TRAIT(AM, TRAIT_KEENEARS) && !hearall)
@@ -540,12 +574,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				if(!speaker_has_ceiling && isliving(AM))
 					var/mob/living/M = AM
 					for(var/mob/living/MH in viewers(world.view, speaker_ceiling))
-						if(M == MH && MH.z == speaker_ceiling?.z)
+						var/turf/MH_turf = get_turf(MH)
+						if(M == MH && MH_turf.z == speaker_ceiling?.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 							speaker_obstructed = FALSE
 
 				if(!listener_has_ceiling)
 					for(var/mob/living/ML in viewers(world.view, listener_ceiling))
-						if(ML == src && ML.z == listener_ceiling?.z)
+						var/turf/ML_turf = get_turf(ML)
+						if(ML == src && ML_turf.z == listener_ceiling?.z) //Caustic Edit - This should fix whispers not comparing the actual TILES. 
 							listener_obstructed = FALSE
 				if(listener_obstructed && speaker_obstructed)
 					continue
@@ -680,6 +716,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /mob/living/proc/radio(message, message_mode, list/spans, language)
 	switch(message_mode)
+		if(MODE_PSAY) //Caustic Edit - Add in Psay here so that it also becomes Italics like whispers
+			return ITALICS
 		if(MODE_WHISPER)
 			return ITALICS
 		if(MODE_R_HAND)
@@ -703,6 +741,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		. = verb_whisper
 	else if(message_mode == MODE_WHISPER_CRIT)
 		. = "[verb_whisper] in [p_their()] last breath"
+	else if(message_mode == MODE_PSAY) //Caustic Edit - Add in accounting for Psay and the 'thinks' action
+		. = verb_thinks
 	else if(stuttering)
 		. = "stammers"
 	else if(derpspeech)

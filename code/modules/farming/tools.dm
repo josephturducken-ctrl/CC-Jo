@@ -266,7 +266,8 @@
 "eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-
+				
+//Caustic Edit - Desert Town Grass Tilling compatibility added
 /obj/item/rogueweapon/attack_turf(turf/T, mob/living/user)
 	if(user.used_intent.type == /datum/intent/till)
 		if(user.get_skill_level(/datum/skill/labor/farming) == SKILL_LEVEL_LEGENDARY) //check if the user has legendary farming skill
@@ -291,6 +292,16 @@
 					to_chat(user,span_warning("[src] degrades."))
 					src.take_damage(hoe_damage, BRUTE, "blunt")
 				T.ChangeTurf(/turf/open/floor/rogue/dirt, flags = CHANGETURF_INHERIT_AIR)
+				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			return
+		if(istype(T, /turf/open/floor/rogue/desert_grass))
+			playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
+			if (do_after(user, work_time, target = src))
+				apply_farming_fatigue(user, 10)
+				if(hoe_damage)
+					to_chat(user,span_warning("[src] degrades."))
+					src.take_damage(hoe_damage, BRUTE, "blunt")
+				T.ChangeTurf(/turf/open/floor/rogue/dirt/desert, flags = CHANGETURF_INHERIT_AIR)
 				playsound(T,'sound/items/dig_shovel.ogg', 100, TRUE)
 			return
 		if(istype(T, /turf/open/floor/rogue/dirt))

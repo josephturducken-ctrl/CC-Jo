@@ -882,10 +882,10 @@
 		var/list/hearers_in_range = get_hearers_in_LOS(healing_range, src, RECURSIVE_CONTENTS_CLIENT_MOBS)
 		for(var/mob/living/carbon/human/human in hearers_in_range)
 			var/distance = get_dist(src, human)
-			if(distance > healing_range || HAS_TRAIT(human, TRAIT_IRONMAN))
+			// CC Edit - Campfires only boost energy regen when you're laying down. For towners, this does not affect them.
+			if(distance > healing_range || HAS_TRAIT(human, TRAIT_IRONMAN) || isbelly(human.loc)) //Quick Vore-related edit here, if they are in a belly, don't bother continuing, they are isolated from it.
 				continue
 			human.add_stress(/datum/stressevent/campfire)
-			// CC Edit - Campfires only boost energy regen when you're laying down. For towners, this does not affect them.
 			//If the campfire is a greater firepit (densefire), apply this effect anyways.
 
 			//Check for the bed first.

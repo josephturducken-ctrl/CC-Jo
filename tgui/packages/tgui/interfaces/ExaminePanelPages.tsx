@@ -150,10 +150,10 @@ export const ImageGalleryPage = (props) => {
   const {
     img_gallery,
     nsfw_img_gallery,
-    is_naked,
+    //is_naked, // Caustic Edit: Removes naked requirement to view NSFW flavortext
   } = data;
   const [galleryIndex, setGalleryIndex] = useState('SFW');
-  const canViewNsfwGallery = is_naked && nsfw_img_gallery.length > 0;
+  const canViewNsfwGallery = nsfw_img_gallery.length > 0; //is_naked && nsfw_img_gallery.length > 0; // Caustic Edit: Removes naked requirement to view NSFW flavortext
 
   useEffect(() => {
     if (galleryIndex === 'NSFW' && !canViewNsfwGallery) {
