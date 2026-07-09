@@ -857,7 +857,6 @@
 	throwforce = 12
 	wdefense = 0
 	max_integrity = 25
-	sellprice = 5
 	slot_flags = ITEM_SLOT_HIP
 	smeltresult = /obj/item/rogueore/coal
 	last_used = 0
@@ -929,6 +928,7 @@
 		added_int = 0,\
 		added_def = 0,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/stake/psy/lesser
 	name = "silver-tipped handstake"
@@ -954,7 +954,6 @@
 	icon_state = "psydagger"
 	sheathe_icon = "psydagger"
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 70
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger/ComponentInitialize()
 	AddComponent(\
@@ -999,7 +998,6 @@
 	wdefense = 1
 	resistance_flags = FLAMMABLE
 	is_tool = TRUE
-	sellprice = 9 //Still a useful knife! These things are really fucking versatile in the game!
 
 /obj/item/rogueweapon/huntingknife/combat/jadekukri
 	name = "jade kukri"
@@ -1032,7 +1030,6 @@
 	last_used = 0
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
-	sellprice = 150 //Beautiful, elvish, and sharp!?
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/poopknife
 	name = "thine majesty's nitesoil-cleaver"
@@ -1050,7 +1047,6 @@
 	is_silver = FALSE //Intended, as it's technically not silver - or at the very least, so divorced from traditional silver that it no longer retains its properties.
 	smeltresult = /obj/item/ingot/drow
 	smelt_bar_num = 1
-	sellprice = 100 //Still expensive!
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja
 	possible_item_intents = list(/datum/intent/dagger/thrust,/datum/intent/dagger/cut,  /datum/intent/dagger/thrust/pick)
@@ -1061,7 +1057,7 @@
 	item_state = "elfdag"
 	var/extended = FALSE
 	wdefense = 2
-	sellprice = 50 //VERY shiny :o
+	sellprice = 30
 
 /obj/item/rogueweapon/huntingknife/idagger/navaja/attack_self(mob/user)
 	extended = !extended
@@ -1151,7 +1147,6 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 25, "embedded_fall_chance" = 10)
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/dagger/chop)
 	smeltresult = null
-	sellprice = 8
 	thrown_damage_flag = "piercing"		//Checks piercing type like an arrow.
 
 /obj/item/rogueweapon/huntingknife/throwingknife/getonmobprop(tag)
@@ -1187,7 +1182,6 @@
 	armor_penetration = PEN_MEDIUM
 	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 5)
-	sellprice = 18
 
 /obj/item/rogueweapon/huntingknife/throwingknife/steel/palloy
 	name = "ancient alloy tossblade"
@@ -1206,7 +1200,7 @@
 	icon_state = "throw_knifesil"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
-	sellprice = 34
+	sellprice = 6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/silver/ComponentInitialize()
 	AddComponent(\
@@ -1242,7 +1236,7 @@
 	icon_state = "throw_knifep"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
-	sellprice = 40
+	sellprice = 6
 
 /obj/item/rogueweapon/huntingknife/throwingknife/psydon/ComponentInitialize()
 	AddComponent(\
@@ -1264,7 +1258,8 @@
 		added_blade_int = 0,\
 		added_int = 100,\
 		added_def = 3,\
-	)	
+	)
+	sellprice += 200
 
 /obj/item/rogueweapon/huntingknife/throwingknife/triumph
 	name = "knife"
@@ -1280,7 +1275,6 @@
 	armor_penetration = 20
 	embedding = list("embedded_pain_multiplier" = 5, "embed_chance" = 75, "embedded_fall_chance" = 10)
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/snip, /datum/intent/dagger/sucker_punch)
-	sellprice = 20
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 15)
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver, /datum/intent/snip, /datum/intent/dagger/thrust/quick)
 
@@ -1300,7 +1294,6 @@
 	icon_state = "iscissors"
 	inv_storage_delay = null
 	is_tool = TRUE
-	sellprice = 20 //Tools
 
 /obj/item/rogueweapon/huntingknife/scissors/steel
 	force = 14
@@ -1310,7 +1303,6 @@
 	icon_state = "sscissors"
 	smeltresult = /obj/item/ingot/steel
 	is_tool = TRUE
-	sellprice = 30
 
 /datum/intent/snip // The salvaging intent!
 	name = "snip"
@@ -1561,7 +1553,6 @@
 	armor_penetration = -100
 	max_blade_int = 15
 	wdefense = 2
-	sellprice = 12 // Shiny knife
 
 /obj/item/rogueweapon/huntingknife/stoneknife/flint
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
@@ -1573,7 +1564,6 @@
 	max_blade_int = 125
 	max_integrity = 150
 	wdefense = 2
-	sellprice = 10
 
 /obj/item/rogueweapon/huntingknife/stoneknife/manacrystal
 	force = 13
@@ -1586,7 +1576,6 @@
 	implement_refund = IMPLEMENT_REFUND_LESSER
 	max_blade_int = 25
 	max_integrity = 50
-	sellprice = 15 // It's a very pretty rock on a stick.
 
 /obj/item/rogueweapon/huntingknife/stoneknife/bone
 	name = "bone skewer" // Craftable version. Apparently there's one located somewhere on the map

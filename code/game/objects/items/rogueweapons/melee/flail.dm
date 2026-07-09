@@ -267,6 +267,7 @@
 		added_int = 50,\
 		added_def = 0,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/flail/sflail/psyflail/relic
 	name = "Consecratia"
@@ -284,6 +285,7 @@
 		added_int = 100,\
 		added_def = 0,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/flail/peasantwarflail
 	force = 10

@@ -501,6 +501,7 @@
 		added_int = 100,\
 		added_def = 1,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/shield/tower/metal/alloy
 	name = "decrepit shield"

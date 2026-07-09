@@ -528,6 +528,7 @@
 		added_int = 50,\
 		added_def = 1,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/mace/cudgel/psy/getonmobprop(tag)
 	. = ..()
@@ -590,6 +591,7 @@
 		added_int = 50,\
 		added_def = 1,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/mace/cudgel/psyclassic/old
 	name = "enduring handmace"
@@ -792,6 +794,7 @@
 		added_int = 50,\
 		added_def = 1,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/mace/spiked
 	icon_state = "spiked_club"
@@ -1070,6 +1073,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/mace/attack_turf(turf/T, mob/living/user, multiplier)
 	. = ..()
@@ -1119,6 +1123,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/mace/attack_turf(turf/T, mob/living/user, multiplier)
 	. = ..()
