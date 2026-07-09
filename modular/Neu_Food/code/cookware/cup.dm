@@ -13,7 +13,6 @@
 	experimental_inhand = TRUE
 	volume = 25
 	obj_flags = CAN_BE_HIT
-	sellprice = 5
 	drinksounds = list('sound/items/drink_cup (1).ogg','sound/items/drink_cup (2).ogg','sound/items/drink_cup (3).ogg','sound/items/drink_cup (4).ogg','sound/items/drink_cup (5).ogg')
 	fillsounds = list('sound/items/fillcup.ogg')
 	anvilrepair = /datum/skill/craft/blacksmithing
@@ -149,7 +148,6 @@
 	icon_state = "wooden"
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	anvilrepair = null
-	sellprice = 3
 	force = 5
 	throwforce = 10
 

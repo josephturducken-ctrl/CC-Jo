@@ -105,7 +105,6 @@
 	fill_icon_thresholds = null
 	dropshrink = 1.0
 	volume = 90 //Caustic Edit - Wait why was this 99??? Damn, OV's Tea PR was right. This is silly not being 90.
-	sellprice = 0
 
 /obj/item/reagent_containers/glass/bucket/pot/carved/getonmobprop(tag)
 	if(tag)
@@ -206,7 +205,6 @@
 	icon = 'modular/Neu_Food/icons/cookware/unused.dmi'
 	icon_state = "silverstein"
 	volume = 90
-	sellprice = 40
 	force = 15
 	throwforce = 20
 
@@ -216,7 +214,6 @@
 	icon = 'modular/Neu_Food/icons/cookware/unused.dmi'
 	icon_state = "blacksteelstein"
 	volume = 120
-	sellprice = 100
 	force = 20
 	throwforce = 25
 	smeltresult = /obj/item/ingot/blacksteel

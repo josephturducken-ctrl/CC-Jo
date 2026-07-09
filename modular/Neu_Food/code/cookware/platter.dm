@@ -78,7 +78,7 @@ What it does:
 					update_icon()
 					name = "\improper [design] [name]"
 					if(sellprice)
-						sellprice += 5
+						sellprice += 40
 					to_chat(user, span_notice("I glaze the [name] with the dye brush."))
 					return
 			return
