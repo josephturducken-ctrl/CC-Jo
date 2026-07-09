@@ -162,7 +162,6 @@
 	max_integrity = 350
 	icon_angle_wielded = 50
 	special = /datum/special_intent/ground_smash
-	sellprice = 20 //Maces are just what they are. Balls of metal. Maybe pricier, maybe not. They're pretty 1:1 in terms of price per material.
 
 /obj/item/rogueweapon/mace/getonmobprop(tag)
 	. = ..()
@@ -183,7 +182,6 @@
 	desc = "An antiquital staff, crested with a studded sphere of bronze. Bludgeons were the first implements made for the explicit purpose of killing another; fittingly, this was the second."
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = 250
-	sellprice = 25
 
 /obj/item/rogueweapon/mace/alloy
 	name = "decrepit mace"
@@ -196,7 +194,6 @@
 	color = "#bb9696"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	sellprice = 10
 
 /obj/item/rogueweapon/mace/church
 	force = 25
@@ -207,7 +204,6 @@
 	wbalance = WBALANCE_HEAVY
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
-	sellprice = 30
 
 /obj/item/rogueweapon/mace/church/get_mechanics_examine(mob/user)
 	. = ..()
@@ -245,7 +241,6 @@
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
 	smelt_bar_num = 2
-	sellprice = 30
 
 /obj/item/rogueweapon/mace/blacksteel
 	force = 30
@@ -263,7 +258,6 @@
 	desc = "Polished gilbranze, perched atop a reinforced shaft. Break the unenlightened into naught-but-giblets; like a potter's vessels, dashed against the rocks."
 	icon_state = "amace"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 10
 
 /obj/item/rogueweapon/mace/steel/silver
 	force = 30
@@ -277,7 +271,6 @@
 	smelt_bar_num = 2
 	swingsound = BLUNTWOOSH_LARGE
 	is_silver = TRUE
-	sellprice = 100
 
 /obj/item/rogueweapon/mace/steel/silver/ComponentInitialize()
 	AddComponent(\
@@ -347,7 +340,6 @@
 	anvilrepair = /datum/skill/craft/carpentry
 	minstr = 7
 	resistance_flags = FLAMMABLE
-	sellprice = 3
 
 /obj/item/rogueweapon/mace/woodclub/New()
 	..()
@@ -388,7 +380,6 @@
 	icon = 'modular_causticcove/icons/weapons/blunt32.dmi'
 	icon_state = "paddle"
 	wdefense = 2
-	sellprice = 4
 
 /obj/item/rogueweapon/mace/woodclub/paddle/New()
 	..()
@@ -413,7 +404,6 @@
 	grid_width = 32
 	grid_height = 96
 	special = null //Should probably get something unique, but definitely not Mace ground slam
-	sellprice = 12 //Smelts into nothing. Good tool however.
 
 /obj/item/rogueweapon/mace/cudgel/getonmobprop(tag)
 	. = ..()
@@ -516,7 +506,6 @@
 	icon_state = "psyflangedmace"
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 150
 
 /obj/item/rogueweapon/mace/cudgel/psy/ComponentInitialize()
 	AddComponent(\
@@ -611,7 +600,6 @@
 	icon_state = "opsyflangedmacelegacy"
 	is_silver = FALSE
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 100 //Old, little less pricy
 
 /obj/item/rogueweapon/mace/cudgel/psyclassic/old/ComponentInitialize()
 	return
@@ -626,7 +614,6 @@
 	force_wielded = 20
 	smeltresult = /obj/item/ingot/copper
 	wdefense = 2
-	sellprice = 17
 
 /obj/item/rogueweapon/mace/cudgel/justice
 	name = "'Justice'"
@@ -641,7 +628,6 @@
 	resistance_flags = FIRE_PROOF
 	minstr = 7
 	wdefense = 5
-	sellprice = 50
 
 /obj/item/rogueweapon/mace/cudgel/justice/getonmobprop(tag)
 	. = ..()
@@ -668,7 +654,6 @@
 	associated_skill = /datum/skill/combat/swords
 	anvilrepair = /datum/skill/craft/carpentry
 	resistance_flags = FLAMMABLE
-	sellprice = 5
 
 /obj/item/rogueweapon/mace/wsword/getonmobprop(tag)
 	. = ..()
@@ -705,7 +690,6 @@
 	inhand_y_dimension = 64
 	bigboy = TRUE
 	gripsprite = TRUE
-	sellprice = 12 //Pretty strong, still made of wood hwoever.
 
 /obj/item/rogueweapon/mace/goden/getonmobprop(tag)
 	. = ..()
@@ -728,7 +712,6 @@
 	color = "#bb9696"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	sellprice = 12
 
 /obj/item/rogueweapon/mace/goden/steel
 	name = "grand mace"
@@ -741,14 +724,12 @@
 	wdefense_wbonus = 5
 	special = null
 	max_integrity = 300
-	sellprice = 40 //Nice.
 
 /obj/item/rogueweapon/mace/goden/steel/paalloy
 	name = "ancient grand mace"
 	desc = "A twisting polehammer, forged in polished gilbranze. What did you think this was all about? This destruction, this war, this sacrifice; it was all to prepare Man for its true ascension."
 	icon_state = "ancient_supermace"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 12
 
 /obj/item/rogueweapon/mace/goden/deepduke
 	name = "deep duke's staff"
@@ -761,7 +742,6 @@
 	max_integrity = 900
 	smeltresult = /obj/item/ingot/steelholy
 	smelt_bar_num = 2
-	sellprice = 500 //Boss item. VERY valuable.
 
 /obj/item/rogueweapon/mace/goden/steel/kanabo
 	name = "kanabo"
@@ -770,7 +750,6 @@
 	slot_flags = ITEM_SLOT_BACK
 	gripped_intents = list(/datum/intent/mace/strike/grand, /datum/intent/mace/smash/grand, /datum/intent/effect/daze)
 	max_integrity = 250 // it's strong wood, but it's still wood.
-	sellprice = 14 //"Strong wood"
 
 /obj/item/rogueweapon/mace/goden/steel/ravox
 	name = "duel settler"
@@ -778,7 +757,6 @@
 	icon_state = "ravoxhammer"
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/effect/daze, /datum/intent/mace/bash/ranged) // It loses the Goden stab so I give it daze
 	max_integrity = 400 // I am reluctant to give a steel goden more force as it breaks weapon so durability it is.
-	sellprice = 150 //Rare, job-spawn only item. Very valuable from the scarcity alone.
 
 /obj/item/rogueweapon/mace/goden/psymace
 	name = "psydonic mace"
@@ -792,7 +770,6 @@
 	smelt_bar_num = 2
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 150
 
 /obj/item/rogueweapon/mace/goden/psymace/ComponentInitialize()
 	AddComponent(\
@@ -836,7 +813,6 @@
 	smeltresult = /obj/item/ingot/iron
 	wdefense = 3
 	max_integrity = 200
-	sellprice = 20
 
 /obj/item/rogueweapon/mace/warhammer/bronze
 	force = 22
@@ -869,7 +845,6 @@
 	color = "#bb9696"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	sellprice = 10
 
 /obj/item/rogueweapon/mace/warhammer/steel
 	force = 25
@@ -879,7 +854,6 @@
 	icon_state = "swarhammer"
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 4
-	sellprice = 30
 
 /obj/item/rogueweapon/mace/warhammer/getonmobprop(tag)
 	if(tag)
@@ -897,7 +871,6 @@
 	desc = "A macehead of polished gilbranze, spiked and perched atop a reinforced shaft. An elegant weapon from a more civilized age; when Man lived in harmony with one-another, and when 'the undying' was nothing more than a nitemare's thought."
 	icon_state = "awarhammer"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 10
 
 /obj/item/rogueweapon/mace/warhammer/blacksteel
 	name = "blacksteel warhammer"
@@ -921,7 +894,6 @@
 	smeltresult = /obj/item/ingot/silver
 	smelt_bar_num = 2
 	is_silver = TRUE
-	sellprice = 180
 
 /obj/item/rogueweapon/mace/warhammer/steel/silver/ComponentInitialize()
 	AddComponent(\
@@ -999,7 +971,6 @@
 	bigboy = TRUE
 	gripsprite = TRUE
 	minstr_req = TRUE //You MUST have the required strength. No exceptions.
-	sellprice = 50 //Mauls... Big and beefy.
 
 /obj/item/rogueweapon/mace/maul/getonmobprop(tag)
 	. = ..()
@@ -1020,7 +991,6 @@
 	minstr = 15
 	wdefense_wbonus = 4 // from 6
 	smelt_bar_num = 3
-	sellprice = 80 //Mauls... Big and beefy.
 
 //Malumite maul. Intended for Templars.
 /obj/item/rogueweapon/mace/maul/grand/malum
@@ -1048,7 +1018,6 @@
 	wdefense_wbonus = 3 // 5
 	smelt_bar_num = 3 // You'll break my heart.
 	max_integrity = 390
-	sellprice = 160 //rare!
 
 /obj/item/rogueweapon/mace/maul/spiked
 	name = "spiked maul"
@@ -1060,7 +1029,6 @@
 	minstr = 10 //+1 STR from Grudgebearer Smith. It should be fine.
 	smelt_bar_num = 3 //Please don't...
 	max_integrity = 370
-	sellprice = 80 //Mauls... Big and beefy.
 
 //Psydonite maul. Intended for FUCKING SHIT UP.
 /obj/item/rogueweapon/mace/maul/grand/psy

@@ -194,7 +194,6 @@
 	desc = "A small ceramic flask. Tyme caresses its curves and cracks with a faint, ethereal glimmer."
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claycupcook_baked" // Caustic Edit
-	sellprice = 3
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
 	glaze_bonus_pct = GLAZE_BONUS_PCT
 
@@ -429,84 +428,81 @@
 	name = "porcelain bauble"
 	desc = "A small porcelain bauble."
 	icon_state = "clayporcelainbauble"
-	sellprice = 3
+	
 /obj/item/natural/clay/porcelain/cameo
 	name = "porcelain cameo"
 	desc = "A small porcelain cameo."
 	icon_state = "clayporcelaincameo"
-	sellprice = 5
 	
 /obj/item/natural/clay/porcelain/bust
 	name = "porcelain bust"
 	desc = "A large porcelain bust."
 	icon_state = "clayporcelainbust"
-	sellprice = 25
 	
 /obj/item/natural/clay/porcelain/figurine
 	name = "porcelain figurine"
 	desc = "A small figurine made out of porcelain."
 	icon_state = "clayporcelainfigurine"
-	sellprice = 10
+
 /obj/item/natural/clay/porcelain/urn
 	name = "large porcelain urn"
 	desc = "A large, lidded urn made out of porcelain."
 	icon_state = "clayporcelainurn"
-	sellprice = 25
+
 /obj/item/natural/clay/porcelain/statuette
 	name = "porcelain statuette"
 	desc = "A medium-sized statuette made out of porcelain."
 	icon_state = "clayporcelainstatue"
-	sellprice = 20
+
 /obj/item/natural/clay/porcelain/obelisk
 	name = "porcelain obelisk"
 	desc = "A medium-sized obelisk made out of porcelain."
 	icon_state = "clayporcelainobelisk"
-	sellprice = 15
+
 /obj/item/natural/clay/porcelain/sun
 	name = "porcelain sun"
 	desc = "A medium-sized sun statue made out of porcelain."
 	icon_state = "clayporcelainsun"
-	sellprice = 15
+
 /obj/item/natural/clay/porcelain/moon
 	name = "porcelain moon"
 	desc = "A medium-sized moon statue made out of porcelain."
 	icon_state = "clayporcelainmoon"
-	sellprice = 20
+
 /obj/item/natural/clay/porcelain/heart
 	name = "porcelain heart"
 	desc = "A heart made out of porcelain."
 	icon_state = "clayporcelainheart"
-	sellprice = 10
+
 /obj/item/natural/clay/porcelain/display
 	name = "porcelain display stand"
 	desc = "A small display stand made out of porcelain."
 	icon_state = "clayporcelainstand"
-	sellprice = 10
+
 /obj/item/natural/clay/porcelain/fish
 	name = "porcelain fish figurine"
 	desc = "A small fish figurine made out of porcelain."
 	icon_state = "clayporcelainfish"
-	sellprice = 10
+
 /obj/item/natural/clay/porcelain/turtle
 	name = "porcelain turtle statuette"
 	desc = "A large turtle statuette made out of porcelain."
 	icon_state = "clayporcelainturtle"
-	sellprice = 25
+
 /obj/item/natural/clay/porcelain/duck
 	name = "porcelain duck statue"
 	desc = "An adorable duck statue made out of porcelain."
 	icon_state = "clayporcelainduck"
-	sellprice = 10
+
 /obj/item/natural/clay/porcelain/comb
 	name = "porcelain comb"
 	desc = "A fashionable comb made out of porcelain."
 	icon_state = "clayporcelaincomb"
-	sellprice = 15
+
 /obj/item/natural/clay/porcelain/tablet
 	name = "porcelain tablet"
 	desc = "A medium-sized tablet made out of porcelain."
 	icon_state = "clayporcelaintablet"
-	sellprice = 15
 
 // Caustic Edit start
 
@@ -568,7 +564,6 @@
 	name = "clay mug"
 	desc = "A ceramic mug."
 	icon_state = "claymugcook"
-	sellprice = 3
 	reagent_flags = OPENCONTAINER	//So it doesn't appear through
 	glazeable = TRUE
 
@@ -578,7 +573,6 @@
 	name = "baked clay mug"
 	desc = "A ceramic mug. Glazed and marked to mimic rough brown clay."
 	icon_state = "claymugcook_baked"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -586,7 +580,6 @@
 	name = "porcelain clay mug"
 	desc = "A ceramic mug. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "claymugcook_porcelain"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -594,7 +587,6 @@
 	name = "shattergold clay mug"
 	desc = "A ceramic mug. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claymugcook_shattergold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -602,7 +594,6 @@
 	name = "bluegold clay mug"
 	desc = "A ceramic mug. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claymugcook_bluegold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -619,7 +610,6 @@
 	name = "clay platter"
 	desc = "A ceramic platter."
 	icon_state = "platter_clay_cook"
-	sellprice = 2
 	glazeable = TRUE
 
 // Pre-glazed
@@ -628,7 +618,6 @@
 	name = "baked clay platter"
 	desc = "A ceramic platter. Glazed and marked to mimic rough brown clay."
 	icon_state = "platter_clay_cook_baked"
-	sellprice = 7
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -636,7 +625,6 @@
 	name = "porcelain clay platter"
 	desc = "A ceramic platter. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "platter_clay_cook_porcelain"
-	sellprice = 7
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -644,7 +632,6 @@
 	name = "shattergold clay platter"
 	desc = "A ceramic platter. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "platter_clay_cook_shattergold"
-	sellprice = 7
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -652,7 +639,6 @@
 	name = "bluegold clay platter"
 	desc = "A ceramic platter. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "platter_clay_cook_bluegold"
-	sellprice = 7
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -668,7 +654,6 @@
 /obj/item/reagent_containers/glass/bowl/clay
 	name = "clay bowl"
 	icon_state = "bowl_clay_cook"
-	sellprice = 3
 	glazeable = TRUE
 
 // Pre-glazed
@@ -677,7 +662,6 @@
 	name = "baked clay bowl"
 	desc = "It is the empty space that makes the bowl useful. Glazed and marked to mimic rough brown clay."
 	icon_state = "bowl_clay_cook_baked"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -685,7 +669,6 @@
 	name = "porcelain clay bowl"
 	desc = "It is the empty space that makes the bowl useful. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "bowl_clay_cook_porcelain"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -693,7 +676,6 @@
 	name = "shattergold clay bowl"
 	desc = "It is the empty space that makes the bowl useful. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "bowl_clay_cook_shattergold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -701,7 +683,6 @@
 	name = "bluegold clay bowl"
 	desc = "It is the empty space that makes the bowl useful. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "bowl_clay_cook_bluegold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -721,7 +702,6 @@
 	icon_state = "teapot_clay_cook"
 	fill_icon_thresholds = null
 	volume = 90 // 3 ingredients. You could make soup in it, if you're a maniac
-	sellprice = 12
 	glazeable = TRUE
 
 // Pre-glazed
@@ -730,7 +710,6 @@
 	name = "baked clay teapot"
 	desc = "A teapot fashioned from clay. Glazed and marked to mimic rough brown clay."
 	icon_state = "teapot_clay_cook_baked"
-	sellprice = 17
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -738,7 +717,6 @@
 	name = "porcelain clay teapot"
 	desc = "A teapot fashioned from clay. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "teapot_clay_cook_porcelain"
-	sellprice = 17
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -746,7 +724,6 @@
 	name = "shattergold clay teapot"
 	desc = "A teapot fashioned from clay. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "teapot_clay_cook_shattergold"
-	sellprice = 17
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -754,7 +731,6 @@
 	name = "bluegold clay teapot"
 	desc = "A teapot fashioned from clay. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "teapot_clay_cook_bluegold"
-	sellprice = 17
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -771,7 +747,6 @@
 	desc = "A small cup made of ceramic."
 	icon_state = "claycupcook"
 	dropshrink = 0.9
-	volume = 15
 	glazeable = TRUE
 
 // Pre-glazed
@@ -780,7 +755,6 @@
 	name = "baked clay teacup"
 	desc = "A small cup made of ceramic. Glazed and marked to mimic rough brown clay."
 	icon_state = "claycupcook_baked"
-	sellprice = 10
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -788,7 +762,6 @@
 	name = "porcelain clay teacup"
 	desc = "A small cup made of ceramic. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "claycupcook_porcelain"
-	sellprice = 10
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -796,7 +769,6 @@
 	name = "shattergold clay teacup"
 	desc = "A small cup made of ceramic. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claycupcook_shattergold"
-	sellprice = 10
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -804,7 +776,6 @@
 	name = "bluegold clay teacup"
 	desc = "A small cup made of ceramic. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claycupcook_bluegold"
-	sellprice = 10
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -814,7 +785,6 @@
 	name = "baked clay flask"
 	desc = "A small ceramic flask. Glazed and marked to mimic rough brown clay."
 	icon_state = "claycupcook_baked"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -822,7 +792,6 @@
 	name = "porcelain clay flask"
 	desc = "A small ceramic flask. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "claycupcook_porcelain"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -830,7 +799,6 @@
 	name = "shattergold clay flask"
 	desc = "A small ceramic flask. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claycupcook_shattergold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -838,7 +806,6 @@
 	name = "bluegold clay flask"
 	desc = "A small ceramic flask. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claycupcook_bluegold"
-	sellprice = 8
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -848,7 +815,6 @@
 	name = "baked clay vessel"
 	desc = "A ceramic bottle. Glazed and marked to mimic rough brown clay."
 	icon_state = "claybottlecook_baked"
-	sellprice = 11
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -856,7 +822,6 @@
 	name = "porcelain clay vessel"
 	desc = "A ceramic bottle. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "claybottlecook_porcelain"
-	sellprice = 11
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -864,7 +829,6 @@
 	name = "shattergold clay vessel"
 	desc = "A ceramic bottle. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claybottlecook_shattergold"
-	sellprice = 11
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -872,7 +836,6 @@
 	name = "bluegold clay vessel"
 	desc = "A ceramic bottle. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "claybottlecook_bluegold"
-	sellprice = 11
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -882,7 +845,6 @@
 	name = "baked clay vase"
 	desc = "A large sized ceramic vase. Glazed and marked to mimic rough brown clay."
 	icon_state = "clayvasecook_baked"
-	sellprice = 14
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -890,7 +852,6 @@
 	name = "porcelain clay vase"
 	desc = "A large sized ceramic vase. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "clayvasecook_porcelain"
-	sellprice = 14
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -898,7 +859,6 @@
 	name = "shattergold clay vase"
 	desc = "A large sized ceramic vase. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "clayvasecook_shattergold"
-	sellprice = 14
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -906,7 +866,6 @@
 	name = "bluegold clay vase"
 	desc = "A large sized ceramic vase. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "clayvasecook_bluegold"
-	sellprice = 14
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -916,7 +875,6 @@
 	name = "brown fancy clay vase"
 	desc = "A large sized fancy ceramic vase. Glazed and marked to mimic rough brown clay."
 	icon_state = "clayfancyvasecook_baked"
-	sellprice = 19
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -924,7 +882,6 @@
 	name = "porcelain fancy clay vase"
 	desc = "A large sized fancy ceramic vase. Gilded and coated in white glaze. This is fit for nobility."
 	icon_state = "clayfancyvasecook_porcelain"
-	sellprice = 19
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -932,7 +889,6 @@
 	name = "shattergold fancy clay vase"
 	desc = "A large sized fancy ceramic vase. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "clayfancyvasecook_shattergold"
-	sellprice = 19
 	glazeable = FALSE
 	glazed = TRUE
 
@@ -940,7 +896,6 @@
 	name = "bluegold fancy clay vase"
 	desc = "A large sized fancy ceramic vase. Known as kintsugi to the Kazengunese. This method mends cracked and broken pottery with molten gold."
 	icon_state = "clayfancyvasecook_bluegold"
-	sellprice = 19
 	glazeable = FALSE
 	glazed = TRUE
 
