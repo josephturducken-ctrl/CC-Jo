@@ -96,14 +96,14 @@
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/bodypart_feature/legwear,
-		/datum/customizer/bodypart_feature/piercing, //OV Add
+		/datum/customizer/bodypart_feature/piercing,
+		//Caustic Edit - Re-add our colorized customizers
 		/datum/customizer/organ/penis/anthro,
-		/datum/customizer/organ/breasts/human,
-		/datum/customizer/organ/vagina/human_anthro,
-		/datum/customizer/organ/belly/human, //OV Add
-		/datum/customizer/organ/butt/human, //OV Add
+		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/vagina/anthro,
+		/datum/customizer/organ/belly/animal,
+		/datum/customizer/organ/butt/animal,
 		/datum/customizer/organ/testicles/anthro,
-		//OV Edit Start
 		/datum/customizer/organ/tail/anthro,
 		/datum/customizer/organ/tail_feature/anthro,
 		/datum/customizer/organ/snout/anthro,
@@ -112,7 +112,7 @@
 		/datum/customizer/organ/frills/anthro,
 		/datum/customizer/organ/wings/anthro,
 		/datum/customizer/organ/neck_feature/anthro,
-		//OV Edit End
+		//Caustic Edit End
 		)
 	body_marking_sets = list(
 		//OV Edit Start

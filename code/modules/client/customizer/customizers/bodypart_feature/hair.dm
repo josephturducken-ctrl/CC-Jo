@@ -2119,10 +2119,12 @@
 /datum/customizer/bodypart_feature/hair/facial/humanoid/slime
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/slime)
 
+//Caustic Edit - Re-enable colorizing hairs
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/slime
-	custom_hair_color = FALSE
-	allows_accessory_color_customization = FALSE
+	custom_hair_color = TRUE
+	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/bodypart_feature/hair/facial/humanoid/slime
-	allows_accessory_color_customization = FALSE
-	custom_hair_color = FALSE
+	allows_accessory_color_customization = TRUE
+	custom_hair_color = TRUE
+//Caustic Edit End
