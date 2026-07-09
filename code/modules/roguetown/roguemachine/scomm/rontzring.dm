@@ -17,7 +17,7 @@
 	muteinmouth = TRUE
 	var/listening = TRUE
 	var/speaking = TRUE
-	sellprice = 222 //It's a lovely ring. Why wouldn't it have a sell price?
+	sellprice = 0
 	grid_width = 32
 	grid_height = 32
 
