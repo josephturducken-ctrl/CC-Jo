@@ -1737,7 +1737,6 @@ As Excaliber."
 	body_parts_covered = HEAD|EARS|HAIR
 	armor = null 
 	resistance_flags = FIRE_PROOF
-	sellprice = 30
 
 /obj/item/clothing/head/roguetown/octopus/ComponentInitialize()
 	..()

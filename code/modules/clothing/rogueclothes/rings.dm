@@ -16,7 +16,6 @@
 	alternate_worn_layer = NECK_LAYER
 	no_loot_taint = TRUE
 	var/overarmor
-	sellprice = 10 // CC Edit
 
 /obj/item/clothing/ring/MiddleClick(mob/user, params)
 	. = ..()

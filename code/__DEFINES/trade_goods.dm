@@ -210,7 +210,7 @@
 #define TRADE_GOOD_INTELLIGENCE_POTION "INTELLIGENCE_POTION"
 #define TRADE_GOOD_SPEED_POTION "SPEED_POTION"
 
-// ---- Sellprices ----
+// ---- Sellprices ---- //Caustic Edit - Tweaking the prices!
 // Minerals
 #define SELLPRICE_IRON_ORE 8
 #define SELLPRICE_COPPER_ORE 6
@@ -359,3 +359,4 @@
 #define SELLPRICE_ENCHSCROLL_BASIC 50
 #define SELLPRICE_ENCHSCROLL_SUPERIOR 100
 #define SELLPRICE_ENCHSCROLL_GREATER 150
+//Caustic Edit End
