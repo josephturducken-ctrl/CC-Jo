@@ -264,7 +264,6 @@
 	associated_skill = /datum/skill/combat/staves
 	anvilrepair = /datum/skill/craft/carpentry
 	resistance_flags = FLAMMABLE
-	sellprice = 7 //BIG STICK.
 
 /obj/item/rogueweapon/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -295,7 +294,6 @@
 	bigboy = FALSE
 	gripsprite = FALSE
 	gripped_intents = null
-	sellprice = 100 //BIGGER STICK~ Has a gold top!
 
 /obj/item/rogueweapon/woodstaff/polearm
 	name = "shillelagh"
@@ -341,7 +339,6 @@
 	throwforce = 25
 	resistance_flags = FLAMMABLE
 	special = /datum/special_intent/polearm_backstep
-	sellprice = 18 //Spears are amazing tools...
 
 /obj/item/rogueweapon/spear/short
 	force = 25
@@ -459,7 +456,6 @@
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
 		"cheeseFishingMod" = 0 // Just for the funny gimmick of a chance for rats and rouses.
 	)
-	sellprice = 20
 
 /obj/item/rogueweapon/spear/trident/afterattack(obj/target, mob/user, proximity)
 	var/sl = user.get_skill_level(/datum/skill/labor/fishing)
@@ -525,7 +521,6 @@
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	randomize_blade_int_on_init = TRUE
-	sellprice = 10
 
 /obj/item/rogueweapon/spear/paalloy
 	name = "ancient spear"
@@ -533,7 +528,6 @@
 	see what is yet to come, yet your mind refuses to retain it. To know what fate this dying world has - it would drive any man inzane."
 	smeltresult = /obj/item/ingot/aaslag
 	icon_state = "ancient_spear"
-	sellprice = 10
 
 
 /obj/item/rogueweapon/spear/psyspear
@@ -548,7 +542,6 @@
 	resistance_flags = FIRE_PROOF	//It's meant to be smacked by a "lamptern", and is special enough to warrant overriding the spear weakness
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 150
 
 /obj/item/rogueweapon/spear/psyspear/ComponentInitialize()
 	AddComponent(\
@@ -571,6 +564,7 @@
 		added_int = 50,\
 		added_def = 1,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/spear/silver
 	name = "silver spear"
@@ -583,7 +577,6 @@
 	wdefense = 6
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
-	sellprice = 120
 
 /obj/item/rogueweapon/spear/silver/ComponentInitialize()
 	AddComponent(\
@@ -607,7 +600,6 @@
 	is_silver = FALSE
 	smeltresult = /obj/item/ingot/steel
 	color = COLOR_FLOORTILE_GRAY
-	sellprice = 100
 
 /obj/item/rogueweapon/spear/psyspear/old/ComponentInitialize()
 	return
@@ -644,7 +636,6 @@
 	max_integrity = 60
 	throwforce = 20
 	special = null
-	sellprice = 12 //What is this made of!? Why does it work!?
 
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
@@ -656,7 +647,6 @@
 	minstr = 8
 	wdefense = 6
 	throwforce = 15
-	sellprice = 38
 
 /obj/item/rogueweapon/spear/billhook/avantyne
 	name = "avantyne-threaded billhook"
@@ -682,7 +672,6 @@
 	max_blade_int = 100
 	wdefense = 4
 	throwforce = 10
-	sellprice = 23
 
 /obj/item/rogueweapon/spear/stone
 	force = 15
@@ -706,7 +695,6 @@
 	max_integrity = 50
 	throwforce = 20
 	special = null
-	sellprice = 10 //Pointy stick...
 
 // Copper spear, no point to adjust force just slightly better integrity
 /obj/item/rogueweapon/spear/stone/copper
@@ -754,7 +742,6 @@
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
 		"cheeseFishingMod" = 0 // Just for the funny gimmick of a chance for rats and rouses.
 	)
-	sellprice = 40 //Great tool.
 
 /obj/item/rogueweapon/fishspear/depthseek //DO NOT ADD RECIPE. MEANT TO BE AN ABYSSORITE RELIC. IDEA COURTESY OF LORDINQPLAS
 	force = 45
@@ -767,7 +754,6 @@
 	max_blade_int = 2600
 	wdefense = 8
 	throwforce = 50
-	sellprice = 450 //ABYSSORITE RELIC THAT IS STUPID STRONG WHAT THE FUCK.
 
 /obj/item/rogueweapon/fishspear/attack_self(mob/user)
 	if(user.used_intent.type == SPEAR_CAST)
@@ -903,7 +889,6 @@
 	walking_stick = TRUE
 	wdefense = 6
 	special = /datum/special_intent/polearm_backstep
-	sellprice = 40
 
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
@@ -925,7 +910,6 @@
 	force = 25 // better in one hand. Use it with the shield.
 	max_blade_int = 225
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 50
 
 /obj/item/rogueweapon/halberd/ji
 	name = "ji"
@@ -950,7 +934,6 @@
 	max_blade_int = 300
 	wdefense = 5
 	wbalance = WBALANCE_HEAVY
-	sellprice = 30
 
 /obj/item/rogueweapon/halberd/bardiche/aalloy
 	name = "decrepit bardiche"
@@ -965,7 +948,6 @@
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	randomize_blade_int_on_init = TRUE
-	sellprice = 15
 
 /obj/item/rogueweapon/halberd/bardiche/paalloy
 	name = "ancient bardiche"
@@ -974,7 +956,6 @@
 	its steel-tipped successor; the glaive."
 	icon_state = "ancient_bardiche"
 	smeltresult = /obj/item/ingot/aaslag
-	sellprice = 15
 
 /obj/item/rogueweapon/halberd/blacksteel
 	name = "blacksteel halberd"
@@ -1046,7 +1027,6 @@
 	gripped_intents = list(/datum/intent/spear/cut/bardiche, /datum/intent/spear/cut/bardiche/cleave, /datum/intent/spear/cut/glaive/sweep, /datum/intent/axe/chop/scythe)
 	force_wielded = 33 // +3
 	max_integrity = 300 // +50
-	sellprice = 40
 
 /obj/item/rogueweapon/halberd/psyhalberd/relic
 	name = "Stigmata"
@@ -1055,7 +1035,6 @@
 	icon_state = "psyhalberd"
 	force = 25
 	force_wielded = 25
-	sellprice = 300 //Relic...
 
 /obj/item/rogueweapon/halberd/psyhalberd/relic/ComponentInitialize()
 	AddComponent(\
@@ -1067,6 +1046,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/halberd/silver
 	name = "silver halberd"
@@ -1102,7 +1082,6 @@
 	wdefense = 7
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 150
 
 /obj/item/rogueweapon/halberd/psyhalberd/ComponentInitialize()
 	AddComponent(\
@@ -1125,6 +1104,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/halberd/glaive
 	possible_item_intents = list(/datum/intent/spear/thrust/oneh, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
@@ -1195,7 +1175,6 @@
 	walking_stick = TRUE
 	wdefense = 5
 	wbalance = WBALANCE_HEAVY
-	sellprice = 80
 	max_integrity = 250 //So there is actual difference between the two
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
@@ -1302,7 +1281,6 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
 	max_blade_int = 225
 	max_integrity = 155
-	sellprice = 30
 
 /obj/item/rogueweapon/spear/bronze/winged
 	name = "bronze winged spear"
@@ -1343,7 +1321,6 @@
 	icon_state = "quarterstaff"
 	associated_skill = /datum/skill/combat/staves
 	max_integrity = 150
-	sellprice = 10 /// Wood
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/virtue
 	name = "shepherd's quarterstaff" //Reskinned iron quarterstaff without the smeltability-into-ingotry.
@@ -1361,7 +1338,6 @@
 	force_wielded = 22
 	icon_state = "quarterstaff_iron"
 	max_integrity = 200
-	sellprice = 20 //Okay; Iron, nie!
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/steel
 	name = "steel quarterstaff"
@@ -1372,7 +1348,6 @@
 	force_wielded = 25
 	icon_state = "quarterstaff_steel"
 	max_integrity = 200
-	sellprice = 40 //Steel!!
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/blacksteel
 	name = "blacksteel quarterstaff"
@@ -1394,7 +1369,6 @@
 	icon_state = "quarterstaff_silver"
 	max_integrity = 250
 	is_silver = TRUE
-	sellprice = 80 //Oh wow! Silver!
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/silver/ComponentInitialize()
 	AddComponent(\
@@ -1416,7 +1390,6 @@
 	max_integrity = 250
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
-	sellprice = 100 //WOAH! BLESSED SILVER!?
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy/ComponentInitialize()
 	AddComponent(\
@@ -1439,6 +1412,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/gold
 	name = "golden quarterstaff"
@@ -1469,7 +1443,6 @@
 	throwforce = 12	//Not a throwing weapon. Too heavy!
 	icon_angle_wielded = 50
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 60
 
 /obj/item/rogueweapon/spear/partizan/getonmobprop(tag)
 	. = ..()
@@ -1490,7 +1463,6 @@
 	wdefense = 6 // A little bit extra
 	max_blade_int = 200
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 60 //Huntin' spear!
 
 /obj/item/rogueweapon/spear/blacksteel
 	name = "blacksteel spear"
@@ -1546,7 +1518,6 @@
 	throwforce = 12	//Not a throwing weapon.
 	icon_angle_wielded = 50
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 60
 
 /obj/item/rogueweapon/spear/naginata/getonmobprop(tag)
 	. = ..()
@@ -1566,7 +1537,6 @@
 	max_blade_int = 150
 	icon_state = "assegai_iron"
 	gripsprite = FALSE
-	sellprice = 40
 
 /obj/item/rogueweapon/spear/assegai
 	name = "steel assegai"
@@ -1578,7 +1548,6 @@
 	icon_state = "assegai_steel"
 	gripsprite = FALSE
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 60
 
 /obj/item/rogueweapon/halberd/glaive/elvish
 	name = "elvish glaive"
@@ -1656,7 +1625,6 @@
 	armor_penetration = -100
 	smeltresult = null
 	wdefense = 4
-	sellprice = 12 // Though pretty, it's still a rock on a stick
 
 /obj/item/rogueweapon/spear/flint
 	force = 17
@@ -1668,7 +1636,6 @@
 	max_integrity = 250
 	max_blade_int = 120
 	wdefense = 5
-	sellprice = 12
 	smeltresult = null
 
 /obj/item/rogueweapon/spear/stone/manacrystal
@@ -1685,6 +1652,5 @@
 	max_blade_int = 20
 	associated_skill = /datum/skill/combat/polearms
 	max_integrity = 50
-	sellprice = 15 // It's a very pretty rock on a stick.
 
 // Caustic edit end

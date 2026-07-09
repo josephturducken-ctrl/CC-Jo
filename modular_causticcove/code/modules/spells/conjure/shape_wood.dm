@@ -109,7 +109,7 @@
 		return FALSE
 
 	var/turf/check_turf = get_step(user, user.dir)
-	var/obj/structure/flora/newtree/treecheck // Leaving it as a var in case someone wants to add other tree types in here. 'flora/roguetree' is the one that covers stumps, fallen tree logs, burnt trees, bedraggled, and the sacred trees.
+	var/obj/structure/flora/treecheck // Leaving it as a var in case someone wants to add other tree types in here. 'flora/roguetree' is the one that covers stumps, fallen tree logs, burnt trees, bedraggled, and the sacred trees.
 	for(treecheck in check_turf.contents)
 		if(istype(treecheck, /obj/structure/flora/newtree) || istype(treecheck, /obj/structure/flora/roguetree))
 			if(istype(treecheck, /obj/structure/flora/roguetree/burnt) || istype(treecheck, /obj/structure/flora/roguetree/pine/dead) || istype(treecheck, /obj/structure/flora/roguetree/stump) || istype(treecheck, /obj/structure/flora/roguetree/underworld))

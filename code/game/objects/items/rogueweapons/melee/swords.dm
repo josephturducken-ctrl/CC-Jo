@@ -788,6 +788,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/long/exe/berserk
 	name = "berserkers sword"
@@ -827,6 +828,7 @@
 		added_int = 0,\
 		added_def = 0,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/long/oldpsysword
 	name = "enduring longsword"
@@ -870,6 +872,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/long/silver
 	name = "silver longsword"
@@ -946,6 +949,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/long/kriegmesser/psy/ComponentInitialize()
 	AddComponent(\
@@ -1159,6 +1163,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/short/silver
 	name = "silver shortsword"
@@ -1700,6 +1705,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/rapier/psy/relic
 	name = "Eucharist"
@@ -1727,6 +1733,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/rapier/lord
 	name = "sword of the Mad Duke"
@@ -1861,6 +1868,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/sword/silver/decorated
 	name = "decorated silver khadga" //While ostensibly a sword, it's functionally identical - if a little weaker - than the Silver War Axe.
@@ -2447,7 +2455,6 @@
 	wdefense = 4
 	minstr = 10
 	force = 7	//This sword gets its real damage values from its intents. IYKYK.
-	sellprice = 25
 	blade_int = 350	//You're gonna cut. A lot.
 	max_integrity = 110	//Iron arming sword + 10
 	pickup_sound = 'sound/foley/equip/scrap_equip.ogg'

@@ -439,6 +439,7 @@
 		added_int = 50,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/katar/silver
 	name = "silver katar"
@@ -1177,6 +1178,7 @@
 		added_int = 50,\
 		added_def = 0,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/knuckledusters/psy/attack_self(mob/living/user)
 	. = ..()

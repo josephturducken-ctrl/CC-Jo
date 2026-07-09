@@ -21,7 +21,6 @@
 	cold_protection = 10
 	var/shiftable = TRUE
 	var/shifted = FALSE
-	sellprice = 16 //Lighter equipment. Still decent.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -70,7 +69,6 @@
 	allowed_sex = list(MALE, FEMALE)
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER //50 more integ than a gamberson, at the cost of leg protection
 	shiftable = FALSE
-	sellprice = 33 //This is a very nice jacket! Where'd you get it?...
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord/light
 	name = "light arming jacket"
@@ -85,7 +83,6 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "shadowrobe"
 	shiftable = FALSE
-	sellprice = 88 //Hand's attire. If someone nabs this, well, they best get paid well that's for sure.
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/raneshen
 	name = "thin desert coat"

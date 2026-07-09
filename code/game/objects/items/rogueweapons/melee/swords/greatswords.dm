@@ -270,6 +270,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/greatsword/psygsword/relic/getonmobprop(tag)
 	. = ..()
@@ -361,6 +362,7 @@
 		added_int = 100,\
 		added_def = 2,\
 	)
+	sellprice += 200
 
 /obj/item/rogueweapon/greatsword/avantyne
 	name = "avantyne-threaded greatsword"

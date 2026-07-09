@@ -1054,7 +1054,7 @@
 
 /obj/item/rogueweapon/mace/maul/grand/psy/ComponentInitialize()
 	AddComponent(\
-	/datum/component/silverbless,\
+		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
 		silver_type = SILVER_PSYDONIAN,\
 		added_force = 0,\
@@ -1064,7 +1064,7 @@
 	)
 
 /obj/item/rogueweapon/mace/maul/grand/psy/preblessed/ComponentInitialize()
-		AddComponent(\
+	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_PSYDONIAN,\
 		silver_type = SILVER_PSYDONIAN,\
@@ -1104,7 +1104,7 @@
 
 /obj/item/rogueweapon/mace/maul/grand/psy/ComponentInitialize()
 	AddComponent(\
-	/datum/component/silverbless,\
+		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
 		silver_type = SILVER_PSYDONIAN,\
 		added_force = 0,\
@@ -1114,7 +1114,7 @@
 	)
 
 /obj/item/rogueweapon/mace/maul/grand/psy/preblessed/ComponentInitialize()
-		AddComponent(\
+	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_PSYDONIAN,\
 		silver_type = SILVER_PSYDONIAN,\

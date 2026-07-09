@@ -92,6 +92,7 @@
 	name = "leyline shards"
 	icon_state = "leyline"
 	desc = "A shard of a fractured leyline, it glows with lost power."
+	sellprice = LEYLINE_SELLPRICE
 
 /obj/item/reagent_containers/food/snacks/grown/manabloom
 	name = "mana bloom"
@@ -128,6 +129,7 @@
 	icon_state = "voidstone"
 	desc = "A piece of blackstone, it feels off to stare at it for long."
 	w_class = WEIGHT_CLASS_SMALL
+	sellprice = VOIDSTONE_SELLPRICE
 
 // INFERNAL
 /obj/item/magic/infernal
@@ -169,8 +171,6 @@
 //FAIRY
 /obj/item/magic/fae
 	w_class = WEIGHT_CLASS_SMALL
-	sellprice = T1SELLPRICE
-	tier = 1
 
 /obj/item/magic/fae/examine(mob/user)
 	. = ..()

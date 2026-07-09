@@ -592,7 +592,7 @@
 	armor = ARMOR_PLATE
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	flags_inv = HIDEFACE|HIDESNOUT
-	sellprice = 25
+	sellprice = 10
 
 /* //Caustic Edit - Removing the Naledi Debuff
 /obj/item/clothing/mask/rogue/lordmask/naledi/ComponentInitialize()
@@ -608,7 +608,7 @@
 	armor = ARMOR_PLATE
 	flags_inv = HIDEFACE|HIDESNOUT
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
-	sellprice = 25
+	sellprice = 0
 
 /obj/item/clothing/mask/rogue/silkmask
 	name = "giltsilk mask"

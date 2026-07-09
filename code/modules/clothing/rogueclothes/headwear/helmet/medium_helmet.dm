@@ -23,7 +23,6 @@
 	experimental_onhip = TRUE
 	experimental_inhand = TRUE
 	chunkcolor = "#8c9599"
-	sellprice = 20 // CC Edit
 	material_category = ARMOR_MAT_LEATHER
 
 /obj/item/clothing/head/roguetown/helmet/MiddleClick(mob/user)
@@ -63,7 +62,6 @@
 	body_parts_covered = HEAD|HAIR
 	max_integrity = ARMOR_INT_HELMET_IRON
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/skullcap/steel
 	name = "skull cap"
@@ -83,7 +81,6 @@
 	smeltresult = /obj/item/ingot/copper
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_HELMET_LEATHER
-	sellprice = 10
 
 /obj/item/clothing/head/roguetown/helmet/horned
 	name = "horned cap"
@@ -92,7 +89,6 @@
 	body_parts_covered = HEAD|HAIR
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
@@ -103,7 +99,6 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	body_parts_covered = HEAD|HAIR
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/kettle
 	name = "kettle helmet"
@@ -111,7 +106,6 @@
 	icon_state = "kettle"
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = ARMOR_PLATE
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/kettle/aalloy
 	name = "decrepit kettle helmet"
@@ -137,7 +131,6 @@
 	icon_state = "ikettle"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/kettle/wide
 	name = "wide kettle helmet"
@@ -174,7 +167,6 @@
 	desc = "A steel helmet which covers most of the head, offering superior coverage to the kettle helmet. Preferred by those who intend to clash steel, rather than those who arch-and-bombard from afar."
 	smeltresult = /obj/item/ingot/steel
 	body_parts_covered = HEAD|HAIR|EARS
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/sallet/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -219,7 +211,6 @@
 	desc = "A iron helmet covers most of the head, offeirng superior coverage to the kettle helmet. It comfortably fits atop most padded coifs-and-caps."
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
-	sellprice = 15
 
 /obj/item/clothing/head/roguetown/helmet/sallet/beastskull
 	name = "beast skull"
@@ -245,7 +236,6 @@
 	smelt_bar_num = 2
 	armor = ARMOR_PLATE
 	stack_fovs = TRUE
-	sellprice = 45
 
 /obj/item/clothing/head/roguetown/helmet/sallet/shishak
 	name = "steel shishak"
@@ -253,7 +243,6 @@
 	body_parts_covered = HEAD|EARS|HAIR|NECK
 	max_integrity = ARMOR_INT_HELMET_STEEL + 50
 	icon_state = "shishak"
-	sellprice = 50
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/ComponentInitialize()
 	..()
@@ -265,7 +254,6 @@
 	desc = "An iron 'sallet'-styled helmet with an adjustable visor. Out for a stroll, now, are we?"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_IRON
-	sellprice = 20
 
 /obj/item/clothing/head/roguetown/helmet/sallet/raneshen
 	name = "kulah khud"
@@ -276,7 +264,6 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	bloody_icon = 'icons/effects/blood64.dmi'
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/sallet/beastskull
 	name = "beast skull"
@@ -304,7 +291,6 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 	stack_fovs = TRUE
-	sellprice = 45
 
 	detail_tag = "_detail"
 	color = "#FFFFFF"
@@ -345,7 +331,6 @@
 	block2add = FOV_BEHIND
 	detail_tag = "_detail"
 	detail_color = "#FFFFFF"
-	sellprice = 200 //Elven!
 
 /obj/item/clothing/head/roguetown/helmet/elvenbarbute/update_icon()
 	cut_overlays()
@@ -396,7 +381,6 @@
 	body_parts_covered = HEAD|HAIR|EARS
 	flags_inv = HIDEEARS|HIDEHAIR
 	smeltresult = /obj/item/ingot/steel
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/ComponentInitialize()
 	..()
@@ -466,7 +450,6 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
 	stack_fovs = TRUE
-	sellprice = 45
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/ComponentInitialize()
 	..()
@@ -567,7 +550,6 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
-	sellprice = 50
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -604,7 +586,6 @@
 	item_state = "kazengunmedhelm"
 	detail_tag = "_detail"
 	detail_color = "#FFFFFF"
-	sellprice = 45 //CC Edit
 	flags_inv = HIDEEARS|HIDEHAIR
 
 /obj/item/clothing/head/roguetown/helmet/kettle/jingasa/update_icon()
@@ -633,7 +614,6 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
-	sellprice = 45 //CC Edit
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/antler/ComponentInitialize()
 	..()
@@ -645,7 +625,6 @@
 	desc = "A simple yet protective helmet forged in the style typical of Eoran worshippers. Upon it lays several laurels of flowers and other colorful ornaments followed by symbols noting the accomplishments and punishments of the owner's chapter."
 	icon_state = "eorahelmsallet"
 	item_state = "eorahelmsallet"
-	sellprice = 50 //Eora!
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden
 	flags_inv = HIDEFACE|HIDESNOUT
@@ -696,7 +675,6 @@
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	max_integrity = 200
-	sellprice = 25
 
 /obj/item/clothing/head/roguetown/roguehood/warden/antler
 	name = "warden's antlered hood"

@@ -10,7 +10,6 @@
 	sewrepair = TRUE
 	nodismemsleeves = TRUE
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
-	sellprice = 20
 	armor_class = ARMOR_CLASS_LIGHT
 	salvage_result = /obj/item/natural/hide/cured
 	chunkcolor = "#7e5d17"
@@ -65,14 +64,12 @@
 	icon_state = "leather"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	color = "#7D6653"
-	sellprice = 40 //Woah that's some durability!!!
 
 /obj/item/clothing/suit/roguetown/armor/leather/hide
 	name = "hide armor"
 	desc = "A furred vest, stitched from the hide of a forest-dwelling beaste."
 	icon_state = "hidearmor"
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
-	sellprice = 25 //Durability baby!
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden
 	name = "forester's armor"
@@ -80,7 +77,6 @@
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "forestleather"
-	sellprice = 35
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/upgraded
 	name = "forester's brigandine"
@@ -89,7 +85,6 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE + 50
 	equip_delay_self = 50
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 45
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded
 	name = "studded leather armor"
@@ -102,7 +97,7 @@
 	body_parts_covered = COVERAGE_TORSO
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM // 50 less durability than light brigandines.
 	smeltresult = /obj/item/ingot/iron
-	sellprice = 30
+	sellprice = 25
 	armor_class = ARMOR_CLASS_LIGHT
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/ComponentInitialize()
@@ -139,7 +134,6 @@
 	item_state = "leather_armor"
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	sellprice = 35 //Some solid durability...
 	color = "#7D6653"
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
@@ -150,7 +144,6 @@
 	body_parts_covered = COVERAGE_ALL_BUT_ARMFEET
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	sellprice = 40
 	color = "#7D6653"
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/confessor
@@ -203,7 +196,6 @@
 	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	sellprice = 30
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/shadowvest
 	name = "drowcraft vest"
@@ -266,7 +258,6 @@
 	allowed_sex = list(FEMALE, MALE)
 	allowed_race = CLOTHED_RACES_TYPES
 	color = "#7D6653"
-	sellprice = 18 //This covers like, nothing.
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	name = "studded leather corslet"
@@ -304,7 +295,6 @@
 	sleevetype = null
 	sleeved = null
 	armor_class = ARMOR_CLASS_LIGHT
-	sellprice = 30 //Fashion is important~
 
 /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor
 	name = "sea jacket"
@@ -335,7 +325,6 @@
 	color = null
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	sellprice = 66 //The hand's vest! How are you getting all of these clothes!?
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/courtphysician
 	name = "sanguine coat"

@@ -12,7 +12,6 @@
 	color = null
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
-	sellprice = 80 //Very powerful armor tbh
 
 /obj/item/clothing/suit/roguetown/armor/basiceast
 	name = "simple dobo robe"
@@ -31,7 +30,6 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	flags_inv = HIDEBOOB|HIDECROTCH
-	sellprice = 44 // Has potential..
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_HONORBOUND)
@@ -48,7 +46,6 @@
 	item_state = "eastsuit2"
 	armor = ARMOR_LEATHER // Makes it the equivalence of studded with less integrity and better armor 
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	sellprice = 70 //There we go!
 
 //craftable variation of eastsuit, essentially requiring the presence of a tailor with relevant materials
 //still weak against blunt
@@ -95,7 +92,6 @@
 	smeltresult = /obj/item/rogueore/coal
 	smelt_bar_num = 4
 	blocksound = SOFTHIT
-	sellprice = 300 //It's elven! This shit is rather rare to get our hands on!!
 
 /obj/item/clothing/suit/roguetown/armor/plate/elven_plate/Initialize(mapload)
 	. = ..()
