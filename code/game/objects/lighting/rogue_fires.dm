@@ -616,7 +616,14 @@
 						qdel(S)
 						pot.reagents.remove_reagent(/datum/reagent/consumable/oil/tallow, OIL_CONSUMED)
 						return
-			
+				if(pot.reagents.has_reagent(/datum/reagent/water) && S.boiled_type)
+					if(do_after(user, BOILING_TIME / cooktime_divisor, target = src))
+						user.visible_message(span_info("[user] boils [S] in the pot.</span>"))
+						add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+						new S.boiled_type(src.loc)
+						qdel(S)
+						pot.reagents.remove_reagent(/datum/reagent/water, WATER_CONSUMED)
+						return
 			var/recipe_found = FALSE
 			for(var/datum/stew_recipe/R in GLOB.stew_recipes)
 				for(var/I in R.inputs)
