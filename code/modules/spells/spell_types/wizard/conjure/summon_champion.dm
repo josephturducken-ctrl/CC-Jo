@@ -20,7 +20,7 @@
 /datum/action/cooldown/spell/conjure_summon/champion/spawn_summon(turf/T, mob/living/user)
 	var/mob/living/carbon/human/species/human/northern/conjured_champion/champion = new(T)
 	champion.loadout = modes[current_mode]["loadout"]
-	champion.arcane_scale = clamp(user.get_skill_level(/datum/skill/magic/arcane), 1, 6)
+	champion.arcane_scale = clamp(user.get_skill_level(/datum/skill/combat/arcyne), 1, 6)
 	champion.gear_tier = get_summon_tier(user)
 	champion.summoner_ref = WEAKREF(user)
 	return champion
@@ -42,7 +42,7 @@
 /datum/action/cooldown/spell/conjure_summon/champion/goblin/spawn_summon(turf/T, mob/living/user)
 	var/mob/living/carbon/human/species/goblin/npc/conjured/champion/gob = new(T)
 	gob.loadout = modes[current_mode]["loadout"]
-	gob.arcane_scale = clamp(user.get_skill_level(/datum/skill/magic/arcane), 1, 6)
+	gob.arcane_scale = clamp(user.get_skill_level(/datum/skill/combat/arcyne), 1, 6)
 	gob.gear_tier = get_summon_tier(user)
 	gob.summoner_ref = WEAKREF(user)
 	return gob

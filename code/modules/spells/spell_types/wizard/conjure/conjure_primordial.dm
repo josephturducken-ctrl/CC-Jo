@@ -19,7 +19,7 @@
 	return conjured
 
 /datum/action/cooldown/spell/conjure_summon/primordial/proc/scale_primordial(mob/living/simple_animal/hostile/retaliate/rogue/primordial/P, mob/living/user)
-	var/lvl = clamp(user.get_skill_level(/datum/skill/magic/arcane), 1, 6)
+	var/lvl = clamp(user.get_skill_level(/datum/skill/combat/arcyne), 1, 6)
 	var/tier = get_summon_tier(user)
 	var/mult = 0.7 + (lvl * 0.1) + (tier - 1) * 0.25
 	P.maxHealth = round(P.maxHealth * mult)
