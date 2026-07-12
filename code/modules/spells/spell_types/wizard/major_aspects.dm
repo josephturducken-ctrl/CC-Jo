@@ -273,6 +273,7 @@
 		/datum/action/cooldown/spell/ferramancy_strike/heavens_hammer,
 		/datum/action/cooldown/spell/projectile/stygian_efflorescence,
 		/datum/action/cooldown/spell/form_blade,
+		/datum/action/cooldown/spell/conjure_arcyne_ward/steelhide,
 		/datum/action/cooldown/spell/bind_armament,
 		/datum/action/cooldown/spell/arcyne_forge,
 		/datum/action/cooldown/spell/mending,
