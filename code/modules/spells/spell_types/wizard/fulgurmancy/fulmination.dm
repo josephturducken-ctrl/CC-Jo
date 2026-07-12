@@ -20,9 +20,9 @@
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
-	charge_swingdelay_type = SWINGDELAY_CANCEL
+	charge_swingdelay_type = SWINGDELAY_PENALTY
 	weapon_cast_penalized = TRUE
-	charge_time = CHARGETIME_MAJOR
+	charge_time = CHARGETIME_MINOR
 	hold_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_HEAVY
 	charge_sound = 'sound/magic/charging.ogg'
@@ -84,6 +84,7 @@
 
 /datum/action/cooldown/spell/fulmination/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()
+	stats += span_info("Damage: [hs_damage] (Heaven's Strike) / [ts_damage] (Thunderstrike, 5x5)")
 	stats += span_info("Firing mode (toggle with Shift+G): Heaven's Strike (single devastating bolt, +100% vs simple creechurs) / Thunderstrike (telegraphed 5x5 blast, flat [ts_damage] damage all at once).")
 	return stats
 

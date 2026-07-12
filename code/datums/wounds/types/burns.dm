@@ -1,11 +1,14 @@
 /datum/wound/dynamic/burn
 	name = "burn"
-	whp = 10
-	bleed_rate = 0
-	clotting_threshold = null
-	sewn_clotting_threshold = null
-	woundpain = 8
-	sew_threshold = 60
+	whp = 1 // 1 to 1 to puncture, as it is an AP type
+	sewn_whp = 0
+	bleed_rate = 1
+	sewn_bleed_rate = 0.04
+	clotting_rate = 0.01
+	sewn_clotting_rate = 0.01
+	clotting_threshold = 0.15
+	sewn_clotting_threshold = 0.1
+	sew_threshold = 10
 	can_sew = TRUE
 	can_cauterize = FALSE
 	passive_healing = 0.4
@@ -20,7 +23,7 @@
 	)
 
 #define BURN_UPG_WHPRATE 1.2
-#define BURN_UPG_PAINRATE 0.2
+#define BURN_UPG_PAINRATE 0.15
 #define BURN_UPG_BLEEDRATE 0.1
 #define BURN_CHAR_THRESHOLD 120
 #define BURN_UPG_CLAMP_ARMORED (ARTERY_LIMB_BLEEDRATE * 0.05)
@@ -45,8 +48,6 @@
 		armor_check(armor, BURN_ARMORED_BLEED_CLAMP)
 		if(bleed_rate > BURN_MAX_BLEED)
 			set_bleed_rate(BURN_MAX_BLEED)
-	else
-		passive_healing = max(0.1, passive_healing - 0.1)
 	update_stage()
 	..()
 
@@ -83,8 +84,6 @@
 	disabling = TRUE
 	critical = TRUE
 	bypass_bloody_wound_check = TRUE
-	var/cook_death_time = 0
-	var/death_timer
 
 /datum/wound/charring/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/charring) && (type == other.type))
@@ -100,10 +99,9 @@
 	affected.emote("firescream", TRUE)
 	flash_color(affected, "#a83c1a", 15)
 	affected.Slowdown(15)
+	affected.Paralyze(15)
 	shake_camera(affected, 2, 2)
 	playsound(affected, 'sound/health/burning.ogg', 60, TRUE)
-	if(cook_death_time && !QDELETED(affected) && affected.stat != DEAD)
-		death_timer = addtimer(CALLBACK(src, PROC_REF(cook_to_death)), cook_death_time, TIMER_STOPPABLE)
 	var/noblood = FALSE
 	if(iscarbon(affected))
 		var/mob/living/carbon/charred_carbon = affected
@@ -121,31 +119,10 @@
 		else
 			to_chat(affected, span_userdanger("Searing heat scorches through me - another burn like this will be fatal!"))
 
-/datum/wound/charring/proc/cook_to_death()
-	death_timer = null
-	if(QDELETED(src) || !owner || owner.stat == DEAD)
-		return
-	if(is_sewn())
-		return
-	var/mob/living/victim = owner
-	victim.visible_message(span_danger("<b>[victim] shudders and goes limp as the charred flesh gives way!</b>"), \
-		span_userdanger("The burns are too deep... my body gives out."))
-	victim.emote("deathgasp", TRUE)
-	victim.death()
-
 /datum/wound/charring/sew_wound()
 	. = ..()
 	if(.)
-		if(death_timer)
-			deltimer(death_timer)
-			death_timer = null
 		bodypart_owner?.update_disabled()
-
-/datum/wound/charring/on_mob_loss(mob/living/affected)
-	. = ..()
-	if(death_timer)
-		deltimer(death_timer)
-		death_timer = null
 
 /datum/wound/charring/chest
 	name = "torso charring"
@@ -155,7 +132,6 @@
 		"The ribcage crackles with heat!",
 	)
 	mortal = TRUE
-	cook_death_time = 45 SECONDS
 
 /datum/wound/charring/head
 	name = "head charring"
@@ -165,4 +141,3 @@
 		"The head is engulfed in searing heat!",
 	)
 	mortal = TRUE
-	cook_death_time = 45 SECONDS
