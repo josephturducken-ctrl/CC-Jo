@@ -1,17 +1,12 @@
 import { storage } from 'common/storage';
-import { gameAtom } from 'tgui-panel/game/atoms';
-import { settingsAtom } from 'tgui-panel/settings/atoms';
 import { store } from '../events/store';
 import {
-  allChatAtom,
-  chatLoadedAtom,
-  chatPagesAtom,
-  chatPagesRecordAtom,
-  currentPageAtom,
-  exportEndAtom,
-  exportStartAtom,
-  lastRoundIDAtom,
-  scrollTrackingAtom,
+    allChatAtom,
+    chatLoadedAtom,
+    chatPagesAtom,
+    chatPagesRecordAtom,
+    currentPageAtom,
+    scrollTrackingAtom,
 } from './atom';
 import { MAX_PERSISTED_MESSAGES } from './constants';
 import { canPageAcceptType, serializeMessage } from './model';

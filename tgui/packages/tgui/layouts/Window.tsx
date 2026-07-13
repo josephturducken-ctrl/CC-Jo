@@ -102,10 +102,6 @@ export function Window(props: Props) {
     };
   }, [isReadyToRender, width, height, scale]);
 
-  const dispatch = globalStore.dispatch;
-  const fancy = config.window?.fancy;
-
-
   // Determine when to show dimmer
   const showDimmer =
     config.user &&
