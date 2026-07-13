@@ -285,7 +285,7 @@
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	subclass_languages = list(/datum/language/grenzelhoftian)
 	traits_applied = list(TRAIT_INTELLECTUAL, TRAIT_STEELHEARTED, TRAIT_ALCHEMY_EXPERT)
-	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 6, "allowed_majors" = list(/datum/magic_aspect/pyromancy, /datum/magic_aspect/geomancy, /datum/magic_aspect/ferramancy), "variants" = list(/datum/magic_aspect/pyromancy = "gefechtsgelehrter", /datum/magic_aspect/geomancy = "gefechtsgelehrter", /datum/magic_aspect/ferramancy = "gefechtsgelehrter"), "post_aspect_spells" = list(/datum/action/cooldown/spell/message, /datum/action/cooldown/spell/magicians_brick), "ward" = TRUE)
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 6, "post_aspect_spells" = list(/datum/action/cooldown/spell/message, /datum/action/cooldown/spell/magicians_brick), "ward" = TRUE)
 	subclass_stats = list(
 		STATKEY_INT = 3,
 		STATKEY_WIL = 3,
@@ -338,6 +338,18 @@
 		)
 	ADD_TRAIT(H, TRAIT_ARCYNE, TRAIT_GENERIC)
 	H.merctype = 7
+
+	grant_grenzel_option(H)
+
+	var/list/grenzel_options = list("Fire Strike", "Meteor Strike", "Form Hammer")
+	var/grenzel_choice = input(H, "Choose your Ultimate.", "Grenzel Ultimate") as anything in grenzel_options
+	switch(grenzel_choice)
+		if("Fire Strike")
+			H.mind.AddSpell(new /datum/action/cooldown/spell/fire_strike)
+		if("Meteor Strike")
+			H.mind.AddSpell(new  /datum/action/cooldown/spell/grenzel_meteor)
+		if("Form Hammer")
+			H.mind.AddSpell(new /datum/action/cooldown/spell/form_blade/form_hammer)
 
 /datum/advclass/mercenary/grenzelhoft/arquebusier 
 	name = "Armbrustschutze Garten"

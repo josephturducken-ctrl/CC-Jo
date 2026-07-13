@@ -348,3 +348,16 @@
 			user.mind.AddSpell(new /datum/action/cooldown/spell/projectile/gravel_blast)
 		if("Soulshot")
 			user.mind.AddSpell(new /datum/action/cooldown/spell/projectile/soulshot)
+
+/proc/grant_grenzel_option(mob/living/carbon/human/user) // unified proc because atm this is spread across like 5-6 places, uughhghghghgh
+	var/list/grenzel_options = list("Fire Strike", "Meteor Strike", "Form Hammer")
+	var/grenzel_choice = tgui_input_list(user, "Choose your ultimate.", "Grenzel Ultimate", grenzel_options)
+	if(!grenzel_choice || !user.mind)
+		return
+	switch(grenzel_choice)
+		if("Fire Strike")
+			user.mind.AddSpell(new /datum/action/cooldown/spell/fire_strike)
+		if("Meteor Strike")
+			user.mind.AddSpell(new /datum/action/cooldown/spell/grenzel_meteor)
+		if("Form Hammer")
+			user.mind.AddSpell(new /datum/action/cooldown/spell/form_blade/form_hammer)
