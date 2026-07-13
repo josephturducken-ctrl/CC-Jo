@@ -43,6 +43,11 @@ type Data = {
   manifests: Manifest[];
   middleman_cut_percent: number;
   kinship_sell_pct?: number;
+  can_manage?: BooleanLike;
+  duty_suspended?: BooleanLike;
+  duty_rate_pct?: number;
+  duty_collected_here?: number;
+  duty_evaded_here?: number;
 };
 
 const TAG_VICTUALLING_FRESH = 'victualling_fresh';
@@ -302,6 +307,50 @@ const ManifestSection = (props: {
   );
 };
 
+const Underledger = () => {
+  const { data, act } = useBackend<Data>();
+  const {
+    duty_suspended,
+    duty_rate_pct = 0,
+    duty_collected_here = 0,
+    duty_evaded_here = 0,
+  } = data;
+  return (
+    <div style={{ ...cardStyle, marginTop: '14px', borderColor: SEAL_AMBER }}>
+      <div style={{ ...sectionHeaderStyle, color: SEAL_AMBER }}>Underledger</div>
+      <div
+        style={{
+          fontFamily: SERIF,
+          fontSize: '11px',
+          fontStyle: 'italic',
+          color: INK_SOFT,
+          marginBottom: '6px',
+        }}
+      >
+        Export duty runs {duty_rate_pct}%. Dodging keeps it off the goods
+        sold here. The shortfall is only known to the Merchant or Shophand. The Crown must guess.
+      </div>
+      <button
+        type="button"
+        style={inkButtonStyle({ color: duty_suspended ? "#a00" : undefined })}
+        onClick={() => act('toggle_duty')}
+      >
+        Crown Duty: {duty_suspended ? 'DODGING' : 'PAYING'}
+      </button>
+      <div
+        style={{
+          fontFamily: SERIF,
+          fontSize: '11px',
+          color: INK_SOFT,
+          marginTop: '6px',
+        }}
+      >
+        Paid here: {duty_collected_here}m. Dodged here: {duty_evaded_here}m.
+      </div>
+    </div>
+  );
+};
+
 export const ShipFulfillment = () => {
   const { data, act } = useBackend<Data>();
   const { manifests, middleman_cut_percent } = data;
@@ -343,6 +392,7 @@ export const ShipFulfillment = () => {
               />
             ))
           )}
+          {!!can_manage && <Underledger />}
         </div>
       </Window.Content>
     </Window>
