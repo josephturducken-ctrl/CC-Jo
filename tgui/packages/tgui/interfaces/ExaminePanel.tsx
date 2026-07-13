@@ -4,7 +4,7 @@ import { Box, Button, Section, Stack } from 'tgui-core/components';
 import { useBackend } from '../backend';
 import { PageButton } from '../components/PageButton';
 import { Window } from '../layouts';
-import { ExaminePanelData } from './ExaminePanelData';
+import type { ExaminePanelData } from './ExaminePanelData';
 import { FlavorTextPage, ImageGalleryPage } from './ExaminePanelPages';
 
 enum Page {

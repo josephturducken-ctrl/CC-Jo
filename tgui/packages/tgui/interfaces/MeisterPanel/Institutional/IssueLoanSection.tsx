@@ -13,7 +13,7 @@ import {
   tabBarStyle,
   tabStyle,
 } from '../../common/parchment';
-import { type FundEntry, type TabProps } from '../types';
+import type { FundEntry, TabProps } from '../types';
 
 type LoanTier = 'personal' | 'indenture';
 
@@ -91,9 +91,7 @@ export const IssueLoanSection = ({
                       marginRight: 4,
                       fontWeight: target === t.id ? 'bold' : 'normal',
                       background:
-                        target === t.id
-                          ? 'var(--p-tab-active-bg)'
-                          : BUTTON_BG,
+                        target === t.id ? 'var(--p-tab-active-bg)' : BUTTON_BG,
                     }}
                     onClick={() => setTarget(t.id)}
                   >
@@ -137,10 +135,7 @@ export const IssueLoanSection = ({
                 ...inkButtonStyle({}),
                 marginRight: 4,
                 fontWeight: term === t ? 'bold' : 'normal',
-                background:
-                  term === t
-                    ? 'var(--p-tab-active-bg)'
-                    : BUTTON_BG,
+                background: term === t ? 'var(--p-tab-active-bg)' : BUTTON_BG,
               }}
               onClick={() => setTerm(t)}
             >
@@ -160,10 +155,7 @@ export const IssueLoanSection = ({
                 ...inkButtonStyle({}),
                 marginRight: 4,
                 fontWeight: rate === r ? 'bold' : 'normal',
-                background:
-                  rate === r
-                    ? 'var(--p-tab-active-bg)'
-                    : BUTTON_BG,
+                background: rate === r ? 'var(--p-tab-active-bg)' : BUTTON_BG,
               }}
               onClick={() => setRate(r)}
             >

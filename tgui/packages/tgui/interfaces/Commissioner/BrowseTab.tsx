@@ -181,7 +181,9 @@ export const BrowseTab = (props: {
 
         {data.ingots.length > 0 && (
           <>
-            <div style={{ ...railHeaderStyle, marginTop: '12px' }}>Material</div>
+            <div style={{ ...railHeaderStyle, marginTop: '12px' }}>
+              Material
+            </div>
             <button
               type="button"
               style={railRowStyle(ingot === ALL)}

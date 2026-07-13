@@ -1,7 +1,7 @@
 import { useSetAtom } from 'jotai';
 import type { PropsWithChildren } from 'react';
 import { Button, Icon } from 'tgui-core/components';
-import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from 'tgui-core/constants';
+import { UI_INTERACTIVE, UI_UPDATE } from 'tgui-core/constants';
 import { type BooleanLike, classes } from 'tgui-core/react';
 import { toTitleCase } from 'tgui-core/string';
 import { kitchenSinkAtom } from '../events/store';
@@ -52,7 +52,7 @@ export function TitleBar(props: TitleBarProps) {
     <div className={classes(['TitleBar', className])}>
       <div
         className="TitleBar__dragZone"
-        onMouseDown={(e) => fancy && onDragStart && onDragStart(e)}
+        onMouseDown={(e) => fancy && onDragStart?.(e)}
       />
       {status === undefined ? (
         <Icon className="TitleBar__statusIcon" name="tools" opacity={0.5} />

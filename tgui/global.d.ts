@@ -206,6 +206,6 @@ interface Window {
   serverStorage: Storage;
 
   // TGUI stuff
-  
+
   __chatRenderer__: ChatRenderer;
 }
