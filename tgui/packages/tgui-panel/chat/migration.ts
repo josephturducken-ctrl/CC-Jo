@@ -6,7 +6,7 @@ import {
   currentPageIdAtom,
   mainPage,
   versionAtom,
-} from './atoms';
+} from './atom';
 import { saveChatState } from './helpers';
 import { chatRenderer } from './renderer';
 import {

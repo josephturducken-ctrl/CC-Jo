@@ -64,7 +64,8 @@ export const IndictmentList = (props: { crimes: string[] }) => {
       <ul style={indictmentList}>
         {props.crimes.map((c, i) => (
           <li key={i} style={indictmentItem}>
-            {capitalize(c)}{';'}
+            {capitalize(c)}
+            {';'}
           </li>
         ))}
       </ul>

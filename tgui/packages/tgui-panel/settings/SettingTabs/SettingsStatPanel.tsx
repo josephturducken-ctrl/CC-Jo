@@ -6,8 +6,9 @@ import {
   Slider,
   Stack,
 } from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
 import { capitalize } from 'tgui-core/string';
-import { useSettings } from '../use-settings';
+import { useSettings } from './use-settings';
 
 const tabViews = ['default', 'classic', 'scrollable'];
 
@@ -24,7 +25,7 @@ export function SettingsStatPanel(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Tabs" verticalAlign="middle" labelWrap>
+            <LabeledList.Item label="Tabs" verticalAlign="middle">
               {tabViews.map((view) => (
                 <Button
                   key={view}
@@ -36,7 +37,7 @@ export function SettingsStatPanel(props) {
                 </Button>
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Font size" labelWrap>
+            <LabeledList.Item label="Font size">
               <Stack.Item grow>
                 {statLinked ? (
                   <LinkedToChat />
@@ -49,7 +50,7 @@ export function SettingsStatPanel(props) {
                     maxValue={32}
                     value={statFontSize}
                     unit="px"
-                    format={(value) => value.toFixed()}
+                    format={(value) => toFixed(value)}
                     onChange={(e, value) =>
                       updateSettings({ statFontSize: value })
                     }

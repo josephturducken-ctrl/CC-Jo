@@ -8,11 +8,13 @@ import { Stack } from 'tgui-core/components';
 
 export function Notifications(props) {
   const { children } = props;
+
   return <div className="Notifications">{children}</div>;
 }
 
 function NotificationsItem(props) {
   const { rightSlot, children } = props;
+
   return (
     <Stack align="center" className="Notification">
       <Stack.Item className="Notification__content" grow>

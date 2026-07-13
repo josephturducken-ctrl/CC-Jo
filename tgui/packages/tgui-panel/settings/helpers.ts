@@ -16,24 +16,14 @@ let overrideFontSize: string;
 
 /** Updates the global CSS rule to override the font family and size. */
 function updateGlobalOverrideRule(): void {
-  let fontFamily = '';
+  let fontFamily: string | null = null;
 
   if (overrideFontFamily !== undefined) {
-    fontFamily = `font-family: ${overrideFontFamily} !important;`;
+    fontFamily = overrideFontFamily;
   }
 
-  const constructedRule = `body * :not(.Icon) {
-    ${fontFamily}
-  }`;
-
-  if (overrideRule === undefined) {
-    overrideRule = document.createElement('style');
-    document.querySelector('head')!.append(overrideRule);
-  }
-
-  // no other way to force a CSS refresh other than to update its innerText
-  overrideRule.innerText = constructedRule;
-
+  document.documentElement.style.setProperty('font-family', fontFamily);
+  document.body.style.setProperty('font-family', fontFamily);
   document.body.style.setProperty('font-size', overrideFontSize);
 }
 
@@ -69,12 +59,6 @@ function setStatTabsStyle(style: string): void {
 }
 
 export function generalSettingsHandler(update: SettingsState): void {
-  // Set client theme
-  const theme = update?.theme;
-  if (theme) {
-    setClientTheme(theme);
-  }
-
   // Update stat panel settings
   setStatTabsStyle(update.statTabsStyle);
 
