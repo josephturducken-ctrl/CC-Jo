@@ -817,7 +817,7 @@
 
 /obj/effect/proc_holder/spell/invoked/psydonabsolve/cast(list/targets, mob/living/user)
 
-	if(!ishuman(targets[1]) || HAS_TRAIT(targets[1], TRAIT_IRONMAN)) //Caustic Edit - Lets just... not Absolve Constructs?
+	if(!ishuman(targets[1]))
 		to_chat(user, span_warning("ABSOLUTION is for those who walk in HIS image!"))
 		revert_cast()
 		return FALSE
@@ -828,6 +828,13 @@
 
 	var/mob/living/carbon/human/H = targets[1]
 	var/mob/living/carbon/human/C = user
+
+	//Caustic Edit - Lets just... not Absolve Constructs?
+	if(HAS_TRAIT(targets[1], TRAIT_IRONMAN))
+		to_chat(user, span_warning("Those of metal cannot accept the absolution of the flesh."))
+		revert_cast()
+		return FALSE
+	//Caustic Edit End
 
 	// CONSEQUENCE WARNING CHECKS
 
