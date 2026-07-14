@@ -366,7 +366,7 @@
 			if(amt)
 				SStreasury.economic_output += true_value
 				var/bounty_msg = "+[amt] from [R.name] bounty"
-				if(R.mint_item)
+				if(R.transport_item)
 					bounty_msg = "+[amt] from [R.name] bounty (Crown's share: +[mint_amt]m)"
 				if(crown_delta != 0)
 					var/seller_delta = amt - quality_baseline
