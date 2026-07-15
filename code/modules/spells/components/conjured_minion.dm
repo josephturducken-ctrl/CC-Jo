@@ -67,8 +67,7 @@
 	var/mob/living/summoner = summoner_ref?.resolve()
 	if(!summoner || summoner.stat == DEAD)
 		return
-	var/shock = (recoil_severity == CONJURE_RECOIL_FULL)
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(apply_conjure_recoil), summoner, recoil_energy_floor, recoil_severity, 1, shock, recoil_stamina_only)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(apply_conjure_recoil), summoner, recoil_energy_floor, recoil_severity, 1, TRUE, recoil_stamina_only)
 
 /datum/component/conjured_minion/proc/check_leash(atom/movable/source, atom/newloc)
 	SIGNAL_HANDLER
@@ -86,7 +85,7 @@
 		return
 	if(M.ckey && world.time > next_leash_message)
 		next_leash_message = world.time + 3 SECONDS
-		to_chat(M, span_warning("The tether binding you to your abandoned flesh draws taut - you can stray no further from your body."))
+		to_chat(M, span_warning("The tether binding you to your body stops you from moving further.."))
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 /datum/component/conjured_minion/proc/check_tether()
