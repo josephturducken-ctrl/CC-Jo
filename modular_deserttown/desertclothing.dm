@@ -530,6 +530,7 @@
 	icon_state = "thong"
 	item_state = "thong"
 	body_parts_covered = GROIN
+	flags_inv = HIDECROTCHFRONT //Caustic Edit - Change this from HIDECROTCH to HIDECROTCHFRONT to show ass still!
 
 /datum/crafting_recipe/roguetown/sewing/thong
 	name = "thong"
