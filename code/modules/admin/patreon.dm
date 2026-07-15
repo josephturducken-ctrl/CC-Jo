@@ -230,7 +230,7 @@ GLOBAL_LIST_EMPTY(hiderole)
 GLOBAL_LIST_EMPTY(anonymize)
 
 /mob/dead/new_player/verb/anonymize()
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	set name = "Anonymize"
 	if(!client)
 		return

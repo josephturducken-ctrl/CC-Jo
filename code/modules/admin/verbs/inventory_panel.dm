@@ -316,7 +316,7 @@
 
 /datum/admins/proc/admin_show_inventory(mob/living/M in GLOB.mob_list)
 	set name = "Show Inventory Panel"
-	set category = "🕮 GM"
+	set category = "🕮 GM.Info"
 
 	if(!check_rights(R_ADMIN))
 		return

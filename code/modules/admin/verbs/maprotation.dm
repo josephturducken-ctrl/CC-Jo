@@ -10,7 +10,7 @@
 	SSmapping.maprotate()
 
 /client/proc/adminchangemap()
-	set category = "🖳︎ SERVER"
+	set category = "🖳︎ SERVER.Management"
 	set name = "Change Map"
 	var/list/maprotatechoices = list()
 	for (var/map in config.maplist)

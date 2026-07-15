@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(hellspawns)
 
 /mob/dead/observer/say_verb(message as text)
 	set name = "Say"
-	set category = "IC"
+	set category = "IC.Actions"
 	set hidden = 1
 
 #ifdef MATURESERVER

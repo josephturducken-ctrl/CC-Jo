@@ -303,7 +303,7 @@
 
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
-	set category = "RoleUnique.Interrogation"
+	set category = "IC.Inquisition"
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
 	var/obj/item/S = get_inactive_held_item()
@@ -369,7 +369,7 @@
 
 /mob/living/carbon/human/proc/torture_victim()
 	set name = "Reveal Allegiance"
-	set category = "RoleUnique.Interrogation"
+	set category = "IC.Inquisition"
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
 	var/obj/item/S = get_inactive_held_item()

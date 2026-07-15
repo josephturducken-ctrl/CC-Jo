@@ -139,7 +139,7 @@
 #ifdef TESTSERVER
 
 /client/verb/bloodnda()
-	set category = "Debug.Test"
+	set category = "🛠 DEBUG.Testing"
 	set name = "bloodnda"
 	set desc = ""
 

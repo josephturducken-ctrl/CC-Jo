@@ -1,6 +1,6 @@
 /client/proc/admin_spread_effect()
 	set name = "Spread Effect"
-	set category = "🕮 GM"
+	set category = "🕮 GM.Actions"
 
 	if(!check_rights(R_ADMIN))
 		return

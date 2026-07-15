@@ -714,7 +714,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		client.rescale_view(input, 15, (max_view*2)+1)
 
 /mob/dead/observer/verb/boo()
-	set category = "Ghost"
+	set category = "SPIRIT"
 	set name = "Boo!"
 	set desc= "Scare your crew members because of boredom!"
 
@@ -813,7 +813,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				client.images |= (GLOB.ghost_images_simple-ghostimage_simple)
 
 /mob/dead/observer/verb/possess()
-	set category = "Ghost"
+	set category = "SPIRIT"
 	set name = "Possess!"
 	set desc= "Take over the body of a mindless creature!"
 

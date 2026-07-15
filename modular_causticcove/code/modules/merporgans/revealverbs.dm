@@ -1,7 +1,7 @@
 /mob/living/carbon/verb/reveal_bodypart()
 	set name = "Reveal Bodypart"
 	set desc = "Toggles between always showing or hiding your chosen bodypart, regardless of clothing worn."
-	set category = "IC"
+	set category = "IC.Actions"
 
 	var/list/choices = list("Penis", "Vagina", "Breasts", "Testicles", "Butt", "Belly")
 	var/chosen = tgui_input_list(src, "Reveal what part?", "Exhibitionist~", choices)

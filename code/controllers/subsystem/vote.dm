@@ -770,7 +770,7 @@ SUBSYSTEM_DEF(vote)
 	generated_actions = list()
 
 /mob/verb/vote()
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set name = "Vote"
 	SSvote.show_vote(client)
 

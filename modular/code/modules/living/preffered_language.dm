@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(preferred_ui_languages, build_preferred_ui_languages())
 
 /client/verb/change_prefered_language()
 	set name = "Change Preferred TGUI Language"
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set desc = "Change your preferred TGUI language for multilingual interfaces."
 
 	var/list/language_choices = GLOB.preferred_ui_languages

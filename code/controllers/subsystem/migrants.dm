@@ -606,7 +606,7 @@ SUBSYSTEM_DEF(migrants)
 	return migrants
 
 /client/proc/admin_force_next_migrant_wave()
-	set category = "🕮 GM"
+	set category = "🕮 GM.Events"
 	set name = "Force Migrant Wave"
 	if(!holder)
 		return

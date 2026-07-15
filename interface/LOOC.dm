@@ -18,14 +18,14 @@
 /client/verb/looc(msg as text)
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
+	set category = "OOC.Chat"
 
 	do_looc(msg, FALSE)
 
 /client/verb/loocwp(msg as text)
 	set name = "LOOC (Wall Pierce)"
 	set desc = "Local OOC, seen by all in range."
-	set category = "OOC"
+	set category = "OOC.Chat"
 
 	do_looc(msg, TRUE)
 
