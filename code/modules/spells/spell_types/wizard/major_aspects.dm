@@ -192,6 +192,7 @@
 	)
 	fixed_spells = list(
 		/datum/action/cooldown/spell/projectile/arcyne_volley,
+		/datum/action/cooldown/spell/telegraphed_strike/crossing_blast,
 		/datum/action/cooldown/spell/void_beam,
 		/datum/action/cooldown/spell/arcyne_burst,
 		/datum/action/cooldown/spell/circumdatum,
