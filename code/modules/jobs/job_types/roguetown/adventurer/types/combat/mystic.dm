@@ -19,7 +19,7 @@
 	subclass_skills = list(
 		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE, 
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
@@ -114,16 +114,17 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	traits_applied = list(TRAIT_SEEDKNOW, TRAIT_ARCYNE, TRAIT_ALCHEMY_EXPERT)
 	subclass_stats = list(
+			STATKEY_STR = -1,
 			STATKEY_INT = 2,
-			STATKEY_CON = 2,
-			STATKEY_WIL = 2,
+			STATKEY_CON = 3,
+			STATKEY_WIL = 3,
 	)
 	age_mod = /datum/class_age_mod/mystic
 	subclass_mage_aspects = list("mastery" = FALSE, "major" = 0, "minor" = 2, "utilities" = 4, "locked_aspects" = list(/datum/magic_aspect/lesser_augmentation))
 	subclass_skills = list(
 		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE, //limited at apprentice, they have tools to reduce damage taken and slowing down bleeding
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
@@ -240,18 +241,17 @@
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	traits_applied = list(TRAIT_SEEDKNOW, TRAIT_ARCYNE, TRAIT_ALCHEMY_EXPERT)
 	subclass_stats = list(
-			STATKEY_STR = 1,
-			STATKEY_PER = 1,
+			STATKEY_PER = 2,
 			STATKEY_INT = 1,
-			STATKEY_CON = 1,
-			STATKEY_WIL = 1,
+			STATKEY_CON = 2,
+			STATKEY_WIL = 2,
 	)
 	age_mod = /datum/class_age_mod/mystic
 	subclass_mage_aspects = list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 2)
 	subclass_skills = list(
 		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
@@ -285,6 +285,7 @@
 			if("Shortsword + Shield")
 				r_hand = /obj/item/rogueweapon/sword/short
 				beltr = /obj/item/rogueweapon/scabbard/sword
+				backr = /obj/item/rogueweapon/shield/wood
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 			if("Quarterstaff")
@@ -313,6 +314,7 @@
 	C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_WITCH, devotion_limit = CLERIC_REQ_1)
 	if(H.mind)
 		H.mind.RemoveSpell(/datum/action/cooldown/spell/miracle/bloodmiracle)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/selfbuff)
 	switch(H.patron?.type)
 		if(/datum/patron/old_god)
 			id = /obj/item/clothing/neck/roguetown/psicross
