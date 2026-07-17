@@ -117,6 +117,9 @@
 #define SWINGDELAY_CANCEL 3 //We have -no- defense during it, and it can be interrupted if we are hit.
 #define SWINGDELAY_CANCELSLOW 4	//Same as cancel but our speed is also hardset to 10 for the delay.
 
+#define SWINGDELAY_RECOVERY_PENALTY 30	// Post cast defense penalty in deciseconds
+#define SWINGDELAY_RECOVERY_CANCEL 50	// Ditto
+
 //Grab levels
 #define GRAB_PASSIVE				0
 #define GRAB_AGGRESSIVE				1
@@ -371,6 +374,12 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define BIND_HEAD 5
 #define BIND_TORSO 6
 #define BIND_NECK 7
+
+/* SWIFT BALANCE DEFINES */
+#define SWIFTCAP_CHEST 10
+#define SWIFTCAP_LIMBS 25
+#define SWIFTCAP_PRECISE 45
+#define STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL -2
 
 /* TEMPO DEFINES */
 #define TEMPO_CULL_DELAY 	12 SECONDS	//Interval for checking our tempo lists. Only relevant to player mobs with TRAIT_TEMPO

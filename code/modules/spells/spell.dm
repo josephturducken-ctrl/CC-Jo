@@ -916,6 +916,8 @@ GLOBAL_LIST_INIT(action_spells, typesof(/datum/action/cooldown/spell)) //Caustic
 		return FALSE
 	if(target == (ranged_ability_user || action?.owner))
 		return FALSE
+	if(args.len < 3 && ispath(associated_skill, /datum/skill/magic/arcane))
+		attacker = ranged_ability_user || action?.owner
 	return target.guard_deflect_spell(name, no_message, attacker)
 
 /obj/effect/proc_holder/spell/proc/generate_wiki_html(mob/user)

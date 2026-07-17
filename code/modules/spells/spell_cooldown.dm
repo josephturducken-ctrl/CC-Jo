@@ -142,6 +142,8 @@
 	var/charge_swingdelay_type = SWINGDELAY_NORMAL
 	/// If nonzero, overrides the charge swingdelay penalty/disrupt duration (deciseconds) instead of charge_time + 20.
 	var/charge_swingdelay_duration = 0
+	/// If nonzero, overrides the post-cast recovery duration (deciseconds). 0 = tier default (PENALTY 3s / CANCEL 5s).
+	var/charge_recovery_duration = 0
 	/// Whether we're currently charging the spell.
 	var/currently_charging = FALSE
 	/// Whether the charge bar has completed and the spell is being held ready. While TRUE, hold_drain bleeds per process tick.
