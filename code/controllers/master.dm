@@ -121,7 +121,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	log_world("Shutdown complete")
 
 /client/proc/cmd_controller_view_ui()
-	set category = "Debug"
+	set category = "🛠 DEBUG.Logs"
 	set name = "Controller Overview"
 	set desc = "View the current states of the Subsystem Controllers."
 	if(!check_rights(R_SERVER|R_DEBUG))

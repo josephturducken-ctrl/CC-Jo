@@ -1,5 +1,5 @@
 /client/proc/fix_next_move()
-	set category = "🛠 DEBUG.!! Dangerous !!"
+	set category = "🛠 DEBUG.Warnting - Dangerous"
 	set name = "Unfreeze Everyone"
 	var/largest_move_time = 0
 	var/largest_click_time = 0

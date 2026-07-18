@@ -4,6 +4,7 @@ import { Window } from 'tgui/layouts';
 import { Box, Section, Stack, TextArea } from 'tgui-core/components';
 import { isEscape, KEY } from 'tgui-core/keys';
 import type { BooleanLike } from 'tgui-core/react';
+
 import { InputButtons } from './common/InputButtons';
 import { Loader } from './common/Loader';
 
@@ -43,7 +44,7 @@ export const TextInputModal = (props) => {
 
   const [input, setInput] = useState(placeholder || '');
 
-  function onType(value: string) {
+  const onType = (value: string) => {
     if (value === input) {
       return;
     }
@@ -51,7 +52,7 @@ export const TextInputModal = (props) => {
       ? sanitizeMultiline(value)
       : removeAllSkiplines(value);
     setInput(sanitizedInput);
-  }
+  };
 
   const visualMultiline = multiline || input.length >= 30;
   // Dynamically changes the window height based on the message.
@@ -63,7 +64,6 @@ export const TextInputModal = (props) => {
     (visualMultiline ? 75 : 0) +
     (message.length && large_buttons ? 5 : 0);
   if (bigmodal) windowHeight = 425; // Override and just make a big modal for FT / OOC Notes
-
   const windowWidth = bigmodal ? 530 : 325;
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
@@ -74,11 +74,6 @@ export const TextInputModal = (props) => {
       act('cancel');
     }
   }
-
-  // This is the length of the input in terms of unicode code points.
-  // Should be equivalent to what length_char would output for the same string in BYOND.
-  const char_length = [...input].length;
-
   return (
     <Window title={title} width={windowWidth} height={windowHeight}>
       {timeout && <Loader value={timeout} />}
@@ -93,7 +88,6 @@ export const TextInputModal = (props) => {
                 autoFocus
                 autoSelect
                 fluid
-                spellcheck={!!spellcheck}
                 userMarkup={{ u: '_', i: '|', b: '+' }}
                 height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
                 maxLength={max_length}

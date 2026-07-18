@@ -48,7 +48,7 @@ type tm_static = {
 }
 
 type merchant_supply_pack_cat = {
-  
+
 }
 
 
@@ -76,7 +76,7 @@ export const Hermes = (props: any, context: any) => {
     act("addToCart", { pckpath : pck.path });
   };
   const removeFromCart = (pck : merchant_supply_pack) => {
-    
+
   };
 
 
@@ -188,7 +188,7 @@ export const Hermes = (props: any, context: any) => {
                           })
                         }
                       >
-                        Send Letter
+                        {isFree ? 'Send Letter (Free)' : 'Send Letter'}
                       </Button>
                     </Stack.Item>
                     {has_tube && (
@@ -215,7 +215,7 @@ export const Hermes = (props: any, context: any) => {
             </Section>
           </Stack.Item>
           {
-            packsByCat && 
+            packsByCat &&
             (
             <Stack.Item>
               <Collapsible title="Alternatively... you could make a few deals....">
@@ -223,7 +223,7 @@ export const Hermes = (props: any, context: any) => {
                 <Collapsible title="Order a drop...">
                   <Collapsible title="Current cart">
                    {/* JSON.stringify(travellingmerchant?.currentcart, null, 4)*/}
-           {        
+           {
                       Object.keys(travellingmerchant!.currentcart).map((key) => (
                         <Stack scrollable vertical key={key}>
                         {
@@ -232,29 +232,29 @@ export const Hermes = (props: any, context: any) => {
                                   <SupplyPackSection pack={travellingmerchant!.currentcart[key][pacckey]} on_buy={() => removeFromCart(travellingmerchant!.currentcart[key][pacckey])} on_buy_txt='Remove from drop' />
                               </Stack.Item>
                           ))
-                        } 
-                          
+                        }
+
                         </Stack>
                   ))
-          } 
+          }
                   </Collapsible>
                   {Object.keys(packsByCat).map((key) => (
                     <Stack.Item key={key} style={{ marginLeft: '20px' }}>
                       <Collapsible title={key} style={{ backgroundColor: travellingmerchant!.unlockedCats.includes(key) ? "" : "grey" }}>
                         <Stack scrollable vertical>
-                        {travellingmerchant!.unlockedCats.includes(key) ? 
-                            
+                        {travellingmerchant!.unlockedCats.includes(key) ?
+
                               Object.keys(packsByCat[key]).map((pacckey) => (
                                 <Stack.Item key={pacckey} style={{ marginLeft: '20px' }}>
                                     <SupplyPackSection pack={packsByCat[key][pacckey]} budget={travellingmerchant!.favours} currency='Favours' on_buy={() => addToCart(packsByCat[key][pacckey])} on_buy_txt='Add to drop' />
                                 </Stack.Item>
                               ))
-                              
-                            
-                          : 
+
+
+                          :
                           (travellingmerchant!.catunlockspending > 0 ? <Button>Contract supplier</Button> : <Button disabled>Opportunities await...</Button>)
-                          } 
-                          
+                          }
+
                         </Stack>
                       </Collapsible>
                     </Stack.Item>
@@ -263,7 +263,7 @@ export const Hermes = (props: any, context: any) => {
                 </Collapsible>
               </Collapsible>
             </Stack.Item>)
-            
+
           }
         </Stack>
         }
