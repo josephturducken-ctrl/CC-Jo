@@ -447,6 +447,17 @@ export const TradeModal = (props: TradeModalProps) => {
               {quote ? `${quote.balance_after}m` : '...'}
             </span>
           </div>
+          <div style={lineStyle}>
+            <span style={lineLabelStyle}>Stockpile after</span>
+            <span
+              style={{
+                ...lineValueStyle,
+                color: isImport ? SEAL_GREEN : INK,
+              }}
+            >
+              {quote ? `${quote.stockpile_after} units` : '...'}
+            </span>
+          </div>
           <div
             style={{
               ...lineStyle,

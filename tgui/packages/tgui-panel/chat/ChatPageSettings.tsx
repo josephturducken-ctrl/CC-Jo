@@ -38,7 +38,7 @@ export function ChatPageSettings(props) {
             />
           </Stack.Item>
         )}
-        <Stack.Item grow>
+        <Stack.Item grow ml={0.5}>
           <Input
             fluid
             value={page.name}
@@ -110,4 +110,4 @@ export function ChatPageSettings(props) {
       </Section>
     </Section>
   );
-};
+}

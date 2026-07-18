@@ -1,12 +1,12 @@
 import { storage } from 'common/storage';
 import { store } from '../events/store';
 import {
-    allChatAtom,
-    chatLoadedAtom,
-    chatPagesAtom,
-    chatPagesRecordAtom,
-    currentPageAtom,
-    scrollTrackingAtom,
+  allChatAtom,
+  chatLoadedAtom,
+  chatPagesAtom,
+  chatPagesRecordAtom,
+  currentPageAtom,
+  scrollTrackingAtom,
 } from './atom';
 import { MAX_PERSISTED_MESSAGES } from './constants';
 import { canPageAcceptType, serializeMessage } from './model';

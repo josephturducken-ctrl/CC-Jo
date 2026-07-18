@@ -46,7 +46,7 @@ export function ChatTabs(props) {
           })}
         </Tabs>
       </Stack.Item>
-      <Stack.Item ml={1}>
+      <Stack.Item>
         <Button
           color="transparent"
           icon="plus"

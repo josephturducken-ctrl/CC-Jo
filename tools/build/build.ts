@@ -110,6 +110,7 @@ export const DmTarget = new Juke.Target({
     'tgui/public/tgui.html',
     'modular/**',
     'modular_causticcove/**',
+    'modular_ochrevalley/**',
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
@@ -175,7 +176,7 @@ export const BunTarget = new Juke.Target({
   parameters: [CiParameter],
   inputs: ['tgui/**/package.json'],
   executes: () => {
-    return bun('install', '--ignore-scripts');
+    return bun('install', '--ignore-scripts'); // '--frozen-lockfile',
   },
 });
 

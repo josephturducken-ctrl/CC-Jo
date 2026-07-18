@@ -1,6 +1,13 @@
 import { RecoveryAddendum } from './HumanoidWrit';
+import { RewardClause } from './RewardClause';
 import { SealLine } from './Seals';
-import { capitalize, caputLupinum, indictmentItem, indictmentList, writParagraph } from './shared';
+import {
+  capitalize,
+  caputLupinum,
+  indictmentItem,
+  indictmentList,
+  writParagraph,
+} from './shared';
 
 export const DrowWrit = (props: {
   realm: string;
@@ -13,6 +20,7 @@ export const DrowWrit = (props: {
   reward: number;
   levyRate: number;
   levyExempt: boolean;
+  guildCutRate: number;
   issuedBy?: string;
   issuedOn?: string | null;
   bearer?: string;
@@ -32,6 +40,7 @@ export const DrowWrit = (props: {
     reward,
     levyRate,
     levyExempt,
+    guildCutRate,
     issuedBy,
     issuedOn,
     bearer,
@@ -40,8 +49,6 @@ export const DrowWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const showLevy = !levyExempt && levyRate > 0;
-  const net = showLevy ? Math.round(reward * (1 - levyRate)) : reward;
   const folk = namePlural || 'drow';
   const band = groupWord || 'patrol';
 

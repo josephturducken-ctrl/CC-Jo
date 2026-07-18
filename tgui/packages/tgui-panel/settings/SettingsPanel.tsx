@@ -13,42 +13,42 @@ import { TextHighlightSettings } from './TextHighlight';
 import { useSettings } from './use-settings';
 
 export function SettingsPanel(props) {
-    const {
-        settings: { view },
-        updateSettings,
-    } = useSettings();
-    const { activeTab } = view;
+  const {
+    settings: { view },
+    updateSettings,
+  } = useSettings();
+  const { activeTab } = view;
 
-    return (
-        <Stack fill>
-            <Stack.Item>
-                <Section fitted fill minHeight="8em">
-                    <Tabs vertical>
-                        {SETTINGS_TABS.map((tab) => (
-                            <Tabs.Tab
-                                key={tab.id}
-                                selected={tab.id === activeTab}
-                                onClick={() =>
-                                    updateSettings({
-                                        view: {
-                                            ...view,
-                                            activeTab: tab.id,
-                                        },
-                                    })
-                                }
-                            >
-                                {tab.name}
-                            </Tabs.Tab>
-                        ))}
-                    </Tabs>
-                </Section>
-            </Stack.Item>
-            <Stack.Item grow minWidth={0}>
-                {activeTab === 'general' && <SettingsGeneral />}
-                {activeTab === 'chatPage' && <ChatPageSettings />}
-                {activeTab === 'textHighlight' && <TextHighlightSettings />}
-                {activeTab === 'statPanel' && <SettingsStatPanel />}
-            </Stack.Item>
-        </Stack>
-    );
+  return (
+    <Stack fill>
+      <Stack.Item>
+        <Section fitted fill minHeight="8em">
+          <Tabs vertical>
+            {SETTINGS_TABS.map((tab) => (
+              <Tabs.Tab
+                key={tab.id}
+                selected={tab.id === activeTab}
+                onClick={() =>
+                  updateSettings({
+                    view: {
+                      ...view,
+                      activeTab: tab.id,
+                    },
+                  })
+                }
+              >
+                {tab.name}
+              </Tabs.Tab>
+            ))}
+          </Tabs>
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow minWidth={0}>
+        {activeTab === 'general' && <SettingsGeneral />}
+        {activeTab === 'chatPage' && <ChatPageSettings />}
+        {activeTab === 'textHighlight' && <TextHighlightSettings />}
+        {activeTab === 'statPanel' && <SettingsStatPanel />}
+      </Stack.Item>
+    </Stack>
+  );
 }

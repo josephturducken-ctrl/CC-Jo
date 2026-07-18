@@ -1,4 +1,5 @@
 import { RecoveryAddendum } from './HumanoidWrit';
+import { RewardClause } from './RewardClause';
 import { SealLine } from './Seals';
 import { writParagraph } from './shared';
 
@@ -10,6 +11,7 @@ export const UndeadWrit = (props: {
   reward: number;
   levyRate: number;
   levyExempt: boolean;
+  guildCutRate: number;
   issuedBy?: string;
   issuedOn?: string | null;
   bearer?: string;
@@ -26,6 +28,7 @@ export const UndeadWrit = (props: {
     reward,
     levyRate,
     levyExempt,
+    guildCutRate,
     issuedBy,
     issuedOn,
     bearer,
@@ -34,8 +37,6 @@ export const UndeadWrit = (props: {
     recoveryDestination,
     recoveryCircumstance,
   } = props;
-  const showLevy = !levyExempt && levyRate > 0;
-  const net = showLevy ? Math.round(reward * (1 - levyRate)) : reward;
   const folk = namePlural || 'unquiet dead';
   const host = groupWord || 'host';
 

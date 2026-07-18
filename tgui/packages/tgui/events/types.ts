@@ -29,7 +29,6 @@ type User = {
   observer: number;
 };
 
-
 export type Config = {
   client: Client;
   interface: IFace;

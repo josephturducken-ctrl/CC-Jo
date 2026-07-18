@@ -37,7 +37,7 @@ export function Panel(props) {
       canSuspend={false}
     >
       <Stack fill vertical>
-        <Stack.Item>
+        <Stack.Item fontSize={1.2}>
           <Section fitted>
             <Stack mr={1} align="center">
               <Stack.Item grow>
@@ -86,13 +86,13 @@ export function Panel(props) {
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>
-                {game.connectionLostAt && (
-                  <Notifications.Item rightSlot={<ReconnectButton />}>
-                    You are either AFK, experiencing lag or the connection has
-                    closed.
-                  </Notifications.Item>
-                )}
-              {settings.showReconnectWarning && game.roundRestartedAt && (
+              {game.connectionLostAt && (
+                <Notifications.Item rightSlot={<ReconnectButton />}>
+                  You are either AFK, experiencing lag or the connection has
+                  closed.
+                </Notifications.Item>
+              )}
+              {game.roundRestartedAt && (
                 <Notifications.Item>
                   The connection has been closed because the server is
                   restarting. Please wait while you automatically reconnect.
