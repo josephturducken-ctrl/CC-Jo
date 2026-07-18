@@ -13,7 +13,7 @@
 //
 /mob/living/simple_animal/proc/animal_nom(mob/living/T in living_mobs_in_view(1))
 	set name = "Animal Nom"
-	set category = "VORE" // Moving this to abilities from IC as it's more fitting there
+	set category = "VORE.Actions" // Moving this to abilities from IC as it's more fitting there
 	set desc = "Since you can't grab, you get a verb!"
 
 	if(vore_active && !voremob_loaded) // On-demand belly loading.
@@ -119,7 +119,7 @@
 
 /mob/living/simple_animal/proc/nutrition_heal()
 	set name = "Nutrition Heal"
-	set category = "Abilities.Mob"
+	set category = "IC.Actions"
 	set desc = "Slowly regenerate health using nutrition."
 
 	if(nutrition < 10)

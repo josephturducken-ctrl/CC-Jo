@@ -1125,7 +1125,11 @@ There are several things that need to be remembered:
 	remove_overlay(UNDER_ARMOR_LAYER)
 
 	var/obj/item/bodypart/taur/taur = get_taur_tail()
-	var/icon/c_mask = taur?.clip_mask
+	//Caustic Edit - Adding in the option to enable or disable the clipping mask
+	var/icon/c_mask = null
+	if(taur?.use_mask)
+		c_mask = taur?.clip_mask
+	//Caustic Edit End
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
@@ -1249,7 +1253,11 @@ There are several things that need to be remembered:
 	update_body_parts(TRUE)
 
 	var/obj/item/bodypart/taur/taur = get_taur_tail()
-	var/icon/c_mask = taur?.clip_mask
+	//Caustic Edit - Adding in the option to enable or disable the clipping mask
+	var/icon/c_mask = null
+	if(taur?.use_mask)
+		c_mask = taur?.clip_mask
+	//Caustic Edit End
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_SHIRT]
@@ -1320,7 +1328,11 @@ There are several things that need to be remembered:
 	remove_overlay(ARMORSLEEVE_LAYER)
 
 	var/obj/item/bodypart/taur/taur = get_taur_tail()
-	var/icon/c_mask = taur?.clip_mask
+	//Caustic Edit - Adding in the option to enable or disable the clipping mask
+	var/icon/c_mask = null
+	if(taur?.use_mask)
+		c_mask = taur?.clip_mask
+	//Caustic Edit End
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_ARMOR]
@@ -1393,7 +1405,11 @@ There are several things that need to be remembered:
 	remove_overlay(LEGSLEEVE_LAYER)
 
 	var/obj/item/bodypart/taur/taur = get_taur_tail()
-	var/icon/c_mask = taur?.clip_mask
+	//Caustic Edit - Adding in the option to enable or disable the clipping mask
+	var/icon/c_mask = null
+	if(taur?.use_mask)
+		c_mask = taur?.clip_mask
+	//Caustic Edit End
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_PANTS]

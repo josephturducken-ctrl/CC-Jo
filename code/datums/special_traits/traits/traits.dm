@@ -322,7 +322,7 @@
 	character.STALUC = rand(15, 20) //In other words, In the next round following the special, you are effectively lucky.
 
 //neutral
-/datum/special_trait/backproblems
+/*/datum/special_trait/backproblems //Caustic Edit - Comment out the Giant virtue cause it conflicts with the Size Scaling, and already kinda is present there?
 	name = "Giant"
 	greet_text = span_notice("I've always been called a giant. I am valued for my stature, but, this world made for smaller folk has forced me to move cautiously.")
 	req_text = "Not a kobold, verminvolk or a dwarf"
@@ -335,7 +335,7 @@
 	character.change_stat(STATKEY_SPD, -2)
 	character.transform = character.transform.Scale(1.25, 1.25)
 	character.transform = character.transform.Translate(0, (0.25 * 16))
-	character.update_transform()
+	character.update_transform()*/
 
 /datum/special_trait/atheism
 	name = "Godless"

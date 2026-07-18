@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   Box,
   Button,
+  Dropdown,
   Input,
   LabeledList,
   NumberInput,
@@ -122,6 +123,17 @@ type Blockade = {
   ref: string;
 };
 
+type BlockadeRegionOption = {
+  id: string;
+  name: string;
+  blockaded: BooleanLike;
+};
+
+type BlockadeFactionOption = {
+  id: string;
+  name: string;
+};
+
 type LedgerEntry = {
   kind: string;
   from: string;
@@ -191,6 +203,8 @@ type Data = {
   effective_player_count: number;
   live_player_count: number;
   blockades: Blockade[];
+  blockade_region_options: BlockadeRegionOption[];
+  blockade_faction_options: BlockadeFactionOption[];
   assembly: Assembly;
   bankruptcy: Bankruptcy;
   ledger: LedgerEntry[];
@@ -240,6 +254,8 @@ export const EconomicPanel = () => {
     effective_player_count,
     live_player_count,
     blockades,
+    blockade_region_options,
+    blockade_faction_options,
     assembly,
     bankruptcy,
     ledger,
@@ -260,6 +276,8 @@ export const EconomicPanel = () => {
   const [ledgerReason, setLedgerReason] = useState('');
   const [ledgerGroup, setLedgerGroup] = useState(false);
   const [ledgerPage, setLedgerPage] = useState(0);
+  const [blockadeRegion, setBlockadeRegion] = useState('');
+  const [blockadeFaction, setBlockadeFaction] = useState('');
   const LEDGER_PAGE_SIZE = 50;
   const filteredLedger = ledger.filter((e) => {
     if (ledgerKind !== 'all' && e.kind !== ledgerKind) return false;

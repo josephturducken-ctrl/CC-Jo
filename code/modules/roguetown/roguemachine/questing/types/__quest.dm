@@ -221,7 +221,20 @@ GLOBAL_LIST_EMPTY(quest_mobs)
 /datum/quest/proc/calculate_reward(turf/origin_turf, turf/target_turf)
 	var/base = get_base_reward()
 	var/additional = get_additional_reward(origin_turf, target_turf)
-	return base + additional
+	var/payout_mult = QUEST_REWARD_GLOBAL_MULT
+	var/datum/threat_region/TR = SSregionthreat.get_region(region)
+	if(TR)
+		payout_mult *= TR.payout_multiplier
+	return round((base + additional + get_difficulty_bonus()) * payout_mult)
+
+/// Flat reward sweetener keyed off difficulty, applied to every quest type at the reward chokepoint.
+/datum/quest/proc/get_difficulty_bonus()
+	switch(quest_difficulty)
+		if(QUEST_DIFFICULTY_MEDIUM)
+			return QUEST_DIFFICULTY_BONUS_MEDIUM
+		if(QUEST_DIFFICULTY_HARD)
+			return QUEST_DIFFICULTY_BONUS_HARD
+	return QUEST_DIFFICULTY_BONUS_EASY
 
 /// Calculate deposit based on difficulty
 /datum/quest/proc/calculate_deposit()

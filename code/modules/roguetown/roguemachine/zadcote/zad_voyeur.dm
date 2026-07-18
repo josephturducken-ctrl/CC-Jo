@@ -97,7 +97,7 @@
 	add_verb(src, /mob/dead/observer/screye/zadcote_voyeur/proc/end_zad_voyeur)
 
 /mob/dead/observer/screye/zadcote_voyeur/proc/end_zad_voyeur()
-	set category = "IC"
+	set category = "IC.Actions"
 	set name = "Stop Scrying"
 	set desc = "End the zad-scrying and return to your body."
 	var/obj/item/zadcage/cage = bonded_cage?.resolve()

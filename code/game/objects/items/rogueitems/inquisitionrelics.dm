@@ -462,7 +462,7 @@ Inquisitorial armory down here
 			return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/process_golgatha_rebuke(mob/living/carbon/human/attacker)
+/mob/living/carbon/human/proc/process_golgatha_rebuke(mob/living/attacker)
 	if(!has_active_golgatha())
 		return
 	if(!HAS_TRAIT(src, TRAIT_SILVER_BLESSED)) // only people who is silverblessed can use golgatha's hidden feature
@@ -477,6 +477,7 @@ Inquisitorial armory down here
 		attacker.apply_status_effect(/datum/status_effect/debuff/exposed)
 	else
 		attacker.apply_status_effect(/datum/status_effect/debuff/clickcd, 1 SECONDS)
+	
 	if(attacker.mob_biotypes & MOB_UNDEAD)
 		attacker.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 		attacker.ignite_mob()

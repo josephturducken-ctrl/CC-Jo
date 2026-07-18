@@ -307,7 +307,9 @@
 							continue
 						to_chat(user, span_danger("I've failed to craft \the [R.name]."))
 						continue
-					var/list/parts = del_reqs(R, user)
+					var/list/quality_capture = R.skip_quality ? list() : null
+					var/list/parts = del_reqs(R, user, quality_capture)
+					var/inherited_quality = quality_capture?["min_quality"]
 					if(islist(R.result))
 						var/list/L = R.result
 						for(var/IT in L)
@@ -318,7 +320,11 @@
 								var/obj/item/CI = I
 								CI.was_crafted = TRUE
 								if(CI.has_item_quality)
-									CI.apply_quality(user, R.skillcraft)
+									if(R.skip_quality)
+										if(inherited_quality != null)
+											CI.apply_quality(null, null, inherited_quality)
+									else
+										CI.apply_quality(user, R.skillcraft)
 							I.add_fingerprint(user)
 							//Remove for now but can be brought back in a later time if people want.
 							//handle_modifiers(I, user, numberoftries, R) //This handles the modifiers for crafted items! Does not work for turfs.
@@ -350,7 +356,11 @@
 								var/obj/item/CI = I
 								CI.was_crafted = TRUE
 								if(CI.has_item_quality)
-									CI.apply_quality(user, R.skillcraft)
+									if(R.skip_quality)
+										if(inherited_quality != null)
+											CI.apply_quality(null, null, inherited_quality)
+									else
+										CI.apply_quality(user, R.skillcraft)
 							I.add_fingerprint(user)
 					user.visible_message(span_notice("[user] [R.verbage] \a [R.name]!"), \
 										span_notice("I [R.verbage_simple] \a [R.name]!"))
@@ -405,7 +415,7 @@
 	del_reqs return the list of parts resulting object will receive as argument of CheckParts proc, on the atom level it will add them all to the contents, on all other levels it calls ..() and does whatever is needed afterwards but from contents list already
 */
 
-/datum/component/personal_crafting/proc/del_reqs(datum/crafting_recipe/R, mob/user)
+/datum/component/personal_crafting/proc/del_reqs(datum/crafting_recipe/R, mob/user, list/quality_out)
 	var/list/surroundings
 	var/list/Deletion = list()
 	. = list()
@@ -521,6 +531,25 @@
 				. += AM
 				Deletion -= AM
 				partlist[A] -= 1
+	if(quality_out)
+		var/min_q = null
+		for(var/atom/movable/AM in Deletion)
+			if(!isitem(AM))
+				continue
+			var/obj/item/IT = AM
+			if(!IT.has_item_quality)
+				continue
+			if(min_q == null || IT.item_quality < min_q)
+				min_q = IT.item_quality
+		for(var/atom/movable/AM in .)
+			if(!isitem(AM))
+				continue
+			var/obj/item/IT = AM
+			if(!IT.has_item_quality)
+				continue
+			if(min_q == null || IT.item_quality < min_q)
+				min_q = IT.item_quality
+		quality_out["min_quality"] = min_q
 	while(Deletion.len)
 		var/DL = Deletion[Deletion.len]
 		Deletion.Cut(Deletion.len)

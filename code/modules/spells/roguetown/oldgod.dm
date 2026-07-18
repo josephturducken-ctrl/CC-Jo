@@ -829,6 +829,13 @@
 	var/mob/living/carbon/human/H = targets[1]
 	var/mob/living/carbon/human/C = user
 
+	//Caustic Edit - Lets just... not Absolve Constructs?
+	if(HAS_TRAIT(H, TRAIT_IRONMAN))
+		to_chat(user, span_warning("Those of metal cannot accept the absolution of the flesh."))
+		revert_cast()
+		return FALSE
+	//Caustic Edit End
+
 	// CONSEQUENCE WARNING CHECKS
 
 	var/will_die = FALSE

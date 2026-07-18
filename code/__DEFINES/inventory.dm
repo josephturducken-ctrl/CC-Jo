@@ -169,6 +169,7 @@
 #define HIDETAIL		(1<<14)
 #define HIDESNOUT		(1<<15)
 #define HIDEWINGS		(1<<16)
+#define HIDECROTCHFRONT (1<<17) //Caustic Edit - Add in a flag specifically for only hiding the front of the crotch! Shows ASS still!
 
 //blocking_behavior var on clothing items
 #define BLOCKBOOTS		(1<<0)

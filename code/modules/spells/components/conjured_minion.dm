@@ -74,16 +74,27 @@
 	SIGNAL_HANDLER
 	var/mob/living/M = source
 	var/mob/living/summoner = summoner_ref?.resolve()
-	if(!summoner || summoner.z != source.z)
+	//Caustic Edit - Tweaking this to allow for being held/contained in things to not cause the summons to un-summon.
+	if(!summoner)
 		return
+	var/turf/summoner_turf
+	var/turf/summon_turf
+	if(summoner.z != source.z)
+		summoner_turf = get_turf(summoner)
+		summon_turf = get_turf(source)
+		if(summoner_turf.z != summon_turf.z)
+			return
 	var/datum/ai_controller/AC = M.ai_controller
 	if(AC && AC.blackboard[BB_TRAVEL_DESTINATION])
 		return
-	var/newdist = get_dist(newloc, summoner)
+	var/atom/comp_summoner = summoner_turf ? summoner_turf : summoner
+	var/atom/comp_summon = summon_turf ? summon_turf : source
+	var/newdist = get_dist(newloc, comp_summoner)
 	if(newdist <= leash_range)
 		return
-	if(newdist < get_dist(source, summoner))
+	if(newdist < get_dist(comp_summon, comp_summoner))
 		return
+	//Caustic Edit End
 	if(M.ckey && world.time > next_leash_message)
 		next_leash_message = world.time + 3 SECONDS
 		to_chat(M, span_warning("The tether binding you to your abandoned flesh draws taut - you can stray no further from your body."))
@@ -94,11 +105,25 @@
 	if(QDELETED(M) || dismissing)
 		return
 	var/mob/living/summoner = summoner_ref?.resolve()
-	validate_combat_target(M, summoner)
-	if(summoner && !QDELETED(summoner) && summoner.z == M.z && get_dist(M, summoner) <= leash_range)
-		if(untether_strain > 0)
-			relax_tether(M)
-		return
+	//Caustic Edit - Tweaking this to allow for being held/contained in things to not cause the summons to un-summon.
+	if(!isbelly(M.loc) && !istype(M.loc, /obj/item/holder/micro)) //Probably no reason to validate combat target if they are held or contained in a belly?
+		validate_combat_target(M, summoner)
+	if(summoner && !QDELETED(summoner))
+		var/turf/summoner_turf
+		var/turf/summon_turf
+		if(summoner.z != M.z)
+			summoner_turf = get_turf(summoner)
+			summon_turf = get_turf(M)
+			if(summoner_turf.z != summon_turf.z)
+				strain_tether(M)
+
+		var/atom/comp_summoner = summoner_turf ? summoner_turf : summoner
+		var/atom/comp_summon = summon_turf ? summon_turf : M
+		if(get_dist(comp_summon, comp_summoner) <= leash_range)
+			if(untether_strain > 0)
+				relax_tether(M)
+			return
+	//Caustic Edit End
 	strain_tether(M)
 
 /datum/component/conjured_minion/proc/validate_combat_target(mob/living/M, mob/living/summoner)
@@ -109,10 +134,22 @@
 	if(isnull(current))
 		return
 	if(!QDELETED(current) && !current.stat)
-		if(!summoner || QDELETED(summoner) || summoner.z != M.z)
+		//Caustic Edit - Tweaking this to allow for being held/contained in things to not cause the summons to un-summon.
+		if(!summoner || QDELETED(summoner))
 			return
-		if(get_dist(current, summoner) <= leash_range + 1)
+		var/turf/summoner_turf
+		var/turf/summon_turf
+		if(summoner.z != M.z)
+			summoner_turf = get_turf(summoner)
+			summon_turf = get_turf(M)
+			if(summoner_turf.z != summon_turf.z)
+				return
+		
+		var/atom/comp_summoner = summoner_turf ? summoner_turf : summoner
+		//var/atom/comp_summon = summon_turf ? summon_turf : M
+		if(get_dist(current, comp_summoner) <= leash_range + 1)
 			return
+		//Caustic Edit End
 	AC.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 	if(AC.blackboard[BB_HIGHEST_THREAT_MOB] == current)
 		AC.clear_blackboard_key(BB_HIGHEST_THREAT_MOB)

@@ -213,7 +213,7 @@
 
 /mob/living/verb/set_size()
 	set name = "Adjust Size"
-	set category = "OOC" //Seeing as prometheans have an IC reason to be changing mass. <-- Leftover from Chomp!
+	set category = "OOC.Chat" //Seeing as prometheans have an IC reason to be changing mass. <-- Leftover from Chomp!
 
 	var/nagmessage = "Adjust your size to be a size between [RESIZE_MINIMUM * 100] and [RESIZE_MAXIMUM * 100]. (For OOC/Scene purposes!)" //(or 1% to 600% in dormitories)
 	var/default = size_multiplier * 100
@@ -477,7 +477,7 @@
 /mob/living/verb/toggle_pickups()
 	set name = "Toggle Micro Pick-up"
 	set desc = "Toggles whether your help-intent action attempts to pick up the micro or pet/hug/help them. Does not disable participation in pick-up mechanics entirely, refer to Vore Panel preferences for that."
-	set category = "IC"
+	set category = "IC.Actions"
 
 	pickup_active = !pickup_active
 	to_chat(src, span_notice("You will [pickup_active ? "now" : "no longer"] attempt to pick up mobs when clicking them with help intent."))

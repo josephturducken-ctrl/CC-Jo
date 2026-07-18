@@ -23,7 +23,7 @@
 /client/verb/change_macrosets()
 	set name = "Switch Keybinding Mode"
 	set desc = "Switch between classic and modern keybinding modes."
-	set category = "OOC"
+	set category = "OOC.Misc"
 
 	var/list/macrosets = list(
 		"Classic" = SKIN_MACROSET_CLASSIC_INPUT,
@@ -37,7 +37,7 @@
 /client/verb/fix_macros()
 	set name = "Fix Keybindings"
 	set desc = "Re-assert all your macros/keybindings."
-	set category = "OOC"
+	set category = "OOC.Misc"
 	if(!SSinput.initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return

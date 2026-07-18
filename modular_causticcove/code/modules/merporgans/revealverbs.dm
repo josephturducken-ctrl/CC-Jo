@@ -1,7 +1,7 @@
 /mob/living/carbon/verb/reveal_bodypart()
 	set name = "Reveal Bodypart"
 	set desc = "Toggles between always showing or hiding your chosen bodypart, regardless of clothing worn."
-	set category = "IC"
+	set category = "IC.Actions"
 
 	var/list/choices = list("Penis", "Vagina", "Breasts", "Testicles", "Butt", "Belly")
 	var/chosen = tgui_input_list(src, "Reveal what part?", "Exhibitionist~", choices)
@@ -88,3 +88,17 @@
 				to_chat(src, span_notice("You don't have a belly!"))
 			return
 			
+/mob/living/carbon/verb/toggle_taur_mask()
+	set name = "Toggle Taur Clothingmask"
+	set desc = "Toggles between enabling or disabling the clothing clipping mask that hides certain clothing layers from clipping over the Taur half."
+	set category = "IC.Actions"
+
+	var/obj/item/bodypart/BP = src.get_bodypart(BODY_ZONE_L_LEG)
+	if(!BP || !istype(BP, /obj/item/bodypart/taur))
+		to_chat(src, span_notice("You are not a taur."))
+		return
+	
+	var/obj/item/bodypart/taur/T = BP
+	T.use_mask = !T.use_mask
+	to_chat(src, span_notice("You are now [T.use_mask ? "using" : "ignoring"] the Taur clothing mask!"))
+	src.queue_icon_update(PENDING_UPDATE_INV_CLOAK|PENDING_UPDATE_INV_SHIRT|PENDING_UPDATE_INV_ARMOR|PENDING_UPDATE_INV_PANTS)

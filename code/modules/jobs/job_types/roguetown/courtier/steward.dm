@@ -90,7 +90,7 @@
 
 /mob/living/carbon/human/proc/adjust_taxes()
 	set name = "Adjust Taxes"
-	set category = "RoleUnique.Stewardry"
+	set category = "IC.Stewardry"
 	if(stat)
 		return
 	var/datum/taxsetter/taxsetter = new("The Diligent Steward Intervenes", "The Greedy Steward Imposes")

@@ -115,6 +115,7 @@
  /// CAUSTIC EDIT start
 /datum/sprite_accessory/face_detail/monstermaw
 	name = "Monster Maw"
+	icon = 'modular_causticcove/icons/mob/sprite_accessory/face_detail.dmi' //Properly modularized the sprites so this shouldn't be lost in the future!
 	icon_state = "monstermaw"
 	layer = BODY_LAYER
 	color_disabled = FALSE

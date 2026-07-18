@@ -228,7 +228,7 @@ SUBSYSTEM_DEF(event_scheduler)
 
 /client/proc/manage_fog_schedule()
 	set name = "Manage Fog Schedule"
-	set category = "🕮 GM"
+	set category = "🕮 GM.Events"
 	if(!holder)
 		return
 

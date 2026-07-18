@@ -90,6 +90,18 @@ SUBSYSTEM_DEF(questpool)
 		if(!length(bucket))
 			landmarks_by_type -= qtype
 
+/datum/controller/subsystem/questpool/proc/has_landmark_for_region(type, region)
+	var/list/candidates = landmarks_by_type[type]
+	if(!length(candidates))
+		return FALSE
+	for(var/obj/effect/landmark/quest_spawner/landmark as anything in candidates)
+		if(QDELETED(landmark))
+			continue
+		if(region && landmark.region != region)
+			continue
+		return TRUE
+	return FALSE
+
 /// Sum of per-region kill targets across all regions.
 /datum/controller/subsystem/questpool/proc/total_kill_target()
 	var/pop = GLOB.player_list.len
@@ -476,13 +488,9 @@ SUBSYSTEM_DEF(questpool)
 	if(!landmark)
 		log_event("claim_failed", "no landmark available for [Q.quest_difficulty] [Q.quest_type]")
 		return FALSE
-	// Remove from pool BEFORE materialize — materialize can sleep (spawn_kill_mobs contains
-	// sleep(1) per spawn), and a double-click ui_act can otherwise re-enter this proc, pass the
-	// `Q in pool` check, and materialize the same quest twice (double scrolls, double mob waves).
 	pool -= Q
 	adjust_region_count(Q, -1)
 	if(!Q.materialize(landmark))
-		// Materialize failed during setup — put it back so someone else (or a retry) can take it.
 		if(!(Q in pool))
 			pool += Q
 			adjust_region_count(Q, 1)
@@ -506,6 +514,8 @@ SUBSYSTEM_DEF(questpool)
 	if(landmark && !QDELETED(landmark))
 		return landmark
 	landmark = find_quest_landmark(Q.quest_type, Q.region, Q)
+	if(!landmark)
+		landmark = find_quest_landmark(Q.quest_type, null, Q)
 	if(landmark)
 		Q.pending_landmark_ref = WEAKREF(landmark)
 		Q.target_spawn_area = get_area_name(get_turf(landmark))

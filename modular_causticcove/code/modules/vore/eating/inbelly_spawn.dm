@@ -116,7 +116,7 @@
 /mob/dead/observer/verb/ToggleInBellySpawnAttempts()
 	set name = "Toggle In-Belly Spawn"
 	set desc = "Toggles the ability to attempt to In-Belly spawn on someone on Middle Mouse Click. Defaults to off to not cause any accidents!"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 
 	enable_inbelly_spawn_attempts = !enable_inbelly_spawn_attempts
 	to_chat(src, span_notice("In-Belly spawn attempts [enable_inbelly_spawn_attempts ? "enabled! Middle-Mouse click on your pred to request a spawn (if they have it set up!) This is generally for ease of continuing a scene, you will spawn without any gear or stats and skills." : "disabled! Middle-Mouse clicks will revert to their usual actions."]"))	

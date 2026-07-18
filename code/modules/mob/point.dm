@@ -15,7 +15,7 @@
  */
 /mob/verb/pointed(atom/pointed_atom as mob|obj|turf in view())
 	set name = "Point To"
-	set category = "IC"
+	set category = "IC.Actions"
 
 	if(istype(pointed_atom, /obj/effect/temp_visual/point))
 		return FALSE

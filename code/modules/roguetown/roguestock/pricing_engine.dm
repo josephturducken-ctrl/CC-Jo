@@ -43,13 +43,11 @@ GLOBAL_LIST_EMPTY(bulk_trade_item_types)
 		ITEM_CAT_ENG_MISC = MARKUP_ENG_MISC,
 		ITEM_CAT_GARMENT_COMMON = MARKUP_GARMENT_COMMON,
 		ITEM_CAT_GARMENT_FINE = MARKUP_GARMENT_FINE,
-		ITEM_CAT_GARMENT_LUXURY = MARKUP_GARMENT_LUXURY,
 		ITEM_CAT_TAILOR_MISC = MARKUP_GARMENT_COMMON,
 		ITEM_CAT_CLOTH_MASK = MARKUP_GARMENT_COMMON,
 		ITEM_CAT_FOODSTUFF_FRESH = MARKUP_FOODSTUFF_FRESH,
 		ITEM_CAT_FOODSTUFF_PRESERVED = MARKUP_FOODSTUFF_PRESERVED,
 		ITEM_CAT_POTION = MARKUP_POTION,
-		ITEM_CAT_BEVERAGE = MARKUP_BEVERAGE,
 		ITEM_CAT_BOOK_WRIT = MARKUP_BOOK_WRIT,
 		ITEM_CAT_INSTRUMENT = MARKUP_INSTRUMENT,
 		ITEM_CAT_TROPHY = MARKUP_TROPHY,
@@ -82,7 +80,7 @@ GLOBAL_LIST_EMPTY(bulk_trade_item_types)
 	GLOB.material_baseline_prices[/obj/item/ingot/silverblessed] = round(SELLPRICE_SILVER_INGOT * INGOT_SILVERBLESSED_MULT)
 	GLOB.material_baseline_prices[/obj/item/ingot/silverblessed/bullion] = round(SELLPRICE_SILVER_INGOT * INGOT_SILVERBLESSED_MULT)
 	GLOB.material_baseline_prices[/obj/item/ingot/steelholy] = round(SELLPRICE_STEEL_INGOT * INGOT_STEELHOLY_MULT)
-	GLOB.material_baseline_prices[/obj/item/ingot/blacksteel] = round(SELLPRICE_STEEL_INGOT * INGOT_BLACKSTEEL_MULT)
+	GLOB.material_baseline_prices[/obj/item/ingot/blacksteel] = round(SELLPRICE_STEEL_INGOT * INGOT_BLACKSTEEL_FROM_STEEL + SELLPRICE_SILVER_INGOT * INGOT_BLACKSTEEL_FROM_SILVER)
 	GLOB.material_baseline_prices[/obj/item/ingot/lithmyc] = round(SELLPRICE_STEEL_INGOT * INGOT_LITHMYC_MULT)
 	GLOB.material_baseline_prices[/obj/item/ingot/purifiedaalloy] = round(SELLPRICE_STEEL_INGOT * INGOT_PURIFIEDAALLOY_MULT)
 	GLOB.material_baseline_prices[/obj/item/ingot/aalloy] = round(SELLPRICE_IRON_INGOT * INGOT_AALLOY_MULT)
@@ -92,6 +90,9 @@ GLOBAL_LIST_EMPTY(bulk_trade_item_types)
 	GLOB.material_baseline_prices[/obj/item/natural/wood/plank] = round(SELLPRICE_WOOD * MATERIAL_PLANK_FROM_WOOD)
 	GLOB.material_baseline_prices[/obj/item/natural/glass] = SELLPRICE_GLASS_BATCH
 	GLOB.material_baseline_prices[/obj/item/roguegear] = round(SELLPRICE_STEEL_INGOT * MATERIAL_ROGUEGEAR_FROM_STEEL)
+	GLOB.material_baseline_prices[/obj/item/reagent_containers/food/snacks/pepper] = 4
+	GLOB.material_baseline_prices[/obj/item/reagent_containers/food/snacks/pumpkinspice] = 4
+	GLOB.material_baseline_prices[/obj/item/reagent_containers/food/snacks/sugar] = 3
 
 /proc/init_derived_sellprices(force_audits = FALSE)
 	GLOB.derived_sellprices = list()

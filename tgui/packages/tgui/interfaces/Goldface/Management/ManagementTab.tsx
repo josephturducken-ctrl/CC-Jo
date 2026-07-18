@@ -15,7 +15,13 @@ import {
   SERIF,
   sectionHeaderStyle,
 } from '../../common/parchment';
-import type { ActFn, FavorData, FavorLedgerEntry, HarborData } from '../types';
+import type {
+  ActFn,
+  CatalogData,
+  FavorData,
+  FavorLedgerEntry,
+  HarborData,
+} from '../types';
 
 const labelStyle = {
   fontFamily: SERIF,
@@ -308,9 +314,11 @@ const SinkButton = (props: {
   done: boolean;
   doneLabel: string;
   action: string;
+  params?: Record<string, unknown>;
   act: ActFn;
 }) => {
-  const { label, flavor, cost, current, done, doneLabel, action, act } = props;
+  const { label, flavor, cost, current, done, doneLabel, action, params, act } =
+    props;
   const canAfford = current >= cost;
   const disabled = done || !canAfford;
   return (
@@ -360,7 +368,7 @@ const SinkButton = (props: {
         style={inkButtonStyle({ disabled })}
         onClick={() => {
           if (disabled) return;
-          act(action);
+          act(action, params);
         }}
       >
         {done
@@ -373,8 +381,12 @@ const SinkButton = (props: {
   );
 };
 
-const FavorCard = (props: { favor: FavorData; act: ActFn }) => {
-  const { favor, act } = props;
+const FavorCard = (props: {
+  favor: FavorData;
+  catalogs: CatalogData[];
+  act: ActFn;
+}) => {
+  const { favor, catalogs, act } = props;
   return (
     <div style={{ ...cardStyle, marginTop: '8px' }}>
       <div style={sectionHeaderStyle}>Standing with the Company</div>
@@ -527,6 +539,26 @@ const FavorCard = (props: { favor: FavorData; act: ActFn }) => {
       ) : (
         <AutoHailerToggle on={!!favor.auto_hailer_on} act={act} />
       )}
+      {/* TODO: flavor - charter button label + flavor (catalog.desc from DM, origin note inline) */}
+      {catalogs.map((catalog) => (
+        <SinkButton
+          key={catalog.id}
+          label={`Open the ${catalog.name}`}
+          flavor={
+            catalog.desc +
+            (catalog.origin_access
+              ? ` Your ${catalog.home_label} already opens it to you at ${catalog.discount_pct}% off; pay to extend the charter to the whole company.`
+              : '')
+          }
+          cost={catalog.favor_cost}
+          current={favor.current}
+          done={!!catalog.unlocked}
+          doneLabel="CHARTER OPEN"
+          action="unlock_catalog"
+          params={{ catalog: catalog.id }}
+          act={act}
+        />
+      ))}
     </div>
   );
 };
@@ -592,7 +624,11 @@ export const ManagementTab = (props: { harbor?: HarborData; act: ActFn }) => {
   }
   return (
     <div style={pageStyle}>
-      <FavorCard favor={harbor.favor} act={act} />
+      <FavorCard
+        favor={harbor.favor}
+        catalogs={harbor.catalogs ?? []}
+        act={act}
+      />
       <LevyControl
         current={harbor.merchant_levy_percent}
         cap={harbor.merchant_levy_cap}

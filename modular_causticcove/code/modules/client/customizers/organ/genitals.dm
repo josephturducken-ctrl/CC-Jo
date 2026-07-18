@@ -62,7 +62,7 @@
 
 /mob/living/carbon/verb/changebellysize()
 	set name = "Change Belly Size"
-	set category = "VORE"
+	set category = "VORE.Actions"
 	set desc = "Change the size of your belly"
 	change_belly_size_customizer(src)
 

@@ -332,7 +332,7 @@
 		GLOB.job_respawn_delays[M.ckey] = world.time + same_job_respawn_delay
 
 /client/verb/set_mugshot()
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set name = "Set Credits Mugshot"
 	set hidden = FALSE
 	if(mob && ishuman(mob) && mob.mind)

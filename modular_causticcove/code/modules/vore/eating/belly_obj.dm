@@ -556,8 +556,11 @@
 		STOP_PROCESSING(SSbellies, src)
 	owner?.vore_organs?.Remove(src)
 	owner = null
-	for(var/mob/dead/observer/G in src)
-		G.forceMove(get_turf(src)) //ported from CHOMPStation PR#7132
+	for(var/mob/M in src)
+		if(istype(M, /mob/dead/observer))
+			M.forceMove(get_turf(src)) //ported from CHOMPStation PR#7132
+		else if(M.client/* || M.mind*/)
+			M.forceMove(get_turf(src)) //This check should just dump any mob on the ground with a client connected
 	return ..()
 
 /obj/belly/Moved(atom/old_loc)
