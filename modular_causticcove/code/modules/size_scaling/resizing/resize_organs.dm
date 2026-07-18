@@ -56,7 +56,7 @@
 /mob/living/carbon/human/verb/adjust_assets()
 	set name = "Adjust Assets"
 	set desc = "An OOC way to adjust the size of your parts, intended for use in scenes and the like! Expects that you do have the selected part."
-	set category = "OOC"
+	set category = "OOC.Chat"
 
 	var/list/assets = list("Belly", "Breasts", "Penis", "Testicles", "Butt")
 	var/asset_choice = tgui_input_list(src, "What asset do you want to adjust?", "Adjust Assets", assets)

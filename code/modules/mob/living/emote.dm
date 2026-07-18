@@ -1898,7 +1898,7 @@
 
 /mob/living/carbon/human/verb/dive()
 	set name = "Dive Underwater"
-	set category = "IC" //Caustic Edit - Originally was it's own tab, "Swimming"
+	set category = "IC.Actions" //Caustic Edit - Originally was it's own tab, "Swimming"
 	
 	var/turf/T = get_turf(src)
 	if(!istype(T, /turf/open/water/transparent))
@@ -1914,7 +1914,7 @@
 
 /mob/living/carbon/human/verb/surface()
 	set name = "Swim to Surface"
-	set category = "IC" //Caustic Edit - Originally was it's own tab, "Swimming"
+	set category = "IC.Actions" //Caustic Edit - Originally was it's own tab, "Swimming"
 	
 	var/turf/T = get_turf(src)
 	

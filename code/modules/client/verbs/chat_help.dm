@@ -1,6 +1,6 @@
 /client/verb/chat_help()
 	set name = "Chat Help"
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set desc = "View a guide to chat features and formatting."
 
 	var/dat = {"

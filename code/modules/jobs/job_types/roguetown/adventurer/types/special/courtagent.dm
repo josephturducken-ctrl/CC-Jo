@@ -37,7 +37,7 @@
 
 /datum/job/roguetown/adventurer/courtagent/proc/remember_employer()
 	set name = "Remember Spymaster"
-	set category = "RoleUnique.Subterfuge"
+	set category = "IC.Court Agent"
 
 	to_chat(usr, span_boldnotice("My spymaster is:"))
 	for(var/name in GLOB.court_spymaster)

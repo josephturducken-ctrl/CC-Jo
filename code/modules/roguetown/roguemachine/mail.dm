@@ -159,6 +159,14 @@
 		return UI_CLOSE
 	return ..()
 
+/obj/structure/roguemachine/mail/ui_state(mob/user)
+	return GLOB.human_adjacent_state
+
+/obj/structure/roguemachine/mail/ui_status(mob/user, datum/ui_state/state)
+	if(isobserver(user))
+		return UI_CLOSE
+	return ..()
+
 /obj/structure/roguemachine/mail/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -617,6 +625,9 @@
 					if(!I.paired.full)		
 						to_chat(user, span_warning("[I.paired] needs to be full of the accused's blood."))
 						return
+					if(!I.paired.subject) //Caustic Edit - Add a check for that it has a subject, it's kinda a meta response in a way? But, I don't really know how else to really handle this... and it's better not to confuse the player.
+						to_chat(user, span_warning("[I.paired] needs blood from a registered civilian of these lands. (Did the accused leave the round?)"))
+						return //Caustic Edit End
 					else	
 						to_chat(user, span_warning("[I] is missing a signature."))	
 						return

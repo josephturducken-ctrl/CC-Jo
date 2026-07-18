@@ -779,7 +779,7 @@
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/bronze
 
-/obj/item/clothing/shoes/courtphysician
+/obj/item/clothing/shoes/roguetown/courtphysician //Caustic Edit - Fix this path to actually have the Roguetown part added
 	name = "sanguine shoes"
 	desc = "Leather shoes, the solemn tap of these bears grim news, or salvation."
 	icon_state = "docshoes"

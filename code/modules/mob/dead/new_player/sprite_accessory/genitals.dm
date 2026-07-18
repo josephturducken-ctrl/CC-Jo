@@ -48,7 +48,7 @@
 	//Caustic Edit End
 	if(owner.underwear)
 		return FALSE
-	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)
+	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH|HIDECROTCHFRONT) //Caustic Edit - Add HIDECROTCHFRONT here to allow for showing ass, but not cock+etc
 
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
@@ -135,7 +135,7 @@
 	//if(pp && pp.sheath_type == SHEATH_TYPE_SLIT)
 		//return FALSE
 	//Caustic Edit End
-	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH)
+	return is_human_part_visible(owner, HIDEJUMPSUIT|HIDECROTCH|HIDECROTCHFRONT) //Caustic Edit - Add HIDECROTCHFRONT here to allow for showing ass, but not cock+etc
 
 /datum/sprite_accessory/testicles/pair
 	name = "Pair"
@@ -204,7 +204,7 @@
 	//Caustic Edit End
 	if(owner.underwear)
 		return FALSE
-	return is_human_part_visible(owner, HIDECROTCH|HIDEJUMPSUIT)
+	return is_human_part_visible(owner, HIDECROTCH|HIDEJUMPSUIT|HIDECROTCHFRONT) //Caustic Edit - Add HIDECROTCHFRONT here to allow for showing ass, but not cock+etc
 
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"

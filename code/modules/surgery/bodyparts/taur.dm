@@ -41,6 +41,7 @@
 	//Caustic Edit - Add Taur tailwag capabilities (Also used for loafing alternative sprites)
 	var/can_wag = FALSE
 	var/wagging = FALSE
+	var/use_mask = TRUE //For toggling the clipping mask on or off!
 	//Caustic Edit End
 
 /obj/item/bodypart/taur/New()

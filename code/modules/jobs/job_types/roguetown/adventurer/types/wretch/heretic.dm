@@ -475,7 +475,7 @@
 
 /mob/living/carbon/human/proc/revelations()
 	set name = "Revelations"
-	set category = "CLERIC"
+	set category = "IC.Devotee"
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
 	var/obj/item/S = get_inactive_held_item()

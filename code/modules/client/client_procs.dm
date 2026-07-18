@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 				return
 
 		var/stl = CONFIG_GET(number/second_topic_limit)
-		if (!holder && stl)
+		if (!holder && stl && href_list["window_id"] != "statbrowser")
 			var/second = round(world.time, 10)
 			if (!topiclimiter)
 				topiclimiter = new(LIMITER_SIZE)
@@ -195,12 +195,12 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 /client/proc/view_stats()
 	set name = "View Chronicle"
-	set category = "OOC"
+	set category = "OOC.Info"
 
 	show_round_stats(pick_assoc(GLOB.featured_stats))
 
 /client/proc/cmd_admin_view_chronicle()
-	set category = "🛠 DEBUG"
+	set category = "🛠 DEBUG.Logs"
 	set name = "View Chronicle"
 	set desc = "Open the Chronicle / roundend statistics panel without waiting for round end."
 

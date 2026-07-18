@@ -1,6 +1,6 @@
 // Verb to toggle restart notifications
 /client/verb/notify_restart()
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set name = "Notify Restart"
 	set desc = ""
 	set hidden = FALSE

@@ -1197,15 +1197,6 @@
 				/obj/item/natural/fibers = 2)
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/sewing/hgambeson/fencer
-	name = "fencing shirt"
-	category = "Gambesons"
-	display_category = ITEM_CAT_ARMOR_LIGHT
-	result = /obj/item/clothing/suit/roguetown/shirt/freifechter
-	reqs = list(/obj/item/natural/cloth = 5,
-				/obj/item/natural/fibers = 2)
-	craftdiff = 4
-
 /datum/crafting_recipe/roguetown/sewing/chaperon
 	name = "chaperon hat"
 	category = "Hats"
@@ -1413,7 +1404,7 @@
 /datum/crafting_recipe/roguetown/sewing/royalgown
 	name = "royal gown"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2,
@@ -1425,7 +1416,7 @@
 /datum/crafting_recipe/roguetown/sewing/royaldress
 	name = "pristine dress"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal/princess)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2,
@@ -1437,7 +1428,7 @@
 /datum/crafting_recipe/roguetown/sewing/royalshirt
 	name = "gilded dress shirt"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/royal/prince)
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 2,
@@ -1449,7 +1440,7 @@
 /datum/crafting_recipe/roguetown/sewing/formalsilks
 	name = "formal silks"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1461,7 +1452,7 @@
 /datum/crafting_recipe/roguetown/sewing/formalbreeches
 	name = "formal breeches"
 	category = "Pants"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/under/roguetown/tights/puritan)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1473,7 +1464,7 @@
 /datum/crafting_recipe/roguetown/sewing/formalsilkjacket
 	name = "besilked jacket"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy/silkjacket)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1485,7 +1476,7 @@
 /datum/crafting_recipe/roguetown/sewing/regalrobes
 	name = "regal silks"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/vampire)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1497,7 +1488,7 @@
 /datum/crafting_recipe/roguetown/sewing/silktunic
 	name = "ornate silk tunic"
 	category = "Shirts"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/tunic/silktunic)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1509,7 +1500,7 @@
 /datum/crafting_recipe/roguetown/sewing/silkdress
 	name = "ornate silk dress"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/steward)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1782,7 +1773,7 @@
 /datum/crafting_recipe/roguetown/sewing/weddingdress
 	name = "wedding silk dress"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/weddingdress)
 	reqs = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 2,
@@ -1795,7 +1786,7 @@
 /datum/crafting_recipe/roguetown/sewing/silkydress
 	name = "silky dress"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
 	reqs = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 3)
@@ -1806,7 +1797,7 @@
 /datum/crafting_recipe/roguetown/sewing/weaving/springgown
 	name = "gown (spring)"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown
 	reqs = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 4)
@@ -1816,7 +1807,7 @@
 /datum/crafting_recipe/roguetown/sewing/weaving/summergown
 	name = "gown (summer)"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/summergown
 	reqs = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 1,
@@ -1827,7 +1818,7 @@
 /datum/crafting_recipe/roguetown/sewing/weaving/fallgown
 	name = "gown (fall, silk)"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
 	reqs = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
@@ -1838,7 +1829,7 @@
 /datum/crafting_recipe/roguetown/sewing/weaving/wintergown
 	name = "gown (winter)"
 	category = "Dresses"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
 	reqs = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
@@ -1849,7 +1840,7 @@
 /datum/crafting_recipe/roguetown/sewing/silkbra
 	name = "giltsilk bra"
 	category = "Misc"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list (/obj/item/clothing/suit/roguetown/shirt/silkbra)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 6
@@ -1864,7 +1855,7 @@
 	name = "giltsilk anklets"
 	aliases = "golden anklets"
 	category = "Misc"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list (/obj/item/clothing/shoes/roguetown/anklets)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 6
@@ -1872,7 +1863,7 @@
 /datum/crafting_recipe/roguetown/sewing/silkbelt
 	name = "giltsilk belt"
 	category = "Misc"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list (/obj/item/storage/belt/rogue/leather/silkbelt)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 6
@@ -1880,7 +1871,7 @@
 /datum/crafting_recipe/roguetown/sewing/silkmask
 	name = "giltsilk mask"
 	category = "Masks"
-	display_category = ITEM_CAT_GARMENT_LUXURY
+	display_category = ITEM_CAT_GARMENT_FINE
 	result = list (/obj/item/clothing/mask/rogue/silkmask)
 	reqs = list(/obj/item/natural/silk = 5)
 	craftdiff = 6
@@ -2239,15 +2230,6 @@
 	            /obj/item/natural/fibers = 5)
 	tools = list(/obj/item/needle)
 	craftdiff = 6
-
-/datum/crafting_recipe/roguetown/sewing/tailor/hgambeson/fencer
-	name = "fencing shirt"
-	category = "Gambesons"
-	display_category = ITEM_CAT_ARMOR_LIGHT
-	result = /obj/item/clothing/suit/roguetown/shirt/freifechter
-	reqs = list(/obj/item/natural/cloth = 5,
-				/obj/item/natural/fibers = 2)
-	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/tailor/grenzelhat
 	name = "grenzelhoftian hat"

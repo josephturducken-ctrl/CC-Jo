@@ -100,6 +100,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	salvage_amount = 1
+	flags_inv = HIDECROTCHFRONT //Caustic Edit - Change this from HIDECROTCH to HIDECROTCHFRONT to show ass still!
 
 /obj/item/clothing/under/roguetown/loincloth/brown
 	color = CLOTHING_BROWN

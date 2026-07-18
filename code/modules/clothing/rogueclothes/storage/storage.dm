@@ -105,7 +105,7 @@
 	name = "belt with breechcloth"
 	desc = "A fine leather strap notched with holes for a buckle to secure itself, and nestled above a halved tabard's coverings."
 	icon_state = "breechcloth"
-	flags_inv = HIDECROTCH
+	flags_inv = HIDECROTCHFRONT //Caustic Edit - Change this from HIDECROTCH to HIDECROTCHFRONT to show ass still!
 	sewrepair = FALSE
 	detail_tag = "_belt"
 
@@ -113,7 +113,7 @@
 	name = "black belt with breechcloth"
 	desc = "A fine black-leather strap notched with holes for a buckle to secure itself, and nestled above a halved tabard's coverings."
 	icon_state = "breechclothalt"
-	flags_inv = HIDECROTCH
+	flags_inv = HIDECROTCHFRONT //Caustic Edit - Change this from HIDECROTCH to HIDECROTCHFRONT to show ass still!
 	sewrepair = FALSE
 	detail_tag = "_belt"
 
@@ -277,6 +277,12 @@
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
 	component_type = /datum/component/storage/concrete/roguetown/backpack
+
+//Caustic Edit - Add Mechanics line about Backpacks needing to be in your hand!
+/obj/item/storage/backpack/rogue/backpack/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Backpacks are too bulky and out of the way to open them while wearing it - To take something out or see inside, you'll have to have it in your hands.")
+//Caustic Edit End
 
 /obj/item/storage/backpack/rogue/artibackpack
 	name = "Cooling backpack"

@@ -86,7 +86,7 @@
 	/mob/living/carbon/human/species/wildshape/witch/bat/proc/fly_down)
 
 /mob/living/carbon/human/species/wildshape/witch/bat/proc/fly_up()
-	set category = "Winged Form"
+	set category = "IC.Actions"
 	set name = "Fly Up"
 
 	if(src.pulledby != null)
@@ -102,7 +102,7 @@
 			to_chat(src, span_notice("I can't fly away while being grabbed!"))
 
 /mob/living/carbon/human/species/wildshape/witch/bat/proc/fly_down()
-	set category = "Winged Form"
+	set category = "IC.Actions"
 	set name = "Fly Down"
 
 	if(src.pulledby != null)

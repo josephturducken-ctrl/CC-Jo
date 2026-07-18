@@ -584,7 +584,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/memory()
 	set name = "Notes"
-	set category = "IC"
+	set category = "IC.Info"
 	set desc = ""
 	if(mind)
 		mind.show_memory(src)
@@ -596,7 +596,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/add_memory(msg as message)
 	set name = "AddNote"
-	set category = "IC"
+	set category = "IC.Info"
 	if(mind)
 		if (world.time < memory_throttle_time)
 			return
@@ -1193,7 +1193,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 ///Show the language menu for this mob
 /mob/verb/open_language_menu()
 	set name = "Open Language Menu"
-	set category = "IC"
+	set category = "IC.Actions"
 	set hidden = 0
 
 	var/datum/language_holder/H = get_language_holder()
@@ -1202,13 +1202,13 @@ GLOBAL_VAR_INIT(mobids, 1)
 /// Custom pose setting
 /mob/living/carbon/human/verb/set_pose()
 	set name = "Set Pose"
-	set category = "IC"
+	set category = "IC.Actions"
 	set hidden = FALSE
 
 	if(stat != CONSCIOUS)
 		to_chat(src, span_warning("I can't set my pose right now."))
 		return
-	var/new_pose = tgui_input_text(src, "Set your character's pose (MARKDOWN AVAILABLE):", "SET POSE", pose_text, multiline = FALSE,  encode = FALSE, bigmodal = TRUE, max_length = 256)
+	var/new_pose = tgui_input_text(src, "Set your character's pose (MARKDOWN AVAILABLE):", "SET POSE", pose_text, multiline = FALSE, bigmodal = TRUE, max_length = 256)
 	if(isnull(new_pose))
 		return
 

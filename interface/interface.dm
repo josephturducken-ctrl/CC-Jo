@@ -1,8 +1,8 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/wiki(query as text)
-	set name = "wiki"
+	set name = "Wiki"
 	set desc = ""
-	set category = "OOC"
+	set category = "OOC.Misc"
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		if(query)
@@ -15,9 +15,9 @@
 	return
 
 /client/verb/discord()
-	set name = "discord"
+	set name = "Discord"
 	set desc = ""
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set hidden = 1
 	var/discordurl = CONFIG_GET(string/discordurl)
 	if(discordurl)
@@ -29,9 +29,9 @@
 	return
 
 /client/verb/rules()
-	set name = "rules"
+	set name = "Rules"
 	set desc = ""
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set hidden = 1
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
@@ -43,9 +43,9 @@
 	return
 
 /client/verb/github()
-	set name = "github"
+	set name = "Github"
 	set desc = ""
-	set category = "OOC"
+	set category = "OOC.Info"
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
@@ -59,7 +59,7 @@
 /client/verb/mentorhelp()
 	set name = "Mentorhelp"
 	set desc = ""
-	set category = "⚡︎ ADMIN"
+	set category = "⚡︎ ADMIN.Assistance"
 	if(mob)
 		var/msg = input("Submit your question to the Voices:", "Mentorhelp Input") as text|null
 		if(msg)
@@ -68,9 +68,9 @@
 		to_chat(src, span_danger("You can't currently use Mentorhelp in the main menu."))
 
 /client/verb/reportissue()
-	set name = "report-issue"
+	set name = "Report Issue"
 	set desc = ""
-	set category = "OOC"
+	set category = "OOC.Misc"
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
 		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
@@ -91,7 +91,7 @@
 
 /client/verb/changelog()
 	set name = "Changelog"
-	set category = "OOC"
+	set category = "OOC.Misc"
 
 	if(!GLOB.changelog_tgui)
 		GLOB.changelog_tgui = new /datum/changelog()
@@ -104,7 +104,7 @@
 
 /client/verb/hotkeys_help()
 	set name = "_Help-Controls"
-	set category = "OOC"
+	set category = "OOC.Info"
 	mob.hotkey_help()
 
 
@@ -149,7 +149,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 
 /client/verb/set_fixed()
 	set name = "IconSize"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 
 	if(winget(src, "mapwindow.map", "icon-size") == "64")
 		to_chat(src, "Stretch-to-fit... OK")
@@ -160,7 +160,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 
 /client/verb/set_stretch()
 	set name = "IconScaling"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	if(prefs)
 		if(prefs.crt == TRUE)
 			to_chat(src, "CRT mode is on.")
@@ -174,7 +174,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 		winset(src, "mapwindow.map", "zoom-mode=normal")
 
 /client/verb/crtmode()
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	set name = "ToggleCRT"
 	if(!prefs)
 		return
@@ -194,7 +194,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 			S.alpha = 70
 
 /client/verb/grainfilter()
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	set name = "ToggleGrain"
 	if(!prefs)
 		return
@@ -212,17 +212,17 @@ Hotkey-Mode: (hotkey-mode must be on)
 			S.alpha = 55
 
 /client/verb/triggercommend()
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set name = "Commend Someone"
 	commendsomeone()
 
 /client/verb/roleplay_ad_view()
-	set category = "OOC"
+	set category = "OOC.Info"
 	set name = "Roleplay Ad (View)"
 	view_roleplay_ads()
 
 /client/verb/roleplay_ad_set()
-	set category = "OOC"
+	set category = "OOC.Info"
 	set name = "Roleplay Ad (Set)"
 	if(mob)
 		if(!ishuman(mob))
@@ -244,7 +244,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 		//Caustic Edit End
 
 /client/verb/changefps()
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	set name = "ChangeFPS"
 	if(!prefs)
 		return
@@ -256,7 +256,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 
 /client/verb/set_picinchat()
 	set name = "Headshot in Chat"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 
 	if(prefs)
 		prefs.chatheadshot = !prefs.chatheadshot
@@ -269,12 +269,12 @@ Hotkey-Mode: (hotkey-mode must be on)
 /*
 /client/verb/set_blur()
 	set name = "AAOn"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 
 	winset(src, "mapwindow.map", "zoom-mode=blur")
 
 /client/verb/set_normal()
 	set name = "AAOff"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 
 	winset(src, "mapwindow.map", "zoom-mode=normal")*/

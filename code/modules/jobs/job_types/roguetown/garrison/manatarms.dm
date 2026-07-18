@@ -484,8 +484,8 @@
 // These are really hacky, but it works.
 // One proc to moodbuff.
 /mob/proc/standard_position()
-	set name = "PLANT"
-	set category = "Standard"
+	set name = "Plant the Standard"
+	set category = "IC.Actions"
 	emote("standard_position", intentional = TRUE)
 	stamina_add(rand(15, 35))
 
@@ -507,8 +507,8 @@
 
 //Another to call out.
 /mob/proc/standard_rally()
-	set name = "RALLY"
-	set category = "Standard"
+	set name = "Rally Around Standard"
+	set category = "IC.Actions"
 	emote("standard_rally", intentional = TRUE)
 	stamina_add(rand(15, 35))
 

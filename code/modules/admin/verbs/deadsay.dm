@@ -27,7 +27,7 @@
 /client/verb/dsay()
 	set name = "DSAY"
 	set desc = "Dead Chat. OOC chat visible only to ghosts."
-	set category = "OOC"
+	set category = "OOC.Chat"
 
 	get_dead_say()
 

@@ -834,7 +834,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["voice_type"] >> voice_type
 	S["voice_pack"] >> voice_pack
 	S["body_size"] >> features["body_size"]
-	if (!features["body_size"])
+	if (!features["body_size"] || features["body_size"] != BODY_SIZE_NORMAL) //Caustic Edit - Since we replaced Sprite Scale with Size Scale, lets just reset this to 1.00 for everyone.
 		features["body_size"] = BODY_SIZE_NORMAL
 	
 	_load_char_directory(S) //Caustic Edit - Add call to load Character Directory info!

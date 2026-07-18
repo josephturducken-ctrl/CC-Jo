@@ -25,5 +25,5 @@
 
 /mob/living/carbon/verb/toggle_vore_mode_verb()
 	set name = "Toggle Vore Mode"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 	toggle_vore_mode()

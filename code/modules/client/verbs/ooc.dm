@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/ooc(msg as text)
 	set name = "OOC"
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set desc = "Talk with other players in the lobby."
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."), MESSAGE_TYPE_INFO)
@@ -128,7 +128,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 
 /client/proc/lobbyooc(msg as text)
-	set category = "OOC"
+	set category = "OOC.Chat"
 	set name = "OOC"
 	set desc = "Talk with the other players."
 
@@ -300,7 +300,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/toggle_ooc_anonymize()
 	set name = "Toggle OOC Anonymize"
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set desc = "Use a random anonymized handle or show your real ckey in Lobby OOC."
 	if(!mob)
 		return
@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 #ifdef TESTSERVER
 /client/verb/smiteselfverily()
 	set name = "KillSelf"
-	set category = "Debug.Test"
+	set category = "🛠 DEBUG.Test"
 /*
 	set hidden = 1
 	if(!check_rights(0))
@@ -374,7 +374,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/html_chat()
 	set name = "{Old Chat}"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Toggles"
 	set hidden = FALSE
 
 	to_chat(src, "Going back to old chat.", MESSAGE_TYPE_INFO)
@@ -410,7 +410,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/proc/self_playtime()
 	set name = "View Playtime"
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set desc = ""
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
@@ -464,7 +464,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/proc/show_previous_roundend_report()
 	set name = "Your Last Round"
-	set category = "OOC"
+	set category = "OOC.Misc"
 	set desc = ""
 
 	SSticker.show_roundend_report(src, TRUE)
@@ -518,7 +518,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/combat_music() // if you touch this, touch the option in game preferences too
 	set name = "Combat Mode Music"
-	set category = "OPTIONS"
+	set category = "OPTIONS.Sounds"
 	set desc = ""
 	if(!isliving(mob))
 		to_chat(src, span_warning("You're not alive yet. Set this in your Game Preferences instead."), MESSAGE_TYPE_INFO)

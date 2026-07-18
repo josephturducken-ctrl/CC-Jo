@@ -111,7 +111,7 @@
 
 /mob/living/carbon/human/proc/guild_announcement()
 	set name = "Announcement"
-	set category = "GUILDMASTER"
+	set category = "IC.Actions"
 	if(stat)
 		return
 	var/announcementinput = input("Bellow to the Peaks", "Make an Announcement") as text|null

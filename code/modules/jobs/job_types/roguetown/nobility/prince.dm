@@ -320,7 +320,7 @@
 
 /mob/living/carbon/human/proc/declarechampion()
 	set name = "Declare Champion"
-	set category = "RoleUnique.Noble"
+	set category = "IC.Nobility"
 
 
 	if(stat)

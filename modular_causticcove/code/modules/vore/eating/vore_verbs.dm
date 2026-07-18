@@ -52,7 +52,7 @@
 /mob/living/verb/shred_limb()
 	set name = "Damage/Remove Prey's Organ"
 	set desc = "Severely damages prey's organ. If the limb is already severely damaged, it will be torn off."
-	set category = "VORE"
+	set category = "VORE.Actions"
 
 	//can_shred() will return a mob we can shred, if we can shred any.
 	var/mob/living/carbon/human/T = can_shred()
@@ -128,12 +128,12 @@
 /mob/living/proc/shred_limb_temp()
 	set name = "Damage/Remove Prey's Organ (beartrap)"
 	set desc = "Severely damages prey's organ. If the limb is already severely damaged, it will be torn off."
-	set category = "VORE"
+	set category = "VORE.Actions"
 	shred_limb()
 
 /mob/verb/toggle_vore_health_bars()
 	set name = "Toggle Auto Healthbars"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 
 	if(client?.prefs)
 		client.prefs.vore_health_bars = !client.prefs.vore_health_bars
@@ -141,7 +141,7 @@
 
 /mob/verb/toggle_digest_noises()
 	set name = "Toggle Digest Noises"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 
 	if(client?.prefs)
 		client.prefs.toggles ^= SOUND_VORE_DIGESTION
@@ -156,7 +156,7 @@
 
 /mob/verb/toggle_eating_noises()
 	set name = "Toggle Eating Noises"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 
 	if(client?.prefs)
 		client.prefs.toggles ^= SOUND_VORE_EATING
@@ -171,7 +171,7 @@
 
 /mob/verb/toggle_belch_noises()
 	set name = "Toggle Belch Noises"
-	set category = "VORE"
+	set category = "VORE.Prefs"
 
 	if(client?.prefs)
 		client.prefs.toggles ^= SOUND_VORE_BELCH

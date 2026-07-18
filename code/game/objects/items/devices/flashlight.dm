@@ -253,6 +253,8 @@
 //Caustic Edit - Thrown Torches light things on fire! Code pretty much borrowed from above.
 /obj/item/flashlight/flare/torch/afterattack(atom/movable/A, mob/user, proximity)
 	. = ..()
+	if (istype(src, /obj/item/flashlight/flare/torch/lantern)) //Only let exposed flame torches actually light people on fire!
+		return
 	if (!proximity)
 		return
 	if (on && (prob(50) || (user.used_intent.type == /datum/intent/use)))
