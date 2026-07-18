@@ -73,7 +73,7 @@ export function ChatPageSettings(props) {
             Mute
           </Button.Checkbox>
         </Stack.Item>
-        {!page.isMain ? (
+        {!page.isMain && (
           <Stack.Item>
             <Button color="red" icon="times" onClick={removeChatPage}>
               Remove
