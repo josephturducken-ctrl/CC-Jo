@@ -1,4 +1,4 @@
-/datum/action/cooldown/spell/void_beam
+/datum/action/cooldown/spell/voided_beam
 	button_icon = 'icons/mob/actions/mage_shared.dmi'
 	name = "Void Beam"
 	desc = "Fire a concentrated beam of void energy! Any objects in it's path will be dealt constant damage as long as they remain in contact with the beam.  It can be channeled for up to 3 seconds, during which you are unable to move or it breaks your concentration! Devine Skeleton Death Blast!"
@@ -38,7 +38,7 @@
 	var/beam_duration = 3 SECONDS
 	var/list/beam_parts = list()
 
-/datum/action/cooldown/spell/void_beam/cast(atom/cast_on)
+/datum/action/cooldown/spell/voided_beam/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(!istype(H))
@@ -62,7 +62,7 @@
 	end_beam()
 	return TRUE
 
-/datum/action/cooldown/spell/void_beam/proc/fire_beam(var/turf/target_turf)
+/datum/action/cooldown/spell/voided_beam/proc/fire_beam(var/turf/target_turf)
 	var/turf/origin_turf = get_turf(owner)
 	playsound(origin_turf, 'sound/magic/obeliskbeam.ogg', 150, FALSE, 0, 3)
 	var/list/affected_turfs = get_line(origin_turf, target_turf) - origin_turf
@@ -94,7 +94,7 @@
 	return TRUE
 
 /// Get rid of our laser when we are done with it
-/datum/action/cooldown/spell/void_beam/proc/end_beam()
+/datum/action/cooldown/spell/voided_beam/proc/end_beam()
 	if(!length(beam_parts))
 		return FALSE
 	for(var/obj/effect/obeliskbeam/void/beam in beam_parts)

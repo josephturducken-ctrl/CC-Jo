@@ -191,11 +191,12 @@
 		"Telum, a me discedere!",
 	)
 	fixed_spells = list(
-		/datum/action/cooldown/spell/projectile/basic_offensive,
-		/datum/action/cooldown/spell/projectile/arcyne_salvo,
+		/datum/action/cooldown/spell/projectile/arcyne_volley,
 		/datum/action/cooldown/spell/telegraphed_strike/crossing_blast,
+		/datum/action/cooldown/spell/void_beam,
 		/datum/action/cooldown/spell/arcyne_burst,
-		/datum/action/cooldown/spell/greater_cleaning, // placeholder free utility - replace with Recall once implemented
+		/datum/action/cooldown/spell/circumdatum,
+		/datum/action/cooldown/spell/greater_cleaning,
 	)
 	variants = list(
 		"mastery" = list(
@@ -333,14 +334,13 @@
 	)
 	fixed_spells = list(
 		/datum/action/cooldown/spell/minion_order/conjurer,
+		/datum/action/cooldown/spell/command_word/fray,
+		/datum/action/cooldown/spell/command_word/harry,
+		/datum/action/cooldown/spell/command_word/quicken,
+		/datum/action/cooldown/spell/command_word/beckon,
 		/datum/action/cooldown/spell/minion_mark,
 		/datum/action/cooldown/spell/conjure_recall,
 		/datum/action/cooldown/spell/conjure_dismiss,
-		/datum/action/cooldown/spell/augment_buff/grasp,
-		/datum/action/cooldown/spell/forcewall,
-		/datum/action/cooldown/spell/augment_buff/surge,
-		/datum/action/cooldown/spell/augment_buff/guidance,
-		/datum/action/cooldown/spell/augment_buff/blood_rush,
 		/datum/action/cooldown/spell/conjure_projection,
 	)
 	choice_spells = list(
@@ -348,20 +348,22 @@
 		/datum/action/cooldown/spell/conjure_summon/champion,
 		/datum/action/cooldown/spell/conjure_summon/attacker,
 		/datum/action/cooldown/spell/conjure_summon/hordes,
+		/datum/action/cooldown/spell/conjure_summon/peasant_swarm,
+	)
+	mastery_choice_spells = list(
+		/datum/action/cooldown/spell/conjure_summon/peasant_swarm,
 	)
 	spell_order = list(
-		/datum/action/cooldown/spell/projectile/basic_offensive,
-		ASPECT_CHOICE,
 		/datum/action/cooldown/spell/minion_order/conjurer,
+		/datum/action/cooldown/spell/command_word/fray,
+		/datum/action/cooldown/spell/command_word/harry,
+		/datum/action/cooldown/spell/command_word/quicken,
+		/datum/action/cooldown/spell/command_word/beckon,
+		ASPECT_CHOICE,
 		/datum/action/cooldown/spell/minion_mark,
 		/datum/action/cooldown/spell/conjure_projection,
 		/datum/action/cooldown/spell/conjure_recall,
 		/datum/action/cooldown/spell/conjure_dismiss,
-		/datum/action/cooldown/spell/augment_buff/grasp,
-		/datum/action/cooldown/spell/forcewall,
-		/datum/action/cooldown/spell/augment_buff/surge,
-		/datum/action/cooldown/spell/augment_buff/guidance,
-		/datum/action/cooldown/spell/augment_buff/blood_rush,
 	)
 
 /datum/magic_aspect/augmentation

@@ -55,7 +55,7 @@
 			if(H.mind)
 				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 6, "ward" = TRUE))
 			beltl = /obj/item/storage/magebag/starter
-			backpack_contents |= /obj/item/rogueweapon/spellbook
+			backr = choose_implement(H, "lesser")
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
 		if("Godsblood")

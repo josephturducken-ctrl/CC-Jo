@@ -332,7 +332,7 @@
 			user.mind.AddSpell(new /datum/action/cooldown/spell/projectile/soulshot/lesser)
 
 /proc/grant_poke_spell_ex(mob/living/carbon/human/user) // unified proc because atm this is spread across like 5-6 places, uughhghghghgh
-	var/list/poke_options = list("Spitfire", "Frost Bolt", "Arc Bolt", "Greater Arcyne Bolt", "Stygian Efflorescence", "Arcyne Lance", "Gravel Blast", "Soulshot")
+	var/list/poke_options = list("Spitfire", "Frost Bolt", "Arc Bolt", "Greater Arcyne Bolt", "Stygian Efflorescence", "Arcyne Lance", "Soulshot")
 	var/poke_choice = tgui_input_list(user, "Choose your offensive cantrip.", "Arcyne Awakening", poke_options)
 	if(!poke_choice || !user.mind)
 		return
@@ -353,7 +353,7 @@
 			user.mind.AddSpell(new /datum/action/cooldown/spell/projectile/soulshot)
 
 /proc/grant_grenzel_option(mob/living/carbon/human/user) // unified proc because atm this is spread across like 5-6 places, uughhghghghgh
-	var/list/grenzel_options = list("Fire Strike", "Meteor Strike", "Form Hammer")
+	var/list/grenzel_options = list("Fire Strike", "Meteor Strike", "Form Hammer", "Conjure Doppelsoldner (Don't switch from Conjuration)")
 	var/grenzel_choice = tgui_input_list(user, "Choose your ultimate.", "Grenzel Ultimate", grenzel_options)
 	if(!grenzel_choice || !user.mind)
 		return
@@ -364,3 +364,10 @@
 			user.mind.AddSpell(new /datum/action/cooldown/spell/grenzel_meteor)
 		if("Form Hammer")
 			user.mind.AddSpell(new /datum/action/cooldown/spell/form_blade/form_hammer)
+		if("Conjure Doppelsoldner (Don't switch from Conjuration)")
+			user.mind.AddSpell(new /datum/action/cooldown/spell/conjure_summon/doppelsoldner)
+			user.mind.AddSpell(new /datum/action/cooldown/spell/minion_order/conjurer)
+			user.mind.AddSpell(new /datum/action/cooldown/spell/minion_mark)
+			user.mind.AddSpell(new /datum/action/cooldown/spell/conjure_recall)
+			user.mind.AddSpell(new /datum/action/cooldown/spell/conjure_dismiss)
+			user.mind.AddSpell(new /datum/action/cooldown/spell/conjure_projection)

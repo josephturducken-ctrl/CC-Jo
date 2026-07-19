@@ -46,7 +46,7 @@
 
 		return 0
 	var/armor_protection = 0
-	if(damage_flag)
+	if(damage_flag && damage_flag != "force")
 		armor_protection = armor.getRating(damage_flag)
 	if(armor_protection)		//Only apply weak-against-armor/hollowpoint effects if there actually IS armor.
 		armor_protection = CLAMP(armor_protection - armor_penetration, min(armor_protection, 0), 100)

@@ -26,6 +26,7 @@
 
 /obj/projectile/bullet/reusable/arrow/iron/ferramancy
 	color = GLOW_COLOR_ARCANE
+	trains_ranged_skill = FALSE
 
 /obj/projectile/bullet/reusable/arrow/iron/ferramancy/on_hit()
 	. = ..()
@@ -125,6 +126,7 @@
 
 /obj/projectile/bullet/reusable/bolt/ferramancy
 	color = GLOW_COLOR_ARCANE
+	trains_ranged_skill = FALSE
 
 /obj/projectile/bullet/reusable/bolt/ferramancy/on_hit()
 	. = ..()

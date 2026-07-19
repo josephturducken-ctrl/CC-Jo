@@ -113,9 +113,12 @@
 	speed = 0.4
 	min_range = MIN_ARROW_RANGE
 	max_range = MAX_ARROW_RANGE
+	var/trains_ranged_skill = TRUE
 
 /obj/projectile/bullet/reusable/arrow/on_hit(atom/target)
 	..()
+	if(!trains_ranged_skill)
+		return
 	var/mob/living/L = firer
 	if(!L || !L.mind)
 		return
@@ -313,15 +316,20 @@
 /obj/projectile/bullet/arrow/elemental/fire
 	name = "fire arrow"
 	icon_state = "arrowpyro_proj"
+	damage = 50
+	woundclass = BCLASS_BURN
+	damage_type = BURN
 
 /obj/projectile/bullet/arrow/elemental/fire/on_hit(atom/target)
 	..()
+	var/turf/epicenter = get_turf(target)
+	if(epicenter)
+		new /obj/effect/temp_visual/explosion(epicenter)
+		playsound(epicenter, pick('sound/misc/explode/incendiary (1).ogg', 'sound/misc/explode/incendiary (2).ogg'), 100, TRUE, 4)
 	if(!ismob(target))
 		return
 	var/mob/living/M = target
-	M.adjust_fire_stacks(2)
-	M.adjustFireLoss(5)
-	M.ignite_mob()
+	apply_scorch_stack(M, 3, def_zone)
 
 // --- FROST --- (Pending PR #6406 frost stack system - should apply 2 frost stacks)
 /*

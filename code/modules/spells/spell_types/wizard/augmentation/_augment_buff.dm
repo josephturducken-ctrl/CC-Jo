@@ -27,7 +27,7 @@
 
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 
-	var/fellowship_snap = FALSE
+	supports_fellowship_snap = TRUE
 
 	/// Cooldown multiplier applied when the buff is cast on the caster instead of a fellow. 1 = no penalty.
 	/// Augmentations are meant to be shared - set this above 1 to make hoarding a buff for yourself cost extra downtime.
@@ -76,41 +76,6 @@
 		return ..(clicker, modifiers, snapped)
 	clicker.balloon_alert(clicker, "no fellow in range!")
 	return ..(clicker, modifiers, click_target)
-
-/datum/action/cooldown/spell/augment_buff/proc/get_snap_target(mob/living/clicker)
-	if(!clicker.current_fellowship)
-		return null
-	var/mob/living/nearest
-	var/nearest_dist = INFINITY
-	for(var/mob/living/candidate in view(cast_range, clicker))
-		if(candidate == clicker)
-			continue
-		if(candidate.stat == DEAD)
-			continue
-		if(!candidate.mind)
-			continue
-		if(!shares_fellowship(clicker, candidate))
-			continue
-		var/dist = get_dist(clicker, candidate)
-		if(dist < nearest_dist)
-			nearest_dist = dist
-			nearest = candidate
-	return nearest
-
-/datum/action/cooldown/spell/augment_buff/proc/update_snap_maptext()
-	for(var/datum/hud/hud as anything in viewers)
-		var/atom/movable/screen/movable/action_button/B = viewers[hud]
-		var/atom/movable/screen/arc_maptext_holder/holder
-		for(var/atom/movable/screen/arc_maptext_holder/existing in B.vis_contents)
-			holder = existing
-			break
-		if(!holder)
-			holder = new(B)
-			B.vis_contents.Add(holder)
-		if(fellowship_snap)
-			holder.color = "#66ff66"
-		else
-			holder.maptext = null
 
 /datum/action/cooldown/spell/augment_buff/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()

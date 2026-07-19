@@ -31,6 +31,7 @@
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
 
 	var/resting = FALSE
+	var/rest_locked_until = 0
 	var/wallpressed = FALSE
 	var/climbing = FALSE
 
@@ -235,6 +236,13 @@
 	var/mid_climb = FALSE
 	/// This one's for when you're choking to death.
 	var/last_gasp
+
+	/// Had to put this here because attack() is not used solely by humans. That's fucked up, manne.
+	var/dualwield_attack_count = 0
+	var/dualwield_processing = FALSE
+	var/dualwield_finisher = FALSE
+	var/dualwield_resets_in = 0
+	var/dualwield_buff_cd = 0
 
 	var/is_swimming = FALSE
 	var/is_underwater = FALSE
