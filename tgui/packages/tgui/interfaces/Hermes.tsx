@@ -10,7 +10,7 @@ import {
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
-import { merchant_supply_pack } from "../data_types/supply_pack";
+import type { merchant_supply_pack } from "../data_types/supply_pack";
 import { Window } from '../layouts';
 import { SupplyPackSection } from "./common/SupplyPackStack";
 
