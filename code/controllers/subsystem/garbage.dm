@@ -97,9 +97,6 @@ SUBSYSTEM_DEF(garbage)
 	if(highest_del_type_string)
 		del_log += "Highest hard-delete this round: [highest_del_tickusage] ticks ([highest_del_type_string])"
 
-	if(highest_del_type_string)
-		dellog += "Highest hard-delete this round: [highest_del_tickusage] ticks ([highest_del_type_string])"
-
 	//sort by how long it's wasted hard deleting
 	sortTim(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in items)
@@ -294,7 +291,7 @@ SUBSYSTEM_DEF(garbage)
 	if (tick > highest_del_tickusage)
 		highest_del_tickusage = tick
 		highest_del_type_string = "[type]"
-	
+
 	time = world.timeofday - time
 	if (!time && TICK_DELTA_TO_MS(tick) > 1)
 		time = TICK_DELTA_TO_MS(tick)/100

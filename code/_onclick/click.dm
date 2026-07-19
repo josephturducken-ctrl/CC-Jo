@@ -124,7 +124,7 @@
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CANCEL_CLICKON)
 		return
-	
+
 	var/mob/living/L = src
 	if(L?.wallpressed && L.m_intent == MOVE_INTENT_SNEAK && !istype(L.loc, /turf/open/transparent/openspace))
 		to_chat(src, span_warning("You need to step away from the wall first."), MESSAGE_TYPE_INFO)
@@ -528,13 +528,6 @@
 			if(closed[target] || isarea(target))  // avoid infinity situations
 				continue
 			closed[target] = TRUE
-			var/usedreach = 1
-			if(tool)
-				usedreach = tool.reach
-			if(ismob(src))
-				var/mob/user = src
-				if(user.used_intent)
-					usedreach = user.used_intent.reach
 			if(isturf(target) || isturf(target.loc) || IsDirectlyAccessible(target)) //Directly accessible atoms
 				if(Adjacent(target) || ( (tool || (!iscarbon(src) && usedreach >= 2)) && CheckToolReach(src, target, usedreach))) //Adjacent or reaching attacks
 					return TRUE
