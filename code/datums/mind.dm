@@ -980,7 +980,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(length(spell_list) == 1 && current)
 		addtimer(CALLBACK(src, PROC_REF(show_spell_tip)), 3 SECONDS)
 
-/// Ensure arcyne ward and prestidigitation are present and bumped to the end of the spell list.
+/// Ensure arcyne ward and prestidigitation are present.
 /// Arcyne Ward is skipped if a dragonhide/crystalhide variant is already present (those replace it).
 /datum/mind/proc/ensure_mage_basics()
 	if(!current || !HAS_TRAIT(current, TRAIT_ARCYNE))
@@ -1030,7 +1030,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 /datum/mind/proc/show_spell_tip()
 	if(current)
-		to_chat(current, span_nicegreen("Tip: You can Ctrl-Click your hotkey bar to unlock it, then drag to rearrange your spells. Re-arranging them change which hotkeys they are bound to in order from left to right (Alt 1 to Alt 9 default). You can shift click your spells to learn more about them."), MESSAGE_TYPE_INFO)
+		to_chat(current, span_nicegreen("Tip: Ctrl-Click any spell button to enter rearrangement mode. Your bar will glow gree, spells cannot be cast and you can drag one button onto another to swap them in place. Ctrl-Click again to lock in and re-enable casting. Hotkeys are bound left to right (Alt 1 to Alt 9 default), matching the numbers shown on the buttons. Shift-click a spell to learn more about it."))
 
 /datum/mind/proc/setup_mage_aspects(list/config, grant_attunement = TRUE)
 	mage_aspect_config = config
@@ -1179,43 +1179,63 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 /datum/mind/proc/rebuild_action_order()
 	if(!current)
 		return
-	var/static/list/trailing_types = list(
-		/datum/action/cooldown/spell/touch/prestidigitation,
-		/datum/action/cooldown/spell/learnspell,
-	)
-	var/list/spells = list()
-	var/list/pins = list()
-	for(var/datum/action/cooldown/spell/S in spell_list)
-		if(!(S in current.actions))
+	var/list/ordered_spell_actions = list()
+	for(var/datum/entry in spell_list)
+		var/datum/action/entry_action
+		if(istype(entry, /datum/action/cooldown/spell))
+			entry_action = entry
+		else if(istype(entry, /obj/effect/proc_holder/spell))
+			var/obj/effect/proc_holder/spell/P = entry
+			entry_action = P.action
+		if(!entry_action || !(entry_action in current.actions))
 			continue
-		if(S.type in trailing_types)
-			pins += S
-		else
-			spells += S
-	for(var/X in spell_list)
-		if(!istype(X, /obj/effect/proc_holder/spell))
-			continue
-		var/obj/effect/proc_holder/spell/P = X
-		if(P.action && (P.action in current.actions))
-			spells += P.action
-	var/list/rest = list()
+		ordered_spell_actions += entry_action
+	var/list/result = list()
+	var/next_spell = 1
 	for(var/datum/action/A in current.actions)
-		if((A in spells) || (A in pins))
-			continue
-		rest += A
-	current.actions = spells + rest + pins
+		if(A in ordered_spell_actions)
+			if(next_spell <= length(ordered_spell_actions))
+				result += ordered_spell_actions[next_spell]
+				next_spell++
+		else
+			result += A
+	while(next_spell <= length(ordered_spell_actions))
+		result += ordered_spell_actions[next_spell]
+		next_spell++
+	current.actions = result
 	current.update_action_buttons()
 
-/datum/mind/proc/reorder_spell(datum/moving, datum/target)
-	if(!moving || !target || moving == target)
+/datum/mind/proc/spell_list_entry_for_action(datum/action/A)
+	if(A in spell_list)
+		return A
+	for(var/obj/effect/proc_holder/spell/P in spell_list)
+		if(P.action == A)
+			return P
+	return null
+
+/// Adopt the visible action-bar order as the canonical spell_list order, so entering
+/// rearrangement mode can't snap a drifted bar to a stale order on the first swap.
+/datum/mind/proc/sync_spell_list_to_actions()
+	if(!current)
+		return
+	var/list/new_order = list()
+	for(var/datum/action/A in current.actions)
+		var/datum/entry = spell_list_entry_for_action(A)
+		if(entry && !(entry in new_order))
+			new_order += entry
+	for(var/datum/entry in spell_list)
+		if(!(entry in new_order))
+			new_order += entry
+	spell_list = new_order
+
+/datum/mind/proc/swap_spell_order(datum/action/a, datum/action/b)
+	if(!a || !b || a == b)
 		return FALSE
-	if(!(moving in spell_list) || !(target in spell_list))
+	var/datum/entry_a = spell_list_entry_for_action(a)
+	var/datum/entry_b = spell_list_entry_for_action(b)
+	if(!entry_a || !entry_b)
 		return FALSE
-	spell_list -= moving
-	var/idx = spell_list.Find(target)
-	if(!idx)
-		return FALSE
-	spell_list.Insert(idx, moving)
+	spell_list.Swap(spell_list.Find(entry_a), spell_list.Find(entry_b))
 	rebuild_action_order()
 	return TRUE
 

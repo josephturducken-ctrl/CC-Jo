@@ -1,4 +1,6 @@
 #define AB_MAX_COLUMNS 12
+#define AB_REARRANGE_TINT "#96ff96"
+#define AB_DROP_TINT "#40ff40"
 
 /atom/movable/screen/movable/action_button
 	var/datum/action/linked_action
@@ -48,28 +50,52 @@
 	else
 		return TRUE
 
-/atom/movable/screen/movable/action_button/MouseDrop(over_object)
+/atom/movable/screen/movable/action_button/proc/set_drag_highlight(on)
+	if(!our_hud?.rearrange_mode)
+		color = null
+		return
+	color = on ? AB_DROP_TINT : AB_REARRANGE_TINT
+
+/atom/movable/screen/movable/action_button/MouseDrag(atom/over_object, src_location, over_location, src_control, over_control, params)
+	. = ..()
+	if(!can_use(usr) || !our_hud?.rearrange_mode)
+		return
+	var/atom/movable/screen/movable/action_button/old_button = last_hovored_ref?.resolve()
+	if(old_button == over_object)
+		return
+	if(istype(old_button))
+		old_button.set_drag_highlight(FALSE)
+	last_hovored_ref = null
+	if(over_object != src && istype(over_object, /atom/movable/screen/movable/action_button))
+		var/atom/movable/screen/movable/action_button/target = over_object
+		target.set_drag_highlight(TRUE)
+		last_hovored_ref = WEAKREF(target)
+
+/atom/movable/screen/movable/action_button/MouseDrop(atom/over_object)
+	var/atom/movable/screen/movable/action_button/hovered = last_hovored_ref?.resolve()
+	if(istype(hovered))
+		hovered.set_drag_highlight(FALSE)
+	last_hovored_ref = null
 	if(!can_use(usr))
 		return
-	if(istype(over_object, /atom/movable/screen/movable/action_button))
-		if(locked)
-			to_chat(usr, span_warning("Action button \"[name]\" is locked, unlock it first."), MESSAGE_TYPE_INFO)
+	if(!our_hud?.rearrange_mode)
+		return
+	if(!istype(over_object, /atom/movable/screen/movable/action_button))
+		return
+	var/atom/movable/screen/movable/action_button/B = over_object
+	if(B == src)
+		return
+	moved = FALSE
+	B.moved = FALSE
+	if(!usr.mind?.swap_spell_order(src.linked_action, B.linked_action))
+		var/list/actions = usr.actions
+		var/first_idx = actions.Find(src.linked_action)
+		var/second_idx = actions.Find(B.linked_action)
+		if(!first_idx || !second_idx)
 			return
-		var/atom/movable/screen/movable/action_button/B = over_object
-		if(B == src)
-			return
-		moved = FALSE
-		B.moved = FALSE
-		if(!usr.mind?.reorder_spell(src.linked_action, B.linked_action))
-			var/list/actions = usr.actions
-			actions -= src.linked_action
-			var/target_idx = actions.Find(B.linked_action)
-			if(!target_idx)
-				return
-			actions.Insert(target_idx, src.linked_action)
-			usr.update_action_buttons()
-	else
-		return ..()
+		actions.Swap(first_idx, second_idx)
+		usr.mind?.sync_spell_list_to_actions()
+		usr.update_action_buttons()
 
 /atom/movable/screen/movable/action_button/Click(location,control,params)
 	if (!can_use(usr))
@@ -77,15 +103,11 @@
 
 	var/list/modifiers = params2list(params)
 	if(modifiers["alt"])
-		if(locked)
-			to_chat(usr, span_warning("Action button \"[name]\" is locked, unlock it first."), MESSAGE_TYPE_INFO)
-			return TRUE
 		moved = 0
 		usr.update_action_buttons() //redraw buttons that are no longer considered "moved"
 		return TRUE
 	if(modifiers["ctrl"])
-		locked = !locked
-		to_chat(usr, span_notice("Action button \"[name]\" [locked ? "" : "un"]locked."), MESSAGE_TYPE_INFO)
+		our_hud?.toggle_rearrange_mode()
 		return TRUE
 	if(modifiers["shift"])
 		var/datum/action/spell_action/SA = linked_action
@@ -97,6 +119,9 @@
 				v2_spell.examine(usr)
 			else
 				examine_ui(usr)
+		return TRUE
+	if(our_hud?.rearrange_mode)
+		our_hud.rearrange_hint(usr)
 		return TRUE
 	if(usr.next_click > world.time)
 		return
@@ -143,6 +168,8 @@
 			var/atom/movable/screen/movable/action_button/B = A.viewers[hud_used]
 			if(!B)
 				continue
+			B.locked = !hud_used.rearrange_mode
+			B.color = hud_used.rearrange_mode ? AB_REARRANGE_TINT : null
 			B.screen_loc = null
 			B.set_hotkey_label(null)
 			if(reload_screen)
@@ -153,15 +180,28 @@
 			var/atom/movable/screen/movable/action_button/B = A.viewers[hud_used]
 			if(!B)
 				continue
-			if(B.moved)
-				B.screen_loc = B.moved
-				B.set_hotkey_label(null)
-			else
-				button_number++
-				B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number)
-				B.set_hotkey_label(button_number <= 9 ? button_number : null)
+			B.moved = FALSE
+			button_number++
+			B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number)
+			B.set_hotkey_label(button_number <= 9 ? button_number : null)
 			if(reload_screen)
 				client.screen += B
+
+/datum/hud/proc/toggle_rearrange_mode()
+	rearrange_mode = !rearrange_mode
+	if(rearrange_mode)
+		mymob?.mind?.sync_spell_list_to_actions()
+		mymob?.balloon_alert(mymob, "<span style='color:#ff6666'>rearrangement mode - spells disabled!</span>")
+	else
+		mymob?.balloon_alert(mymob, "<span style='color:#96ff96'>rearrangement mode off - spells enabled</span>")
+	mymob?.update_action_buttons()
+
+/// Reminds why clicks aren't casting, at most once per few seconds so drag-arranging isn't spammed.
+/datum/hud/proc/rearrange_hint(mob/user)
+	if(world.time < next_rearrange_hint)
+		return
+	next_rearrange_hint = world.time + 4 SECONDS
+	user?.balloon_alert(user, "<span style='color:#ff6666'>spells disabled - ctrl-click to unlock!</span>")
 
 /datum/hud/proc/ButtonNumberToScreenCoords(number) // TODO : Make this zero-indexed for readabilty
 	var/row = round((number - 1)/AB_MAX_COLUMNS)
@@ -193,6 +233,7 @@
 
 /atom/movable/screen/hotkey_label_holder
 	layer = ABOVE_HUD_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	maptext_x = 1
 	maptext_y = 20
 	maptext_width = 12
@@ -200,6 +241,7 @@
 
 /atom/movable/screen/maptext_holder
 	layer = ABOVE_HUD_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	maptext_x = 8
 	maptext_y = 4
 
@@ -226,3 +268,5 @@
 	color = color_cd
 
 #undef AB_MAX_COLUMNS
+#undef AB_REARRANGE_TINT
+#undef AB_DROP_TINT
