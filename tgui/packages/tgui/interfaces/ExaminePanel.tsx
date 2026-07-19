@@ -113,39 +113,93 @@ export const ExaminePanel = (props) => {
       }
     >
       <Window.Content>
-        <Stack vertical fill>
-          {hasAnyGalleryImages && (
-            <Stack style={{ marginBottom: '4px' }}>
-              <Stack.Item grow>
-                <PageButton
-                  currentPage={currentPage}
-                  page={Page.FlavorText}
-                  setPage={setCurrentPage}
-                >
-                  Flavor Text
-                </PageButton>
-              </Stack.Item>
-              <Stack.Item grow>
-                <PageButton
-                  currentPage={currentPage}
-                  page={Page.ImageGallery}
-                  setPage={setCurrentPage}
-                >
-                  Image Gallery
-                </PageButton>
-              </Stack.Item>
-            </Stack>
+        <Box position="relative" height="100%">
+          <Stack vertical fill>
+            {hasAnyGalleryImages && (
+              <Stack style={{ marginBottom: '4px' }}>
+                <Stack.Item grow>
+                  <PageButton
+                    currentPage={currentPage}
+                    page={Page.FlavorText}
+                    setPage={setCurrentPage}
+                  >
+                    Flavor Text
+                  </PageButton>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <PageButton
+                    currentPage={currentPage}
+                    page={Page.ImageGallery}
+                    setPage={setCurrentPage}
+                  >
+                    Image Gallery
+                  </PageButton>
+                </Stack.Item>
+              </Stack>
+            )}
+            {hasAnyGalleryImages && <Stack.Divider />}
+            <Stack.Item
+              grow
+              position="relative"
+              overflowX="hidden"
+              overflowY="auto"
+            >
+              {pageContents}
+            </Stack.Item>
+          </Stack>
+          {showCharacterAd && hasCharacterAd && (
+            <Box
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.78)',
+                zIndex: 3,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '1.5rem',
+              }}
+            >
+              <Section
+                title="Character Advertisement"
+                fill
+                fitted
+                scrollable
+                style={{
+                  width: '70%',
+                  height: '65%',
+                  maxWidth: '48rem',
+                  maxHeight: '36rem',
+                }}
+                buttons={
+                  <Button
+                    icon="times"
+                    color="red"
+                    onClick={() => setShowCharacterAd(false)}
+                  >
+                    Close
+                  </Button>
+                }
+              >
+                <Box
+                  backgroundColor="black"
+                  p={2}
+                  style={{
+                    border: '1px solid rgba(138, 92, 92, 0.85)',
+                    borderRadius: '0.2rem',
+                    minHeight: '100%',
+                    overflowWrap: 'break-word',
+                  }}
+                  preserveWhitespace
+                  dangerouslySetInnerHTML={characterAdHTML}
+                />
+              </Section>
+            </Box>
           )}
-          {hasAnyGalleryImages && <Stack.Divider />}
-          <Stack.Item
-            grow
-            position="relative"
-            overflowX="hidden"
-            overflowY="auto"
-          >
-            {pageContents}
-          </Stack.Item>
-        </Stack>
+        </Box>
       </Window.Content>
     </Window>
   );

@@ -138,47 +138,44 @@ export const VoreSelectedBellyVisuals = (props: {
                       editMode={editMode}
                       action="set_attribute"
                       subAction="b_fullscreen_color"
+                      value_of={null}
                       back_color={belly_fullscreen_color}
                       name_of="Color 1:"
                       tooltip="Set the Vore FX overlay's first color."
-                      presets={presets}
-                      onRealtimeValue={(val) => updateColor(0, val)}
                     />
                     <VorePanelEditColor
                       editMode={editMode}
                       action="set_attribute"
                       subAction="b_fullscreen_color2"
+                      value_of={null}
                       back_color={belly_fullscreen_color2}
                       name_of="Color 2:"
                       tooltip="Set the Vore FX overlay's second color."
-                      presets={presets}
-                      onRealtimeValue={(val) => updateColor(1, val)}
                     />
                     <VorePanelEditColor
                       editMode={editMode}
                       action="set_attribute"
                       subAction="b_fullscreen_color3"
+                      value_of={null}
                       back_color={belly_fullscreen_color3}
                       name_of="Color 3:"
                       tooltip="Set the Vore FX overlay's third color."
-                      presets={presets}
-                      onRealtimeValue={(val) => updateColor(2, val)}
                     />
                     <VorePanelEditColor
                       editMode={editMode}
                       action="set_attribute"
                       subAction="b_fullscreen_color4"
+                      value_of={null}
                       back_color={belly_fullscreen_color4}
                       name_of="Color 4:"
                       tooltip="Set the Vore FX overlay's fourth color."
-                      presets={presets}
-                      onRealtimeValue={(val) => updateColor(3, val)}
                     />
                     <VorePanelEditColor
                       removePlaceholder
                       editMode={editMode}
                       action="set_attribute"
                       subAction="b_fullscreen_alpha"
+                      value_of={null}
                       back_color="#FFFFFF"
                       alpha={belly_fullscreen_alpha}
                       name_of="Alpha:"
