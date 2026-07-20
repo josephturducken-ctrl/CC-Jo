@@ -57,7 +57,7 @@
 	if(!passive_devotion_gain && !passive_progression_gain)
 		return PROCESS_KILL
 		// Values standardized for 3 seconds.
-		var/devotion_multiplier = PRAYER_DEVOTION_BASE
+	var/devotion_multiplier = PRAYER_DEVOTION_BASE
 	if(holder?.mind)
 		devotion_multiplier += (get_skill_level(/datum/skill/magic/holy) * PRAYER_DEVOTION_TIME_MULT)
 	var/prayer_effectiveness = round(devotion.prayer_effectiveness * devotion_multiplier, 0.1)
