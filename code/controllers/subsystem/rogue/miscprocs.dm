@@ -27,7 +27,7 @@
 	var/passive_devotion_gain = 0
 	/// How much progression is gained per process call
 	var/passive_progression_gain = 0
-	/// How much devotion is gained per prayer cycle
+	/// How much % devotion is gained per prayer cycle
 	var/prayer_effectiveness = 1
 	/// Spells we have granted thus far
 	var/list/granted_spells
@@ -56,18 +56,17 @@
 /datum/devotion/process()
 	if(!passive_devotion_gain && !passive_progression_gain)
 		return PROCESS_KILL
-		// Values standardized for 3 seconds.
-	var/devotion_multiplier = PRAYER_DEVOTION_BASE
+	var/devotion_multiplier = 1
 	if(holder?.mind)
-		devotion_multiplier += (get_skill_level(/datum/skill/magic/holy) * PRAYER_DEVOTION_TIME_MULT)
-	var/prayer_effectiveness = round(devotion.prayer_effectiveness * devotion_multiplier, 0.1)
+		devotion_multiplier += (holder.get_skill_level(/datum/skill/magic/holy) / SKILL_LEVEL_LEGENDARY)
+	update_devotion((passive_devotion_gain * devotion_multiplier), (passive_progression_gain * devotion_multiplier), silent = TRUE)
 
 /datum/devotion/proc/check_devotion(obj/effect/proc_holder/spell/spell)
 	if(devotion - spell.devotion_cost < 0)
 		return FALSE
 	return TRUE
 
-/datum/devotion/proc/update_devotion(dev_amt, prog_amt, silent = FALSE, is_npc = FALSE)
+/datum/devotion/proc/update_devotion(dev_amt, prog_amt, silent = FALSE)
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
 	holder?.hud_used?.bloodpool?.name = "Devotion: [devotion]"
 	holder?.hud_used?.bloodpool?.desc = "Devotion: [devotion]/[max_devotion]"
@@ -77,7 +76,7 @@
 		holder?.hud_used?.bloodpool?.set_value((100 / (max_devotion / devotion)) / 100, 1 SECONDS)
 	//Max devotion limit
 	if((devotion >= max_devotion) && !silent)
-		to_chat(holder, span_warning("I have reached the limit of my devotion..."), MESSAGE_TYPE_INFO)
+		to_chat(holder, span_warning("I have reached the limit of my devotion..."))
 	if(!prog_amt) // no point in the rest if it's just an expenditure
 		return TRUE
 	progression = clamp(progression + prog_amt, 0, max_progression)
@@ -94,49 +93,36 @@
 		if(CLERIC_T3)
 			if(progression >= CLERIC_REQ_4)
 				level = CLERIC_T4
-	//CC Edit
-	if(!is_npc)
-		if(!holder?.mind)
-			return FALSE
-	//CC edit
+	if(!holder?.mind)
+		return FALSE
 	if(level != last_level)
-		try_add_spells(silent = silent, is_npc = is_npc) //CC Edit
+		try_add_spells(silent = silent)
 		last_level = level
 	return TRUE
 
-/datum/devotion/proc/try_add_spells(silent = FALSE, is_npc = FALSE)
-	//CC Edit
-	if(!is_npc)
-		if(!holder || !holder.mind)
-			return
+/datum/devotion/proc/try_add_spells(silent = FALSE)
+	if(!holder || !holder.mind)
+		return
 
 	if(patron)
 		if(length(patron.miracles))
 			for(var/spell_type in patron.miracles)
 				var/required_tier = patron.miracles[spell_type]			
 				if(required_tier <= level)
-					//CC Edit
-					if(!is_npc)
-						if(holder.mind.has_spell(spell_type))
-							continue
-					else if(holder.HasSpell(spell_type))
+					if(holder.mind.has_spell(spell_type))
 						continue
-					//CC Edit
+
 					var/obj/effect/proc_holder/spell/newspell = new spell_type
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"), MESSAGE_TYPE_INFO)
-					if(!is_npc)
-						holder.mind.AddSpell(newspell, holder)
-						LAZYADD(granted_spells, newspell)
-					else
-						holder.AddSpell(newspell, holder)
-						LAZYADD(granted_spells, newspell)
+						to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"))
+					holder.mind.AddSpell(newspell, holder)
+					LAZYADD(granted_spells, newspell)
 		if(length(patron.traits_tier))
 			for(var/trait in patron.traits_tier)
 				var/required_tier = patron.traits_tier[trait]
 				if(required_tier <= level)
 					if(!silent)
-						to_chat(holder, span_boldnotice("I have unlocked a new trait: [trait]"), MESSAGE_TYPE_INFO)
+						to_chat(holder, span_boldnotice("I have unlocked a new trait: [trait]"))
 					ADD_TRAIT(holder, trait, ROUNDSTART_TRAIT)
 
 
@@ -145,10 +131,9 @@
 //passive_gain 		- Passive devotion gain, if any, will begin processing this datum.
 //devotion_limit	- The CLERIC_REQ max_devotion and max_progression will be set to. Devotee overrides this with its own value!
 //start_maxed		- Whether this class starts out with all devotion maxed. Mostly used by Acolytes & Priests to spawn with everything.
-/datum/devotion/proc/grant_miracles(mob/living/carbon/human/H, cleric_tier = CLERIC_T0, passive_gain = 0, devotion_limit, start_maxed = FALSE, is_npc = FALSE) // CC Edit added NPC check
-	if(!is_npc) // CC Edit
-		if(!H || !H.mind || !patron)
-			return
+/datum/devotion/proc/grant_miracles(mob/living/carbon/human/H, cleric_tier = CLERIC_T0, passive_gain = 0, devotion_limit, start_maxed = FALSE)
+	if(!H || !H.mind || !patron)
+		return
 	level = cleric_tier
 	if(devotion_limit) //Upper devotion limit - Limits gain to that tier's miracles. Mostly used by Templars / Paladins.
 		max_devotion = devotion_limit
@@ -160,15 +145,15 @@
 	if(start_maxed)		//Mainly for Acolytes & Bishops
 		max_devotion = CLERIC_REQ_4
 		devotion = max_devotion
-		update_devotion(max_devotion, CLERIC_REQ_4, silent = TRUE, is_npc = is_npc)
+		update_devotion(max_devotion, CLERIC_REQ_4, silent = TRUE)
 	else
 		update_devotion(50, 50, silent = TRUE)
 	add_verb(H, list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray))
 
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
-	set name = "Change Devotion"
-	set category = "🛠 DEBUG.Mobs"
+	set name = "(DEBUG)Change Devotion"
+	set category = "Admin.Special"
 
 	if(!devotion)
 		return FALSE
@@ -181,48 +166,43 @@
 
 /mob/living/carbon/human/proc/devotionreport()
 	set name = "Check Devotion"
-	set category = "IC.Devotee"
+	set category = "RoleUnique.Cleric"
 
 	if(!devotion)
 		return FALSE
 
-	to_chat(src,"My devotion is [devotion.devotion].", MESSAGE_TYPE_INFO)
+	to_chat(src,"My devotion is [devotion.devotion].")
 	return TRUE
 
 /mob/living/carbon/human/proc/clericpray()
 	set name = "Give Prayer"
-	set category = "IC.Devotee"
+	set category = "RoleUnique.Cleric"
 
 	if(!devotion)
 		return FALSE
-	//CC Edit Begin
-	//Witch's all have a god complex. Their patron still loves them however.
-	if(HAS_TRAIT(src, TRAIT_WITCH))
-		to_chat(src, span_warning("My patron has blessed me enough as is, I can do things on my own."), MESSAGE_TYPE_INFO)
-		return FALSE
-	//CC Edit End
 
 	var/prayersesh = 0
 	visible_message("[src] kneels their head in prayer to the Gods.", "I kneel my head in prayer to [istype(devotion.patron, /datum/patron/divine/undivided) ? "the Ten" : devotion.patron.name].")
 	for(var/i in 1 to 50)
 		if(devotion.devotion >= devotion.max_devotion)
-			to_chat(src, span_warning("I have reached the limit of my devotion..."), MESSAGE_TYPE_INFO)
+			to_chat(src, span_warning("I have reached the limit of my devotion..."))
 			break
 		if(!do_after(src, 30))
 			break
-		var/devotion_multiplier = 1
+		// Values standardized for 3 seconds.
+		var/devotion_multiplier = PRAYER_DEVOTION_BASE
 		if(mind)
-			devotion_multiplier += (get_skill_level(/datum/skill/magic/holy) / SKILL_LEVEL_LEGENDARY)
-		var/prayer_effectiveness = round(devotion.prayer_effectiveness * devotion_multiplier)
+			devotion_multiplier += (get_skill_level(/datum/skill/magic/holy) * PRAYER_DEVOTION_TIME_MULT)
+		var/prayer_effectiveness = round(devotion.prayer_effectiveness * devotion_multiplier, 0.1)
 		devotion.update_devotion(prayer_effectiveness, prayer_effectiveness)
 		prayersesh += prayer_effectiveness
 	visible_message("[src] concludes their prayer.", "I conclude my prayer.")
-	to_chat(src, "<font color='purple'>I gained [prayersesh] devotion!</font>", MESSAGE_TYPE_INFO)
+	to_chat(src, "<font color='purple'>I gained [prayersesh] devotion!</font>")
 	return TRUE
 
 /mob/living/carbon/human/proc/changevoice()
 	set name = "Change Second Voice (Can only use Once!)"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	var/datum/component/voice_handler/V = GetComponent(/datum/component/voice_handler)
 	if(!V)
@@ -249,14 +229,14 @@
 
 /mob/living/carbon/human/proc/swapvoice()
 	set name = "Swap Voice"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	var/datum/component/voice_handler/V = GetComponent(/datum/component/voice_handler)
 	V.toggle_voice()
 
 /mob/living/carbon/human/proc/toggleblindness()
 	set name = "Toggle Colorblindness"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	if(!get_client_color(/datum/client_colour/monochrome))
 		add_client_colour(/datum/client_colour/monochrome)
@@ -265,21 +245,21 @@
 
 /mob/living/carbon/human/proc/togglecombatawareness()
 	set name = "Toggle Combat Awareness"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	if(HAS_TRAIT(src, TRAIT_COMBAT_AWARE))
 		REMOVE_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE) 
 	else
 		ADD_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
-	to_chat(src, "I will see [HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "more" : "less"] combat information now.", MESSAGE_TYPE_INFO)
+	to_chat(src, "I will see [HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "more" : "less"] combat information now.")
 
 
 /mob/living/carbon/human/proc/toggle_descriptors()
 	set name = "Toggle Anonimity"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	show_descriptors = !show_descriptors
-	to_chat(src, "My identifying features are [show_descriptors ? "no longer " : ""]obscured.", MESSAGE_TYPE_INFO)
+	to_chat(src, "My identifying features are [show_descriptors ? "no longer " : ""]obscured.")
 	if(show_descriptors)
 		voicecolor_override = null
 	else
@@ -287,19 +267,19 @@
 
 /mob/living/carbon/human/proc/toggle_guarded()
 	set name = "Toggle Guarded"
-	set category = "IC.Virtues"
+	set category = "RoleUnique.Virtue"
 
 	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 		REMOVE_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE) 
 	else
 		ADD_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE)
-	to_chat(src, "I have [HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS) ? "raised" : "lowered"] my guard around others.", MESSAGE_TYPE_INFO)
+	to_chat(src, "I have [HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS) ? "raised" : "lowered"] my guard around others.")
 
 
 // Not actually a virtue, but kept in the category for convenience. Miner-role only. Component handles all of the messaging and logic, this is just a wrapper, basically.
 /mob/living/carbon/human/proc/toggle_oresight()
 	set name = "Toggle (Ore Sight)"
-	set category = "IC.Towner"
+	set category = "RoleUnique.Virtue"
 
 	var/datum/component/ore_sight/COS = GetComponent(/datum/component/ore_sight)
 	if(COS)
@@ -307,7 +287,7 @@
 
 /mob/living/carbon/human/proc/range_oresight()
 	set name = "Change Range (Ore Sight)"
-	set category = "IC.Towner"
+	set category = "RoleUnique.Virtue"
 
 	var/datum/component/ore_sight/COS = GetComponent(/datum/component/ore_sight)
 	if(COS)
