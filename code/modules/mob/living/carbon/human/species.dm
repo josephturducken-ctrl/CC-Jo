@@ -2598,3 +2598,33 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return jointext(bonuses, " | ")
 	else
 		return null
+
+/datum/species/proc/can_flick_ears(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/ears/E = H.getorganslot(ORGAN_SLOT_EARS)
+	if(!E || E.is_flicking) // We're already in a flicking animation
+		return FALSE
+	if(E.can_flick)
+		return TRUE
+	return FALSE
+
+/datum/species/proc/is_flicking_ears(mob/living/carbon/human/H)
+	var/obj/item/organ/ears/E = H.getorganslot(ORGAN_SLOT_EARS)
+	if(!E || E.is_flicking) // We're already in a flicking animation
+		return TRUE
+
+/datum/species/proc/perform_flick_ears(mob/living/carbon/human/H)
+	if(!H)
+		return FALSE
+	var/obj/item/organ/ears/E = H.getorganslot(ORGAN_SLOT_EARS)
+	E.is_flicking = TRUE
+	H.update_body_parts(TRUE)
+	addtimer(CALLBACK(src, PROC_REF(stop_flick_ears), H), 0.5 SECONDS)
+
+/datum/species/proc/stop_flick_ears(mob/living/carbon/human/H)
+	if(!H)
+		return FALSE
+	var/obj/item/organ/ears/E = H.getorganslot(ORGAN_SLOT_EARS)
+	E.is_flicking = FALSE
+	H.update_body_parts(TRUE)
