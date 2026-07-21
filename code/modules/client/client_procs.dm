@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	show_round_stats(pick_assoc(GLOB.featured_stats))
 
 /client/proc/cmd_admin_view_chronicle()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "View Chronicle"
 	set desc = "Open the Chronicle / roundend statistics panel without waiting for round end."
 

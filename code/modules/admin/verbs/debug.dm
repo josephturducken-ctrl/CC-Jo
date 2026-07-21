@@ -1,5 +1,5 @@
 /client/proc/Debug2()
-	set category = "🛠 DEBUG.Server"
+	set category = "DEBUG.Server"
 	set name = "Debug-Game"
 	if(!check_rights(R_DEBUG))
 		return
@@ -25,7 +25,7 @@ Because if you select a player mob as owner it tries to do the proc for
 But you can call procs that are of type /mob/living/carbon/human/proc/ for that player.
 */
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
-	set category = "🕮 GM.Actions"
+	set category = "GM.Actions"
 	set name = "Make Simple Animal"
 
 	if(!SSticker.HasRoundStarted())
@@ -45,7 +45,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all(object as text)
-	set category = "🛠 DEBUG.Warnting - Dangerous"
+	set category = "DEBUG.Warnting - Dangerous"
 	set name = "Del-All"
 
 	var/list/matches = get_fancy_list_of_atom_types()
@@ -68,7 +68,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
-	set category = "⚡︎ ADMIN.Assistance"
+	set category = "ADMIN.Assistance"
 	set name = "Direct control..."
 	set desc = ""
 
@@ -87,7 +87,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Assume Direct Control") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_areatest(on_station)
-	set category = "🛠 DEBUG.Mapping"
+	set category = "DEBUG.Mapping"
 	set name = "Test Areas"
 
 	var/list/dat = list()
@@ -200,17 +200,17 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 
 /client/proc/cmd_admin_areatest_station()
-	set category = "🛠 DEBUG.Mapping"
+	set category = "DEBUG.Mapping"
 	set name = "Test Areas (STATION Z)"
 	cmd_admin_areatest(TRUE)
 
 /client/proc/cmd_admin_areatest_all()
-	set category = "🛠 DEBUG.Mapping"
+	set category = "DEBUG.Mapping"
 	set name = "Test Areas (ALL)"
 	cmd_admin_areatest(FALSE)
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
-	set category = "🕮 GM.Actions"
+	set category = "GM.Actions"
 	set name = "Select Loadout"
 	if(!(ishuman(M) || isobserver(M)))
 		alert("Invalid mob")
@@ -1322,7 +1322,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	to_chat(target, span_notice("Job traits have been copied, but your racial traits remain unchanged."))
 
 /client/proc/cmd_debug_mob_lists()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "Debug Mob Lists"
 	set desc = ""
 
@@ -1343,7 +1343,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			to_chat(usr, jointext(GLOB.joined_player_list,","))
 
 /client/proc/cmd_display_del_log()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "Display del() Log"
 	set desc = ""
 
@@ -1376,21 +1376,21 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	usr << browse(dellog.Join(), "window=dellog")
 
 /client/proc/cmd_display_overlay_log()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "Display overlay Log"
 	set desc = ""
 
 	render_stats(SSoverlays.stats, src)
 
 /client/proc/cmd_display_init_log()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "Display Initialize() Log"
 	set desc = ""
 
 	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
 
 /client/proc/debug_huds(i as num)
-	set category = "🛠 DEBUG.UI"
+	set category = "DEBUG.UI"
 	set name = "Debug HUDs"
 	set desc = ""
 
@@ -1399,7 +1399,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	debug_variables(GLOB.huds[i])
 
 /client/proc/jump_to_ruin()
-	set category = "⚡︎ ADMIN.Movement"
+	set category = "ADMIN.Movement"
 	set name = "Jump to Ruin"
 	set desc = ""
 	if(!holder)
@@ -1431,7 +1431,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		to_chat(usr, span_italics("[template.description]"))
 
 /client/proc/toggle_medal_disable()
-	set category = "🛠 DEBUG.Server"
+	set category = "DEBUG.Server"
 	set name = "Toggle Medal Disable"
 	set desc = ""
 
@@ -1445,7 +1445,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] [SSachievements.hub_enabled ? "disabled" : "enabled"] the medal hub lockout.")
 
 /client/proc/view_runtimes()
-	set category = "🛠 DEBUG.Logs"
+	set category = "DEBUG.Logs"
 	set name = "View Runtimes"
 	set desc = ""
 
@@ -1455,7 +1455,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	GLOB.error_cache.show_to(src)
 
 /client/proc/pump_random_event()
-	set category = "🛠 DEBUG.Testing"
+	set category = "DEBUG.Testing"
 	set name = "Pump Random Event"
 	set desc = ""
 	if(!holder)
@@ -1468,7 +1468,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] pumped a random event.")
 
 /client/proc/start_line_profiling()
-	set category = "🛠 DEBUG.Profile"
+	set category = "DEBUG.Profile"
 	set name = "Start Line Profiling"
 	set desc = ""
 
@@ -1479,7 +1479,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] started line by line profiling.")
 
 /client/proc/stop_line_profiling()
-	set category = "🛠 DEBUG.Profile"
+	set category = "DEBUG.Profile"
 	set name = "Stops Line Profiling"
 	set desc = ""
 
@@ -1490,7 +1490,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	log_admin("[key_name(src)] stopped line by line profiling.")
 
 /client/proc/show_line_profiling()
-	set category = "🛠 DEBUG.Profile"
+	set category = "DEBUG.Profile"
 	set name = "Show Line Profiling"
 	set desc = ""
 
@@ -1506,7 +1506,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	profile_show(src, sort)
 
 /client/proc/reload_configuration()
-	set category = "🛠 DEBUG.Server"
+	set category = "DEBUG.Server"
 	set name = "Reload Configuration"
 	set desc = ""
 	if(!check_rights(R_DEBUG))
@@ -1517,7 +1517,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 //CC Edit: Heck TGUI, seriously, why is this missing!
 /client/proc/allow_broser_inspect()
-	set category = "🛠 DEBUG.UI"
+	set category = "DEBUG.UI"
 	set name = "Allow Browser Inspect"
 	set desc = ""
 	if(!check_rights(R_DEBUG))

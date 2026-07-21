@@ -35,7 +35,7 @@ GLOBAL_REAL(logger, /datum/log_holder)
 GENERAL_PROTECT_DATUM(/datum/log_holder)
 
 /client/proc/log_viewer_new()
-	set category = "⚡︎ ADMIN.Info"
+	set category = "ADMIN.Info"
 	set name = "View Round Logs"
 	if(!check_rights(R_ADMIN|R_DEBUG))
 		return
