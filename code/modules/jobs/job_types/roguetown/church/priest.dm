@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/coronate_lord()
 	set name = "Coronate"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 	if(!mind)
 		return
 	if(world.time < 30 MINUTES)
@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/churchannouncement()
 	set name = "Announcement"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 
 	if(stat)
 		return
@@ -298,7 +298,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/completesermon()
 	set name = "Sermon"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 
 	if (!mind)
 		return
@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/churcheapostasy(var/mob/living/carbon/human/H in GLOB.player_list)
 	set name = "Apostasy"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 
 	if (stat)
 		return
@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/churchexcommunicate(var/mob/living/carbon/human/H in GLOB.player_list)
 	set name = "Excommunicate"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 
 	if (stat)
 		return
@@ -512,7 +512,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep that updated if this gets any changes.*/
 /mob/living/carbon/human/proc/churchpriestcurse(var/mob/living/carbon/human/H in GLOB.player_list)
 	set name = "Divine Curse"
-	set category = "RoleUnique.Priest"
+	set category = "IC.Bishop"
 
 	if (stat)
 		return
