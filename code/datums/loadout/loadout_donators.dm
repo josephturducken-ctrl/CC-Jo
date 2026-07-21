@@ -199,6 +199,10 @@
 	name = "Gift - Belted Plackart of Steel"
 	path = /obj/item/storage/belt/rogue/leather/donator_steelgirdle
 
+/datum/loadout_item/donator/universal/heelkit
+	name = "Gift - Armor Cosmetic, Heelification Elixir"
+	path = /obj/item/heelkit
+
 /////////////////////////////
 // ! Player / Donor Kits ! //
 /////////////////////////////
