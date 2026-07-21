@@ -191,9 +191,6 @@
 	result_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw
 	restricted_message = "You lack knowledge of dwarven pastries!"
 
-/datum/food_recipe/dough/prezzel/user_can_make(mob/user)
-	return isdwarf(user)
-
 /datum/food_recipe/dough/cheesebun
 	name = "cheese bun"
 	base_item = /obj/item/reagent_containers/food/snacks/rogue/doughslice
