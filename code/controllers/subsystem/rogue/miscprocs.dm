@@ -166,8 +166,8 @@
 
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
-	set name = "(DEBUG)Change Devotion"
-	set category = "Admin.Special"
+	set name = "Change Devotion"
+	set category = "DEBUG.Mobs"
 
 	if(!devotion)
 		return FALSE
@@ -180,7 +180,7 @@
 
 /mob/living/carbon/human/proc/devotionreport()
 	set name = "Check Devotion"
-	set category = "RoleUnique.Cleric"
+	set category = "IC.Devotee"
 
 	if(!devotion)
 		return FALSE
@@ -190,7 +190,7 @@
 
 /mob/living/carbon/human/proc/clericpray()
 	set name = "Give Prayer"
-	set category = "RoleUnique.Cleric"
+	set category = "IC.Devotee"
 
 	if(!devotion)
 		return FALSE
@@ -216,7 +216,7 @@
 
 /mob/living/carbon/human/proc/changevoice()
 	set name = "Change Second Voice (Can only use Once!)"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	var/datum/component/voice_handler/V = GetComponent(/datum/component/voice_handler)
 	if(!V)
@@ -243,14 +243,14 @@
 
 /mob/living/carbon/human/proc/swapvoice()
 	set name = "Swap Voice"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	var/datum/component/voice_handler/V = GetComponent(/datum/component/voice_handler)
 	V.toggle_voice()
 
 /mob/living/carbon/human/proc/toggleblindness()
 	set name = "Toggle Colorblindness"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	if(!get_client_color(/datum/client_colour/monochrome))
 		add_client_colour(/datum/client_colour/monochrome)
@@ -259,7 +259,7 @@
 
 /mob/living/carbon/human/proc/togglecombatawareness()
 	set name = "Toggle Combat Awareness"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	if(HAS_TRAIT(src, TRAIT_COMBAT_AWARE))
 		REMOVE_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
@@ -270,7 +270,7 @@
 
 /mob/living/carbon/human/proc/toggle_descriptors()
 	set name = "Toggle Anonimity"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	show_descriptors = !show_descriptors
 	to_chat(src, "My identifying features are [show_descriptors ? "no longer " : ""]obscured.")
@@ -281,7 +281,7 @@
 
 /mob/living/carbon/human/proc/toggle_guarded()
 	set name = "Toggle Guarded"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Virtues"
 
 	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 		REMOVE_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE)
@@ -293,7 +293,7 @@
 // Not actually a virtue, but kept in the category for convenience. Miner-role only. Component handles all of the messaging and logic, this is just a wrapper, basically.
 /mob/living/carbon/human/proc/toggle_oresight()
 	set name = "Toggle (Ore Sight)"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Towner"
 
 	var/datum/component/ore_sight/COS = GetComponent(/datum/component/ore_sight)
 	if(COS)
@@ -301,7 +301,7 @@
 
 /mob/living/carbon/human/proc/range_oresight()
 	set name = "Change Range (Ore Sight)"
-	set category = "RoleUnique.Virtue"
+	set category = "IC.Towner"
 
 	var/datum/component/ore_sight/COS = GetComponent(/datum/component/ore_sight)
 	if(COS)
