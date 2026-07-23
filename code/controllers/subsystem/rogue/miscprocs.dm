@@ -105,7 +105,7 @@
 	if(patron)
 		if(length(patron.miracles))
 			for(var/spell_type in patron.miracles)
-				var/required_tier = patron.miracles[spell_type]
+				var/required_tier = patron.miracles[spell_type]			
 				if(required_tier <= level)
 					//CC Edit
 					if(!is_npc)
@@ -160,7 +160,7 @@
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
 	set name = "Change Devotion"
-	set category = "DEBUG.Mobs"
+	set category = "🛠 DEBUG.Mobs"
 
 	if(!devotion)
 		return FALSE
@@ -260,7 +260,7 @@
 	set category = "IC.Virtues"
 
 	if(HAS_TRAIT(src, TRAIT_COMBAT_AWARE))
-		REMOVE_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
+		REMOVE_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE) 
 	else
 		ADD_TRAIT(src, TRAIT_COMBAT_AWARE, TRAIT_VIRTUE)
 	to_chat(src, "I will see [HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "more" : "less"] combat information now.", MESSAGE_TYPE_INFO)
@@ -282,7 +282,7 @@
 	set category = "IC.Virtues"
 
 	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
-		REMOVE_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE)
+		REMOVE_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE) 
 	else
 		ADD_TRAIT(src, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE)
 	to_chat(src, "I have [HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS) ? "raised" : "lowered"] my guard around others.", MESSAGE_TYPE_INFO)
