@@ -64,7 +64,7 @@
 /datum/outfit/job/roguetown/herald/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	belt = /obj/item/storage/belt/rogue/leather/rope/upgraded
+	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/storage/keyring/acolyte
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -124,10 +124,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/monk/holy
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	belt = /obj/item/storage/belt/rogue/leather/rope/upgraded
+	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/acolyte
-	shoes = /obj/item/clothing/shoes/roguetown/footwraps/padded
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	backpack_contents = list(
 		/obj/item/ritechalk = 1,
 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
@@ -199,10 +199,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/monk/holy
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	belt = /obj/item/storage/belt/rogue/leather/rope/upgraded
+	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/acolyte
-	shoes = /obj/item/clothing/shoes/roguetown/footwraps/padded
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	backpack_contents = list(
 		/obj/item/ritechalk = 1,
 		/obj/item/storage/belt/rogue/pouch/coins/mid = 1,
