@@ -447,6 +447,13 @@
 							'sound/foley/footsteps/armor/woodarmor (2).ogg',
 							'sound/foley/footsteps/armor/woodarmor (3).ogg',
 							)
+			if(SFX_HEELS)
+				soundin = pick(
+							'sound/foley/footsteps/highheel1.ogg',
+							'sound/foley/footsteps/highheel2.ogg',
+							'sound/foley/footsteps/highheel3.ogg',
+							'sound/foley/footsteps/highheel4.ogg',
+							)
 	//START OF CIT CHANGES - adds random vore sounds
 			if ("hunger_sounds") soundin = pick('modular_causticcove/sound/cvore/vore/growl1.ogg','modular_causticcove/sound/cvore/vore/growl2.ogg','modular_causticcove/sound/cvore/vore/growl3.ogg','modular_causticcove/sound/cvore/vore/growl4.ogg','modular_causticcove/sound/cvore/vore/growl5.ogg')
 
