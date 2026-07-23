@@ -130,7 +130,7 @@
 	for(var/i =1 to 6)
 		new /obj/item/magic/deepsea/tierone(deathspot)
 	update_icon()
-	sleep(1)
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/deepsea/coralback
