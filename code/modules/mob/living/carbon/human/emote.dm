@@ -193,7 +193,7 @@
 
 /mob/living/carbon/human/verb/emote_eflick()
 	set name = "Ear Flick"
-	set category = "Emotes"
+	set category = "EMOTES"
 
 	emote("eflick", intentional = TRUE)
 
