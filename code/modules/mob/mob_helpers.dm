@@ -892,6 +892,10 @@
 		return B.eye_blind
 	return FALSE
 
+///TRUE if the mob's sight is obscured enough to sense footsteps - fully blind (see [is_blind]) or has the clouding Blindness vice.
+/proc/vision_obscured(mob/M)
+	return is_blind(M) || M.has_flaw(/datum/charflaw/noeyeall)
+
 ///Is the mob hallucinating?
 /mob/proc/hallucinating()
 	return FALSE
@@ -942,6 +946,8 @@
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
 		return
 	for(var/mob/dead/observer/O in GLOB.player_list)
+		if(isscryeye(O))
+			continue
 		if(!notify_suiciders && (O in GLOB.suicided_mob_list))
 			continue
 		if (ignore_key && (O.ckey in GLOB.poll_ignore[ignore_key]))
